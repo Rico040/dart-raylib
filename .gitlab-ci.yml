@@ -1,0 +1,146 @@
+image: google/dart:latest
+
+variables:
+  GIT_SUBMODULE_STRATEGY: recursive
+
+stages:
+  - lint
+  - test
+  - publish
+
+dartdoc:
+  stage: lint
+  script:
+    - pub get
+    - dartdoc --no-auto-include-dependencies --quiet
+  only:
+    refs:
+      - main
+      - merge_requests
+    changes:
+      - lib/**/*
+      - README.md
+      - .gitlab-ci.yml
+
+dart_format:
+  stage: lint
+  script:
+    - |
+      [ -z "$(dart format . | grep "(0 changed)")" ] && exit 1 || exit 0
+  only:
+    refs:
+      - main
+      - merge_requests
+    changes:
+      - example/**/*.dart
+      - lib/**/*.dart
+      - test/**/*.dart
+      - .gitlab-ci.yml
+
+dart_analyze:
+  stage: lint
+  script:
+    - pub get
+    - dart analyze
+  only:
+    refs:
+      - main
+      - merge_requests
+    changes:
+      - example/**/*.dart
+      - lib/**/*.dart
+      - test/**/*.dart
+      - .gitlab-ci.yml
+
+# unit_test:
+#   stage: test
+#   script:
+#     - apt-get update && apt-get install lcov -y
+#     - pub get
+#     - dart run test --coverage coverage/
+#     - dart run coverage:format_coverage -i coverage/test/ --lcov --out coverage/lcov.info --packages .packages --report-on $(pwd)/lib
+#     - lcov --list ./coverage/lcov.info
+#   only:
+#     refs:
+#       - merge_requests
+#       - main
+#     changes:
+#       - lib/**/*
+#       - test/**/*
+#       - .gitlab-ci.yml
+
+dry_run_publish:
+  stage: publish
+  script:
+    - pub get
+    - pub publish --dry-run
+  only:
+    refs:
+      - main
+      - merge_requests
+      
+tag:
+  image: curlimages/curl
+  stage: publish
+  script:
+    - |
+      if [ -z "${GITLAB_API_TOKEN}" ]; then
+        echo "Missing GITLAB_API_TOKEN environment variable"
+        exit 1
+      fi
+
+      export TAG_NAME="$(awk '/^version: /{print $NF}' pubspec.yaml)"
+      curl --fail --request POST --header "PRIVATE-TOKEN: ${GITLAB_API_TOKEN}" \
+        --data-urlencode "tag_name=v${TAG_NAME}" \
+        --data-urlencode "ref=main" \
+        --data-urlencode "release_description=Check the [CHANGELOG.md](${CI_PROJECT_URL}/-/blob/main/CHANGELOG.md)" \
+        "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/repository/tags"
+  environment:
+    name: pub-dev-plugin
+    url: https://pub.dev/packages/raylib
+  when: manual
+  only:
+    refs:
+      - main
+
+pub_dev_publish:
+  stage: publish
+  script:
+    - |
+      if [ -z "${PUB_DEV_PUBLISH_ACCESS_TOKEN}" ]; then
+        echo "Missing PUB_DEV_PUBLISH_ACCESS_TOKEN environment variable"
+        exit 1
+      fi
+
+      if [ -z "${PUB_DEV_PUBLISH_REFRESH_TOKEN}" ]; then
+        echo "Missing PUB_DEV_PUBLISH_REFRESH_TOKEN environment variable"
+        exit 1
+      fi
+
+      if [ -z "${PUB_DEV_PUBLISH_TOKEN_ENDPOINT}" ]; then
+        echo "Missing PUB_DEV_PUBLISH_TOKEN_ENDPOINT environment variable"
+        exit 1
+      fi
+
+      if [ -z "${PUB_DEV_PUBLISH_EXPIRATION}" ]; then
+        echo "Missing PUB_DEV_PUBLISH_EXPIRATION environment variable"
+        exit 1
+      fi
+    - pub get
+    - |
+      cat <<EOF > ~/.pub-cache/credentials.json
+      {
+        "accessToken":"$(echo "${PUB_DEV_PUBLISH_ACCESS_TOKEN}" | base64 -d)",
+        "refreshToken":"$(echo "${PUB_DEV_PUBLISH_REFRESH_TOKEN}" | base64 -d)",
+        "tokenEndpoint":"${PUB_DEV_PUBLISH_TOKEN_ENDPOINT}",
+        "scopes":["https://www.googleapis.com/auth/userinfo.email","openid"],
+        "expiration":${PUB_DEV_PUBLISH_EXPIRATION}
+      }
+      EOF
+    - pub publish -f
+  only:
+    refs:
+      - /^v.*$/
+  except:
+    refs:
+      - branches
