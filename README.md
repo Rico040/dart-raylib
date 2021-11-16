@@ -1,4 +1,4 @@
-<img align="left" src="./logo/dart-raylib.png" width="256px">
+<img align="left" src="./logo/raylib-dart_256x256.png" width="256px">
 
 # Raylib
 
