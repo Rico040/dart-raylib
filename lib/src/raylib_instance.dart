@@ -5,6 +5,8 @@ import 'package:raylib/src/generated_bindings.dart';
 import 'package:yaml/yaml.dart';
 
 String _resolvePath(Uri path) {
+  // TODO: Resolving should not depend on pubspec cause that wont be accessable when compiled.
+
   /// Recursively resolve pubspec file.
   final pubspecPath = path.resolve('./pubspec.yaml');
   if (pubspecPath.path == '/pubspec.yaml') {
