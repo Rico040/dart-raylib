@@ -71,8 +71,7 @@ dry_run_publish:
   stage: publish
   script:
     - |
-      apt update && apt install yq
-      version=$(yq e '.version' "./${package}/pubspec.yaml")
+      version=$(grep -A3 'version:' ./pubspec.yaml | head -n1 | cut -c 9-)
       if ! grep -q $version "./CHANGELOG.md"; then
           echo "Missing CHANGELOG entry for version $version"
           exit 1
