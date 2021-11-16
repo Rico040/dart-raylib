@@ -4,9 +4,9 @@
 [![pipeline status](https://gitlab.com/wolfenrain/dart-raylib/badges/main/pipeline.svg)](https://gitlab.com/wolfenrain/dart-raylib/-/commits/main)
 [![dependencies](https://img.shields.io/librariesio/release/pub/raylib?label=dependencies)](https://gitlab.com/wolfenrain/dart-raylib/-/blob/main/pubspec.yaml)
 
-
-
 Dart bindings for [raylib](https://raylib.com), a simple and easy-to-use library to enjoy videogames programming.
+
+**Note**: This package was written for `raylib` version 4.x and higher, older versions are not supported.
 
 ## Usage
 
@@ -30,11 +30,13 @@ raylib:
     macos: include/libraylib.so
 ```
 
+See the [example](https://gitlab.com/wolfenrain/dart-raylib/-/tree/main/example/lib) directory for more examples.
+
 ## Development
 
 ### Linux
 
-You need to have `make` and `git` installed: 
+You need to have both `make` and `git` installed: 
 
 ```sh
 sudo apt install build-essential git
@@ -46,12 +48,14 @@ After that you can check out the submodules:
 git submodule update --init --recursive
 ```
 
-After you have downloaded the submodules you can compile `raylib`:
+With the submodules downloaded you can start compiling `raylib`:
 
 ```sh
 cd vendor/raylib/src
 make PLATFORM=PLATFORM_DESKTOP RAYLIB_LIBTYPE=SHARED
 ```
+
+Then copy the compiled library to the example folder:
 
 ```sh
 cp ../libraylib.so.4.0.0 ../../../example/include/libraylib.so
