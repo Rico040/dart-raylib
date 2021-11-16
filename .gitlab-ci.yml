@@ -1,8 +1,5 @@
 image: google/dart:latest
 
-variables:
-  GIT_SUBMODULE_STRATEGY: recursive
-
 stages:
   - lint
   - test
@@ -15,7 +12,6 @@ dartdoc:
     - dartdoc --no-auto-include-dependencies --quiet
   only:
     refs:
-      - main
       - merge_requests
     changes:
       - lib/**/*
@@ -44,7 +40,6 @@ dart_analyze:
     - dart analyze
   only:
     refs:
-      - main
       - merge_requests
     changes:
       - example/**/*.dart
@@ -72,11 +67,20 @@ dart_analyze:
 dry_run_publish:
   stage: publish
   script:
+    - |
+      version=$(grep -A3 'version:' ./pubspec.yaml | head -n1 | cut -c 9-)
+      if ! grep -q $version "./CHANGELOG.md"; then
+          echo "Missing CHANGELOG entry for version $version"
+          exit 1
+      fi
     - pub get
+    # Removing submodules as the pub publish otherwise fails.
+    - git submodule deinit vendor/raylib
+    - git rm vendor/raylib
+    - rm -rf .git/modules/vendor/raylib
     - pub publish --dry-run
   only:
     refs:
-      - main
       - merge_requests
       
 tag:
@@ -137,6 +141,10 @@ pub_dev_publish:
         "expiration":${PUB_DEV_PUBLISH_EXPIRATION}
       }
       EOF
+    # Removing submodules as the pub publish otherwise fails.
+    - git submodule deinit vendor/raylib
+    - git rm vendor/raylib
+    - rm -rf .git/modules/vendor/raylib
     - pub publish -f
   only:
     refs:
