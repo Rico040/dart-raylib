@@ -141,8 +141,9 @@ pub_dev_publish:
       }
       EOF
     # Removing submodules as the pub publish otherwise fails.
-    - rm .gitmodules
-    - rm -rf vendor/
+    - git submodule deinit vendor/raylib
+    - git rm vendor/raylib
+    - rm -rf .git/modules/vendor/raylib
     - pub publish -f
   only:
     refs:
