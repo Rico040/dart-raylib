@@ -1,8 +1,5 @@
 image: google/dart:latest
 
-variables:
-  GIT_SUBMODULE_STRATEGY: recursive
-
 stages:
   - lint
   - test
