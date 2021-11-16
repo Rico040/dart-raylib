@@ -73,10 +73,11 @@ dry_run_publish:
           echo "Missing CHANGELOG entry for version $version"
           exit 1
       fi
-      pub get
-      # Removing vendors as the pub publish otherwise fails.
-      rm -rf vendor/
-      pub publish --dry-run
+    - pub get
+    # Removing submodules as the pub publish otherwise fails.
+    - rm .gitmodules
+    - rm -rf vendor/
+    - pub publish --dry-run
   only:
     refs:
       - merge_requests
@@ -139,7 +140,8 @@ pub_dev_publish:
         "expiration":${PUB_DEV_PUBLISH_EXPIRATION}
       }
       EOF
-    # Removing vendors as the pub publish otherwise fails.
+    # Removing submodules as the pub publish otherwise fails.
+    - rm .gitmodules
     - rm -rf vendor/
     - pub publish -f
   only:
