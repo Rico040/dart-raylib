@@ -15,7 +15,6 @@ dartdoc:
     - dartdoc --no-auto-include-dependencies --quiet
   only:
     refs:
-      - main
       - merge_requests
     changes:
       - lib/**/*
@@ -44,7 +43,6 @@ dart_analyze:
     - dart analyze
   only:
     refs:
-      - main
       - merge_requests
     changes:
       - example/**/*.dart
@@ -72,11 +70,17 @@ dart_analyze:
 dry_run_publish:
   stage: publish
   script:
-    - pub get
-    - pub publish --dry-run
+    - |
+      apt update && apt install yq
+      version=$(yq e '.version' "./${package}/pubspec.yaml")
+      if ! grep -q $version "./CHANGELOG.md"; then
+          echo "Missing CHANGELOG entry for version $version"
+          exit 1
+      fi
+      pub get
+      pub publish --dry-run
   only:
     refs:
-      - main
       - merge_requests
       
 tag:
