@@ -1,4 +1,7 @@
+<img align="left" src="./logo/dart-raylib.png" width="256px">
+
 # Raylib
+
 [![plugin version](https://img.shields.io/pub/v/raylib?label=pub)](https://pub.dev/packages/raylib)
 [![coverage report](https://gitlab.com/wolfenrain/dart-raylib/badges/main/coverage.svg)](https://gitlab.com/wolfenrain/dart-raylib/-/commits/main)
 [![pipeline status](https://gitlab.com/wolfenrain/dart-raylib/badges/main/pipeline.svg)](https://gitlab.com/wolfenrain/dart-raylib/-/commits/main)
@@ -7,6 +10,11 @@
 Dart bindings for [raylib](https://raylib.com), a simple and easy-to-use library to enjoy videogames programming.
 
 **Note**: This package was written for `raylib` version 4.x and higher, older versions are not supported.
+
+---
+
+<br>
+
 
 ## Usage
 
@@ -19,7 +27,8 @@ import 'package:raylib/raylib.dart';
 ```
 
 By default the package will look for the `raylib` library in `<PROJECT_ROOT>/include` using the following file conventions:
-- `libraylib.so` for Linux and MacOS.
+- `libraylib.so` for Linux 
+- `libraylib.dylib` for MacOS.
 
 If your lib files are somewhere else or follow a different naming convention you can specify that in your `pubspec.yaml`:
 

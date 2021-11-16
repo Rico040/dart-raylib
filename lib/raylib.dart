@@ -20,6 +20,7 @@ export 'src/modules/modules.dart';
 
 // ignore: directives_ordering
 /// Exporting enums
+// TODO: Map to enums
 export 'src/generated_bindings.dart'
     show
         CameraMode,
