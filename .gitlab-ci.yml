@@ -139,7 +139,7 @@ pub_dev_publish:
         "expiration":${PUB_DEV_PUBLISH_EXPIRATION}
       }
       EOF
-    - # Removing vendors as the pub publish otherwise fails.
+    # Removing vendors as the pub publish otherwise fails.
     - rm -rf vendor/
     - pub publish -f
   only:
