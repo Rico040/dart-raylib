@@ -75,8 +75,9 @@ dry_run_publish:
       fi
     - pub get
     # Removing submodules as the pub publish otherwise fails.
-    - rm .gitmodules
-    - rm -rf vendor/
+    - git submodule deinit vendor/raylib
+    - git rm vendor/raylib
+    - rm -rf .git/modules/vendor/raylib
     - pub publish --dry-run
   only:
     refs:
