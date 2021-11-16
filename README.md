@@ -1,4 +1,4 @@
-<img align="left" src="./logo/raylib-dart_256x256.png" width="256px">
+<img src="./logo/raylib-dart_256x256.png" width="256px">
 
 # Raylib
 
@@ -6,6 +6,7 @@
 [![coverage report](https://gitlab.com/wolfenrain/dart-raylib/badges/main/coverage.svg)](https://gitlab.com/wolfenrain/dart-raylib/-/commits/main)
 [![pipeline status](https://gitlab.com/wolfenrain/dart-raylib/badges/main/pipeline.svg)](https://gitlab.com/wolfenrain/dart-raylib/-/commits/main)
 [![dependencies](https://img.shields.io/librariesio/release/pub/raylib?label=dependencies)](https://gitlab.com/wolfenrain/dart-raylib/-/blob/main/pubspec.yaml)
+[![Examples](https://img.shields.io/badge/learn%20by-examples-0077b3.svg)](https://gitlab.com/wolfenrain/dart-raylib/tree/main/example)
 
 Dart bindings for [raylib](https://raylib.com), a simple and easy-to-use library to enjoy videogames programming.
 
