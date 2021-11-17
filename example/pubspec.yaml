@@ -17,4 +17,4 @@ dev_dependencies:
 raylib:
   platform: 
     linux: include/libraylib.so
-    macos: include/libraylib.so
+    macos: include/libraylib.dylib

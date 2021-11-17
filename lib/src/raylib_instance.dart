@@ -29,7 +29,7 @@ String _resolvePath(Uri path) {
     'linux': platform?['linux'] as String? ??
         pubspecPath.resolve('./include/libraylib.so').path,
     'macos': platform?['macos'] as String? ??
-        pubspecPath.resolve('./include/libraylib.so').path,
+        pubspecPath.resolve('./include/libraylib.dylib').path,
   }[Platform.operatingSystem];
 
   if (libPath == null) {
