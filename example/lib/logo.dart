@@ -1,6 +1,10 @@
 import 'package:raylib/raylib.dart';
 
 void main() {
+  initLibrary(
+    linux: './include/libraylib.so',
+  );
+
   const screenWidth = 256;
   const screenHeight = 256;
 

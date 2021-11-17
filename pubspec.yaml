@@ -8,7 +8,6 @@ environment:
 
 dependencies:
   ffi: ^1.1.2
-  yaml: ^3.1.0
 
 dev_dependencies:
   ffigen: ^4.1.2

@@ -12,9 +12,9 @@ Dart bindings for [raylib](https://raylib.com), a simple and easy-to-use library
 
 **Note**: This package was written for `raylib` version 4.x and higher, older versions are not supported.
 
----
-
-<br>
+Currently this library does not support the following platforms:
+- iOS, `raylib` is built on top of OpenGL and that isn't supported on iOS.
+- macOS, `raylib` creates windows natively but on macOS that is only possible if you do it from the main thread but sadly the Dart VM is not the main thread. For more information check [this issue](https://github.com/dart-lang/sdk/issues/38315) and [this one](https://github.com/dart-lang/sdk/issues/19380).
 
 
 ## Usage
@@ -27,20 +27,16 @@ Importing `raylib`:
 import 'package:raylib/raylib.dart';
 ```
 
-By default the package will look for the `raylib` library in `<PROJECT_ROOT>/include` using the following file conventions:
-- `libraylib.so` for Linux 
-- `libraylib.dylib` for MacOS.
+You need to tell the package where it can find your raylib library:
 
-If your lib files are somewhere else or follow a different naming convention you can specify that in your `pubspec.yaml`:
-
-```yaml
-raylib:
-  platform: 
-    linux: include/libraylib.so
-    macos: include/libraylib.so
+```dart
+initLibrary(
+  linux: '../include/libraylib.so',
+  windows: '../somewhere/else',
+);
 ```
 
-See the [example](https://gitlab.com/wolfenrain/dart-raylib/-/tree/main/example/lib) directory for more examples.
+See the [example](https://gitlab.com/wolfenrain/dart-raylib/-/tree/main/example/lib) directory for examples.
 
 ## Development
 

@@ -1,3 +1,9 @@
+import 'dart:ffi';
+import 'dart:io';
+
+import 'package:raylib/src/generated_bindings.dart';
+import 'package:raylib/src/raylib_instance.dart';
+
 /// Classes
 export 'src/classes/camera_2d.dart';
 export 'src/classes/camera_3d.dart';
@@ -30,3 +36,32 @@ export 'src/generated_bindings.dart'
         MouseButton,
         GamepadAxis,
         GamepadButton;
+
+/// Initialize the raylib library by passing the path to the library for each
+/// supported platform.
+void initLibrary({
+  String? linux,
+  String? windows,
+}) {
+  if (Platform.isLinux && linux == null) {
+    throw Exception('Running on linux but no library path was provided');
+  } else if (Platform.isWindows && windows == null) {
+    throw Exception('Running on windows but no library path was provided');
+  }
+
+  final String libraryPath;
+  if (Platform.isLinux) {
+    libraryPath = linux!;
+  } else if (Platform.isWindows) {
+    libraryPath = windows!;
+  } else {
+    throw UnsupportedError(
+      '''
+Platform ${Platform.operatingSystem} is untested and therefore unsupported.
+Please file a bug report if you think this is incorrect
+''',
+    );
+  }
+
+  library = Raylib(DynamicLibrary.open(libraryPath));
+}
