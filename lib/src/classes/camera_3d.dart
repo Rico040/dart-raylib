@@ -37,6 +37,7 @@ class Camera3D extends NativeClass<raylib.Camera3D> {
     this.projection = projection;
   }
 
+  /// Native pointer, used internally.
   final Pointer<raylib.Camera3D>? pointer;
 
   /// Camera position.

@@ -25,6 +25,7 @@ class Camera2D extends NativeClass<raylib.Camera2D> {
     this.rotation = rotation;
   }
 
+  /// Native pointer, used internally.
   final Pointer<raylib.Camera2D>? pointer;
 
   /// Camera offset (displacement from target).

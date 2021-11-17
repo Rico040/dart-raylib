@@ -1,3 +1,8 @@
+## 0.2.0+1
+
+- Fixed logo path on README.md.
+- Fixed public facing documentation.
+
 ## 0.2.0
 
 - **BREAKING**: Initializing of `raylib` is now done through `initLibrary` instead of being based of the `pubspec.yaml` entry.

@@ -38,6 +38,7 @@ class Color extends NativeClass<raylib.Color> {
   Color.fromHSV(double hue, double saturation, double value)
       : this.fromRef(library.ColorFromHSV(hue, saturation, value));
 
+  /// Native pointer, used internally.
   final Pointer<raylib.Color>? pointer;
 
   /// Color red value.

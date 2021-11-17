@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:raylib/src/classes/native_class.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
 

@@ -31,6 +31,7 @@ class Vector4 extends NativeClass<raylib.Vector4> {
   /// Construct Vector2 with all values set to [value].
   Vector4.all(double value) : this(value, value, value, value);
 
+  /// Native pointer, used internally.
   final Pointer<raylib.Vector4>? pointer;
 
   /// Vector x component.

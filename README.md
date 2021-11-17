@@ -1,4 +1,4 @@
-<img src="./logo/raylib-dart_256x256.png" width="256px">
+<img src="https://gitlab.com/wolfenrain/dart-raylib/-/raw/main/logo/raylib-dart_256x256.png" width="256px">
 
 # Raylib
 

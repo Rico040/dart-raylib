@@ -25,6 +25,7 @@ class Rectangle extends NativeClass<raylib.Rectangle> {
       : pointer = null,
         super.fromRef(ref);
 
+  /// Native pointer, used internally.
   final Pointer<raylib.Rectangle>? pointer;
 
   /// Rectangle top-left corner position x.

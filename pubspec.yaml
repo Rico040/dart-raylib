@@ -1,6 +1,6 @@
 name: raylib
 description: raylib is a simple and easy-to-use library to enjoy videogames programming.
-version: 0.2.0
+version: 0.2.0+1
 homepage: https://gitlab.com/wolfenrain/dart-raylib
 
 environment:
