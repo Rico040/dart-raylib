@@ -2,11 +2,9 @@ import 'dart:math';
 
 import 'package:raylib/raylib.dart';
 
-const maxBuildings = 100;
-
-final random = Random();
-double getRandomValue(double min, double max) {
-  return min + random.nextDouble() * max;
+final _random = Random();
+double _getRandomValue(double min, double max) {
+  return min + _random.nextDouble() * max;
 }
 
 void main() {
@@ -28,13 +26,16 @@ void main() {
 
   var spacing = 0.0;
 
+  /// Amount of buildings to generate.
+  const maxBuildings = 100;
+
   for (var i = 0; i < maxBuildings; i++) {
-    final height = getRandomValue(100, 800);
+    final height = _getRandomValue(100, 800);
     buildings.add(
       Rectangle(
         -6000 + spacing,
         screenHeight - 130 - height,
-        getRandomValue(50, 200),
+        _getRandomValue(50, 200),
         height,
       ),
     );
@@ -42,9 +43,9 @@ void main() {
 
     buildColors.add(
       Color(
-        getRandomValue(200, 240).toInt(),
-        getRandomValue(200, 240).toInt(),
-        getRandomValue(200, 250).toInt(),
+        _getRandomValue(200, 240).toInt(),
+        _getRandomValue(200, 240).toInt(),
+        _getRandomValue(200, 250).toInt(),
         255,
       ),
     );

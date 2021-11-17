@@ -12,7 +12,7 @@ class Rectangle extends NativeClass<raylib.Rectangle> {
     double y,
     double width,
     double height,
-  ) : pointer = malloc<raylib.Rectangle>() {
+  ) : pointer = malloc<raylib.Rectangle>(sizeOf<raylib.Rectangle>()) {
     ref = pointer!.ref;
     this.x = x;
     this.y = y;

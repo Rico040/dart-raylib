@@ -14,7 +14,7 @@ class Color extends NativeClass<raylib.Color> {
     int g,
     int b,
     int a,
-  ) : pointer = malloc<raylib.Color>(sizeOf<Uint8>() * 4) {
+  ) : pointer = malloc<raylib.Color>(sizeOf<raylib.Color>()) {
     ref = pointer!.ref;
     this.r = r;
     this.g = g;

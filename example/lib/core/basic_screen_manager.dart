@@ -1,9 +1,17 @@
 import 'package:raylib/raylib.dart';
 
+/// Enum that showcases a GameScreen state.
 enum GameScreen {
+  /// Logo screen.
   logo,
+
+  /// Title screen.
   title,
+
+  /// Gameplay screen.
   gameplay,
+
+  /// Ending screen.
   ending,
 }
 

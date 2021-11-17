@@ -2,11 +2,9 @@ import 'dart:math';
 
 import 'package:raylib/raylib.dart';
 
-const maxColumns = 20;
-
-final random = Random();
-double getRandomValue(double min, double max) {
-  return min + random.nextDouble() * max;
+final _random = Random();
+double _getRandomValue(double min, double max) {
+  return min + _random.nextDouble() * max;
 }
 
 void main() {
@@ -35,19 +33,22 @@ void main() {
   final positions = <Vector3>[];
   final colors = <Color>[];
 
+  /// Max amount of columns to generate.
+  const maxColumns = 20;
+
   for (var i = 0; i < maxColumns; i++) {
-    heights.add(getRandomValue(1, 12));
+    heights.add(_getRandomValue(1, 12));
     positions.add(
       Vector3(
-        getRandomValue(-15, 15),
+        _getRandomValue(-15, 15),
         heights[i] / 2,
-        getRandomValue(-15, 15),
+        _getRandomValue(-15, 15),
       ),
     );
     colors.add(
       Color(
-        getRandomValue(20, 255).toInt(),
-        getRandomValue(10, 55).toInt(),
+        _getRandomValue(20, 255).toInt(),
+        _getRandomValue(10, 55).toInt(),
         30,
         255,
       ),

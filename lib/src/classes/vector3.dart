@@ -11,7 +11,7 @@ class Vector3 extends NativeClass<raylib.Vector3> {
     double x,
     double y,
     double z,
-  ) : pointer = malloc<raylib.Vector3>(sizeOf<Float>() * 3) {
+  ) : pointer = malloc<raylib.Vector3>(sizeOf<raylib.Vector3>()) {
     ref = pointer!.ref;
     this.x = x;
     this.y = y;

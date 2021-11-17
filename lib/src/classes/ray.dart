@@ -11,7 +11,7 @@ class Ray extends NativeClass<raylib.Ray> {
   Ray({
     Vector3? position,
     Vector3? direction,
-  }) : pointer = malloc<raylib.Ray>() {
+  }) : pointer = malloc<raylib.Ray>(sizeOf<raylib.Ray>()) {
     position ??= Vector3.zero();
     direction ??= Vector3.zero();
 

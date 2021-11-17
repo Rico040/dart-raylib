@@ -11,7 +11,7 @@ class Vector2 extends NativeClass<raylib.Vector2> {
   Vector2(
     double x,
     double y,
-  ) : pointer = malloc<raylib.Vector2>(sizeOf<Float>() * 2) {
+  ) : pointer = malloc<raylib.Vector2>(sizeOf<raylib.Vector2>()) {
     ref = pointer!.ref;
     this.x = x;
     this.y = y;
@@ -21,7 +21,7 @@ class Vector2 extends NativeClass<raylib.Vector2> {
 
   /// Construct Vector2 from native reference.
   Vector2.fromRef(raylib.Vector2 ref)
-      : pointer = null,
+      : pointer = null, // TODO: Maybe we can create a new pointer every time?
         super.fromRef(ref);
 
   /// Construct empty Vector2.

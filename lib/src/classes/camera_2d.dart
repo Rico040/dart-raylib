@@ -14,7 +14,7 @@ class Camera2D extends NativeClass<raylib.Camera2D> {
     Vector2? target,
     double zoom = 1,
     double rotation = 0,
-  }) : pointer = malloc<raylib.Camera2D>() {
+  }) : pointer = malloc<raylib.Camera2D>(sizeOf<raylib.Camera2D>()) {
     offset ??= Vector2.zero();
     target ??= Vector2.zero();
 

@@ -1,5 +1,6 @@
 import 'package:raylib/raylib.dart';
 import 'package:raylib/src/raylib_instance.dart';
+import 'package:raylib/src/utils/vector2.dart' as vector2;
 
 /// Draw a Texture2D.
 void drawTexture(Texture2D texture, int posX, int posY, Color tint) {
@@ -120,7 +121,21 @@ void drawTextureNPatch(
   );
 }
 
-// /// Draw a textured polygon.
-// void drawTexturePoly(Texture2D texture, Vector2 center, Vector2 *points, Vector2 *texcoords, int pointsCount, Color tint) {
-//   return raylibInstance. DrawTexturePoly( texture.ref,  center, points,  texcoords,  pointsCount,  tint);
-// }
+/// Draw a textured polygon.
+void drawTexturePoly(
+  Texture2D texture,
+  Vector2 center,
+  List<Vector2> points,
+  List<Vector2> texcoords,
+  int pointsCount,
+  Color tint,
+) {
+  return library.DrawTexturePoly(
+    texture.ref,
+    center.ref,
+    vector2.toPointer(points),
+    vector2.toPointer(texcoords),
+    pointsCount,
+    tint.ref,
+  );
+}

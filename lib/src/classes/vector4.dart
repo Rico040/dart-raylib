@@ -12,7 +12,7 @@ class Vector4 extends NativeClass<raylib.Vector4> {
     double y,
     double z,
     double w,
-  ) : pointer = malloc<raylib.Vector4>(sizeOf<Float>() * 4) {
+  ) : pointer = malloc<raylib.Vector4>(sizeOf<raylib.Vector4>()) {
     ref = pointer!.ref;
     this.x = x;
     this.y = y;

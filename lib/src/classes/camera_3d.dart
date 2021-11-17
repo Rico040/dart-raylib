@@ -24,7 +24,7 @@ class Camera3D extends NativeClass<raylib.Camera3D> {
     Vector3? up,
     double fovy = 1,
     CameraProjection projection = CameraProjection.perspective,
-  }) : pointer = malloc<raylib.Camera3D>() {
+  }) : pointer = malloc<raylib.Camera3D>(sizeOf<raylib.Camera3D>()) {
     position ??= Vector3.zero();
     target ??= Vector3.zero();
     up ??= Vector3.zero();
