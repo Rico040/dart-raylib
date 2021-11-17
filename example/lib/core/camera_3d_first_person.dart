@@ -10,6 +10,9 @@ double getRandomValue(double min, double max) {
 }
 
 void main() {
+  initLibrary(
+    linux: './include/libraylib.so',
+  );
   const screenWidth = 800;
   const screenHeight = 450;
 

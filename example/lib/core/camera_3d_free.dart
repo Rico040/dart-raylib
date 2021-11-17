@@ -2,6 +2,9 @@ import 'package:raylib/raylib.dart';
 import 'package:raylib/src/classes/vector3.dart';
 
 void main() {
+  initLibrary(
+    linux: './include/libraylib.so',
+  );
   const screenWidth = 800;
   const screenHeight = 450;
 

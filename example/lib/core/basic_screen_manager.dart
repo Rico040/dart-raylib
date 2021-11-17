@@ -8,6 +8,9 @@ enum GameScreen {
 }
 
 void main() {
+  initLibrary(
+    linux: './include/libraylib.so',
+  );
   const screenWidth = 800;
   const screenHeight = 450;
 
