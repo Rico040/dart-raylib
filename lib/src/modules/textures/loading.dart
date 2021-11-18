@@ -16,6 +16,11 @@ Texture2D loadTextureFromImage(Image image) {
   return Texture2D.fromRef(library.LoadTextureFromImage(image.ref));
 }
 
+/// Unload image from CPU memory (RAM).
+void unloadImage(Image image) {
+  return library.UnloadImage(image.ref);
+}
+
 // /// Load cubemap from image, multiple image cubemap layouts supported.
 // TextureCubemap loadTextureCubemap(Image image, int layout) {
 //   return raylibInstance. LoadTextureCubemap(image,  layout);

@@ -48,14 +48,14 @@ void endTextureMode() {
 }
 
 /// Begin custom shader drawing.
-// void beginShaderMode(Shader shader) {
-//   return raylibInstance.BeginShaderMode(shader);
-// }
+void beginShaderMode(Shader shader) {
+  return library.BeginShaderMode(shader.ref);
+}
 
 /// End custom shader drawing (use default shader).
-// void endShaderMode() {
-//   return raylibInstance.EndShaderMode();
-// }
+void endShaderMode() {
+  return library.EndShaderMode();
+}
 
 /// Begin blending mode (alpha, additive, multiplied, subtract, custom).
 void beginBlendMode(int mode) {

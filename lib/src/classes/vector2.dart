@@ -3,7 +3,7 @@ import 'dart:math';
 
 import 'package:ffi/ffi.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
-import 'package:raylib/src/utils/native.dart';
+import 'package:raylib/src/utils/native_type.dart';
 
 /// Vector2, 2 components.
 class Vector2 extends NativeClass<raylib.Vector2> {

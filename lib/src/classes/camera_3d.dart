@@ -4,7 +4,7 @@ import 'package:ffi/ffi.dart';
 import 'package:raylib/raylib.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
 import 'package:raylib/src/raylib_instance.dart';
-import 'package:raylib/src/utils/native.dart';
+import 'package:raylib/src/utils/native_type.dart';
 
 /// Camera projections
 enum CameraProjection {

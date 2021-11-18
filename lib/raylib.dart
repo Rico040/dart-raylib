@@ -4,30 +4,31 @@ import 'dart:io';
 import 'package:raylib/src/generated_bindings.dart';
 import 'package:raylib/src/raylib_instance.dart';
 
-/// Classes
+/// Classes.
+export 'src/classes/bone_info.dart';
 export 'src/classes/camera_2d.dart';
 export 'src/classes/camera_3d.dart';
 export 'src/classes/color.dart';
 export 'src/classes/font.dart';
 export 'src/classes/glyph_info.dart';
 export 'src/classes/image.dart';
+export 'src/classes/material.dart';
+export 'src/classes/material_map.dart';
 export 'src/classes/matrix.dart';
 export 'src/classes/mesh.dart';
+export 'src/classes/model.dart';
 export 'src/classes/n_patch_info.dart';
 export 'src/classes/ray.dart';
 export 'src/classes/rectangle.dart';
 export 'src/classes/render_texture.dart';
+export 'src/classes/shader.dart';
 export 'src/classes/texture.dart';
+export 'src/classes/transform.dart';
 export 'src/classes/vector2.dart';
 export 'src/classes/vector3.dart';
 export 'src/classes/vector4.dart';
 
-/// Modules
-export 'src/modules/modules.dart';
-
-// ignore: directives_ordering
-/// Exporting enums
-// TODO(wolfen): Map to enums
+/// Exporting enums.
 export 'src/generated_bindings.dart'
     show
         CameraMode,
@@ -51,7 +52,15 @@ export 'src/generated_bindings.dart'
         GamepadAxis,
         GamepadButton;
 
+/// Modules.
+export 'src/modules/modules.dart';
 export 'src/utils/pointer_list.dart' hide PointerList;
+
+/// Used for accessing the material map diffuse.
+const materialMapDiffuse = MATERIAL_MAP_DIFFUSE;
+
+/// Used for accessing the material map specular.
+const materialMapSpecular = MATERIAL_MAP_SPECULAR;
 
 /// Initialize the raylib library by passing the path to the library for each
 /// supported platform.

@@ -10,6 +10,8 @@ export 'core/touch.dart';
 export 'core/window.dart';
 
 /// Models
+export 'models/drawing.dart';
+export 'models/generation.dart';
 export 'models/geometric.dart';
 
 /// Shapes
@@ -23,4 +25,5 @@ export 'text/misc.dart';
 /// Textures
 export 'textures/color.dart';
 export 'textures/drawing.dart';
+export 'textures/generation.dart';
 export 'textures/loading.dart';

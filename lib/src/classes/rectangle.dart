@@ -2,7 +2,7 @@ import 'dart:ffi';
 
 import 'package:ffi/ffi.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
-import 'package:raylib/src/utils/native.dart';
+import 'package:raylib/src/utils/native_type.dart';
 import 'package:raylib/src/utils/pointer_list.dart';
 
 /// Rectangle, 4 components.
@@ -51,10 +51,10 @@ extension RectangleList on PointerList<raylib.Rectangle> {
   /// Set the values of [value] to the given native [ref].
   void _setRef(raylib.Rectangle ref, Rectangle value) {
     ref
-      ..height = value.height
-      ..width = value.width
-      ..x = value.x
-      ..y = value.y;
+      ..height = value.ref.height
+      ..width = value.ref.width
+      ..x = value.ref.x
+      ..y = value.ref.y;
   }
 
   /// The object at the given [index] in the list.

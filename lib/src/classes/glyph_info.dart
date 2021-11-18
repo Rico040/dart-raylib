@@ -2,7 +2,7 @@ import 'dart:ffi';
 
 import 'package:raylib/raylib.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
-import 'package:raylib/src/utils/native.dart';
+import 'package:raylib/src/utils/native_type.dart';
 import 'package:raylib/src/utils/pointer_list.dart';
 
 /// GlyphInfo, font characters glyphs info.
@@ -26,16 +26,16 @@ class GlyphInfo extends NativeClass<raylib.GlyphInfo> {
   Image get image => Image.fromRef(ref.image);
 }
 
-/// Adds extension for lists of Rectangles.
+/// Adds extension for lists of GlyphInfo.
 extension GlyphInfoList on PointerList<raylib.GlyphInfo> {
   /// Set the values of [value] to the given native [ref].
   void _setRef(raylib.GlyphInfo ref, GlyphInfo value) {
     ref
-      ..value = value.value
-      ..offsetX = value.offsetX
-      ..offsetY = value.offsetY
-      ..advanceX = value.advanceX
-      ..image = value.image.ref;
+      ..value = value.ref.value
+      ..offsetX = value.ref.offsetX
+      ..offsetY = value.ref.offsetY
+      ..advanceX = value.ref.advanceX
+      ..image = value.ref.image;
   }
 
   /// The object at the given [index] in the list.

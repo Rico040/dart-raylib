@@ -1,6 +1,6 @@
 import 'package:raylib/raylib.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
-import 'package:raylib/src/utils/native.dart';
+import 'package:raylib/src/utils/native_type.dart';
 import 'package:raylib/src/utils/pointer_list.dart';
 
 /// Font, font texture and GlyphInfo array data.
