@@ -2,8 +2,8 @@ import 'dart:ffi';
 import 'dart:math';
 
 import 'package:ffi/ffi.dart';
-import 'package:raylib/src/classes/native_class.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
+import 'package:raylib/src/utils/native.dart';
 
 /// Vector2, 2 components.
 class Vector2 extends NativeClass<raylib.Vector2> {
@@ -21,7 +21,8 @@ class Vector2 extends NativeClass<raylib.Vector2> {
 
   /// Construct Vector2 from native reference.
   Vector2.fromRef(raylib.Vector2 ref)
-      : pointer = null, // TODO: Maybe we can create a new pointer every time?
+      // TODO(wolfen): Maybe we can create a new pointer every time?
+      : pointer = null,
         super.fromRef(ref);
 
   /// Construct empty Vector2.

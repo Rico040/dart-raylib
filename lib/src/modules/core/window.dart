@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:raylib/raylib.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
 import 'package:raylib/src/raylib_instance.dart';
@@ -61,16 +59,19 @@ bool isWindowResized() {
 
 /// Check if one specific window flag is enabled.
 bool isWindowState(int flag) {
+  // TODO(wolfen): use enum
   return library.IsWindowState(flag);
 }
 
 /// Set window configuration state using flags.
 void setWindowState(int flags) {
+  // TODO(wolfen): use enum
   return library.SetWindowState(flags);
 }
 
 /// Clear window configuration state flags.
 void clearWindowState(int flags) {
+  // TODO(wolfen): use enum
   return library.ClearWindowState(flags);
 }
 
@@ -125,9 +126,9 @@ void setWindowSize(int width, int height) {
 }
 
 /// Get native window handle.
-Pointer<void> getWindowHandle() {
-  return library.GetWindowHandle();
-}
+// Pointer<void> getWindowHandle() {
+//   return raylibInstance.GetWindowHandle();
+// }
 
 /// Get current screen width.
 int getScreenWidth() {

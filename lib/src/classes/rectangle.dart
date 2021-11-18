@@ -1,8 +1,9 @@
 import 'dart:ffi';
 
 import 'package:ffi/ffi.dart';
-import 'package:raylib/src/classes/native_class.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
+import 'package:raylib/src/utils/native.dart';
+import 'package:raylib/src/utils/pointer_list.dart';
 
 /// Rectangle, 4 components.
 class Rectangle extends NativeClass<raylib.Rectangle> {
@@ -43,4 +44,26 @@ class Rectangle extends NativeClass<raylib.Rectangle> {
   /// Rectangle height.
   double get height => ref.height;
   set height(double height) => ref.height = height;
+}
+
+/// Adds extension for lists of Rectangles.
+extension RectangleList on PointerList<raylib.Rectangle> {
+  /// Set the values of [value] to the given native [ref].
+  void _setRef(raylib.Rectangle ref, Rectangle value) {
+    ref
+      ..height = value.height
+      ..width = value.width
+      ..x = value.x
+      ..y = value.y;
+  }
+
+  /// The object at the given [index] in the list.
+  Rectangle operator [](int index) {
+    return Rectangle.fromRef(pointer.elementAt(index).ref);
+  }
+
+  /// Sets the value at the given [index] in the list to [value].
+  void operator []=(int index, Rectangle value) {
+    _setRef(pointer.elementAt(index).ref, value);
+  }
 }

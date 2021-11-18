@@ -2,9 +2,9 @@ import 'dart:ffi';
 
 import 'package:ffi/ffi.dart';
 import 'package:raylib/raylib.dart';
-import 'package:raylib/src/classes/native_class.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
 import 'package:raylib/src/raylib_instance.dart';
+import 'package:raylib/src/utils/native.dart';
 
 /// Color, 4 components, R8G8B8A8 (32bit).
 class Color extends NativeClass<raylib.Color> {

@@ -1,5 +1,5 @@
-import 'package:raylib/src/classes/native_class.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
+import 'package:raylib/src/utils/native.dart';
 
 /// Matrix, 4x4 components, column major, OpenGL style, right handed.
 class Matrix extends NativeClass<raylib.Matrix> {

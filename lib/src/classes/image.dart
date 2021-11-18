@@ -1,5 +1,5 @@
-import 'package:raylib/src/classes/native_class.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
+import 'package:raylib/src/utils/native.dart';
 
 /// Image, pixel data stored in CPU memory (RAM).
 class Image extends NativeClass<raylib.Image> {

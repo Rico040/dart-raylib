@@ -15,7 +15,7 @@ double getFrameTime() {
   return library.GetFrameTime();
 }
 
-/// Get elapsed time in seconds since InitWindow().
+/// Get elapsed time in seconds since initWindow().
 double getTime() {
   return library.GetTime();
 }

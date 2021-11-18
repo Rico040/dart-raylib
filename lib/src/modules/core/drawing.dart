@@ -53,12 +53,13 @@ void endTextureMode() {
 // }
 
 /// End custom shader drawing (use default shader).
-void endShaderMode() {
-  return library.EndShaderMode();
-}
+// void endShaderMode() {
+//   return raylibInstance.EndShaderMode();
+// }
 
 /// Begin blending mode (alpha, additive, multiplied, subtract, custom).
 void beginBlendMode(int mode) {
+  // TODO(wolfen): use enum
   return library.BeginBlendMode(mode);
 }
 

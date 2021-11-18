@@ -1,6 +1,6 @@
 import 'package:raylib/raylib.dart';
-import 'package:raylib/src/classes/native_class.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
+import 'package:raylib/src/utils/native.dart';
 
 /// NPatchInfo, n-patch layout info.
 class NPatchInfo extends NativeClass<raylib.NPatchInfo> {
