@@ -96,6 +96,8 @@ class Camera3D extends NativeClass<raylib.Camera3D> {
   Matrix get matrix => Matrix.fromRef(library.GetCameraMatrix(ref));
 
   /// Set camera mode (multiple camera modes available).
+  ///
+  /// View [CameraMode] for more information.
   void mode(int mode) {
     library.SetCameraMode(ref, mode);
   }

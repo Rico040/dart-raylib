@@ -7,6 +7,7 @@ class Image extends NativeClass<raylib.Image> {
   Image.fromRef(raylib.Image ref) : super.fromRef(ref);
 
   /// Image raw data
+  // TODO(wolfen): What type?
   // ffi.Pointer<ffi.Void> get data => ref.data;
 
   /// Image base width.

@@ -2,11 +2,15 @@ import 'package:raylib/raylib.dart';
 import 'package:raylib/src/raylib_instance.dart';
 
 /// Enable a set of gestures using flags.
+///
+/// View [Gesture] for more information.
 void setGesturesEnabled(int flags) {
   return library.SetGesturesEnabled(flags);
 }
 
 /// Check if a gesture have been detected.
+///
+/// View [Gesture] for more information.
 bool isGestureDetected(int gesture) {
   return library.IsGestureDetected(gesture);
 }
