@@ -17,6 +17,7 @@ export 'src/classes/material_map.dart';
 export 'src/classes/matrix.dart';
 export 'src/classes/mesh.dart';
 export 'src/classes/model.dart';
+export 'src/classes/model_animation.dart';
 export 'src/classes/n_patch_info.dart';
 export 'src/classes/ray.dart';
 export 'src/classes/rectangle.dart';
@@ -31,26 +32,26 @@ export 'src/classes/vector4.dart';
 /// Exporting enums.
 export 'src/generated_bindings.dart'
     show
-        CameraMode,
         BlendMode,
+        CameraMode,
         ConfigFlags,
-        Gesture,
-        KeyboardKey,
-        MouseButton,
-        MouseCursor,
-        MaterialMapIndex,
-        ShaderLocationIndex,
-        ShaderUniformDataType,
-        ShaderAttributeDataType,
-        PixelFormat,
-        TextureFilter,
-        TextureWrap,
         CubemapLayout,
         FontType,
-        NPatchLayout,
-        TraceLogLevel,
         GamepadAxis,
-        GamepadButton;
+        GamepadButton,
+        Gesture,
+        KeyboardKey,
+        MaterialMapIndex,
+        MouseButton,
+        MouseCursor,
+        NPatchLayout,
+        PixelFormat,
+        ShaderAttributeDataType,
+        ShaderLocationIndex,
+        ShaderUniformDataType,
+        TextureFilter,
+        TextureWrap,
+        TraceLogLevel;
 
 /// Modules.
 export 'src/modules/modules.dart';
