@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:ffi/ffi.dart';
+import 'package:raylib/raylib.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
 import 'package:raylib/src/raylib_instance.dart';
 import 'package:raylib/src/utils/native_type.dart';
@@ -112,6 +113,11 @@ class Mesh extends NativeClass<raylib.Mesh> {
 
   /// OpenGL Vertex Buffer Objects id (default vertex data).
   PointerList<Uint32> get vboId => PointerList<Uint32>(ref.vboId);
+
+  /// Compute mesh bounding box limits.
+  BoundingBox get boundingBox {
+    return BoundingBox.fromRef(library.GetMeshBoundingBox(ref));
+  }
 
   /// Upload mesh vertex data in GPU and provide VAO/VBO ids
   void upload({

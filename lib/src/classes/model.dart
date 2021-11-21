@@ -56,8 +56,8 @@ class Model extends NativeClass<raylib.Model> {
     return library.UnloadModel(ref);
   }
 
-  // /// Compute model bounding box limits (considers all meshes).
-  // BoundingBox get boundingBox() {
-  //   return BoundingBox.fromRef(library.GetModelBoundingBox(ref));
-  // }
+  /// Compute model bounding box limits (considers all meshes).
+  BoundingBox get boundingBox {
+    return BoundingBox.fromRef(library.GetModelBoundingBox(ref));
+  }
 }

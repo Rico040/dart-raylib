@@ -423,13 +423,13 @@ module: models
 - [x] Model LoadModelFromMesh(Mesh mesh);
 - [x] void UnloadModel(Model model);
 - [x] void UnloadModelKeepMeshes(Model model);
-- [ ] BoundingBox GetModelBoundingBox(Model model);
+- [x] BoundingBox GetModelBoundingBox(Model model);
 
 - [x] void DrawModel(Model model, Vector3 position, float scale, Color tint);
 - [x] void DrawModelEx(Model model, Vector3 position, Vector3 rotationAxis, float rotationAngle, Vector3 scale, Color tint); 
 - [x] void DrawModelWires(Model model, Vector3 position, float scale, Color tint);
 - [x] void DrawModelWiresEx(Model model, Vector3 position, Vector3 rotationAxis, float rotationAngle, Vector3 scale, Color tint); 
-- [ ] void DrawBoundingBox(BoundingBox box, Color color);
+- [x] void DrawBoundingBox(BoundingBox box, Color color);
 - [x] void DrawBillboard(Camera camera, Texture2D texture, Vector3 position, float size, Color tint);
 - [x] void DrawBillboardRec(Camera camera, Texture2D texture, Rectangle source, Vector3 position, Vector2 size, Color tint); 
 - [x] void DrawBillboardPro(Camera camera, Texture2D texture, Rectangle source, Vector3 position, Vector3 up, Vector2 size, Vector2 origin, float rotation, Color tint); 
@@ -440,7 +440,7 @@ module: models
 - [ ] void DrawMesh(Mesh mesh, Material material, Matrix transform);
 - [ ] void DrawMeshInstanced(Mesh mesh, Material material, Matrix *transforms, int instances);
 - [ ] bool ExportMesh(Mesh mesh, const char *fileName);
-- [ ] BoundingBox GetMeshBoundingBox(Mesh mesh);
+- [x] BoundingBox GetMeshBoundingBox(Mesh mesh);
 - [ ] void GenMeshTangents(Mesh *mesh);
 - [ ] void GenMeshBinormals(Mesh *mesh);
 
@@ -468,15 +468,15 @@ module: models
 - [ ] void UnloadModelAnimations(ModelAnimation* animations, unsigned int count);
 - [ ] bool IsModelAnimationValid(Model model, ModelAnimation anim);
 
-- [ ] bool CheckCollisionSpheres(Vector3 center1, float radius1, Vector3 center2, float radius2);
-- [ ] bool CheckCollisionBoxes(BoundingBox box1, BoundingBox box2);
-- [ ] bool CheckCollisionBoxSphere(BoundingBox box, Vector3 center, float radius);
-- [ ] RayCollision GetRayCollisionSphere(Ray ray, Vector3 center, float radius);
-- [ ] RayCollision GetRayCollisionBox(Ray ray, BoundingBox box);
-- [ ] RayCollision GetRayCollisionModel(Ray ray, Model model);
-- [ ] RayCollision GetRayCollisionMesh(Ray ray, Mesh mesh, Matrix transform);
-- [ ] RayCollision GetRayCollisionTriangle(Ray ray, Vector3 p1, Vector3 p2, Vector3 p3);
-- [ ] RayCollision GetRayCollisionQuad(Ray ray, Vector3 p1, Vector3 p2, Vector3 p3, Vector3 p4);
+- [x] bool CheckCollisionSpheres(Vector3 center1, float radius1, Vector3 center2, float radius2);
+- [x] bool CheckCollisionBoxes(BoundingBox box1, BoundingBox box2);
+- [x] bool CheckCollisionBoxSphere(BoundingBox box, Vector3 center, float radius);
+- [x] RayCollision GetRayCollisionSphere(Ray ray, Vector3 center, float radius);
+- [x] RayCollision GetRayCollisionBox(Ray ray, BoundingBox box);
+- [x] RayCollision GetRayCollisionModel(Ray ray, Model model);
+- [x] RayCollision GetRayCollisionMesh(Ray ray, Mesh mesh, Matrix transform);
+- [x] RayCollision GetRayCollisionTriangle(Ray ray, Vector3 p1, Vector3 p2, Vector3 p3);
+- [x] RayCollision GetRayCollisionQuad(Ray ray, Vector3 p1, Vector3 p2, Vector3 p3, Vector3 p4);
 
 module: audio
 
@@ -567,9 +567,9 @@ structs
 - [x] struct Model;
 - [x] struct Transform;
 - [x] struct BoneInfo;
-- [ ] struct ModelAnimation;
+- [x] struct ModelAnimation;
 - [x] struct Ray;
-- [ ] struct RayCollision;
+- [x] struct RayCollision;
 - [x] struct BoundingBox;
 
 - [ ] struct Wave;

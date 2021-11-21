@@ -4,8 +4,10 @@ import 'dart:io';
 import 'package:raylib/src/generated_bindings.dart';
 import 'package:raylib/src/raylib_instance.dart';
 
-/// Classes.
 export 'src/classes/bone_info.dart';
+
+/// Classes.
+export 'src/classes/bounding_box.dart';
 export 'src/classes/camera_2d.dart';
 export 'src/classes/camera_3d.dart';
 export 'src/classes/color.dart';
@@ -20,6 +22,7 @@ export 'src/classes/model.dart';
 export 'src/classes/model_animation.dart';
 export 'src/classes/n_patch_info.dart';
 export 'src/classes/ray.dart';
+export 'src/classes/ray_collision.dart';
 export 'src/classes/rectangle.dart';
 export 'src/classes/render_texture.dart';
 export 'src/classes/shader.dart';

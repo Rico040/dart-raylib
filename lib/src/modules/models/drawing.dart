@@ -49,10 +49,10 @@ void drawModelWiresEx(
   );
 }
 
-// /// Draw bounding box (wires).
-// void DrawBoundingBox(BoundingBox box, Color color) {
-//   return library.DrawBoundingBox(box.ref, color.ref);
-// }
+/// Draw bounding box (wires).
+void drawBoundingBox(BoundingBox box, Color color) {
+  return library.DrawBoundingBox(box.ref, color.ref);
+}
 
 /// Draw a billboard texture.
 void drawBillboard(
