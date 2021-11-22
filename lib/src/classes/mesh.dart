@@ -1,9 +1,7 @@
 import 'dart:ffi';
 
 import 'package:ffi/ffi.dart';
-import 'package:raylib/raylib.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
-import 'package:raylib/src/library.dart';
 import 'package:raylib/src/utils/native_type.dart';
 import 'package:raylib/src/utils/pointer_list.dart';
 
@@ -113,37 +111,6 @@ class Mesh extends NativeClass<raylib.Mesh> {
 
   /// OpenGL Vertex Buffer Objects id (default vertex data).
   PointerList<Uint32> get vboId => PointerList<Uint32>(ref.vboId);
-
-  /// Compute mesh bounding box limits.
-  BoundingBox get boundingBox {
-    return BoundingBox.fromRef(library.GetMeshBoundingBox(ref));
-  }
-
-  /// Upload mesh vertex data in GPU and provide VAO/VBO ids
-  void upload({
-    bool isDynamic = false,
-  }) {
-    return library.UploadMesh(pointer, isDynamic);
-  }
-
-  /// Update mesh vertex data in GPU for a specific buffer index.
-  void updateBuffer(
-    int index,
-    Pointer<Void> data, // TODO(wolfen): what kind of data?
-    int dataSize,
-    int offset,
-  ) {
-    return library.UpdateMeshBuffer(ref, index, data, dataSize, offset);
-  }
-
-  /// Unload mesh data from CPU and GPU.
-  void unload() => library.UnloadMesh(ref);
-
-  /// Compute mesh tangents.
-  void genTangents() => library.GenMeshTangents(pointer);
-
-  /// Compute mesh binormals.
-  void genBinormals() => library.GenMeshBinormals(pointer);
 }
 
 /// Adds extension for lists of GlyphInfo.

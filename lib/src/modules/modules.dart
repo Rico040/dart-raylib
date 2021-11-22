@@ -10,9 +10,12 @@ export 'core/touch.dart';
 export 'core/window.dart';
 
 /// Models
+export 'models/collision.dart';
 export 'models/drawing.dart';
 export 'models/generation.dart';
 export 'models/geometric.dart';
+export 'models/loading.dart';
+export 'models/management.dart';
 
 /// Shapes
 export 'shapes/collision.dart';

@@ -45,7 +45,7 @@ void main() {
 
     endMode3D();
 
-    drawRectangle(10, 10, 320, 133, Color.skyBlue.fade(.5));
+    drawRectangle(10, 10, 320, 133, fade(Color.skyBlue, .5));
     drawRectangleLines(10, 10, 320, 133, Color.blue);
 
     drawText('Free camera default controls:', 20, 20, 10, Color.black);

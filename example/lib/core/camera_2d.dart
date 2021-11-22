@@ -137,7 +137,7 @@ void main() {
     drawRectangle(screenWidth - 5, 5, 5, screenHeight - 10, Color.red);
     drawRectangle(0, screenHeight - 5, screenWidth, 5, Color.red);
 
-    drawRectangle(10, 10, 250, 113, Color.skyBlue.fade(0.5));
+    drawRectangle(10, 10, 250, 113, fade(Color.skyBlue, 0.5));
     drawRectangleLines(10, 10, 250, 113, Color.blue);
 
     drawText('Free 2d camera controls:', 20, 20, 10, Color.black);

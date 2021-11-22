@@ -24,3 +24,6 @@ class Texture extends NativeClass<raylib.Texture> {
 
 /// Texture2D, same as Texture
 typedef Texture2D = Texture;
+
+/// TextureCubemap, same as Texture
+typedef TextureCubemap = Texture;

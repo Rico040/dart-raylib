@@ -81,7 +81,7 @@ void main() {
 
     endMode3D();
 
-    drawRectangle(10, 10, 220, 70, Color.skyBlue.fade(.5));
+    drawRectangle(10, 10, 220, 70, fade(Color.skyBlue, .5));
     drawRectangleLines(10, 10, 220, 70, Color.blue);
 
     drawText(

@@ -256,13 +256,13 @@ module: textures
 - [ ] bool ExportImage(Image image, const char *fileName);
 - [ ] bool ExportImageAsCode(Image image, const char *fileName);
 
-- [ ] Image GenImageColor(int width, int height, Color color);
-- [ ] Image GenImageGradientV(int width, int height, Color top, Color bottom);
-- [ ] Image GenImageGradientH(int width, int height, Color left, Color right);
-- [ ] Image GenImageGradientRadial(int width, int height, float density, Color inner, Color outer);
-- [ ] Image GenImageChecked(int width, int height, int checksX, int checksY, Color col1, Color col2);
-- [ ] Image GenImageWhiteNoise(int width, int height, float factor);
-- [ ] Image GenImageCellular(int width, int height, int tileSize);
+- [x] Image GenImageColor(int width, int height, Color color);
+- [x] Image GenImageGradientV(int width, int height, Color top, Color bottom);
+- [x] Image GenImageGradientH(int width, int height, Color left, Color right);
+- [x] Image GenImageGradientRadial(int width, int height, float density, Color inner, Color outer);
+- [x] Image GenImageChecked(int width, int height, int checksX, int checksY, Color col1, Color col2);
+- [x] Image GenImageWhiteNoise(int width, int height, float factor);
+- [x] Image GenImageCellular(int width, int height, int tileSize);
 
 - [ ] Image ImageCopy(Image image);
 - [ ] Image ImageFromImage(Image image, Rectangle rec);
@@ -312,28 +312,28 @@ module: textures
 - [ ] void ImageDrawText(Image *dst, const char *text, int posX, int posY, int fontSize, Color color);
 - [ ] void ImageDrawTextEx(Image *dst, Font font, const char *text, Vector2 position, float fontSize, float spacing, Color tint); 
 
-- [ ] Texture2D LoadTexture(const char *fileName);
-- [ ] Texture2D LoadTextureFromImage(Image image);
-- [ ] TextureCubemap LoadTextureCubemap(Image image, int layout);
-- [ ] RenderTexture2D LoadRenderTexture(int width, int height);
-- [ ] void UnloadTexture(Texture2D texture);
-- [ ] void UnloadRenderTexture(RenderTexture2D target);
+- [x] Texture2D LoadTexture(const char *fileName);
+- [x] Texture2D LoadTextureFromImage(Image image);
+- [x] TextureCubemap LoadTextureCubemap(Image image, int layout);
+- [x] RenderTexture2D LoadRenderTexture(int width, int height);
+- [x] void UnloadTexture(Texture2D texture);
+- [x] void UnloadRenderTexture(RenderTexture2D target);
 - [ ] void UpdateTexture(Texture2D texture, const void *pixels);
 - [ ] void UpdateTextureRec(Texture2D texture, Rectangle rec, const void *pixels);
 
 - [ ] void GenTextureMipmaps(Texture2D *texture);
-- [ ] void SetTextureFilter(Texture2D texture, int filter);
-- [ ] void SetTextureWrap(Texture2D texture, int wrap);
+- [x] void SetTextureFilter(Texture2D texture, int filter);
+- [x] void SetTextureWrap(Texture2D texture, int wrap);
 
-- [ ] void DrawTexture(Texture2D texture, int posX, int posY, Color tint);
-- [ ] void DrawTextureV(Texture2D texture, Vector2 position, Color tint);
-- [ ] void DrawTextureEx(Texture2D texture, Vector2 position, float rotation, float scale, Color tint);
-- [ ] void DrawTextureRec(Texture2D texture, Rectangle source, Vector2 position, Color tint);
-- [ ] void DrawTextureQuad(Texture2D texture, Vector2 tiling, Vector2 offset, Rectangle quad, Color tint);
-- [ ] void DrawTextureTiled(Texture2D texture, Rectangle source, Rectangle dest, Vector2 origin, float rotation, float scale, Color tint);
-- [ ] void DrawTexturePro(Texture2D texture, Rectangle source, Rectangle dest, Vector2 origin, float rotation, Color tint);
-- [ ] void DrawTextureNPatch(Texture2D texture, NPatchInfo nPatchInfo, Rectangle dest, Vector2 origin, float rotation, Color tint);
-- [ ] void DrawTexturePoly(Texture2D texture, Vector2 center, Vector2 *points, Vector2 *texcoords, int pointsCount, Color tint);
+- [x] void DrawTexture(Texture2D texture, int posX, int posY, Color tint);
+- [x] void DrawTextureV(Texture2D texture, Vector2 position, Color tint);
+- [x] void DrawTextureEx(Texture2D texture, Vector2 position, float rotation, float scale, Color tint);
+- [x] void DrawTextureRec(Texture2D texture, Rectangle source, Vector2 position, Color tint);
+- [x] void DrawTextureQuad(Texture2D texture, Vector2 tiling, Vector2 offset, Rectangle quad, Color tint);
+- [x] void DrawTextureTiled(Texture2D texture, Rectangle source, Rectangle dest, Vector2 origin, float rotation, float scale, Color tint);
+- [x] void DrawTexturePro(Texture2D texture, Rectangle source, Rectangle dest, Vector2 origin, float rotation, Color tint);
+- [x] void DrawTextureNPatch(Texture2D texture, NPatchInfo nPatchInfo, Rectangle dest, Vector2 origin, float rotation, Color tint);
+- [x] void DrawTexturePoly(Texture2D texture, Vector2 center, Vector2 *points, Vector2 *texcoords, int pointsCount, Color tint);
 
 - [x] Color Fade(Color color, float alpha);
 - [x] int ColorToInt(Color color);
@@ -433,15 +433,15 @@ module: models
 - [x] Mesh GenMeshHeightmap(Image heightmap, Vector3 size);
 - [x] Mesh GenMeshCubicmap(Image cubicmap, Vector3 cubeSize);
 
-- [ ] Material *LoadMaterials(const char *fileName, int *materialCount);
-- [ ] Material LoadMaterialDefault(void);
-- [ ] void UnloadMaterial(Material material);
+- [x] Material *LoadMaterials(const char *fileName, int *materialCount);
+- [x] Material LoadMaterialDefault(void);
+- [x] void UnloadMaterial(Material material);
 - [ ] void SetMaterialTexture(Material *material, int mapType, Texture2D texture);
 - [ ] void SetModelMeshMaterial(Model *model, int meshId, int materialId);
 
-- [ ] ModelAnimation *LoadModelAnimations(const char *fileName, unsigned int *animCount);
+- [x] ModelAnimation *LoadModelAnimations(const char *fileName, unsigned int *animCount);
 - [ ] void UpdateModelAnimation(Model model, ModelAnimation anim, int frame);
-- [ ] void UnloadModelAnimation(ModelAnimation anim);
+- [x] void UnloadModelAnimation(ModelAnimation anim);
 - [ ] void UnloadModelAnimations(ModelAnimation* animations, unsigned int count);
 - [ ] bool IsModelAnimationValid(Model model, ModelAnimation anim);
 

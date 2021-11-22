@@ -34,7 +34,7 @@ Mesh makeMesh() {
   mesh.texcoords[4] = 1;
   mesh.texcoords[5] = 0;
 
-  mesh.upload();
+  uploadMesh(mesh);
 
   return mesh;
 }
@@ -59,15 +59,15 @@ void main() {
   unloadImage(checked);
 
   final models = <Model>[
-    Model.fromMesh(genMeshPlane(2, 2, 5, 5)),
-    Model.fromMesh(genMeshCube(2, 1, 2)),
-    Model.fromMesh(genMeshSphere(2, 32, 32)),
-    Model.fromMesh(genMeshHemiSphere(2, 16, 16)),
-    Model.fromMesh(genMeshCylinder(1, 2, 16)),
-    Model.fromMesh(genMeshTorus(0.25, 4, 16, 32)),
-    Model.fromMesh(genMeshKnot(1, 2, 16, 128)),
-    Model.fromMesh(genMeshPoly(5, 2)),
-    Model.fromMesh(makeMesh()),
+    loadModelFromMesh(genMeshPlane(2, 2, 5, 5)),
+    loadModelFromMesh(genMeshCube(2, 1, 2)),
+    loadModelFromMesh(genMeshSphere(2, 32, 32)),
+    loadModelFromMesh(genMeshHemiSphere(2, 16, 16)),
+    loadModelFromMesh(genMeshCylinder(1, 2, 16)),
+    loadModelFromMesh(genMeshTorus(0.25, 4, 16, 32)),
+    loadModelFromMesh(genMeshKnot(1, 2, 16, 128)),
+    loadModelFromMesh(genMeshPoly(5, 2)),
+    loadModelFromMesh(makeMesh()),
   ];
 
   // Set checked texture as default diffuse component for all models material
@@ -119,8 +119,8 @@ void main() {
 
     endMode3D();
 
-    drawRectangle(30, 400, 310, 30, Color.skyBlue.fade(.5));
-    drawRectangleLines(30, 400, 310, 30, Color.darkBlue.fade(.5));
+    drawRectangle(30, 400, 310, 30, fade(Color.skyBlue, .5));
+    drawRectangleLines(30, 400, 310, 30, fade(Color.darkBlue, .5));
     drawText(
       'MOUSE LEFT BUTTON to CYCLE PROCEDURAL MODELS',
       40,
@@ -168,7 +168,7 @@ void main() {
 
   // Unload models data (GPU VRAM)
   for (final model in models) {
-    model.unload();
+    unloadModel(model);
   }
 
   closeWindow();

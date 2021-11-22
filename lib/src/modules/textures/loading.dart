@@ -2,6 +2,11 @@ import 'package:raylib/raylib.dart';
 import 'package:raylib/src/library.dart';
 import 'package:raylib/src/utils/string.dart' as string;
 
+/// Unload image from CPU memory (RAM).
+void unloadImage(Image image) {
+  library.UnloadImage(image.ref);
+}
+
 /// Load texture from file into GPU memory (VRAM).
 Texture2D loadTexture(String fileName) {
   return Texture2D.fromRef(
@@ -16,15 +21,12 @@ Texture2D loadTextureFromImage(Image image) {
   return Texture2D.fromRef(library.LoadTextureFromImage(image.ref));
 }
 
-/// Unload image from CPU memory (RAM).
-void unloadImage(Image image) {
-  return library.UnloadImage(image.ref);
+/// Load cubemap from image, multiple image cubemap layouts supported.
+TextureCubemap loadTextureCubemap(Image image, int layout) {
+  return TextureCubemap.fromRef(
+    library.LoadTextureCubemap(image.ref, layout),
+  );
 }
-
-// /// Load cubemap from image, multiple image cubemap layouts supported.
-// TextureCubemap loadTextureCubemap(Image image, int layout) {
-//   return raylibInstance. LoadTextureCubemap(image,  layout);
-// }
 
 /// Load texture for rendering (framebuffer).
 RenderTexture2D loadRenderTexture(int width, int height) {
@@ -52,3 +54,21 @@ void unloadRenderTexture(RenderTexture2D target) {
 // void updateTextureRec(Texture2D texture, Rectangle rec, const void *pixels) {
 //   return raylibInstance. UpdateTextureRec(texture.ref, rec.ref, pixels);
 // }
+
+// TODO(wolfen): this
+// /// Generate GPU mipmaps for a texture.
+// void genTextureMipmaps() {
+//   return library.GenTextureMipmaps(pointer);
+// }
+
+/// Set texture scaling filter mode.
+// TODO(wolfen): use enum
+void setTextureFilter(Texture texture, int filter) {
+  return library.SetTextureFilter(texture.ref, filter);
+}
+
+/// Set texture wrapping mode.
+// TODO(wolfen): use enum
+void setTextureWrap(Texture texture, int wrap) {
+  return library.SetTextureWrap(texture.ref, wrap);
+}

@@ -1,9 +1,7 @@
 import 'dart:ffi';
 
 import 'package:ffi/ffi.dart';
-import 'package:raylib/raylib.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
-import 'package:raylib/src/library.dart';
 import 'package:raylib/src/utils/native_type.dart';
 
 /// Color, 4 components, R8G8B8A8 (32bit).
@@ -27,17 +25,6 @@ class Color extends NativeClass<raylib.Color> {
       : pointer = null,
         super.fromRef(ref);
 
-  /// Get Color structure from hexadecimal value.
-  Color.fromHex(int hexValue) : this.fromRef(library.GetColor(hexValue));
-
-  /// Returns Color from normalized values (0..1).
-  Color.fromNormalized(Vector4 normalized)
-      : this.fromRef(library.ColorFromNormalized(normalized.ref));
-
-  /// Returns a Color from HSV values, hue (0..360), saturation/value (0..1).
-  Color.fromHSV(double hue, double saturation, double value)
-      : this.fromRef(library.ColorFromHSV(hue, saturation, value));
-
   /// Native pointer, used internally.
   final Pointer<raylib.Color>? pointer;
 
@@ -56,40 +43,6 @@ class Color extends NativeClass<raylib.Color> {
   /// Color alpha value.
   int get a => ref.a;
   set a(int alpha) => ref.a = alpha;
-
-  /// Returns hexadecimal value for a Color.
-  int get hex => library.ColorToInt(ref);
-
-  /// Returns Color normalized as double (0..1).
-  Vector4 get normalize {
-    return Vector4.fromRef(library.ColorNormalize(ref));
-  }
-
-  /// Returns HSV values for a Color, hue (0..360), saturation/value (0..1).
-  Vector3 get hsv {
-    return Vector3.fromRef(library.ColorToHSV(ref));
-  }
-
-  /// Returns color with alpha applied, alpha goes from 0.0 to 1.0.
-  Color fade(double alpha) {
-    return Color.fromRef(library.Fade(ref, alpha));
-  }
-
-  /// Returns color with alpha applied, alpha goes from 0.0 to 1.0.
-  Color alpha(double alpha) {
-    return Color.fromRef(library.ColorAlpha(ref, alpha));
-  }
-
-  /// Returns src alpha-blended into dst color with tint.
-  Color alphaBlend(Color src, Color tint) {
-    return Color.fromRef(
-      library.ColorAlphaBlend(
-        ref,
-        src.ref,
-        tint.ref,
-      ),
-    );
-  }
 
   /// Light gray.
   static final lightGray = Color(200, 200, 200, 255);
