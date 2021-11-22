@@ -10,6 +10,10 @@ class GlyphInfo extends NativeClass<raylib.GlyphInfo> {
   /// GlyphInfo, font characters glyphs info.
   GlyphInfo.fromRef(raylib.GlyphInfo ref) : super.fromRef(ref);
 
+  /// GlyphInfo, font characters glyphs info.
+  GlyphInfo.fromPointer(Pointer<raylib.GlyphInfo> pointer)
+      : super.fromRef(pointer.ref);
+
   /// Character value (Unicode),
   int get value => ref.value;
 

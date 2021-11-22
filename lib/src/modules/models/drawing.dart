@@ -1,5 +1,6 @@
 import 'package:raylib/raylib.dart';
-import 'package:raylib/src/raylib_instance.dart';
+import 'package:raylib/src/library.dart';
+import 'package:raylib/src/utils/matrix.dart' as matrix;
 
 /// Draw a model (with texture if set).
 void drawModel(Model model, Vector3 position, double scale, Color tint) {
@@ -112,5 +113,25 @@ void drawBillboardPro(
     origin.ref,
     rotation,
     tint.ref,
+  );
+}
+
+/// Draw a 3d mesh with material and transform.
+void drawMesh(Mesh mesh, Material material, Matrix transform) {
+  return library.DrawMesh(mesh.ref, material.ref, transform.ref);
+}
+
+/// Draw multiple mesh instances with material and different transforms.
+void drawMeshInstanced(
+  Mesh mesh,
+  Material material,
+  List<Matrix> transforms,
+  int instances,
+) {
+  return library.DrawMeshInstanced(
+    mesh.ref,
+    material.ref,
+    matrix.toPointer(transforms),
+    instances,
   );
 }

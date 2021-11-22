@@ -1,5 +1,5 @@
 import 'package:raylib/raylib.dart';
-import 'package:raylib/src/raylib_instance.dart';
+import 'package:raylib/src/library.dart';
 
 /// Get touch position X for touch point 0 (relative to screen size).
 int getTouchX() {

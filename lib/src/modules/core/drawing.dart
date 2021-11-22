@@ -1,6 +1,6 @@
 import 'package:raylib/raylib.dart';
 import 'package:raylib/src/classes/camera_2d.dart';
-import 'package:raylib/src/raylib_instance.dart';
+import 'package:raylib/src/library.dart';
 
 /// Set background color (framebuffer clear color).
 void clearBackground(Color color) {

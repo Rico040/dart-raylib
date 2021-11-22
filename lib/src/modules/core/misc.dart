@@ -1,5 +1,5 @@
 import 'package:raylib/raylib.dart';
-import 'package:raylib/src/raylib_instance.dart';
+import 'package:raylib/src/library.dart';
 import 'package:raylib/src/utils/string.dart' as string;
 
 /// Takes a screenshot of current screen (filename extension defines format).

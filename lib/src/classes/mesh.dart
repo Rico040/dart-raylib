@@ -3,7 +3,7 @@ import 'dart:ffi';
 import 'package:ffi/ffi.dart';
 import 'package:raylib/raylib.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
-import 'package:raylib/src/raylib_instance.dart';
+import 'package:raylib/src/library.dart';
 import 'package:raylib/src/utils/native_type.dart';
 import 'package:raylib/src/utils/pointer_list.dart';
 
@@ -138,6 +138,12 @@ class Mesh extends NativeClass<raylib.Mesh> {
 
   /// Unload mesh data from CPU and GPU.
   void unload() => library.UnloadMesh(ref);
+
+  /// Compute mesh tangents.
+  void genTangents() => library.GenMeshTangents(pointer);
+
+  /// Compute mesh binormals.
+  void genBinormals() => library.GenMeshBinormals(pointer);
 }
 
 /// Adds extension for lists of GlyphInfo.

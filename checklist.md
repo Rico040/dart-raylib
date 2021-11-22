@@ -350,15 +350,15 @@ module: textures
 
 module: text
 
-- [ ] Font GetFontDefault(void);
-- [ ] Font LoadFont(const char *fileName);
-- [ ] Font LoadFontEx(const char *fileName, int fontSize, int *fontChars, int glyphCount);
-- [ ] Font LoadFontFromImage(Image image, Color key, int firstChar);
-- [ ] Font LoadFontFromMemory(const char *fileType, const unsigned char *fileData, int dataSize, int fontSize, int *fontChars, int glyphCount); 
-- [ ] GlyphInfo *LoadFontData(const unsigned char *fileData, int dataSize, int fontSize, int *fontChars, int glyphCount, int type);
+- [x] Font GetFontDefault(void);
+- [x] Font LoadFont(const char *fileName);
+- [x] Font LoadFontEx(const char *fileName, int fontSize, int *fontChars, int glyphCount);
+- [x] Font LoadFontFromImage(Image image, Color key, int firstChar);
+- [x] Font LoadFontFromMemory(const char *fileType, const unsigned char *fileData, int dataSize, int fontSize, int *fontChars, int glyphCount); 
+- [x] GlyphInfo *LoadFontData(const unsigned char *fileData, int dataSize, int fontSize, int *fontChars, int glyphCount, int type);
 - [ ] Image GenImageFontAtlas(const GlyphInfo *chars, Rectangle **recs, int glyphCount, int fontSize, int padding, int packMethod);
-- [ ] void UnloadFontData(GlyphInfo *chars, int glyphCount);
-- [ ] void UnloadFont(Font font);
+- [x] void UnloadFontData(GlyphInfo *chars, int glyphCount);
+- [x] void UnloadFont(Font font);
 
 - [x] void DrawFPS(int posX, int posY);
 - [x] void DrawText(const char *text, int posX, int posY, int fontSize, Color color);
@@ -371,29 +371,6 @@ module: text
 - [x] int GetGlyphIndex(Font font, int codepoint);
 - [x] GlyphInfo GetGlyphInfo(Font font, int codepoint);
 - [x] Rectangle GetGlyphAtlasRec(Font font, int codepoint);
-
-- [ ] int *LoadCodepoints(const char *text, int *count);
-- [ ] void UnloadCodepoints(int *codepoints);
-- [ ] int GetCodepointCount(const char *text);
-- [ ] int GetCodepoint(const char *text, int *bytesProcessed);
-- [ ] const char *CodepointToUTF8(int codepoint, int *byteSize);
-- [ ] char *TextCodepointsToUTF8(int *codepoints, int length);
-
-- [ ] int TextCopy(char *dst, const char *src);
-- [ ] bool TextIsEqual(const char *text1, const char *text2);
-- [ ] unsigned int TextLength(const char *text);
-- [ ] const char *TextFormat(const char *text, ...);
-- [ ] const char *TextSubtext(const char *text, int position, int length);
-- [ ] char *TextReplace(char *text, const char *replace, const char *by);
-- [ ] char *TextInsert(const char *text, const char *insert, int position);
-- [ ] const char *TextJoin(const char **textList, int count, const char *delimiter);
-- [ ] const char **TextSplit(const char *text, char delimiter, int *count);
-- [ ] void TextAppend(char *text, const char *append, int *position);
-- [ ] int TextFindIndex(const char *text, const char *find);
-- [ ] const char *TextToUpper(const char *text);
-- [ ] const char *TextToLower(const char *text);
-- [ ] const char *TextToPascal(const char *text);
-- [ ] int TextToInteger(const char *text);
 
 module: models
 
@@ -437,12 +414,12 @@ module: models
 - [x] void UploadMesh(Mesh *mesh, bool dynamic);
 - [x] void UpdateMeshBuffer(Mesh mesh, int index, void *data, int dataSize, int offset);
 - [x] void UnloadMesh(Mesh mesh);
-- [ ] void DrawMesh(Mesh mesh, Material material, Matrix transform);
-- [ ] void DrawMeshInstanced(Mesh mesh, Material material, Matrix *transforms, int instances);
+- [x] void DrawMesh(Mesh mesh, Material material, Matrix transform);
+- [x] void DrawMeshInstanced(Mesh mesh, Material material, Matrix *transforms, int instances);
 - [ ] bool ExportMesh(Mesh mesh, const char *fileName);
 - [x] BoundingBox GetMeshBoundingBox(Mesh mesh);
-- [ ] void GenMeshTangents(Mesh *mesh);
-- [ ] void GenMeshBinormals(Mesh *mesh);
+- [x] void GenMeshTangents(Mesh *mesh);
+- [x] void GenMeshBinormals(Mesh *mesh);
 
 - [x] Mesh GenMeshPoly(int sides, float radius);
 - [x] Mesh GenMeshPlane(float width, float length, int resX, int resZ);

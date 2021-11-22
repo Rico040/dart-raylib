@@ -1,7 +1,7 @@
 import 'dart:ffi';
 
 import 'package:raylib/raylib.dart';
-import 'package:raylib/src/raylib_instance.dart';
+import 'package:raylib/src/library.dart';
 
 /// Get Color from a source pixel pointer of certain format.
 Color getPixelColor(int format) {

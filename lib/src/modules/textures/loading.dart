@@ -1,5 +1,5 @@
 import 'package:raylib/raylib.dart';
-import 'package:raylib/src/raylib_instance.dart';
+import 'package:raylib/src/library.dart';
 import 'package:raylib/src/utils/string.dart' as string;
 
 /// Load texture from file into GPU memory (VRAM).

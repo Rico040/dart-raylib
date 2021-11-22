@@ -1,5 +1,5 @@
 import 'package:raylib/raylib.dart';
-import 'package:raylib/src/raylib_instance.dart';
+import 'package:raylib/src/library.dart';
 
 /// Check if a mouse button has been pressed once.
 bool isMouseButtonPressed(int button) {

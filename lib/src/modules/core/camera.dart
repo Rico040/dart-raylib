@@ -1,4 +1,4 @@
-import 'package:raylib/src/raylib_instance.dart';
+import 'package:raylib/src/library.dart';
 
 /// Set camera pan key to combine with mouse movement (free camera).
 void setCameraPanControl(int keyPan) {

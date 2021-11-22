@@ -1,6 +1,6 @@
 import 'package:raylib/raylib.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
-import 'package:raylib/src/raylib_instance.dart';
+import 'package:raylib/src/library.dart';
 import 'package:raylib/src/utils/string.dart' as string;
 
 /// Initialize window and OpenGL context.

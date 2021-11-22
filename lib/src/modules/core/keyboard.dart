@@ -1,4 +1,4 @@
-import 'package:raylib/src/raylib_instance.dart';
+import 'package:raylib/src/library.dart';
 
 /// Check if a key has been pressed once.
 bool isKeyPressed(int key) {

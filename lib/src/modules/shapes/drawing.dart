@@ -1,5 +1,5 @@
 import 'package:raylib/raylib.dart';
-import 'package:raylib/src/raylib_instance.dart';
+import 'package:raylib/src/library.dart';
 import 'package:raylib/src/utils/vector2.dart' as vector2;
 
 /// Set texture and rectangle to be used on shapes drawing.
