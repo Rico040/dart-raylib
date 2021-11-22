@@ -68,15 +68,15 @@ module: core
 - [ ] VrStereoConfig LoadVrStereoConfig(VrDeviceInfo device);
 - [ ] void UnloadVrStereoConfig(VrStereoConfig config);
 
-- [ ] Shader LoadShader(const char *vsFileName, const char *fsFileName);
-- [ ] Shader LoadShaderFromMemory(const char *vsCode, const char *fsCode);
-- [ ] int GetShaderLocation(Shader shader, const char *uniformName);
-- [ ] int GetShaderLocationAttrib(Shader shader, const char *attribName);
+- [x] Shader LoadShader(const char *vsFileName, const char *fsFileName);
+- [x] Shader LoadShaderFromMemory(const char *vsCode, const char *fsCode);
+- [x] int GetShaderLocation(Shader shader, const char *uniformName);
+- [x] int GetShaderLocationAttrib(Shader shader, const char *attribName);
 - [ ] void SetShaderValue(Shader shader, int locIndex, const void *value, int uniformType);
 - [ ] void SetShaderValueV(Shader shader, int locIndex, const void *value, int uniformType, int count);
-- [ ] void SetShaderValueMatrix(Shader shader, int locIndex, Matrix mat);
-- [ ] void SetShaderValueTexture(Shader shader, int locIndex, Texture2D texture); 
-- [ ] void UnloadShader(Shader shader);
+- [x] void SetShaderValueMatrix(Shader shader, int locIndex, Matrix mat);
+- [x] void SetShaderValueTexture(Shader shader, int locIndex, Texture2D texture); 
+- [x] void UnloadShader(Shader shader);
 
 - [x] Ray GetMouseRay(Vector2 mousePosition, Camera camera);
 - [x] Matrix GetCameraMatrix(Camera camera);
@@ -103,28 +103,6 @@ module: core
 - [ ] void SetLoadFileTextCallback(LoadFileTextCallback callback);
 
 - [ ] void SetSaveFileTextCallback(SaveFileTextCallback callback);
-- [ ] unsigned char *LoadFileData(const char *fileName, unsigned int *bytesRead);
-- [ ] void UnloadFileData(unsigned char *data);
-- [ ] bool SaveFileData(const char *fileName, void *data, unsigned int bytesToWrite); 
-- [ ] char *LoadFileText(const char *fileName);
-- [ ] void UnloadFileText(char *text);
-- [ ] bool SaveFileText(const char *fileName, char *text);
-- [ ] bool FileExists(const char *fileName);
-- [ ] bool DirectoryExists(const char *dirPath);
-- [ ] bool IsFileExtension(const char *fileName, const char *ext);
-- [ ] const char *GetFileExtension(const char *fileName);
-- [ ] const char *GetFileName(const char *filePath);
-- [ ] const char *GetFileNameWithoutExt(const char *filePath);
-- [ ] const char *GetDirectoryPath(const char *filePath);
-- [ ] const char *GetPrevDirectoryPath(const char *dirPath);
-- [ ] const char *GetWorkingDirectory(void);
-- [ ] char **GetDirectoryFiles(const char *dirPath, int *count);
-- [ ] void ClearDirectoryFiles(void);
-- [ ] bool ChangeDirectory(const char *dir);
-- [ ] bool IsFileDropped(void);
-- [ ] char **GetDroppedFiles(int *count);
-- [ ] void ClearDroppedFiles(void);
-- [ ] long GetFileModTime(const char *fileName); 
 
 - [ ] unsigned char *CompressData(unsigned char *data, int dataLength, int *compDataLength);
 - [ ] unsigned char *DecompressData(unsigned char *compData, int compDataLength, int *dataLength);
@@ -246,15 +224,15 @@ module: shapes
 
 module: textures
 
-- [ ] Image LoadImage(const char *fileName);
-- [ ] Image LoadImageRaw(const char *fileName, int width, int height, int format, int headerSize);
-- [ ] Image LoadImageAnim(const char *fileName, int *frames);
-- [ ] Image LoadImageFromMemory(const char *fileType, const unsigned char *fileData, int dataSize);
-- [ ] Image LoadImageFromTexture(Texture2D texture);
-- [ ] Image LoadImageFromScreen(void);
-- [ ] void UnloadImage(Image image);
-- [ ] bool ExportImage(Image image, const char *fileName);
-- [ ] bool ExportImageAsCode(Image image, const char *fileName);
+- [x] Image LoadImage(const char *fileName);
+- [x] Image LoadImageRaw(const char *fileName, int width, int height, int format, int headerSize);
+- [x] Image LoadImageAnim(const char *fileName, int *frames);
+- [x] Image LoadImageFromMemory(const char *fileType, const unsigned char *fileData, int dataSize);
+- [x] Image LoadImageFromTexture(Texture2D texture);
+- [x] Image LoadImageFromScreen(void);
+- [x] void UnloadImage(Image image);
+- [x] bool ExportImage(Image image, const char *fileName);
+- [x] bool ExportImageAsCode(Image image, const char *fileName);
 
 - [x] Image GenImageColor(int width, int height, Color color);
 - [x] Image GenImageGradientV(int width, int height, Color top, Color bottom);

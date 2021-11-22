@@ -67,7 +67,9 @@ List<ModelAnimation> loadModelAnimations(String fileName) {
 }
 
 /// Update model animation pose.
-// TODO(wolfen): void UpdateModelAnimation(Model model, ModelAnimation anim, int frame);
+void updateModelAnimation(Model model, ModelAnimation anim, int frame) {
+  return library.UpdateModelAnimation(model.ref, anim.ref, frame);
+}
 
 /// Unload animation data.
 void unloadModelAnimation(ModelAnimation modelAnimation) {
@@ -78,4 +80,6 @@ void unloadModelAnimation(ModelAnimation modelAnimation) {
 // TODO(wolfen): void UnloadModelAnimations(ModelAnimation* animations, unsigned int count);
 
 /// Check model animation skeleton match.
-// TODO(wolfen): bool IsModelAnimationValid(Model model, ModelAnimation anim);
+bool isModelAnimationValid(Model model, ModelAnimation anim) {
+  return library.IsModelAnimationValid(model.ref, anim.ref);
+}
