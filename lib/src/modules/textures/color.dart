@@ -60,6 +60,7 @@ Color getPixelColor(PixelFormat format) {
   return color;
 }
 
+// TODO(wolfen): this
 // /// Set color formatted into destination pixel pointer.
 // void SetPixelColor(void *dstPtr, Color color, PixelFormat format) {
 //   return library.SetPixelColor(dstPtr, color, pixelFormatToNative(format));

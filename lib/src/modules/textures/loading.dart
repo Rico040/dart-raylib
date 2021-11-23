@@ -121,11 +121,13 @@ void unloadRenderTexture(RenderTexture2D target) {
   return library.UnloadRenderTexture(target.ref);
 }
 
+// TODO(wolfen): this
 // /// Update GPU texture with new data.
 // void updateTexture(Texture2D texture, const void *pixels) {
 //   return raylibInstance. UpdateTexture(texture, pixels);
 // }
 
+// TODO(wolfen): this
 // /// Update GPU texture rectangle with new data.
 // void updateTextureRec(Texture2D texture, Rectangle rec, const void *pixels) {
 //   return raylibInstance. UpdateTextureRec(texture.ref, rec.ref, pixels);

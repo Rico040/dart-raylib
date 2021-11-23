@@ -85,7 +85,7 @@ GlyphInfo loadFontData(
   );
 }
 
-// TODO(wolfen): How to fix this
+// TODO(wolfen): this, fix recs
 // /// Generate image font atlas using chars info.
 // Image genImageFontAtlas(
 //   List<GlyphInfo> chars,

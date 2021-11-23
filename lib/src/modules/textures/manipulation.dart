@@ -200,6 +200,7 @@ List<Color> loadImagePalette(Image image, int maxPaletteSize) {
 //   return library.UnloadImageColors(colors);
 // }
 
+// TODO(wolfen): this
 // /// Unload colors palette loaded with [loadImagePalette].
 // void unloadImagePalette(List<Color> colors) {
 //   return library.UnloadImagePalette(colors);

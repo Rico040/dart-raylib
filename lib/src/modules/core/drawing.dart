@@ -78,11 +78,13 @@ void endScissorMode() {
   return library.EndScissorMode();
 }
 
+// TODO(wolfen): this
 /// Begin stereo rendering (requires VR simulator).
 // void BeginVrStereoMode(VrStereoConfig config) {
 //   return raylibInstance.BeginVrStereoMode(config);
 // }
 
+// TODO(wolfen): this
 /// End stereo rendering (requires VR simulator).
 // void EndVrStereoMode() {
 //   return raylibInstance.EndVrStereoMode();

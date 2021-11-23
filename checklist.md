@@ -418,10 +418,10 @@ module: models
 - [ ] void SetModelMeshMaterial(Model *model, int meshId, int materialId);
 
 - [x] ModelAnimation *LoadModelAnimations(const char *fileName, unsigned int *animCount);
-- [ ] void UpdateModelAnimation(Model model, ModelAnimation anim, int frame);
+- [x] void UpdateModelAnimation(Model model, ModelAnimation anim, int frame);
 - [x] void UnloadModelAnimation(ModelAnimation anim);
-- [ ] void UnloadModelAnimations(ModelAnimation* animations, unsigned int count);
-- [ ] bool IsModelAnimationValid(Model model, ModelAnimation anim);
+- [x] void UnloadModelAnimations(ModelAnimation* animations, unsigned int count);
+- [x] bool IsModelAnimationValid(Model model, ModelAnimation anim);
 
 - [x] bool CheckCollisionSpheres(Vector3 center1, float radius1, Vector3 center2, float radius2);
 - [x] bool CheckCollisionBoxes(BoundingBox box1, BoundingBox box2);

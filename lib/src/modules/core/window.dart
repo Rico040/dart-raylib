@@ -122,6 +122,7 @@ void setWindowSize(int width, int height) {
   return library.SetWindowSize(width, height);
 }
 
+// TODO(wolfen): this
 /// Get native window handle.
 // Pointer<void> getWindowHandle() {
 //   return raylibInstance.GetWindowHandle();

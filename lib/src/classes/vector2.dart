@@ -15,13 +15,10 @@ class Vector2 extends NativeClass<raylib.Vector2> {
     ref = pointer!.ref;
     this.x = x;
     this.y = y;
-
-    Pointer.fromAddress(ref.hashCode);
   }
 
   /// Construct Vector2 from native reference.
   Vector2.fromRef(raylib.Vector2 ref)
-      // TODO(wolfen): Maybe we can create a new pointer every time?
       : pointer = null,
         super.fromRef(ref);
 

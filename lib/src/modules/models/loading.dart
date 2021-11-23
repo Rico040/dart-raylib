@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'package:ffi/ffi.dart';
 import 'package:raylib/raylib.dart';
 import 'package:raylib/src/library.dart';
+import 'package:raylib/src/utils/model_animation.dart' as model_animation;
 import 'package:raylib/src/utils/string.dart' as string;
 
 /// Load model from files (meshes and materials).
@@ -77,8 +78,12 @@ void unloadModelAnimation(ModelAnimation modelAnimation) {
 }
 
 /// Unload animation array data.
-// TODO(wolfen): this
-// void UnloadModelAnimations(ModelAnimation* animations, unsigned int count);
+void unloadModelAnimations(List<ModelAnimation> animations, {int? amount}) {
+  return library.UnloadModelAnimations(
+    model_animation.toPointer(animations),
+    amount ?? animations.length,
+  );
+}
 
 /// Check model animation skeleton match.
 bool isModelAnimationValid(Model model, ModelAnimation anim) {

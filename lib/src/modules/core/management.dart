@@ -37,11 +37,22 @@ int getShaderLocationAttrib(Shader shader, String attribName) {
 
 // TODO(wolfen): this
 // /// Set shader uniform value.
-// void SetShaderValue(Shader shader, int locIndex, const void *value, int uniformType){}
+// void SetShaderValue(
+//   Shader shader,
+//   int locIndex,
+//   const void *value,
+//   int uniformType,
+// ) {}
 
 // TODO(wolfen): this
 // /// Set shader uniform value vector.
-// void SetShaderValueV(Shader shader, int locIndex, const void *value, int uniformType, int count){}
+// void SetShaderValueV(
+//   Shader shader,
+//   int locIndex,
+//   const void *value,
+//   int uniformType,
+//   int count,
+// ) {}
 
 /// Set shader uniform value (matrix 4x4).
 void setShaderValueMatrix(Shader shader, int locIndex, Matrix mat) {
