@@ -1,6 +1,6 @@
 import 'package:raylib/raylib.dart';
-import 'package:raylib/src/classes/native_class.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
+import 'package:raylib/src/utils/native_type.dart';
 
 /// RenderTexture, fbo for texture rendering.
 class RenderTexture extends NativeClass<raylib.RenderTexture> {

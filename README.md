@@ -16,6 +16,7 @@ Currently this library does not support the following platforms:
 - iOS, `raylib` is built on top of OpenGL and that isn't supported on iOS.
 - macOS, `raylib` creates windows natively but on macOS that is only possible if you do it from the main thread but sadly the Dart VM is not the main thread. For more information check [this issue](https://github.com/dart-lang/sdk/issues/38315) and [this one](https://github.com/dart-lang/sdk/issues/19380).
 
+Not every binding has been fully tested. If you find a bug I would appreciate it if you [created an issue on the repo](https://gitlab.com/wolfenrain/dart-raylib/-/issues/new).
 
 ## Usage
 

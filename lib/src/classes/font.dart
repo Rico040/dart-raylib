@@ -1,11 +1,15 @@
 import 'package:raylib/raylib.dart';
-import 'package:raylib/src/classes/native_class.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
+import 'package:raylib/src/utils/native_type.dart';
+import 'package:raylib/src/utils/pointer_list.dart';
 
 /// Font, font texture and GlyphInfo array data.
 class Font extends NativeClass<raylib.Font> {
   /// Font, font texture and GlyphInfo array data.
-  Font.fromRef(raylib.Font ref) : super.fromRef(ref);
+  Font.fromRef(raylib.Font ref)
+      : recs = PointerList(ref.recs),
+        glyphs = PointerList(ref.glyphs),
+        super.fromRef(ref);
 
   /// Base size (default chars height).
   int get baseSize => ref.baseSize;
@@ -20,8 +24,8 @@ class Font extends NativeClass<raylib.Font> {
   Texture2D get texture => Texture.fromRef(ref.texture);
 
   /// Rectangles in texture for the glyphs.
-  // external ffi.Pointer<Rectangle> recs;
+  final PointerList<raylib.Rectangle> recs;
 
   /// Glyphs info data.
-  // external ffi.Pointer<GlyphInfo> glyphs;
+  final PointerList<raylib.GlyphInfo> glyphs;
 }

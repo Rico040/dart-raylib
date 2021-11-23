@@ -2,9 +2,8 @@ import 'dart:ffi';
 
 import 'package:ffi/ffi.dart';
 import 'package:raylib/raylib.dart';
-import 'package:raylib/src/classes/native_class.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
-import 'package:raylib/src/raylib_instance.dart';
+import 'package:raylib/src/utils/native_type.dart';
 
 /// Camera2D, defines position/orientation in 2d space.
 class Camera2D extends NativeClass<raylib.Camera2D> {
@@ -14,7 +13,7 @@ class Camera2D extends NativeClass<raylib.Camera2D> {
     Vector2? target,
     double zoom = 1,
     double rotation = 0,
-  }) : pointer = malloc<raylib.Camera2D>() {
+  }) : pointer = malloc<raylib.Camera2D>(sizeOf<raylib.Camera2D>()) {
     offset ??= Vector2.zero();
     target ??= Vector2.zero();
 
@@ -49,27 +48,4 @@ class Camera2D extends NativeClass<raylib.Camera2D> {
   /// Camera rotation in degrees.
   double get rotation => ref.rotation;
   set rotation(double rotation) => ref.rotation = rotation;
-
-  /// Get camera 2d transform matrix.
-  Matrix get matrix => Matrix.fromRef(library.GetCameraMatrix2D(ref));
-
-  /// Get the screen space position for a 2d camera world space position.
-  Vector2 worldToScreen(Vector2 position) {
-    return Vector2.fromRef(
-      library.GetWorldToScreen2D(
-        position.ref,
-        ref,
-      ),
-    );
-  }
-
-  /// Get the world space position for a 2d camera screen space position.
-  Vector2 screenToWorld(Vector2 position) {
-    return Vector2.fromRef(
-      library.GetScreenToWorld2D(
-        position.ref,
-        ref,
-      ),
-    );
-  }
 }

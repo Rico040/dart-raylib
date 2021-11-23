@@ -1,8 +1,6 @@
-import 'dart:ffi';
-
 import 'package:raylib/raylib.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
-import 'package:raylib/src/raylib_instance.dart';
+import 'package:raylib/src/library.dart';
 import 'package:raylib/src/utils/string.dart' as string;
 
 /// Initialize window and OpenGL context.
@@ -124,10 +122,11 @@ void setWindowSize(int width, int height) {
   return library.SetWindowSize(width, height);
 }
 
+// TODO(wolfen): this
 /// Get native window handle.
-Pointer<void> getWindowHandle() {
-  return library.GetWindowHandle();
-}
+// Pointer<void> getWindowHandle() {
+//   return raylibInstance.GetWindowHandle();
+// }
 
 /// Get current screen width.
 int getScreenWidth() {

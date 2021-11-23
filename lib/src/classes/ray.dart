@@ -2,8 +2,8 @@ import 'dart:ffi';
 
 import 'package:ffi/ffi.dart';
 import 'package:raylib/raylib.dart';
-import 'package:raylib/src/classes/native_class.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
+import 'package:raylib/src/utils/native_type.dart';
 
 /// Ray, ray for raycasting.
 class Ray extends NativeClass<raylib.Ray> {
@@ -11,7 +11,7 @@ class Ray extends NativeClass<raylib.Ray> {
   Ray({
     Vector3? position,
     Vector3? direction,
-  }) : pointer = malloc<raylib.Ray>() {
+  }) : pointer = malloc<raylib.Ray>(sizeOf<raylib.Ray>()) {
     position ??= Vector3.zero();
     direction ??= Vector3.zero();
 

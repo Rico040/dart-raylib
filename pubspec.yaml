@@ -1,12 +1,13 @@
 name: raylib
 description: raylib is a simple and easy-to-use library to enjoy videogames programming.
-version: 0.2.0+1
+version: 0.3.0
 homepage: https://gitlab.com/wolfenrain/dart-raylib
 
 environment:
   sdk: '>=2.14.0 <3.0.0'
 
 dependencies:
+  collection: ^1.15.0
   ffi: ^1.1.2
 
 dev_dependencies:
@@ -36,3 +37,16 @@ ffigen:
           'BLEND_(.*)': '$1'
           'GAMEPAD_AXIS_(.*)': '$1'
           'GAMEPAD_BUTTON_(.*)': '$1'
+          'FLAG_(.*)': '$1'
+          'MOUSE_CURSOR_(.*)': '$1'
+          'MATERIAL_MAP_(.*)': '$1'
+          'SHADER_LOC_(.*)': '$1'
+          'SHADER_UNIFORM_(.*)': '$1'
+          'SHADER_ATTRIB_(.*)': '$1'
+          'PIXELFORMAT_(.*)': '$1'
+          'TEXTURE_FILTER_(.*)': '$1'
+          'TEXTURE_WRAP_(.*)': '$1'
+          'CUBEMAP_LAYOUT_(.*)': '$1'
+          'FONT_(.*)': '$1'
+          'NPATCH_(.*)': '$1'
+          'LOG_(.*)': '$1'

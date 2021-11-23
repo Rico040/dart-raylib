@@ -1,8 +1,8 @@
 import 'dart:ffi';
 
 import 'package:ffi/ffi.dart';
-import 'package:raylib/src/classes/native_class.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
+import 'package:raylib/src/utils/native_type.dart';
 
 /// Vector4, 4 components.
 class Vector4 extends NativeClass<raylib.Vector4> {
@@ -12,7 +12,7 @@ class Vector4 extends NativeClass<raylib.Vector4> {
     double y,
     double z,
     double w,
-  ) : pointer = malloc<raylib.Vector4>(sizeOf<Float>() * 4) {
+  ) : pointer = malloc<raylib.Vector4>(sizeOf<raylib.Vector4>()) {
     ref = pointer!.ref;
     this.x = x;
     this.y = y;

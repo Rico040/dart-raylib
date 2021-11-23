@@ -1,5 +1,6 @@
 import 'package:raylib/raylib.dart';
-import 'package:raylib/src/raylib_instance.dart';
+import 'package:raylib/src/library.dart';
+import 'package:raylib/src/utils/vector3.dart' as vector3;
 
 /// Draw a line in 3D world space.
 void drawLine3D(Vector3 startPos, Vector3 endPos, Color color) {
@@ -34,9 +35,13 @@ void drawTriangle3D(Vector3 v1, Vector3 v2, Vector3 v3, Color color) {
 }
 
 /// Draw a triangle strip defined by points.
-// void DrawTriangleStrip3D(List<Vector3> points, int pointsCount, Color color) {
-//   return library.DrawTriangleStrip3D(points, pointsCount, color);
-// }
+void drawTriangleStrip3D(List<Vector3> points, int pointsCount, Color color) {
+  return library.DrawTriangleStrip3D(
+    vector3.toPointer(points),
+    pointsCount,
+    color.ref,
+  );
+}
 
 /// Draw cube.
 void drawCube(

@@ -2,8 +2,8 @@ import 'dart:ffi';
 import 'dart:math';
 
 import 'package:ffi/ffi.dart';
-import 'package:raylib/src/classes/native_class.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
+import 'package:raylib/src/utils/native_type.dart';
 
 /// Vector2, 2 components.
 class Vector2 extends NativeClass<raylib.Vector2> {
@@ -11,12 +11,10 @@ class Vector2 extends NativeClass<raylib.Vector2> {
   Vector2(
     double x,
     double y,
-  ) : pointer = malloc<raylib.Vector2>(sizeOf<Float>() * 2) {
+  ) : pointer = malloc<raylib.Vector2>(sizeOf<raylib.Vector2>()) {
     ref = pointer!.ref;
     this.x = x;
     this.y = y;
-
-    Pointer.fromAddress(ref.hashCode);
   }
 
   /// Construct Vector2 from native reference.

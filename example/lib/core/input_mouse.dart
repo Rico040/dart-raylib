@@ -21,19 +21,19 @@ void main() {
   while (!windowShouldClose()) {
     ballPosition = getMousePosition();
 
-    if (isMouseButtonPressed(MouseButton.LEFT)) {
+    if (isMouseButtonPressed(MouseButton.left)) {
       ballColor = Color.maroon;
-    } else if (isMouseButtonPressed(MouseButton.MIDDLE)) {
+    } else if (isMouseButtonPressed(MouseButton.middle)) {
       ballColor = Color.lime;
-    } else if (isMouseButtonPressed(MouseButton.RIGHT)) {
+    } else if (isMouseButtonPressed(MouseButton.right)) {
       ballColor = Color.darkBlue;
-    } else if (isMouseButtonPressed(MouseButton.SIDE)) {
+    } else if (isMouseButtonPressed(MouseButton.side)) {
       ballColor = Color.purple;
-    } else if (isMouseButtonPressed(MouseButton.EXTRA)) {
+    } else if (isMouseButtonPressed(MouseButton.extra)) {
       ballColor = Color.yellow;
-    } else if (isMouseButtonPressed(MouseButton.FORWARD)) {
+    } else if (isMouseButtonPressed(MouseButton.forward)) {
       ballColor = Color.orange;
-    } else if (isMouseButtonPressed(MouseButton.BACK)) {
+    } else if (isMouseButtonPressed(MouseButton.back)) {
       ballColor = Color.beige;
     }
 
