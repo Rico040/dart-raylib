@@ -21,14 +21,14 @@ void main() {
   while (!windowShouldClose()) {
     beginDrawing();
     clearBackground(Color.white);
-    drawRectangle(0, 0, screenWidth, screenHeight, Color.fromHex(0x01579BFF));
+    drawRectangle(0, 0, screenWidth, screenHeight, getColor(0x01579BFF));
     drawRectangle(16, 16, screenWidth - 32, screenHeight - 32, Color.rayWhite);
     drawText(
       'dart',
       224 - 16 - measureText('dart', size) - measureText('lib', size),
       226 - 33 - size,
       49,
-      Color.fromHex(0x29B6F6FF),
+      getColor(0x29B6F6FF),
     );
     drawText(
       'raylib',

@@ -1,5 +1,6 @@
 import 'package:raylib/raylib.dart';
-import 'package:raylib/src/raylib_instance.dart';
+import 'package:raylib/src/library.dart';
+import 'package:raylib/src/utils/vector2.dart' as vector2;
 
 /// Set texture and rectangle to be used on shapes drawing.
 ///
@@ -99,9 +100,13 @@ void drawLineBezierCubic(
 }
 
 /// Draw lines sequence.
-// void drawLineStrip(Vector2 *points, int pointsCount, Color color) {
-//   return raylibInstance.DrawLineStrip(points, pointsCount, color);
-// }
+void drawLineStrip(List<Vector2> points, Color color) {
+  return library.DrawLineStrip(
+    vector2.toPointer(points),
+    points.length,
+    color.ref,
+  );
+}
 
 /// Draw a color-filled circle.
 void drawCircle(int centerX, int centerY, double radius, Color color) {
@@ -399,14 +404,22 @@ void drawTriangleLines(Vector2 v1, Vector2 v2, Vector2 v3, Color color) {
 }
 
 /// Draw a triangle fan defined by points (first vertex is the center).
-// void drawTriangleFan(Vector2 *points, int pointsCount, Color color) {
-//   return raylibInstance.DrawTriangleFan(points,  pointsCount,  color);
-// }
+void drawTriangleFan(List<Vector2> points, Color color) {
+  return library.DrawTriangleFan(
+    vector2.toPointer(points),
+    points.length,
+    color.ref,
+  );
+}
 
 /// Draw a triangle strip defined by points.
-// void drawTriangleStrip(Vector2 *points, int pointsCount, Color color) {
-//   return raylibInstance.DrawTriangleStrip(points,  pointsCount,  color);
-// }
+void drawTriangleStrip(List<Vector2> points, Color color) {
+  return library.DrawTriangleStrip(
+    vector2.toPointer(points),
+    points.length,
+    color.ref,
+  );
+}
 
 /// Draw a regular polygon (Vector version).
 void drawPoly(

@@ -1,3 +1,7 @@
+## 0.3.0
+
+- Implemented more bindings and made it consistent across them all.
+
 ## 0.2.0+1
 
 - Fixed logo path on README.md.

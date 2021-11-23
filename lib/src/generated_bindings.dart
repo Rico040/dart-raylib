@@ -8644,46 +8644,46 @@ class VrStereoConfig extends ffi.Struct {
 /// By default all flags are set to 0
 abstract class ConfigFlags {
   /// Set to try enabling V-Sync on GPU
-  static const int FLAG_VSYNC_HINT = 64;
+  static const int VSYNC_HINT = 64;
 
   /// Set to run program in fullscreen
-  static const int FLAG_FULLSCREEN_MODE = 2;
+  static const int FULLSCREEN_MODE = 2;
 
   /// Set to allow resizable window
-  static const int FLAG_WINDOW_RESIZABLE = 4;
+  static const int WINDOW_RESIZABLE = 4;
 
   /// Set to disable window decoration (frame and buttons)
-  static const int FLAG_WINDOW_UNDECORATED = 8;
+  static const int WINDOW_UNDECORATED = 8;
 
   /// Set to hide window
-  static const int FLAG_WINDOW_HIDDEN = 128;
+  static const int WINDOW_HIDDEN = 128;
 
   /// Set to minimize window (iconify)
-  static const int FLAG_WINDOW_MINIMIZED = 512;
+  static const int WINDOW_MINIMIZED = 512;
 
   /// Set to maximize window (expanded to monitor)
-  static const int FLAG_WINDOW_MAXIMIZED = 1024;
+  static const int WINDOW_MAXIMIZED = 1024;
 
   /// Set to window non focused
-  static const int FLAG_WINDOW_UNFOCUSED = 2048;
+  static const int WINDOW_UNFOCUSED = 2048;
 
   /// Set to window always on top
-  static const int FLAG_WINDOW_TOPMOST = 4096;
+  static const int WINDOW_TOPMOST = 4096;
 
   /// Set to allow windows running while minimized
-  static const int FLAG_WINDOW_ALWAYS_RUN = 256;
+  static const int WINDOW_ALWAYS_RUN = 256;
 
   /// Set to allow transparent framebuffer
-  static const int FLAG_WINDOW_TRANSPARENT = 16;
+  static const int WINDOW_TRANSPARENT = 16;
 
   /// Set to support HighDPI
-  static const int FLAG_WINDOW_HIGHDPI = 8192;
+  static const int WINDOW_HIGHDPI = 8192;
 
   /// Set to try enabling MSAA 4X
-  static const int FLAG_MSAA_4X_HINT = 32;
+  static const int MSAA_4X_HINT = 32;
 
   /// Set to try enabling interlaced video format (for V3D)
-  static const int FLAG_INTERLACED_HINT = 65536;
+  static const int INTERLACED_HINT = 65536;
 }
 
 /// Trace log level
@@ -9076,37 +9076,37 @@ abstract class MouseButton {
 /// Mouse cursor
 abstract class MouseCursor {
   /// Default pointer shape
-  static const int MOUSE_CURSOR_DEFAULT = 0;
+  static const int DEFAULT = 0;
 
   /// Arrow shape
-  static const int MOUSE_CURSOR_ARROW = 1;
+  static const int ARROW = 1;
 
   /// Text writing cursor shape
-  static const int MOUSE_CURSOR_IBEAM = 2;
+  static const int IBEAM = 2;
 
   /// Cross shape
-  static const int MOUSE_CURSOR_CROSSHAIR = 3;
+  static const int CROSSHAIR = 3;
 
   /// Pointing hand cursor
-  static const int MOUSE_CURSOR_POINTING_HAND = 4;
+  static const int POINTING_HAND = 4;
 
   /// Horizontal resize/move arrow shape
-  static const int MOUSE_CURSOR_RESIZE_EW = 5;
+  static const int RESIZE_EW = 5;
 
   /// Vertical resize/move arrow shape
-  static const int MOUSE_CURSOR_RESIZE_NS = 6;
+  static const int RESIZE_NS = 6;
 
   /// Top-left to bottom-right diagonal resize/move arrow shape
-  static const int MOUSE_CURSOR_RESIZE_NWSE = 7;
+  static const int RESIZE_NWSE = 7;
 
   /// The top-right to bottom-left diagonal resize/move arrow shape
-  static const int MOUSE_CURSOR_RESIZE_NESW = 8;
+  static const int RESIZE_NESW = 8;
 
   /// The omni-directional resize/move cursor shape
-  static const int MOUSE_CURSOR_RESIZE_ALL = 9;
+  static const int RESIZE_ALL = 9;
 
   /// The operation-not-allowed shape
-  static const int MOUSE_CURSOR_NOT_ALLOWED = 10;
+  static const int NOT_ALLOWED = 10;
 }
 
 /// Gamepad buttons
@@ -9190,230 +9190,230 @@ abstract class GamepadAxis {
 /// Material map index
 abstract class MaterialMapIndex {
   /// Albedo material (same as: MATERIAL_MAP_DIFFUSE)
-  static const int MATERIAL_MAP_ALBEDO = 0;
+  static const int ALBEDO = 0;
 
   /// Metalness material (same as: MATERIAL_MAP_SPECULAR)
-  static const int MATERIAL_MAP_METALNESS = 1;
+  static const int METALNESS = 1;
 
   /// Normal material
-  static const int MATERIAL_MAP_NORMAL = 2;
+  static const int NORMAL = 2;
 
   /// Roughness material
-  static const int MATERIAL_MAP_ROUGHNESS = 3;
+  static const int ROUGHNESS = 3;
 
   /// Ambient occlusion material
-  static const int MATERIAL_MAP_OCCLUSION = 4;
+  static const int OCCLUSION = 4;
 
   /// Emission material
-  static const int MATERIAL_MAP_EMISSION = 5;
+  static const int EMISSION = 5;
 
   /// Heightmap material
-  static const int MATERIAL_MAP_HEIGHT = 6;
+  static const int HEIGHT = 6;
 
   /// Cubemap material (NOTE: Uses GL_TEXTURE_CUBE_MAP)
-  static const int MATERIAL_MAP_CUBEMAP = 7;
+  static const int CUBEMAP = 7;
 
   /// Irradiance material (NOTE: Uses GL_TEXTURE_CUBE_MAP)
-  static const int MATERIAL_MAP_IRRADIANCE = 8;
+  static const int IRRADIANCE = 8;
 
   /// Prefilter material (NOTE: Uses GL_TEXTURE_CUBE_MAP)
-  static const int MATERIAL_MAP_PREFILTER = 9;
+  static const int PREFILTER = 9;
 
   /// Brdf material
-  static const int MATERIAL_MAP_BRDF = 10;
+  static const int BRDF = 10;
 }
 
 /// Shader location index
 abstract class ShaderLocationIndex {
   /// Shader location: vertex attribute: position
-  static const int SHADER_LOC_VERTEX_POSITION = 0;
+  static const int VERTEX_POSITION = 0;
 
   /// Shader location: vertex attribute: texcoord01
-  static const int SHADER_LOC_VERTEX_TEXCOORD01 = 1;
+  static const int VERTEX_TEXCOORD01 = 1;
 
   /// Shader location: vertex attribute: texcoord02
-  static const int SHADER_LOC_VERTEX_TEXCOORD02 = 2;
+  static const int VERTEX_TEXCOORD02 = 2;
 
   /// Shader location: vertex attribute: normal
-  static const int SHADER_LOC_VERTEX_NORMAL = 3;
+  static const int VERTEX_NORMAL = 3;
 
   /// Shader location: vertex attribute: tangent
-  static const int SHADER_LOC_VERTEX_TANGENT = 4;
+  static const int VERTEX_TANGENT = 4;
 
   /// Shader location: vertex attribute: color
-  static const int SHADER_LOC_VERTEX_COLOR = 5;
+  static const int VERTEX_COLOR = 5;
 
   /// Shader location: matrix uniform: model-view-projection
-  static const int SHADER_LOC_MATRIX_MVP = 6;
+  static const int MATRIX_MVP = 6;
 
   /// Shader location: matrix uniform: view (camera transform)
-  static const int SHADER_LOC_MATRIX_VIEW = 7;
+  static const int MATRIX_VIEW = 7;
 
   /// Shader location: matrix uniform: projection
-  static const int SHADER_LOC_MATRIX_PROJECTION = 8;
+  static const int MATRIX_PROJECTION = 8;
 
   /// Shader location: matrix uniform: model (transform)
-  static const int SHADER_LOC_MATRIX_MODEL = 9;
+  static const int MATRIX_MODEL = 9;
 
   /// Shader location: matrix uniform: normal
-  static const int SHADER_LOC_MATRIX_NORMAL = 10;
+  static const int MATRIX_NORMAL = 10;
 
   /// Shader location: vector uniform: view
-  static const int SHADER_LOC_VECTOR_VIEW = 11;
+  static const int VECTOR_VIEW = 11;
 
   /// Shader location: vector uniform: diffuse color
-  static const int SHADER_LOC_COLOR_DIFFUSE = 12;
+  static const int COLOR_DIFFUSE = 12;
 
   /// Shader location: vector uniform: specular color
-  static const int SHADER_LOC_COLOR_SPECULAR = 13;
+  static const int COLOR_SPECULAR = 13;
 
   /// Shader location: vector uniform: ambient color
-  static const int SHADER_LOC_COLOR_AMBIENT = 14;
+  static const int COLOR_AMBIENT = 14;
 
   /// Shader location: sampler2d texture: albedo (same as: SHADER_LOC_MAP_DIFFUSE)
-  static const int SHADER_LOC_MAP_ALBEDO = 15;
+  static const int MAP_ALBEDO = 15;
 
   /// Shader location: sampler2d texture: metalness (same as: SHADER_LOC_MAP_SPECULAR)
-  static const int SHADER_LOC_MAP_METALNESS = 16;
+  static const int MAP_METALNESS = 16;
 
   /// Shader location: sampler2d texture: normal
-  static const int SHADER_LOC_MAP_NORMAL = 17;
+  static const int MAP_NORMAL = 17;
 
   /// Shader location: sampler2d texture: roughness
-  static const int SHADER_LOC_MAP_ROUGHNESS = 18;
+  static const int MAP_ROUGHNESS = 18;
 
   /// Shader location: sampler2d texture: occlusion
-  static const int SHADER_LOC_MAP_OCCLUSION = 19;
+  static const int MAP_OCCLUSION = 19;
 
   /// Shader location: sampler2d texture: emission
-  static const int SHADER_LOC_MAP_EMISSION = 20;
+  static const int MAP_EMISSION = 20;
 
   /// Shader location: sampler2d texture: height
-  static const int SHADER_LOC_MAP_HEIGHT = 21;
+  static const int MAP_HEIGHT = 21;
 
   /// Shader location: samplerCube texture: cubemap
-  static const int SHADER_LOC_MAP_CUBEMAP = 22;
+  static const int MAP_CUBEMAP = 22;
 
   /// Shader location: samplerCube texture: irradiance
-  static const int SHADER_LOC_MAP_IRRADIANCE = 23;
+  static const int MAP_IRRADIANCE = 23;
 
   /// Shader location: samplerCube texture: prefilter
-  static const int SHADER_LOC_MAP_PREFILTER = 24;
+  static const int MAP_PREFILTER = 24;
 
   /// Shader location: sampler2d texture: brdf
-  static const int SHADER_LOC_MAP_BRDF = 25;
+  static const int MAP_BRDF = 25;
 }
 
 /// Shader uniform data type
 abstract class ShaderUniformDataType {
   /// Shader uniform type: float
-  static const int SHADER_UNIFORM_FLOAT = 0;
+  static const int FLOAT = 0;
 
   /// Shader uniform type: vec2 (2 float)
-  static const int SHADER_UNIFORM_VEC2 = 1;
+  static const int VEC2 = 1;
 
   /// Shader uniform type: vec3 (3 float)
-  static const int SHADER_UNIFORM_VEC3 = 2;
+  static const int VEC3 = 2;
 
   /// Shader uniform type: vec4 (4 float)
-  static const int SHADER_UNIFORM_VEC4 = 3;
+  static const int VEC4 = 3;
 
   /// Shader uniform type: int
-  static const int SHADER_UNIFORM_INT = 4;
+  static const int INT = 4;
 
   /// Shader uniform type: ivec2 (2 int)
-  static const int SHADER_UNIFORM_IVEC2 = 5;
+  static const int IVEC2 = 5;
 
   /// Shader uniform type: ivec3 (3 int)
-  static const int SHADER_UNIFORM_IVEC3 = 6;
+  static const int IVEC3 = 6;
 
   /// Shader uniform type: ivec4 (4 int)
-  static const int SHADER_UNIFORM_IVEC4 = 7;
+  static const int IVEC4 = 7;
 
   /// Shader uniform type: sampler2d
-  static const int SHADER_UNIFORM_SAMPLER2D = 8;
+  static const int SAMPLER2D = 8;
 }
 
 /// Shader attribute data types
 abstract class ShaderAttributeDataType {
   /// Shader attribute type: float
-  static const int SHADER_ATTRIB_FLOAT = 0;
+  static const int FLOAT = 0;
 
   /// Shader attribute type: vec2 (2 float)
-  static const int SHADER_ATTRIB_VEC2 = 1;
+  static const int VEC2 = 1;
 
   /// Shader attribute type: vec3 (3 float)
-  static const int SHADER_ATTRIB_VEC3 = 2;
+  static const int VEC3 = 2;
 
   /// Shader attribute type: vec4 (4 float)
-  static const int SHADER_ATTRIB_VEC4 = 3;
+  static const int VEC4 = 3;
 }
 
 /// Pixel formats
 /// NOTE: Support depends on OpenGL version and platform
 abstract class PixelFormat {
   /// 8 bit per pixel (no alpha)
-  static const int PIXELFORMAT_UNCOMPRESSED_GRAYSCALE = 1;
+  static const int UNCOMPRESSED_GRAYSCALE = 1;
 
   /// 8*2 bpp (2 channels)
-  static const int PIXELFORMAT_UNCOMPRESSED_GRAY_ALPHA = 2;
+  static const int UNCOMPRESSED_GRAY_ALPHA = 2;
 
   /// 16 bpp
-  static const int PIXELFORMAT_UNCOMPRESSED_R5G6B5 = 3;
+  static const int UNCOMPRESSED_R5G6B5 = 3;
 
   /// 24 bpp
-  static const int PIXELFORMAT_UNCOMPRESSED_R8G8B8 = 4;
+  static const int UNCOMPRESSED_R8G8B8 = 4;
 
   /// 16 bpp (1 bit alpha)
-  static const int PIXELFORMAT_UNCOMPRESSED_R5G5B5A1 = 5;
+  static const int UNCOMPRESSED_R5G5B5A1 = 5;
 
   /// 16 bpp (4 bit alpha)
-  static const int PIXELFORMAT_UNCOMPRESSED_R4G4B4A4 = 6;
+  static const int UNCOMPRESSED_R4G4B4A4 = 6;
 
   /// 32 bpp
-  static const int PIXELFORMAT_UNCOMPRESSED_R8G8B8A8 = 7;
+  static const int UNCOMPRESSED_R8G8B8A8 = 7;
 
   /// 32 bpp (1 channel - float)
-  static const int PIXELFORMAT_UNCOMPRESSED_R32 = 8;
+  static const int UNCOMPRESSED_R32 = 8;
 
   /// 32*3 bpp (3 channels - float)
-  static const int PIXELFORMAT_UNCOMPRESSED_R32G32B32 = 9;
+  static const int UNCOMPRESSED_R32G32B32 = 9;
 
   /// 32*4 bpp (4 channels - float)
-  static const int PIXELFORMAT_UNCOMPRESSED_R32G32B32A32 = 10;
+  static const int UNCOMPRESSED_R32G32B32A32 = 10;
 
   /// 4 bpp (no alpha)
-  static const int PIXELFORMAT_COMPRESSED_DXT1_RGB = 11;
+  static const int COMPRESSED_DXT1_RGB = 11;
 
   /// 4 bpp (1 bit alpha)
-  static const int PIXELFORMAT_COMPRESSED_DXT1_RGBA = 12;
+  static const int COMPRESSED_DXT1_RGBA = 12;
 
   /// 8 bpp
-  static const int PIXELFORMAT_COMPRESSED_DXT3_RGBA = 13;
+  static const int COMPRESSED_DXT3_RGBA = 13;
 
   /// 8 bpp
-  static const int PIXELFORMAT_COMPRESSED_DXT5_RGBA = 14;
+  static const int COMPRESSED_DXT5_RGBA = 14;
 
   /// 4 bpp
-  static const int PIXELFORMAT_COMPRESSED_ETC1_RGB = 15;
+  static const int COMPRESSED_ETC1_RGB = 15;
 
   /// 4 bpp
-  static const int PIXELFORMAT_COMPRESSED_ETC2_RGB = 16;
+  static const int COMPRESSED_ETC2_RGB = 16;
 
   /// 8 bpp
-  static const int PIXELFORMAT_COMPRESSED_ETC2_EAC_RGBA = 17;
+  static const int COMPRESSED_ETC2_EAC_RGBA = 17;
 
   /// 4 bpp
-  static const int PIXELFORMAT_COMPRESSED_PVRT_RGB = 18;
+  static const int COMPRESSED_PVRT_RGB = 18;
 
   /// 4 bpp
-  static const int PIXELFORMAT_COMPRESSED_PVRT_RGBA = 19;
+  static const int COMPRESSED_PVRT_RGBA = 19;
 
   /// 8 bpp
-  static const int PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA = 20;
+  static const int COMPRESSED_ASTC_4x4_RGBA = 20;
 
   /// 2 bpp
-  static const int PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA = 21;
+  static const int COMPRESSED_ASTC_8x8_RGBA = 21;
 }
 
 /// Texture parameters: filter mode
@@ -9421,70 +9421,70 @@ abstract class PixelFormat {
 /// NOTE 2: Filter is accordingly set for minification and magnification
 abstract class TextureFilter {
   /// No filter, just pixel aproximation
-  static const int TEXTURE_FILTER_POINT = 0;
+  static const int POINT = 0;
 
   /// Linear filtering
-  static const int TEXTURE_FILTER_BILINEAR = 1;
+  static const int BILINEAR = 1;
 
   /// Trilinear filtering (linear with mipmaps)
-  static const int TEXTURE_FILTER_TRILINEAR = 2;
+  static const int TRILINEAR = 2;
 
   /// Anisotropic filtering 4x
-  static const int TEXTURE_FILTER_ANISOTROPIC_4X = 3;
+  static const int ANISOTROPIC_4X = 3;
 
   /// Anisotropic filtering 8x
-  static const int TEXTURE_FILTER_ANISOTROPIC_8X = 4;
+  static const int ANISOTROPIC_8X = 4;
 
   /// Anisotropic filtering 16x
-  static const int TEXTURE_FILTER_ANISOTROPIC_16X = 5;
+  static const int ANISOTROPIC_16X = 5;
 }
 
 /// Texture parameters: wrap mode
 abstract class TextureWrap {
   /// Repeats texture in tiled mode
-  static const int TEXTURE_WRAP_REPEAT = 0;
+  static const int REPEAT = 0;
 
   /// Clamps texture to edge pixel in tiled mode
-  static const int TEXTURE_WRAP_CLAMP = 1;
+  static const int CLAMP = 1;
 
   /// Mirrors and repeats the texture in tiled mode
-  static const int TEXTURE_WRAP_MIRROR_REPEAT = 2;
+  static const int MIRROR_REPEAT = 2;
 
   /// Mirrors and clamps to border the texture in tiled mode
-  static const int TEXTURE_WRAP_MIRROR_CLAMP = 3;
+  static const int MIRROR_CLAMP = 3;
 }
 
 /// Cubemap layouts
 abstract class CubemapLayout {
   /// Automatically detect layout type
-  static const int CUBEMAP_LAYOUT_AUTO_DETECT = 0;
+  static const int AUTO_DETECT = 0;
 
   /// Layout is defined by a vertical line with faces
-  static const int CUBEMAP_LAYOUT_LINE_VERTICAL = 1;
+  static const int LINE_VERTICAL = 1;
 
   /// Layout is defined by an horizontal line with faces
-  static const int CUBEMAP_LAYOUT_LINE_HORIZONTAL = 2;
+  static const int LINE_HORIZONTAL = 2;
 
   /// Layout is defined by a 3x4 cross with cubemap faces
-  static const int CUBEMAP_LAYOUT_CROSS_THREE_BY_FOUR = 3;
+  static const int CROSS_THREE_BY_FOUR = 3;
 
   /// Layout is defined by a 4x3 cross with cubemap faces
-  static const int CUBEMAP_LAYOUT_CROSS_FOUR_BY_THREE = 4;
+  static const int CROSS_FOUR_BY_THREE = 4;
 
   /// Layout is defined by a panorama image (equirectangular map)
-  static const int CUBEMAP_LAYOUT_PANORAMA = 5;
+  static const int PANORAMA = 5;
 }
 
 /// Font type, defines generation method
 abstract class FontType {
   /// Default font generation, anti-aliased
-  static const int FONT_DEFAULT = 0;
+  static const int DEFAULT = 0;
 
   /// Bitmap font generation, no anti-aliasing
-  static const int FONT_BITMAP = 1;
+  static const int BITMAP = 1;
 
   /// SDF font generation, requires external shader
-  static const int FONT_SDF = 2;
+  static const int SDF = 2;
 }
 
 /// Color blending modes (pre-defined)
@@ -9575,13 +9575,13 @@ abstract class CameraProjection {
 /// N-patch layout
 abstract class NPatchLayout {
   /// Npatch layout: 3x3 tiles
-  static const int NPATCH_NINE_PATCH = 0;
+  static const int NINE_PATCH = 0;
 
   /// Npatch layout: 1x3 tiles
-  static const int NPATCH_THREE_PATCH_VERTICAL = 1;
+  static const int THREE_PATCH_VERTICAL = 1;
 
   /// Npatch layout: 3x1 tiles
-  static const int NPATCH_THREE_PATCH_HORIZONTAL = 2;
+  static const int THREE_PATCH_HORIZONTAL = 2;
 }
 
 /// RenderTexture2D, same as RenderTexture

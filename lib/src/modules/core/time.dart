@@ -1,4 +1,4 @@
-import 'package:raylib/src/raylib_instance.dart';
+import 'package:raylib/src/library.dart';
 
 /// Set target FPS (maximum).
 void setTargetFPS(int fps) {
@@ -15,7 +15,7 @@ double getFrameTime() {
   return library.GetFrameTime();
 }
 
-/// Get elapsed time in seconds since InitWindow().
+/// Get elapsed time in seconds since initWindow().
 double getTime() {
   return library.GetTime();
 }

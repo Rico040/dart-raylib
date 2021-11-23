@@ -1,6 +1,7 @@
 import 'package:raylib/raylib.dart';
 import 'package:raylib/src/classes/camera_2d.dart';
-import 'package:raylib/src/raylib_instance.dart';
+import 'package:raylib/src/enums/blend_mode.dart';
+import 'package:raylib/src/library.dart';
 
 /// Set background color (framebuffer clear color).
 void clearBackground(Color color) {
@@ -48,9 +49,9 @@ void endTextureMode() {
 }
 
 /// Begin custom shader drawing.
-// void beginShaderMode(Shader shader) {
-//   return raylibInstance.BeginShaderMode(shader);
-// }
+void beginShaderMode(Shader shader) {
+  return library.BeginShaderMode(shader.ref);
+}
 
 /// End custom shader drawing (use default shader).
 void endShaderMode() {
@@ -58,8 +59,8 @@ void endShaderMode() {
 }
 
 /// Begin blending mode (alpha, additive, multiplied, subtract, custom).
-void beginBlendMode(int mode) {
-  return library.BeginBlendMode(mode);
+void beginBlendMode(BlendMode mode) {
+  return library.BeginBlendMode(blendModeToNative(mode));
 }
 
 /// End blending mode (reset to default: alpha blending).
@@ -77,11 +78,13 @@ void endScissorMode() {
   return library.EndScissorMode();
 }
 
+// TODO(wolfen): this
 /// Begin stereo rendering (requires VR simulator).
 // void BeginVrStereoMode(VrStereoConfig config) {
 //   return raylibInstance.BeginVrStereoMode(config);
 // }
 
+// TODO(wolfen): this
 /// End stereo rendering (requires VR simulator).
 // void EndVrStereoMode() {
 //   return raylibInstance.EndVrStereoMode();

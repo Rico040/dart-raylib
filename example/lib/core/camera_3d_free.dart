@@ -23,14 +23,14 @@ void main() {
 
   final cubePosition = Vector3.zero();
 
-  camera.mode(CameraMode.FREE); // Set a free camera mode
+  setCameraMode(camera, CameraMode.free); // Set a free camera mode
 
   setTargetFPS(60);
 
   while (!windowShouldClose()) {
-    camera.update();
+    updateCamera(camera);
 
-    if (isKeyDown(KeyboardKey.Z)) camera.target = Vector3.zero();
+    if (isKeyDown(KeyboardKey.z)) camera.target = Vector3.zero();
 
     beginDrawing();
 
@@ -45,7 +45,7 @@ void main() {
 
     endMode3D();
 
-    drawRectangle(10, 10, 320, 133, Color.skyBlue.fade(.5));
+    drawRectangle(10, 10, 320, 133, fade(Color.skyBlue, .5));
     drawRectangleLines(10, 10, 320, 133, Color.blue);
 
     drawText('Free camera default controls:', 20, 20, 10, Color.black);

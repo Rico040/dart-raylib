@@ -2,11 +2,9 @@ import 'dart:math';
 
 import 'package:raylib/raylib.dart';
 
-const maxBuildings = 100;
-
-final random = Random();
-double getRandomValue(double min, double max) {
-  return min + random.nextDouble() * max;
+final _random = Random();
+double _getRandomValue(double min, double max) {
+  return min + _random.nextDouble() * max;
 }
 
 void main() {
@@ -28,13 +26,16 @@ void main() {
 
   var spacing = 0.0;
 
+  /// Amount of buildings to generate.
+  const maxBuildings = 100;
+
   for (var i = 0; i < maxBuildings; i++) {
-    final height = getRandomValue(100, 800);
+    final height = _getRandomValue(100, 800);
     buildings.add(
       Rectangle(
         -6000 + spacing,
         screenHeight - 130 - height,
-        getRandomValue(50, 200),
+        _getRandomValue(50, 200),
         height,
       ),
     );
@@ -42,9 +43,9 @@ void main() {
 
     buildColors.add(
       Color(
-        getRandomValue(200, 240).toInt(),
-        getRandomValue(200, 240).toInt(),
-        getRandomValue(200, 250).toInt(),
+        _getRandomValue(200, 240).toInt(),
+        _getRandomValue(200, 240).toInt(),
+        _getRandomValue(200, 250).toInt(),
         255,
       ),
     );
@@ -59,9 +60,9 @@ void main() {
   setTargetFPS(60);
 
   while (!windowShouldClose()) {
-    if (isKeyDown(KeyboardKey.RIGHT)) {
+    if (isKeyDown(KeyboardKey.right)) {
       player.x += 2;
-    } else if (isKeyDown(KeyboardKey.LEFT)) {
+    } else if (isKeyDown(KeyboardKey.left)) {
       player.x -= 2;
     }
 
@@ -69,9 +70,9 @@ void main() {
     camera.target = Vector2(player.x + 20, player.y + 20);
 
     // Camera rotation controls
-    if (isKeyDown(KeyboardKey.A)) {
+    if (isKeyDown(KeyboardKey.a)) {
       camera.rotation--;
-    } else if (isKeyDown(KeyboardKey.S)) {
+    } else if (isKeyDown(KeyboardKey.s)) {
       camera.rotation++;
     }
 
@@ -92,7 +93,7 @@ void main() {
     }
 
     // Camera reset (zoom and rotation)
-    if (isKeyPressed(KeyboardKey.R)) {
+    if (isKeyPressed(KeyboardKey.r)) {
       camera
         ..zoom = 1
         ..rotation = 0;
@@ -136,7 +137,7 @@ void main() {
     drawRectangle(screenWidth - 5, 5, 5, screenHeight - 10, Color.red);
     drawRectangle(0, screenHeight - 5, screenWidth, 5, Color.red);
 
-    drawRectangle(10, 10, 250, 113, Color.skyBlue.fade(0.5));
+    drawRectangle(10, 10, 250, 113, fade(Color.skyBlue, 0.5));
     drawRectangleLines(10, 10, 250, 113, Color.blue);
 
     drawText('Free 2d camera controls:', 20, 20, 10, Color.black);

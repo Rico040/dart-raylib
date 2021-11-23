@@ -2,9 +2,8 @@ import 'dart:ffi';
 
 import 'package:ffi/ffi.dart';
 import 'package:raylib/raylib.dart';
-import 'package:raylib/src/classes/native_class.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
-import 'package:raylib/src/raylib_instance.dart';
+import 'package:raylib/src/utils/native_type.dart';
 
 /// Camera projections
 enum CameraProjection {
@@ -24,12 +23,12 @@ class Camera3D extends NativeClass<raylib.Camera3D> {
     Vector3? up,
     double fovy = 1,
     CameraProjection projection = CameraProjection.perspective,
-  }) : pointer = malloc<raylib.Camera3D>() {
+  }) : pointer = malloc<raylib.Camera3D>(sizeOf<raylib.Camera3D>()) {
     position ??= Vector3.zero();
     target ??= Vector3.zero();
     up ??= Vector3.zero();
 
-    ref = pointer!.ref;
+    ref = pointer.ref;
     this.position = position;
     this.target = target;
     this.up = up;
@@ -38,7 +37,7 @@ class Camera3D extends NativeClass<raylib.Camera3D> {
   }
 
   /// Native pointer, used internally.
-  final Pointer<raylib.Camera3D>? pointer;
+  final Pointer<raylib.Camera3D> pointer;
 
   /// Camera position.
   Vector3 get position => Vector3.fromRef(ref.position);
@@ -90,46 +89,6 @@ class Camera3D extends NativeClass<raylib.Camera3D> {
         ref.projection = 1;
         break;
     }
-  }
-
-  /// Get camera transform matrix (view matrix).
-  Matrix get matrix => Matrix.fromRef(library.GetCameraMatrix(ref));
-
-  /// Set camera mode (multiple camera modes available).
-  void mode(int mode) {
-    library.SetCameraMode(ref, mode);
-  }
-
-  /// Update camera position for selected mode.
-  void update() {
-    return library.UpdateCamera(pointer!);
-  }
-
-  /// Get the screen space position for a 3d world space position.
-  Vector2 worldToScreen(Vector3 position) {
-    return Vector2.fromRef(
-      library.GetWorldToScreen(
-        position.ref,
-        ref,
-      ),
-    );
-  }
-
-  /// Get size position for a 3d world space position.
-  Vector2 worldToScreenEx(Vector3 position, int width, int height) {
-    return Vector2.fromRef(
-      library.GetWorldToScreenEx(
-        position.ref,
-        ref,
-        width,
-        height,
-      ),
-    );
-  }
-
-  /// Get a ray trace from mouse position.
-  Ray getMouseRay(Vector2 mousePosition) {
-    return Ray.fromRef(library.GetMouseRay(mousePosition.ref, ref));
   }
 
   @override
