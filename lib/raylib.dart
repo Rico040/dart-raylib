@@ -29,27 +29,28 @@ export 'src/classes/vector3.dart';
 export 'src/classes/vector4.dart';
 
 /// Exporting enums.
+export 'src/enums/blend_mode.dart' show BlendMode;
+export 'src/enums/camera_mode.dart' show CameraMode;
+export 'src/enums/config_flags.dart' show ConfigFlags;
+export 'src/enums/cubemap_layout.dart' show CubemapLayout;
+export 'src/enums/font_type.dart' show FontType;
+export 'src/enums/gamepad_axis.dart' show GamepadAxis;
+export 'src/enums/gamepad_button.dart' show GamepadButton;
+export 'src/enums/gesture.dart' show Gesture;
+export 'src/enums/keyboard_key.dart' show KeyboardKey;
+export 'src/enums/mouse_button.dart' show MouseButton;
+export 'src/enums/mouse_cursor.dart' show MouseCursor;
+export 'src/enums/n_patch_layout.dart' show NPatchLayout;
+export 'src/enums/pixel_format.dart' show PixelFormat;
+export 'src/enums/texture_filter.dart' show TextureFilter;
+export 'src/enums/texture_wrap.dart' show TextureWrap;
+
 export 'src/generated_bindings.dart'
     show
-        BlendMode,
-        CameraMode,
-        ConfigFlags,
-        CubemapLayout,
-        FontType,
-        GamepadAxis,
-        GamepadButton,
-        Gesture,
-        KeyboardKey,
         MaterialMapIndex,
-        MouseButton,
-        MouseCursor,
-        NPatchLayout,
-        PixelFormat,
         ShaderAttributeDataType,
         ShaderLocationIndex,
         ShaderUniformDataType,
-        TextureFilter,
-        TextureWrap,
         TraceLogLevel;
 
 export 'src/library.dart' hide library;

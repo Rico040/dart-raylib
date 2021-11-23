@@ -88,22 +88,22 @@ void main() {
 
   var currentModel = 0;
 
-  camera.mode(CameraMode.ORBITAL);
+  setCameraMode(camera, CameraMode.orbital);
 
   setTargetFPS(60);
 
   while (!windowShouldClose()) {
-    camera.update();
+    updateCamera(camera);
 
-    if (isMouseButtonPressed(MouseButton.LEFT)) {
+    if (isMouseButtonPressed(MouseButton.left)) {
       // Cycle between the textures
       currentModel = (currentModel + 1) % models.length;
     }
 
-    if (isKeyPressed(KeyboardKey.RIGHT)) {
+    if (isKeyPressed(KeyboardKey.right)) {
       currentModel++;
       if (currentModel >= models.length) currentModel = 0;
-    } else if (isKeyPressed(KeyboardKey.LEFT)) {
+    } else if (isKeyPressed(KeyboardKey.left)) {
       currentModel--;
       if (currentModel < 0) currentModel = models.length - 1;
     }

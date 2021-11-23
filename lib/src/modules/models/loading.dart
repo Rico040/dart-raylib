@@ -77,7 +77,8 @@ void unloadModelAnimation(ModelAnimation modelAnimation) {
 }
 
 /// Unload animation array data.
-// TODO(wolfen): void UnloadModelAnimations(ModelAnimation* animations, unsigned int count);
+// TODO(wolfen): this
+// void UnloadModelAnimations(ModelAnimation* animations, unsigned int count);
 
 /// Check model animation skeleton match.
 bool isModelAnimationValid(Model model, ModelAnimation anim) {

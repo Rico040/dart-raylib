@@ -55,12 +55,15 @@ void main() {
     );
   }
 
-  camera.mode(CameraMode.FIRST_PERSON); // Set a first person camera mode
+  setCameraMode(
+    camera,
+    CameraMode.firstPerson,
+  ); // Set a first person camera mode
 
   setTargetFPS(60);
 
   while (!windowShouldClose()) {
-    camera.update();
+    updateCamera(camera);
 
     beginDrawing();
 

@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:raylib/raylib.dart';
+import 'package:raylib/src/enums/pixel_format.dart';
 import 'package:raylib/src/library.dart';
 
 /// Returns color with alpha applied, alpha goes from 0.0 to 1.0.
@@ -49,19 +50,22 @@ Color colorFromHSV(double hue, double saturation, double value) {
 }
 
 /// Get Color from a source pixel pointer of certain format.
-Color getPixelColor(int format) {
+Color getPixelColor(PixelFormat format) {
   final color = Color(0, 0, 0, 0);
-  library.GetPixelColor(color.pointer!.cast<Void>(), format);
+  library.GetPixelColor(
+    color.pointer!.cast<Void>(),
+    pixelFormatToNative(format),
+  );
 
   return color;
 }
 
 // /// Set color formatted into destination pixel pointer.
-// void SetPixelColor(void *dstPtr, Color color, int format) {
-//   return raylibInstance. SetPixelColor(dstPtr, Color color, int format);
+// void SetPixelColor(void *dstPtr, Color color, PixelFormat format) {
+//   return library.SetPixelColor(dstPtr, color, pixelFormatToNative(format));
 // }
 
 /// Get pixel data size in bytes for certain format.
-int getPixelDataSize(int width, int height, int format) {
-  return library.GetPixelDataSize(width, height, format);
+int getPixelDataSize(int width, int height, PixelFormat format) {
+  return library.GetPixelDataSize(width, height, pixelFormatToNative(format));
 }

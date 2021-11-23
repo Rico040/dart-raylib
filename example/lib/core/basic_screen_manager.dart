@@ -46,19 +46,19 @@ void main() {
         break;
       case GameScreen.title:
         // Press enter to change to GAMEPLAY screen
-        if (isKeyPressed(KeyboardKey.ENTER) || isGestureDetected(Gesture.TAP)) {
+        if (isKeyPressed(KeyboardKey.enter) || isGestureDetected(Gesture.tap)) {
           currentScreen = GameScreen.gameplay;
         }
         break;
       case GameScreen.gameplay:
         // Press enter to change to ENDING screen
-        if (isKeyPressed(KeyboardKey.ENTER) || isGestureDetected(Gesture.TAP)) {
+        if (isKeyPressed(KeyboardKey.enter) || isGestureDetected(Gesture.tap)) {
           currentScreen = GameScreen.ending;
         }
         break;
       case GameScreen.ending:
         // Press enter to return to TITLE screen
-        if (isKeyPressed(KeyboardKey.ENTER) || isGestureDetected(Gesture.TAP)) {
+        if (isKeyPressed(KeyboardKey.enter) || isGestureDetected(Gesture.tap)) {
           currentScreen = GameScreen.title;
         }
         break;

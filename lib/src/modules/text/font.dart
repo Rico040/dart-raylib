@@ -1,4 +1,5 @@
 import 'package:raylib/raylib.dart';
+import 'package:raylib/src/enums/font_type.dart';
 import 'package:raylib/src/library.dart';
 import 'package:raylib/src/utils/glyph_info.dart' as glyph_info;
 import 'package:raylib/src/utils/integer.dart' as integer;
@@ -70,7 +71,7 @@ GlyphInfo loadFontData(
   int fontSize,
   List<int> fontChars,
   int glyphCount,
-  int type,
+  FontType type,
 ) {
   return GlyphInfo.fromPointer(
     library.LoadFontData(
@@ -79,7 +80,7 @@ GlyphInfo loadFontData(
       fontSize,
       integer.toPointer(fontChars),
       glyphCount,
-      type,
+      fontTypeToNative(type),
     ),
   );
 }

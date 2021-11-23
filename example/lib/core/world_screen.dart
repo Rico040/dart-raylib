@@ -24,16 +24,17 @@ void main() {
   final cubePosition = Vector3.zero();
   var cubeScreenPosition = Vector2.zero();
 
-  camera.mode(CameraMode.FREE); // Set a free camera mode
+  setCameraMode(camera, CameraMode.free); // Set a free camera mode
 
   setTargetFPS(60);
 
   while (!windowShouldClose()) {
-    camera.update();
+    updateCamera(camera);
 
     // Calculate cube screen space position (with a little offset to be in top)
-    cubeScreenPosition = camera.worldToScreen(
+    cubeScreenPosition = getWorldToScreen(
       Vector3(cubePosition.x, cubePosition.y + 2.5, cubePosition.z),
+      camera,
     );
 
     beginDrawing();

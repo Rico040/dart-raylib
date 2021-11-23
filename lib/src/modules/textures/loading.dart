@@ -2,6 +2,10 @@ import 'dart:ffi';
 
 import 'package:ffi/ffi.dart';
 import 'package:raylib/raylib.dart';
+import 'package:raylib/src/enums/cubemap_layout.dart';
+import 'package:raylib/src/enums/pixel_format.dart';
+import 'package:raylib/src/enums/texture_filter.dart';
+import 'package:raylib/src/enums/texture_wrap.dart';
 import 'package:raylib/src/library.dart';
 import 'package:raylib/src/utils/string.dart' as string;
 
@@ -15,7 +19,7 @@ Image loadImageRaw(
   String fileName,
   int width,
   int height,
-  int format, // TODO(wolfen): enum?
+  PixelFormat format,
   int headerSize,
 ) {
   return Image.fromRef(
@@ -23,7 +27,7 @@ Image loadImageRaw(
       string.toNative(fileName),
       width,
       headerSize,
-      format,
+      pixelFormatToNative(format),
       headerSize,
     ),
   );
@@ -32,7 +36,7 @@ Image loadImageRaw(
 /// Load image sequence from file (frames appended to image.data).
 Image loadImageAnim(String fileName) {
   final frames = malloc<Int32>(sizeOf<Int32>());
-  // TODO: how to handle out params?
+  // TODO(wolfen): how to handle out params?
 
   return Image.fromRef(
     library.LoadImageAnim(
@@ -94,9 +98,9 @@ Texture2D loadTextureFromImage(Image image) {
 }
 
 /// Load cubemap from image, multiple image cubemap layouts supported.
-TextureCubemap loadTextureCubemap(Image image, int layout) {
+TextureCubemap loadTextureCubemap(Image image, CubemapLayout layout) {
   return TextureCubemap.fromRef(
-    library.LoadTextureCubemap(image.ref, layout),
+    library.LoadTextureCubemap(image.ref, cubemapLayoutToNative(layout)),
   );
 }
 
@@ -136,13 +140,11 @@ void unloadRenderTexture(RenderTexture2D target) {
 // }
 
 /// Set texture scaling filter mode.
-// TODO(wolfen): use enum
-void setTextureFilter(Texture texture, int filter) {
-  return library.SetTextureFilter(texture.ref, filter);
+void setTextureFilter(Texture texture, TextureFilter filter) {
+  return library.SetTextureFilter(texture.ref, textureFilterToNative(filter));
 }
 
 /// Set texture wrapping mode.
-// TODO(wolfen): use enum
-void setTextureWrap(Texture texture, int wrap) {
-  return library.SetTextureWrap(texture.ref, wrap);
+void setTextureWrap(Texture texture, TextureWrap wrap) {
+  return library.SetTextureWrap(texture.ref, textureWrapToNative(wrap));
 }

@@ -59,19 +59,16 @@ bool isWindowResized() {
 
 /// Check if one specific window flag is enabled.
 bool isWindowState(int flag) {
-  // TODO(wolfen): use enum
   return library.IsWindowState(flag);
 }
 
 /// Set window configuration state using flags.
 void setWindowState(int flags) {
-  // TODO(wolfen): use enum
   return library.SetWindowState(flags);
 }
 
 /// Clear window configuration state flags.
 void clearWindowState(int flags) {
-  // TODO(wolfen): use enum
   return library.ClearWindowState(flags);
 }
 

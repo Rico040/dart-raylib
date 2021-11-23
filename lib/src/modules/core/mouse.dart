@@ -1,24 +1,26 @@
 import 'package:raylib/raylib.dart';
+import 'package:raylib/src/enums/mouse_button.dart';
+import 'package:raylib/src/enums/mouse_cursor.dart';
 import 'package:raylib/src/library.dart';
 
 /// Check if a mouse button has been pressed once.
-bool isMouseButtonPressed(int button) {
-  return library.IsMouseButtonPressed(button);
+bool isMouseButtonPressed(MouseButton button) {
+  return library.IsMouseButtonPressed(mouseButtonToNative(button));
 }
 
 /// Check if a mouse button is being pressed.
-bool isMouseButtonDown(int button) {
-  return library.IsMouseButtonDown(button);
+bool isMouseButtonDown(MouseButton button) {
+  return library.IsMouseButtonDown(mouseButtonToNative(button));
 }
 
 /// Check if a mouse button has been released once.
-bool isMouseButtonReleased(int button) {
-  return library.IsMouseButtonReleased(button);
+bool isMouseButtonReleased(MouseButton button) {
+  return library.IsMouseButtonReleased(mouseButtonToNative(button));
 }
 
 /// Check if a mouse button is NOT being pressed.
-bool isMouseButtonUp(int button) {
-  return library.IsMouseButtonUp(button);
+bool isMouseButtonUp(MouseButton button) {
+  return library.IsMouseButtonUp(mouseButtonToNative(button));
 }
 
 /// Get mouse position X.
@@ -62,6 +64,6 @@ double getMouseWheelMove() {
 }
 
 /// Set mouse cursor.
-void setMouseCursor(int cursor) {
-  return library.SetMouseCursor(cursor);
+void setMouseCursor(MouseCursor cursor) {
+  return library.SetMouseCursor(mouseCursorToNative(cursor));
 }

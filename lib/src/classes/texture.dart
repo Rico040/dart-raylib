@@ -1,3 +1,5 @@
+import 'package:raylib/raylib.dart';
+import 'package:raylib/src/enums/pixel_format.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
 import 'package:raylib/src/utils/native_type.dart';
 
@@ -19,7 +21,7 @@ class Texture extends NativeClass<raylib.Texture> {
   int get mipmaps => ref.mipmaps;
 
   /// Data format (PixelFormat type).
-  int get format => ref.format;
+  PixelFormat get format => pixelFormatToDart(ref.format);
 }
 
 /// Texture2D, same as Texture

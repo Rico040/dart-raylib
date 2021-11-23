@@ -1,5 +1,6 @@
 import 'package:raylib/raylib.dart';
 import 'package:raylib/src/classes/camera_2d.dart';
+import 'package:raylib/src/enums/blend_mode.dart';
 import 'package:raylib/src/library.dart';
 
 /// Set background color (framebuffer clear color).
@@ -58,9 +59,8 @@ void endShaderMode() {
 }
 
 /// Begin blending mode (alpha, additive, multiplied, subtract, custom).
-void beginBlendMode(int mode) {
-  // TODO(wolfen): use enum
-  return library.BeginBlendMode(mode);
+void beginBlendMode(BlendMode mode) {
+  return library.BeginBlendMode(blendModeToNative(mode));
 }
 
 /// End blending mode (reset to default: alpha blending).

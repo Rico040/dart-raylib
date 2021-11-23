@@ -23,5 +23,17 @@ class NPatchInfo extends NativeClass<raylib.NPatchInfo> {
   int get bottom => ref.bottom;
 
   /// Layout of the n-patch: 3x3, 1x3 or 3x1.
-  int get layout => ref.layout;
+  NPatchLayout get layout {
+    final layout = ref.layout;
+    switch (layout) {
+      case raylib.NPatchLayout.NINE_PATCH:
+        return NPatchLayout.ninePatch;
+      case raylib.NPatchLayout.THREE_PATCH_VERTICAL:
+        return NPatchLayout.threePatchVertical;
+      case raylib.NPatchLayout.THREE_PATCH_HORIZONTAL:
+        return NPatchLayout.threePatchHorizontal;
+      default:
+        throw Exception('Unknown NPatchLayout: $layout');
+    }
+  }
 }
