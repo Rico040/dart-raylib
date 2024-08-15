@@ -81,7 +81,7 @@ class Raylib {
   void InitWindow(
     int width,
     int height,
-    ffi.Pointer<ffi.Int8> title,
+    ffi.Pointer<ffi.Char> title,
   ) {
     return _InitWindow(
       width,
@@ -93,9 +93,9 @@ class Raylib {
   late final _InitWindowPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              ffi.Int32, ffi.Int32, ffi.Pointer<ffi.Int8>)>>('InitWindow');
+              ffi.Int, ffi.Int, ffi.Pointer<ffi.Char>)>>('InitWindow');
   late final _InitWindow = _InitWindowPtr.asFunction<
-      void Function(int, int, ffi.Pointer<ffi.Int8>)>();
+      void Function(int, int, ffi.Pointer<ffi.Char>)>();
 
   void CloseWindow() {
     return _CloseWindow();
@@ -106,88 +106,88 @@ class Raylib {
   late final _CloseWindow = _CloseWindowPtr.asFunction<void Function()>();
 
   bool WindowShouldClose() {
-    return _WindowShouldClose() != 0;
+    return _WindowShouldClose();
   }
 
   late final _WindowShouldClosePtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function()>>('WindowShouldClose');
+      _lookup<ffi.NativeFunction<ffi.Bool Function()>>('WindowShouldClose');
   late final _WindowShouldClose =
-      _WindowShouldClosePtr.asFunction<int Function()>();
+      _WindowShouldClosePtr.asFunction<bool Function()>();
 
   bool IsWindowReady() {
-    return _IsWindowReady() != 0;
+    return _IsWindowReady();
   }
 
   late final _IsWindowReadyPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function()>>('IsWindowReady');
-  late final _IsWindowReady = _IsWindowReadyPtr.asFunction<int Function()>();
+      _lookup<ffi.NativeFunction<ffi.Bool Function()>>('IsWindowReady');
+  late final _IsWindowReady = _IsWindowReadyPtr.asFunction<bool Function()>();
 
   bool IsWindowFullscreen() {
-    return _IsWindowFullscreen() != 0;
+    return _IsWindowFullscreen();
   }
 
   late final _IsWindowFullscreenPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function()>>('IsWindowFullscreen');
+      _lookup<ffi.NativeFunction<ffi.Bool Function()>>('IsWindowFullscreen');
   late final _IsWindowFullscreen =
-      _IsWindowFullscreenPtr.asFunction<int Function()>();
+      _IsWindowFullscreenPtr.asFunction<bool Function()>();
 
   bool IsWindowHidden() {
-    return _IsWindowHidden() != 0;
+    return _IsWindowHidden();
   }
 
   late final _IsWindowHiddenPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function()>>('IsWindowHidden');
-  late final _IsWindowHidden = _IsWindowHiddenPtr.asFunction<int Function()>();
+      _lookup<ffi.NativeFunction<ffi.Bool Function()>>('IsWindowHidden');
+  late final _IsWindowHidden = _IsWindowHiddenPtr.asFunction<bool Function()>();
 
   bool IsWindowMinimized() {
-    return _IsWindowMinimized() != 0;
+    return _IsWindowMinimized();
   }
 
   late final _IsWindowMinimizedPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function()>>('IsWindowMinimized');
+      _lookup<ffi.NativeFunction<ffi.Bool Function()>>('IsWindowMinimized');
   late final _IsWindowMinimized =
-      _IsWindowMinimizedPtr.asFunction<int Function()>();
+      _IsWindowMinimizedPtr.asFunction<bool Function()>();
 
   bool IsWindowMaximized() {
-    return _IsWindowMaximized() != 0;
+    return _IsWindowMaximized();
   }
 
   late final _IsWindowMaximizedPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function()>>('IsWindowMaximized');
+      _lookup<ffi.NativeFunction<ffi.Bool Function()>>('IsWindowMaximized');
   late final _IsWindowMaximized =
-      _IsWindowMaximizedPtr.asFunction<int Function()>();
+      _IsWindowMaximizedPtr.asFunction<bool Function()>();
 
   bool IsWindowFocused() {
-    return _IsWindowFocused() != 0;
+    return _IsWindowFocused();
   }
 
   late final _IsWindowFocusedPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function()>>('IsWindowFocused');
+      _lookup<ffi.NativeFunction<ffi.Bool Function()>>('IsWindowFocused');
   late final _IsWindowFocused =
-      _IsWindowFocusedPtr.asFunction<int Function()>();
+      _IsWindowFocusedPtr.asFunction<bool Function()>();
 
   bool IsWindowResized() {
-    return _IsWindowResized() != 0;
+    return _IsWindowResized();
   }
 
   late final _IsWindowResizedPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function()>>('IsWindowResized');
+      _lookup<ffi.NativeFunction<ffi.Bool Function()>>('IsWindowResized');
   late final _IsWindowResized =
-      _IsWindowResizedPtr.asFunction<int Function()>();
+      _IsWindowResizedPtr.asFunction<bool Function()>();
 
   bool IsWindowState(
     int flag,
   ) {
     return _IsWindowState(
-          flag,
-        ) !=
-        0;
+      flag,
+    );
   }
 
   late final _IsWindowStatePtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Uint32)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.UnsignedInt)>>(
           'IsWindowState');
-  late final _IsWindowState = _IsWindowStatePtr.asFunction<int Function(int)>();
+  late final _IsWindowState =
+      _IsWindowStatePtr.asFunction<bool Function(int)>();
 
   void SetWindowState(
     int flags,
@@ -198,7 +198,7 @@ class Raylib {
   }
 
   late final _SetWindowStatePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Uint32)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.UnsignedInt)>>(
           'SetWindowState');
   late final _SetWindowState =
       _SetWindowStatePtr.asFunction<void Function(int)>();
@@ -212,7 +212,7 @@ class Raylib {
   }
 
   late final _ClearWindowStatePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Uint32)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.UnsignedInt)>>(
           'ClearWindowState');
   late final _ClearWindowState =
       _ClearWindowStatePtr.asFunction<void Function(int)>();
@@ -284,13 +284,13 @@ class Raylib {
   }
 
   late final _SetWindowIconsPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Pointer<Image>, ffi.Int32)>>(
+          ffi.NativeFunction<ffi.Void Function(ffi.Pointer<Image>, ffi.Int)>>(
       'SetWindowIcons');
   late final _SetWindowIcons =
       _SetWindowIconsPtr.asFunction<void Function(ffi.Pointer<Image>, int)>();
 
   void SetWindowTitle(
-    ffi.Pointer<ffi.Int8> title,
+    ffi.Pointer<ffi.Char> title,
   ) {
     return _SetWindowTitle(
       title,
@@ -298,10 +298,10 @@ class Raylib {
   }
 
   late final _SetWindowTitlePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Char>)>>(
           'SetWindowTitle');
   late final _SetWindowTitle =
-      _SetWindowTitlePtr.asFunction<void Function(ffi.Pointer<ffi.Int8>)>();
+      _SetWindowTitlePtr.asFunction<void Function(ffi.Pointer<ffi.Char>)>();
 
   void SetWindowPosition(
     int x,
@@ -314,7 +314,7 @@ class Raylib {
   }
 
   late final _SetWindowPositionPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int, ffi.Int)>>(
           'SetWindowPosition');
   late final _SetWindowPosition =
       _SetWindowPositionPtr.asFunction<void Function(int, int)>();
@@ -328,7 +328,7 @@ class Raylib {
   }
 
   late final _SetWindowMonitorPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int)>>(
           'SetWindowMonitor');
   late final _SetWindowMonitor =
       _SetWindowMonitorPtr.asFunction<void Function(int)>();
@@ -344,7 +344,7 @@ class Raylib {
   }
 
   late final _SetWindowMinSizePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int, ffi.Int)>>(
           'SetWindowMinSize');
   late final _SetWindowMinSize =
       _SetWindowMinSizePtr.asFunction<void Function(int, int)>();
@@ -360,7 +360,7 @@ class Raylib {
   }
 
   late final _SetWindowMaxSizePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int, ffi.Int)>>(
           'SetWindowMaxSize');
   late final _SetWindowMaxSize =
       _SetWindowMaxSizePtr.asFunction<void Function(int, int)>();
@@ -376,7 +376,7 @@ class Raylib {
   }
 
   late final _SetWindowSizePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int, ffi.Int)>>(
           'SetWindowSize');
   late final _SetWindowSize =
       _SetWindowSizePtr.asFunction<void Function(int, int)>();
@@ -419,7 +419,7 @@ class Raylib {
   }
 
   late final _GetScreenWidthPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('GetScreenWidth');
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('GetScreenWidth');
   late final _GetScreenWidth = _GetScreenWidthPtr.asFunction<int Function()>();
 
   int GetScreenHeight() {
@@ -427,7 +427,7 @@ class Raylib {
   }
 
   late final _GetScreenHeightPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('GetScreenHeight');
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('GetScreenHeight');
   late final _GetScreenHeight =
       _GetScreenHeightPtr.asFunction<int Function()>();
 
@@ -436,7 +436,7 @@ class Raylib {
   }
 
   late final _GetRenderWidthPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('GetRenderWidth');
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('GetRenderWidth');
   late final _GetRenderWidth = _GetRenderWidthPtr.asFunction<int Function()>();
 
   int GetRenderHeight() {
@@ -444,7 +444,7 @@ class Raylib {
   }
 
   late final _GetRenderHeightPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('GetRenderHeight');
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('GetRenderHeight');
   late final _GetRenderHeight =
       _GetRenderHeightPtr.asFunction<int Function()>();
 
@@ -453,7 +453,7 @@ class Raylib {
   }
 
   late final _GetMonitorCountPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('GetMonitorCount');
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('GetMonitorCount');
   late final _GetMonitorCount =
       _GetMonitorCountPtr.asFunction<int Function()>();
 
@@ -462,7 +462,7 @@ class Raylib {
   }
 
   late final _GetCurrentMonitorPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('GetCurrentMonitor');
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('GetCurrentMonitor');
   late final _GetCurrentMonitor =
       _GetCurrentMonitorPtr.asFunction<int Function()>();
 
@@ -475,7 +475,7 @@ class Raylib {
   }
 
   late final _GetMonitorPositionPtr =
-      _lookup<ffi.NativeFunction<Vector2 Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<Vector2 Function(ffi.Int)>>(
           'GetMonitorPosition');
   late final _GetMonitorPosition =
       _GetMonitorPositionPtr.asFunction<Vector2 Function(int)>();
@@ -489,8 +489,7 @@ class Raylib {
   }
 
   late final _GetMonitorWidthPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
-          'GetMonitorWidth');
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('GetMonitorWidth');
   late final _GetMonitorWidth =
       _GetMonitorWidthPtr.asFunction<int Function(int)>();
 
@@ -503,7 +502,7 @@ class Raylib {
   }
 
   late final _GetMonitorHeightPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>(
           'GetMonitorHeight');
   late final _GetMonitorHeight =
       _GetMonitorHeightPtr.asFunction<int Function(int)>();
@@ -517,7 +516,7 @@ class Raylib {
   }
 
   late final _GetMonitorPhysicalWidthPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>(
           'GetMonitorPhysicalWidth');
   late final _GetMonitorPhysicalWidth =
       _GetMonitorPhysicalWidthPtr.asFunction<int Function(int)>();
@@ -531,7 +530,7 @@ class Raylib {
   }
 
   late final _GetMonitorPhysicalHeightPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>(
           'GetMonitorPhysicalHeight');
   late final _GetMonitorPhysicalHeight =
       _GetMonitorPhysicalHeightPtr.asFunction<int Function(int)>();
@@ -545,7 +544,7 @@ class Raylib {
   }
 
   late final _GetMonitorRefreshRatePtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>(
           'GetMonitorRefreshRate');
   late final _GetMonitorRefreshRate =
       _GetMonitorRefreshRatePtr.asFunction<int Function(int)>();
@@ -568,7 +567,7 @@ class Raylib {
   late final _GetWindowScaleDPI =
       _GetWindowScaleDPIPtr.asFunction<Vector2 Function()>();
 
-  ffi.Pointer<ffi.Int8> GetMonitorName(
+  ffi.Pointer<ffi.Char> GetMonitorName(
     int monitor,
   ) {
     return _GetMonitorName(
@@ -577,13 +576,13 @@ class Raylib {
   }
 
   late final _GetMonitorNamePtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function(ffi.Int)>>(
           'GetMonitorName');
   late final _GetMonitorName =
-      _GetMonitorNamePtr.asFunction<ffi.Pointer<ffi.Int8> Function(int)>();
+      _GetMonitorNamePtr.asFunction<ffi.Pointer<ffi.Char> Function(int)>();
 
   void SetClipboardText(
-    ffi.Pointer<ffi.Int8> text,
+    ffi.Pointer<ffi.Char> text,
   ) {
     return _SetClipboardText(
       text,
@@ -591,20 +590,20 @@ class Raylib {
   }
 
   late final _SetClipboardTextPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Char>)>>(
           'SetClipboardText');
   late final _SetClipboardText =
-      _SetClipboardTextPtr.asFunction<void Function(ffi.Pointer<ffi.Int8>)>();
+      _SetClipboardTextPtr.asFunction<void Function(ffi.Pointer<ffi.Char>)>();
 
-  ffi.Pointer<ffi.Int8> GetClipboardText() {
+  ffi.Pointer<ffi.Char> GetClipboardText() {
     return _GetClipboardText();
   }
 
   late final _GetClipboardTextPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function()>>(
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function()>>(
           'GetClipboardText');
   late final _GetClipboardText =
-      _GetClipboardTextPtr.asFunction<ffi.Pointer<ffi.Int8> Function()>();
+      _GetClipboardTextPtr.asFunction<ffi.Pointer<ffi.Char> Function()>();
 
   void EnableEventWaiting() {
     return _EnableEventWaiting();
@@ -642,12 +641,12 @@ class Raylib {
   late final _HideCursor = _HideCursorPtr.asFunction<void Function()>();
 
   bool IsCursorHidden() {
-    return _IsCursorHidden() != 0;
+    return _IsCursorHidden();
   }
 
   late final _IsCursorHiddenPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function()>>('IsCursorHidden');
-  late final _IsCursorHidden = _IsCursorHiddenPtr.asFunction<int Function()>();
+      _lookup<ffi.NativeFunction<ffi.Bool Function()>>('IsCursorHidden');
+  late final _IsCursorHidden = _IsCursorHiddenPtr.asFunction<bool Function()>();
 
   void EnableCursor() {
     return _EnableCursor();
@@ -666,13 +665,13 @@ class Raylib {
   late final _DisableCursor = _DisableCursorPtr.asFunction<void Function()>();
 
   bool IsCursorOnScreen() {
-    return _IsCursorOnScreen() != 0;
+    return _IsCursorOnScreen();
   }
 
   late final _IsCursorOnScreenPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function()>>('IsCursorOnScreen');
+      _lookup<ffi.NativeFunction<ffi.Bool Function()>>('IsCursorOnScreen');
   late final _IsCursorOnScreen =
-      _IsCursorOnScreenPtr.asFunction<int Function()>();
+      _IsCursorOnScreenPtr.asFunction<bool Function()>();
 
   /// Drawing-related functions
   void ClearBackground(
@@ -798,8 +797,7 @@ class Raylib {
   }
 
   late final _BeginBlendModePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32)>>(
-          'BeginBlendMode');
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int)>>('BeginBlendMode');
   late final _BeginBlendMode =
       _BeginBlendModePtr.asFunction<void Function(int)>();
 
@@ -828,7 +826,7 @@ class Raylib {
   late final _BeginScissorModePtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              ffi.Int32, ffi.Int32, ffi.Int32, ffi.Int32)>>('BeginScissorMode');
+              ffi.Int, ffi.Int, ffi.Int, ffi.Int)>>('BeginScissorMode');
   late final _BeginScissorMode =
       _BeginScissorModePtr.asFunction<void Function(int, int, int, int)>();
 
@@ -895,8 +893,8 @@ class Raylib {
   /// Shader management functions
   /// NOTE: Shader functionality is not available on OpenGL 1.1
   Shader LoadShader(
-    ffi.Pointer<ffi.Int8> vsFileName,
-    ffi.Pointer<ffi.Int8> fsFileName,
+    ffi.Pointer<ffi.Char> vsFileName,
+    ffi.Pointer<ffi.Char> fsFileName,
   ) {
     return _LoadShader(
       vsFileName,
@@ -907,13 +905,13 @@ class Raylib {
   late final _LoadShaderPtr = _lookup<
       ffi.NativeFunction<
           Shader Function(
-              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>>('LoadShader');
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('LoadShader');
   late final _LoadShader = _LoadShaderPtr.asFunction<
-      Shader Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
+      Shader Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
 
   Shader LoadShaderFromMemory(
-    ffi.Pointer<ffi.Int8> vsCode,
-    ffi.Pointer<ffi.Int8> fsCode,
+    ffi.Pointer<ffi.Char> vsCode,
+    ffi.Pointer<ffi.Char> fsCode,
   ) {
     return _LoadShaderFromMemory(
       vsCode,
@@ -923,28 +921,27 @@ class Raylib {
 
   late final _LoadShaderFromMemoryPtr = _lookup<
       ffi.NativeFunction<
-          Shader Function(ffi.Pointer<ffi.Int8>,
-              ffi.Pointer<ffi.Int8>)>>('LoadShaderFromMemory');
+          Shader Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>)>>('LoadShaderFromMemory');
   late final _LoadShaderFromMemory = _LoadShaderFromMemoryPtr.asFunction<
-      Shader Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
+      Shader Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
 
   bool IsShaderReady(
     Shader shader,
   ) {
     return _IsShaderReady(
-          shader,
-        ) !=
-        0;
+      shader,
+    );
   }
 
   late final _IsShaderReadyPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(Shader)>>('IsShaderReady');
+      _lookup<ffi.NativeFunction<ffi.Bool Function(Shader)>>('IsShaderReady');
   late final _IsShaderReady =
-      _IsShaderReadyPtr.asFunction<int Function(Shader)>();
+      _IsShaderReadyPtr.asFunction<bool Function(Shader)>();
 
   int GetShaderLocation(
     Shader shader,
-    ffi.Pointer<ffi.Int8> uniformName,
+    ffi.Pointer<ffi.Char> uniformName,
   ) {
     return _GetShaderLocation(
       shader,
@@ -953,15 +950,14 @@ class Raylib {
   }
 
   late final _GetShaderLocationPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Int32 Function(Shader, ffi.Pointer<ffi.Int8>)>>(
+          ffi.NativeFunction<ffi.Int Function(Shader, ffi.Pointer<ffi.Char>)>>(
       'GetShaderLocation');
   late final _GetShaderLocation = _GetShaderLocationPtr.asFunction<
-      int Function(Shader, ffi.Pointer<ffi.Int8>)>();
+      int Function(Shader, ffi.Pointer<ffi.Char>)>();
 
   int GetShaderLocationAttrib(
     Shader shader,
-    ffi.Pointer<ffi.Int8> attribName,
+    ffi.Pointer<ffi.Char> attribName,
   ) {
     return _GetShaderLocationAttrib(
       shader,
@@ -970,11 +966,10 @@ class Raylib {
   }
 
   late final _GetShaderLocationAttribPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Int32 Function(Shader, ffi.Pointer<ffi.Int8>)>>(
+          ffi.NativeFunction<ffi.Int Function(Shader, ffi.Pointer<ffi.Char>)>>(
       'GetShaderLocationAttrib');
   late final _GetShaderLocationAttrib = _GetShaderLocationAttribPtr.asFunction<
-      int Function(Shader, ffi.Pointer<ffi.Int8>)>();
+      int Function(Shader, ffi.Pointer<ffi.Char>)>();
 
   void SetShaderValue(
     Shader shader,
@@ -992,8 +987,8 @@ class Raylib {
 
   late final _SetShaderValuePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(Shader, ffi.Int32, ffi.Pointer<ffi.Void>,
-              ffi.Int32)>>('SetShaderValue');
+          ffi.Void Function(Shader, ffi.Int, ffi.Pointer<ffi.Void>,
+              ffi.Int)>>('SetShaderValue');
   late final _SetShaderValue = _SetShaderValuePtr.asFunction<
       void Function(Shader, int, ffi.Pointer<ffi.Void>, int)>();
 
@@ -1015,8 +1010,8 @@ class Raylib {
 
   late final _SetShaderValueVPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(Shader, ffi.Int32, ffi.Pointer<ffi.Void>, ffi.Int32,
-              ffi.Int32)>>('SetShaderValueV');
+          ffi.Void Function(Shader, ffi.Int, ffi.Pointer<ffi.Void>, ffi.Int,
+              ffi.Int)>>('SetShaderValueV');
   late final _SetShaderValueV = _SetShaderValueVPtr.asFunction<
       void Function(Shader, int, ffi.Pointer<ffi.Void>, int, int)>();
 
@@ -1033,7 +1028,7 @@ class Raylib {
   }
 
   late final _SetShaderValueMatrixPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(Shader, ffi.Int32, Matrix)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(Shader, ffi.Int, Matrix)>>(
           'SetShaderValueMatrix');
   late final _SetShaderValueMatrix =
       _SetShaderValueMatrixPtr.asFunction<void Function(Shader, int, Matrix)>();
@@ -1051,7 +1046,7 @@ class Raylib {
   }
 
   late final _SetShaderValueTexturePtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(Shader, ffi.Int32, Texture2D)>>(
+          ffi.NativeFunction<ffi.Void Function(Shader, ffi.Int, Texture2D)>>(
       'SetShaderValueTexture');
   late final _SetShaderValueTexture = _SetShaderValueTexturePtr.asFunction<
       void Function(Shader, int, Texture2D)>();
@@ -1100,8 +1095,7 @@ class Raylib {
   }
 
   late final _GetScreenToWorldRayExPtr = _lookup<
-          ffi
-          .NativeFunction<Ray Function(Vector2, Camera, ffi.Int32, ffi.Int32)>>(
+          ffi.NativeFunction<Ray Function(Vector2, Camera, ffi.Int, ffi.Int)>>(
       'GetScreenToWorldRayEx');
   late final _GetScreenToWorldRayEx = _GetScreenToWorldRayExPtr.asFunction<
       Ray Function(Vector2, Camera, int, int)>();
@@ -1137,9 +1131,9 @@ class Raylib {
   }
 
   late final _GetWorldToScreenExPtr = _lookup<
-      ffi.NativeFunction<
-          Vector2 Function(
-              Vector3, Camera, ffi.Int32, ffi.Int32)>>('GetWorldToScreenEx');
+          ffi
+          .NativeFunction<Vector2 Function(Vector3, Camera, ffi.Int, ffi.Int)>>(
+      'GetWorldToScreenEx');
   late final _GetWorldToScreenEx = _GetWorldToScreenExPtr.asFunction<
       Vector2 Function(Vector3, Camera, int, int)>();
 
@@ -1212,7 +1206,7 @@ class Raylib {
   }
 
   late final _SetTargetFPSPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32)>>('SetTargetFPS');
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int)>>('SetTargetFPS');
   late final _SetTargetFPS = _SetTargetFPSPtr.asFunction<void Function(int)>();
 
   double GetFrameTime() {
@@ -1236,7 +1230,7 @@ class Raylib {
   }
 
   late final _GetFPSPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('GetFPS');
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('GetFPS');
   late final _GetFPS = _GetFPSPtr.asFunction<int Function()>();
 
   /// Custom frame control functions
@@ -1283,7 +1277,7 @@ class Raylib {
   }
 
   late final _SetRandomSeedPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Uint32)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.UnsignedInt)>>(
           'SetRandomSeed');
   late final _SetRandomSeed =
       _SetRandomSeedPtr.asFunction<void Function(int)>();
@@ -1299,12 +1293,12 @@ class Raylib {
   }
 
   late final _GetRandomValuePtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int)>>(
           'GetRandomValue');
   late final _GetRandomValue =
       _GetRandomValuePtr.asFunction<int Function(int, int)>();
 
-  ffi.Pointer<ffi.Int32> LoadRandomSequence(
+  ffi.Pointer<ffi.Int> LoadRandomSequence(
     int count,
     int min,
     int max,
@@ -1318,13 +1312,13 @@ class Raylib {
 
   late final _LoadRandomSequencePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Int32> Function(
-              ffi.Uint32, ffi.Int32, ffi.Int32)>>('LoadRandomSequence');
+          ffi.Pointer<ffi.Int> Function(
+              ffi.UnsignedInt, ffi.Int, ffi.Int)>>('LoadRandomSequence');
   late final _LoadRandomSequence = _LoadRandomSequencePtr.asFunction<
-      ffi.Pointer<ffi.Int32> Function(int, int, int)>();
+      ffi.Pointer<ffi.Int> Function(int, int, int)>();
 
   void UnloadRandomSequence(
-    ffi.Pointer<ffi.Int32> sequence,
+    ffi.Pointer<ffi.Int> sequence,
   ) {
     return _UnloadRandomSequence(
       sequence,
@@ -1332,14 +1326,14 @@ class Raylib {
   }
 
   late final _UnloadRandomSequencePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Int32>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Int>)>>(
           'UnloadRandomSequence');
   late final _UnloadRandomSequence = _UnloadRandomSequencePtr.asFunction<
-      void Function(ffi.Pointer<ffi.Int32>)>();
+      void Function(ffi.Pointer<ffi.Int>)>();
 
   /// Misc. functions
   void TakeScreenshot(
-    ffi.Pointer<ffi.Int8> fileName,
+    ffi.Pointer<ffi.Char> fileName,
   ) {
     return _TakeScreenshot(
       fileName,
@@ -1347,10 +1341,10 @@ class Raylib {
   }
 
   late final _TakeScreenshotPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Char>)>>(
           'TakeScreenshot');
   late final _TakeScreenshot =
-      _TakeScreenshotPtr.asFunction<void Function(ffi.Pointer<ffi.Int8>)>();
+      _TakeScreenshotPtr.asFunction<void Function(ffi.Pointer<ffi.Char>)>();
 
   void SetConfigFlags(
     int flags,
@@ -1361,13 +1355,13 @@ class Raylib {
   }
 
   late final _SetConfigFlagsPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Uint32)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.UnsignedInt)>>(
           'SetConfigFlags');
   late final _SetConfigFlags =
       _SetConfigFlagsPtr.asFunction<void Function(int)>();
 
   void OpenURL(
-    ffi.Pointer<ffi.Int8> url,
+    ffi.Pointer<ffi.Char> url,
   ) {
     return _OpenURL(
       url,
@@ -1375,16 +1369,16 @@ class Raylib {
   }
 
   late final _OpenURLPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Char>)>>(
           'OpenURL');
   late final _OpenURL =
-      _OpenURLPtr.asFunction<void Function(ffi.Pointer<ffi.Int8>)>();
+      _OpenURLPtr.asFunction<void Function(ffi.Pointer<ffi.Char>)>();
 
   /// NOTE: Following functions implemented in module [utils]
   /// ------------------------------------------------------------------
   void TraceLog(
     int logLevel,
-    ffi.Pointer<ffi.Int8> text,
+    ffi.Pointer<ffi.Char> text,
   ) {
     return _TraceLog(
       logLevel,
@@ -1394,9 +1388,9 @@ class Raylib {
 
   late final _TraceLogPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int32, ffi.Pointer<ffi.Int8>)>>('TraceLog');
+          ffi.Void Function(ffi.Int, ffi.Pointer<ffi.Char>)>>('TraceLog');
   late final _TraceLog =
-      _TraceLogPtr.asFunction<void Function(int, ffi.Pointer<ffi.Int8>)>();
+      _TraceLogPtr.asFunction<void Function(int, ffi.Pointer<ffi.Char>)>();
 
   void SetTraceLogLevel(
     int logLevel,
@@ -1407,7 +1401,7 @@ class Raylib {
   }
 
   late final _SetTraceLogLevelPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int)>>(
           'SetTraceLogLevel');
   late final _SetTraceLogLevel =
       _SetTraceLogLevelPtr.asFunction<void Function(int)>();
@@ -1420,9 +1414,9 @@ class Raylib {
     );
   }
 
-  late final _MemAllocPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.Uint32)>>(
-          'MemAlloc');
+  late final _MemAllocPtr = _lookup<
+          ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(ffi.UnsignedInt)>>(
+      'MemAlloc');
   late final _MemAlloc =
       _MemAllocPtr.asFunction<ffi.Pointer<ffi.Void> Function(int)>();
 
@@ -1439,7 +1433,7 @@ class Raylib {
   late final _MemReallocPtr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<ffi.Void> Function(
-              ffi.Pointer<ffi.Void>, ffi.Uint32)>>('MemRealloc');
+              ffi.Pointer<ffi.Void>, ffi.UnsignedInt)>>('MemRealloc');
   late final _MemRealloc = _MemReallocPtr.asFunction<
       ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>, int)>();
 
@@ -1530,9 +1524,9 @@ class Raylib {
       void Function(SaveFileTextCallback)>();
 
   /// Files management functions
-  ffi.Pointer<ffi.Uint8> LoadFileData(
-    ffi.Pointer<ffi.Int8> fileName,
-    ffi.Pointer<ffi.Int32> dataSize,
+  ffi.Pointer<ffi.UnsignedChar> LoadFileData(
+    ffi.Pointer<ffi.Char> fileName,
+    ffi.Pointer<ffi.Int> dataSize,
   ) {
     return _LoadFileData(
       fileName,
@@ -1542,68 +1536,67 @@ class Raylib {
 
   late final _LoadFileDataPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Uint8> Function(
-              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int32>)>>('LoadFileData');
+          ffi.Pointer<ffi.UnsignedChar> Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Int>)>>('LoadFileData');
   late final _LoadFileData = _LoadFileDataPtr.asFunction<
-      ffi.Pointer<ffi.Uint8> Function(
-          ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int32>)>();
+      ffi.Pointer<ffi.UnsignedChar> Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Int>)>();
 
   void UnloadFileData(
-    ffi.Pointer<ffi.Uint8> data,
+    ffi.Pointer<ffi.UnsignedChar> data,
   ) {
     return _UnloadFileData(
       data,
     );
   }
 
-  late final _UnloadFileDataPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Uint8>)>>(
-          'UnloadFileData');
-  late final _UnloadFileData =
-      _UnloadFileDataPtr.asFunction<void Function(ffi.Pointer<ffi.Uint8>)>();
+  late final _UnloadFileDataPtr = _lookup<
+          ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.UnsignedChar>)>>(
+      'UnloadFileData');
+  late final _UnloadFileData = _UnloadFileDataPtr.asFunction<
+      void Function(ffi.Pointer<ffi.UnsignedChar>)>();
 
   bool SaveFileData(
-    ffi.Pointer<ffi.Int8> fileName,
+    ffi.Pointer<ffi.Char> fileName,
     ffi.Pointer<ffi.Void> data,
     int dataSize,
   ) {
     return _SaveFileData(
-          fileName,
-          data,
-          dataSize,
-        ) !=
-        0;
+      fileName,
+      data,
+      dataSize,
+    );
   }
 
   late final _SaveFileDataPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Void>,
-              ffi.Int32)>>('SaveFileData');
+          ffi.Bool Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Void>,
+              ffi.Int)>>('SaveFileData');
   late final _SaveFileData = _SaveFileDataPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Void>, int)>();
+      bool Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Void>, int)>();
 
   bool ExportDataAsCode(
-    ffi.Pointer<ffi.Uint8> data,
+    ffi.Pointer<ffi.UnsignedChar> data,
     int dataSize,
-    ffi.Pointer<ffi.Int8> fileName,
+    ffi.Pointer<ffi.Char> fileName,
   ) {
     return _ExportDataAsCode(
-          data,
-          dataSize,
-          fileName,
-        ) !=
-        0;
+      data,
+      dataSize,
+      fileName,
+    );
   }
 
   late final _ExportDataAsCodePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<ffi.Uint8>, ffi.Int32,
-              ffi.Pointer<ffi.Int8>)>>('ExportDataAsCode');
+          ffi.Bool Function(ffi.Pointer<ffi.UnsignedChar>, ffi.Int,
+              ffi.Pointer<ffi.Char>)>>('ExportDataAsCode');
   late final _ExportDataAsCode = _ExportDataAsCodePtr.asFunction<
-      int Function(ffi.Pointer<ffi.Uint8>, int, ffi.Pointer<ffi.Int8>)>();
+      bool Function(
+          ffi.Pointer<ffi.UnsignedChar>, int, ffi.Pointer<ffi.Char>)>();
 
-  ffi.Pointer<ffi.Int8> LoadFileText(
-    ffi.Pointer<ffi.Int8> fileName,
+  ffi.Pointer<ffi.Char> LoadFileText(
+    ffi.Pointer<ffi.Char> fileName,
   ) {
     return _LoadFileText(
       fileName,
@@ -1612,13 +1605,13 @@ class Raylib {
 
   late final _LoadFileTextPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Int8> Function(
-              ffi.Pointer<ffi.Int8>)>>('LoadFileText');
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>)>>('LoadFileText');
   late final _LoadFileText = _LoadFileTextPtr.asFunction<
-      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>();
+      ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
 
   void UnloadFileText(
-    ffi.Pointer<ffi.Int8> text,
+    ffi.Pointer<ffi.Char> text,
   ) {
     return _UnloadFileText(
       text,
@@ -1626,80 +1619,76 @@ class Raylib {
   }
 
   late final _UnloadFileTextPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Char>)>>(
           'UnloadFileText');
   late final _UnloadFileText =
-      _UnloadFileTextPtr.asFunction<void Function(ffi.Pointer<ffi.Int8>)>();
+      _UnloadFileTextPtr.asFunction<void Function(ffi.Pointer<ffi.Char>)>();
 
   bool SaveFileText(
-    ffi.Pointer<ffi.Int8> fileName,
-    ffi.Pointer<ffi.Int8> text,
+    ffi.Pointer<ffi.Char> fileName,
+    ffi.Pointer<ffi.Char> text,
   ) {
     return _SaveFileText(
-          fileName,
-          text,
-        ) !=
-        0;
+      fileName,
+      text,
+    );
   }
 
   late final _SaveFileTextPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(
-              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>>('SaveFileText');
+          ffi.Bool Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('SaveFileText');
   late final _SaveFileText = _SaveFileTextPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
+      bool Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
 
   /// File system functions
   bool FileExists(
-    ffi.Pointer<ffi.Int8> fileName,
+    ffi.Pointer<ffi.Char> fileName,
   ) {
     return _FileExists(
-          fileName,
-        ) !=
-        0;
+      fileName,
+    );
   }
 
   late final _FileExistsPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Char>)>>(
           'FileExists');
   late final _FileExists =
-      _FileExistsPtr.asFunction<int Function(ffi.Pointer<ffi.Int8>)>();
+      _FileExistsPtr.asFunction<bool Function(ffi.Pointer<ffi.Char>)>();
 
   bool DirectoryExists(
-    ffi.Pointer<ffi.Int8> dirPath,
+    ffi.Pointer<ffi.Char> dirPath,
   ) {
     return _DirectoryExists(
-          dirPath,
-        ) !=
-        0;
+      dirPath,
+    );
   }
 
   late final _DirectoryExistsPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Char>)>>(
           'DirectoryExists');
   late final _DirectoryExists =
-      _DirectoryExistsPtr.asFunction<int Function(ffi.Pointer<ffi.Int8>)>();
+      _DirectoryExistsPtr.asFunction<bool Function(ffi.Pointer<ffi.Char>)>();
 
   bool IsFileExtension(
-    ffi.Pointer<ffi.Int8> fileName,
-    ffi.Pointer<ffi.Int8> ext,
+    ffi.Pointer<ffi.Char> fileName,
+    ffi.Pointer<ffi.Char> ext,
   ) {
     return _IsFileExtension(
-          fileName,
-          ext,
-        ) !=
-        0;
+      fileName,
+      ext,
+    );
   }
 
   late final _IsFileExtensionPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(ffi.Pointer<ffi.Int8>,
-              ffi.Pointer<ffi.Int8>)>>('IsFileExtension');
+          ffi.Bool Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>)>>('IsFileExtension');
   late final _IsFileExtension = _IsFileExtensionPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
+      bool Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
 
   int GetFileLength(
-    ffi.Pointer<ffi.Int8> fileName,
+    ffi.Pointer<ffi.Char> fileName,
   ) {
     return _GetFileLength(
       fileName,
@@ -1707,13 +1696,13 @@ class Raylib {
   }
 
   late final _GetFileLengthPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
           'GetFileLength');
   late final _GetFileLength =
-      _GetFileLengthPtr.asFunction<int Function(ffi.Pointer<ffi.Int8>)>();
+      _GetFileLengthPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
 
-  ffi.Pointer<ffi.Int8> GetFileExtension(
-    ffi.Pointer<ffi.Int8> fileName,
+  ffi.Pointer<ffi.Char> GetFileExtension(
+    ffi.Pointer<ffi.Char> fileName,
   ) {
     return _GetFileExtension(
       fileName,
@@ -1722,13 +1711,13 @@ class Raylib {
 
   late final _GetFileExtensionPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Int8> Function(
-              ffi.Pointer<ffi.Int8>)>>('GetFileExtension');
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>)>>('GetFileExtension');
   late final _GetFileExtension = _GetFileExtensionPtr.asFunction<
-      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>();
+      ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
 
-  ffi.Pointer<ffi.Int8> GetFileName(
-    ffi.Pointer<ffi.Int8> filePath,
+  ffi.Pointer<ffi.Char> GetFileName(
+    ffi.Pointer<ffi.Char> filePath,
   ) {
     return _GetFileName(
       filePath,
@@ -1737,13 +1726,13 @@ class Raylib {
 
   late final _GetFileNamePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Int8> Function(
-              ffi.Pointer<ffi.Int8>)>>('GetFileName');
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>)>>('GetFileName');
   late final _GetFileName = _GetFileNamePtr.asFunction<
-      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>();
+      ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
 
-  ffi.Pointer<ffi.Int8> GetFileNameWithoutExt(
-    ffi.Pointer<ffi.Int8> filePath,
+  ffi.Pointer<ffi.Char> GetFileNameWithoutExt(
+    ffi.Pointer<ffi.Char> filePath,
   ) {
     return _GetFileNameWithoutExt(
       filePath,
@@ -1752,13 +1741,13 @@ class Raylib {
 
   late final _GetFileNameWithoutExtPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Int8> Function(
-              ffi.Pointer<ffi.Int8>)>>('GetFileNameWithoutExt');
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>)>>('GetFileNameWithoutExt');
   late final _GetFileNameWithoutExt = _GetFileNameWithoutExtPtr.asFunction<
-      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>();
+      ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
 
-  ffi.Pointer<ffi.Int8> GetDirectoryPath(
-    ffi.Pointer<ffi.Int8> filePath,
+  ffi.Pointer<ffi.Char> GetDirectoryPath(
+    ffi.Pointer<ffi.Char> filePath,
   ) {
     return _GetDirectoryPath(
       filePath,
@@ -1767,13 +1756,13 @@ class Raylib {
 
   late final _GetDirectoryPathPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Int8> Function(
-              ffi.Pointer<ffi.Int8>)>>('GetDirectoryPath');
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>)>>('GetDirectoryPath');
   late final _GetDirectoryPath = _GetDirectoryPathPtr.asFunction<
-      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>();
+      ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
 
-  ffi.Pointer<ffi.Int8> GetPrevDirectoryPath(
-    ffi.Pointer<ffi.Int8> dirPath,
+  ffi.Pointer<ffi.Char> GetPrevDirectoryPath(
+    ffi.Pointer<ffi.Char> dirPath,
   ) {
     return _GetPrevDirectoryPath(
       dirPath,
@@ -1782,78 +1771,75 @@ class Raylib {
 
   late final _GetPrevDirectoryPathPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Int8> Function(
-              ffi.Pointer<ffi.Int8>)>>('GetPrevDirectoryPath');
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>)>>('GetPrevDirectoryPath');
   late final _GetPrevDirectoryPath = _GetPrevDirectoryPathPtr.asFunction<
-      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>();
+      ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
 
-  ffi.Pointer<ffi.Int8> GetWorkingDirectory() {
+  ffi.Pointer<ffi.Char> GetWorkingDirectory() {
     return _GetWorkingDirectory();
   }
 
   late final _GetWorkingDirectoryPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function()>>(
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function()>>(
           'GetWorkingDirectory');
   late final _GetWorkingDirectory =
-      _GetWorkingDirectoryPtr.asFunction<ffi.Pointer<ffi.Int8> Function()>();
+      _GetWorkingDirectoryPtr.asFunction<ffi.Pointer<ffi.Char> Function()>();
 
-  ffi.Pointer<ffi.Int8> GetApplicationDirectory() {
+  ffi.Pointer<ffi.Char> GetApplicationDirectory() {
     return _GetApplicationDirectory();
   }
 
   late final _GetApplicationDirectoryPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function()>>(
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function()>>(
           'GetApplicationDirectory');
   late final _GetApplicationDirectory = _GetApplicationDirectoryPtr.asFunction<
-      ffi.Pointer<ffi.Int8> Function()>();
+      ffi.Pointer<ffi.Char> Function()>();
 
   bool ChangeDirectory(
-    ffi.Pointer<ffi.Int8> dir,
+    ffi.Pointer<ffi.Char> dir,
   ) {
     return _ChangeDirectory(
-          dir,
-        ) !=
-        0;
+      dir,
+    );
   }
 
   late final _ChangeDirectoryPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Char>)>>(
           'ChangeDirectory');
   late final _ChangeDirectory =
-      _ChangeDirectoryPtr.asFunction<int Function(ffi.Pointer<ffi.Int8>)>();
+      _ChangeDirectoryPtr.asFunction<bool Function(ffi.Pointer<ffi.Char>)>();
 
   bool IsPathFile(
-    ffi.Pointer<ffi.Int8> path,
+    ffi.Pointer<ffi.Char> path,
   ) {
     return _IsPathFile(
-          path,
-        ) !=
-        0;
+      path,
+    );
   }
 
   late final _IsPathFilePtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Char>)>>(
           'IsPathFile');
   late final _IsPathFile =
-      _IsPathFilePtr.asFunction<int Function(ffi.Pointer<ffi.Int8>)>();
+      _IsPathFilePtr.asFunction<bool Function(ffi.Pointer<ffi.Char>)>();
 
   bool IsFileNameValid(
-    ffi.Pointer<ffi.Int8> fileName,
+    ffi.Pointer<ffi.Char> fileName,
   ) {
     return _IsFileNameValid(
-          fileName,
-        ) !=
-        0;
+      fileName,
+    );
   }
 
   late final _IsFileNameValidPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Pointer<ffi.Char>)>>(
           'IsFileNameValid');
   late final _IsFileNameValid =
-      _IsFileNameValidPtr.asFunction<int Function(ffi.Pointer<ffi.Int8>)>();
+      _IsFileNameValidPtr.asFunction<bool Function(ffi.Pointer<ffi.Char>)>();
 
   FilePathList LoadDirectoryFiles(
-    ffi.Pointer<ffi.Int8> dirPath,
+    ffi.Pointer<ffi.Char> dirPath,
   ) {
     return _LoadDirectoryFiles(
       dirPath,
@@ -1861,30 +1847,30 @@ class Raylib {
   }
 
   late final _LoadDirectoryFilesPtr =
-      _lookup<ffi.NativeFunction<FilePathList Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<FilePathList Function(ffi.Pointer<ffi.Char>)>>(
           'LoadDirectoryFiles');
   late final _LoadDirectoryFiles = _LoadDirectoryFilesPtr.asFunction<
-      FilePathList Function(ffi.Pointer<ffi.Int8>)>();
+      FilePathList Function(ffi.Pointer<ffi.Char>)>();
 
   FilePathList LoadDirectoryFilesEx(
-    ffi.Pointer<ffi.Int8> basePath,
-    ffi.Pointer<ffi.Int8> filter,
+    ffi.Pointer<ffi.Char> basePath,
+    ffi.Pointer<ffi.Char> filter,
     bool scanSubdirs,
   ) {
     return _LoadDirectoryFilesEx(
       basePath,
       filter,
-      scanSubdirs ? 1 : 0,
+      scanSubdirs,
     );
   }
 
   late final _LoadDirectoryFilesExPtr = _lookup<
       ffi.NativeFunction<
-          FilePathList Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>,
-              ffi.Uint8)>>('LoadDirectoryFilesEx');
+          FilePathList Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
+              ffi.Bool)>>('LoadDirectoryFilesEx');
   late final _LoadDirectoryFilesEx = _LoadDirectoryFilesExPtr.asFunction<
       FilePathList Function(
-          ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>, int)>();
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, bool)>();
 
   void UnloadDirectoryFiles(
     FilePathList files,
@@ -1901,12 +1887,12 @@ class Raylib {
       _UnloadDirectoryFilesPtr.asFunction<void Function(FilePathList)>();
 
   bool IsFileDropped() {
-    return _IsFileDropped() != 0;
+    return _IsFileDropped();
   }
 
   late final _IsFileDroppedPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function()>>('IsFileDropped');
-  late final _IsFileDropped = _IsFileDroppedPtr.asFunction<int Function()>();
+      _lookup<ffi.NativeFunction<ffi.Bool Function()>>('IsFileDropped');
+  late final _IsFileDropped = _IsFileDroppedPtr.asFunction<bool Function()>();
 
   FilePathList LoadDroppedFiles() {
     return _LoadDroppedFiles();
@@ -1932,7 +1918,7 @@ class Raylib {
       _UnloadDroppedFilesPtr.asFunction<void Function(FilePathList)>();
 
   int GetFileModTime(
-    ffi.Pointer<ffi.Int8> fileName,
+    ffi.Pointer<ffi.Char> fileName,
   ) {
     return _GetFileModTime(
       fileName,
@@ -1940,16 +1926,16 @@ class Raylib {
   }
 
   late final _GetFileModTimePtr =
-      _lookup<ffi.NativeFunction<ffi.Int64 Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<ffi.Long Function(ffi.Pointer<ffi.Char>)>>(
           'GetFileModTime');
   late final _GetFileModTime =
-      _GetFileModTimePtr.asFunction<int Function(ffi.Pointer<ffi.Int8>)>();
+      _GetFileModTimePtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
 
   /// Compression/Encoding functionality
-  ffi.Pointer<ffi.Uint8> CompressData(
-    ffi.Pointer<ffi.Uint8> data,
+  ffi.Pointer<ffi.UnsignedChar> CompressData(
+    ffi.Pointer<ffi.UnsignedChar> data,
     int dataSize,
-    ffi.Pointer<ffi.Int32> compDataSize,
+    ffi.Pointer<ffi.Int> compDataSize,
   ) {
     return _CompressData(
       data,
@@ -1960,16 +1946,16 @@ class Raylib {
 
   late final _CompressDataPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Uint8> Function(ffi.Pointer<ffi.Uint8>, ffi.Int32,
-              ffi.Pointer<ffi.Int32>)>>('CompressData');
+          ffi.Pointer<ffi.UnsignedChar> Function(ffi.Pointer<ffi.UnsignedChar>,
+              ffi.Int, ffi.Pointer<ffi.Int>)>>('CompressData');
   late final _CompressData = _CompressDataPtr.asFunction<
-      ffi.Pointer<ffi.Uint8> Function(
-          ffi.Pointer<ffi.Uint8>, int, ffi.Pointer<ffi.Int32>)>();
+      ffi.Pointer<ffi.UnsignedChar> Function(
+          ffi.Pointer<ffi.UnsignedChar>, int, ffi.Pointer<ffi.Int>)>();
 
-  ffi.Pointer<ffi.Uint8> DecompressData(
-    ffi.Pointer<ffi.Uint8> compData,
+  ffi.Pointer<ffi.UnsignedChar> DecompressData(
+    ffi.Pointer<ffi.UnsignedChar> compData,
     int compDataSize,
-    ffi.Pointer<ffi.Int32> dataSize,
+    ffi.Pointer<ffi.Int> dataSize,
   ) {
     return _DecompressData(
       compData,
@@ -1980,16 +1966,16 @@ class Raylib {
 
   late final _DecompressDataPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Uint8> Function(ffi.Pointer<ffi.Uint8>, ffi.Int32,
-              ffi.Pointer<ffi.Int32>)>>('DecompressData');
+          ffi.Pointer<ffi.UnsignedChar> Function(ffi.Pointer<ffi.UnsignedChar>,
+              ffi.Int, ffi.Pointer<ffi.Int>)>>('DecompressData');
   late final _DecompressData = _DecompressDataPtr.asFunction<
-      ffi.Pointer<ffi.Uint8> Function(
-          ffi.Pointer<ffi.Uint8>, int, ffi.Pointer<ffi.Int32>)>();
+      ffi.Pointer<ffi.UnsignedChar> Function(
+          ffi.Pointer<ffi.UnsignedChar>, int, ffi.Pointer<ffi.Int>)>();
 
-  ffi.Pointer<ffi.Int8> EncodeDataBase64(
-    ffi.Pointer<ffi.Uint8> data,
+  ffi.Pointer<ffi.Char> EncodeDataBase64(
+    ffi.Pointer<ffi.UnsignedChar> data,
     int dataSize,
-    ffi.Pointer<ffi.Int32> outputSize,
+    ffi.Pointer<ffi.Int> outputSize,
   ) {
     return _EncodeDataBase64(
       data,
@@ -2000,15 +1986,15 @@ class Raylib {
 
   late final _EncodeDataBase64Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Uint8>, ffi.Int32,
-              ffi.Pointer<ffi.Int32>)>>('EncodeDataBase64');
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.UnsignedChar>, ffi.Int,
+              ffi.Pointer<ffi.Int>)>>('EncodeDataBase64');
   late final _EncodeDataBase64 = _EncodeDataBase64Ptr.asFunction<
-      ffi.Pointer<ffi.Int8> Function(
-          ffi.Pointer<ffi.Uint8>, int, ffi.Pointer<ffi.Int32>)>();
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<ffi.UnsignedChar>, int, ffi.Pointer<ffi.Int>)>();
 
-  ffi.Pointer<ffi.Uint8> DecodeDataBase64(
-    ffi.Pointer<ffi.Uint8> data,
-    ffi.Pointer<ffi.Int32> outputSize,
+  ffi.Pointer<ffi.UnsignedChar> DecodeDataBase64(
+    ffi.Pointer<ffi.UnsignedChar> data,
+    ffi.Pointer<ffi.Int> outputSize,
   ) {
     return _DecodeDataBase64(
       data,
@@ -2018,15 +2004,15 @@ class Raylib {
 
   late final _DecodeDataBase64Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Uint8> Function(ffi.Pointer<ffi.Uint8>,
-              ffi.Pointer<ffi.Int32>)>>('DecodeDataBase64');
+          ffi.Pointer<ffi.UnsignedChar> Function(ffi.Pointer<ffi.UnsignedChar>,
+              ffi.Pointer<ffi.Int>)>>('DecodeDataBase64');
   late final _DecodeDataBase64 = _DecodeDataBase64Ptr.asFunction<
-      ffi.Pointer<ffi.Uint8> Function(
-          ffi.Pointer<ffi.Uint8>, ffi.Pointer<ffi.Int32>)>();
+      ffi.Pointer<ffi.UnsignedChar> Function(
+          ffi.Pointer<ffi.UnsignedChar>, ffi.Pointer<ffi.Int>)>();
 
   /// Automation events functionality
   AutomationEventList LoadAutomationEventList(
-    ffi.Pointer<ffi.Int8> fileName,
+    ffi.Pointer<ffi.Char> fileName,
   ) {
     return _LoadAutomationEventList(
       fileName,
@@ -2035,10 +2021,10 @@ class Raylib {
 
   late final _LoadAutomationEventListPtr = _lookup<
           ffi
-          .NativeFunction<AutomationEventList Function(ffi.Pointer<ffi.Int8>)>>(
+          .NativeFunction<AutomationEventList Function(ffi.Pointer<ffi.Char>)>>(
       'LoadAutomationEventList');
   late final _LoadAutomationEventList = _LoadAutomationEventListPtr.asFunction<
-      AutomationEventList Function(ffi.Pointer<ffi.Int8>)>();
+      AutomationEventList Function(ffi.Pointer<ffi.Char>)>();
 
   void UnloadAutomationEventList(
     AutomationEventList list,
@@ -2056,21 +2042,20 @@ class Raylib {
 
   bool ExportAutomationEventList(
     AutomationEventList list,
-    ffi.Pointer<ffi.Int8> fileName,
+    ffi.Pointer<ffi.Char> fileName,
   ) {
     return _ExportAutomationEventList(
-          list,
-          fileName,
-        ) !=
-        0;
+      list,
+      fileName,
+    );
   }
 
   late final _ExportAutomationEventListPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(AutomationEventList,
-              ffi.Pointer<ffi.Int8>)>>('ExportAutomationEventList');
+          ffi.Bool Function(AutomationEventList,
+              ffi.Pointer<ffi.Char>)>>('ExportAutomationEventList');
   late final _ExportAutomationEventList = _ExportAutomationEventListPtr
-      .asFunction<int Function(AutomationEventList, ffi.Pointer<ffi.Int8>)>();
+      .asFunction<bool Function(AutomationEventList, ffi.Pointer<ffi.Char>)>();
 
   void SetAutomationEventList(
     ffi.Pointer<AutomationEventList> list,
@@ -2096,7 +2081,7 @@ class Raylib {
   }
 
   late final _SetAutomationEventBaseFramePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int)>>(
           'SetAutomationEventBaseFrame');
   late final _SetAutomationEventBaseFrame =
       _SetAutomationEventBaseFramePtr.asFunction<void Function(int)>();
@@ -2140,77 +2125,71 @@ class Raylib {
     int key,
   ) {
     return _IsKeyPressed(
-          key,
-        ) !=
-        0;
+      key,
+    );
   }
 
   late final _IsKeyPressedPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Int32)>>(
-          'IsKeyPressed');
-  late final _IsKeyPressed = _IsKeyPressedPtr.asFunction<int Function(int)>();
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Int)>>('IsKeyPressed');
+  late final _IsKeyPressed = _IsKeyPressedPtr.asFunction<bool Function(int)>();
 
   bool IsKeyPressedRepeat(
     int key,
   ) {
     return _IsKeyPressedRepeat(
-          key,
-        ) !=
-        0;
+      key,
+    );
   }
 
   late final _IsKeyPressedRepeatPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Int)>>(
           'IsKeyPressedRepeat');
   late final _IsKeyPressedRepeat =
-      _IsKeyPressedRepeatPtr.asFunction<int Function(int)>();
+      _IsKeyPressedRepeatPtr.asFunction<bool Function(int)>();
 
   bool IsKeyDown(
     int key,
   ) {
     return _IsKeyDown(
-          key,
-        ) !=
-        0;
+      key,
+    );
   }
 
   late final _IsKeyDownPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Int32)>>('IsKeyDown');
-  late final _IsKeyDown = _IsKeyDownPtr.asFunction<int Function(int)>();
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Int)>>('IsKeyDown');
+  late final _IsKeyDown = _IsKeyDownPtr.asFunction<bool Function(int)>();
 
   bool IsKeyReleased(
     int key,
   ) {
     return _IsKeyReleased(
-          key,
-        ) !=
-        0;
+      key,
+    );
   }
 
   late final _IsKeyReleasedPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Int32)>>(
-          'IsKeyReleased');
-  late final _IsKeyReleased = _IsKeyReleasedPtr.asFunction<int Function(int)>();
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Int)>>('IsKeyReleased');
+  late final _IsKeyReleased =
+      _IsKeyReleasedPtr.asFunction<bool Function(int)>();
 
   bool IsKeyUp(
     int key,
   ) {
     return _IsKeyUp(
-          key,
-        ) !=
-        0;
+      key,
+    );
   }
 
   late final _IsKeyUpPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Int32)>>('IsKeyUp');
-  late final _IsKeyUp = _IsKeyUpPtr.asFunction<int Function(int)>();
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Int)>>('IsKeyUp');
+  late final _IsKeyUp = _IsKeyUpPtr.asFunction<bool Function(int)>();
 
   int GetKeyPressed() {
     return _GetKeyPressed();
   }
 
   late final _GetKeyPressedPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('GetKeyPressed');
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('GetKeyPressed');
   late final _GetKeyPressed = _GetKeyPressedPtr.asFunction<int Function()>();
 
   int GetCharPressed() {
@@ -2218,7 +2197,7 @@ class Raylib {
   }
 
   late final _GetCharPressedPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('GetCharPressed');
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('GetCharPressed');
   late final _GetCharPressed = _GetCharPressedPtr.asFunction<int Function()>();
 
   void SetExitKey(
@@ -2230,7 +2209,7 @@ class Raylib {
   }
 
   late final _SetExitKeyPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32)>>('SetExitKey');
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int)>>('SetExitKey');
   late final _SetExitKey = _SetExitKeyPtr.asFunction<void Function(int)>();
 
   /// Input-related functions: gamepads
@@ -2238,18 +2217,17 @@ class Raylib {
     int gamepad,
   ) {
     return _IsGamepadAvailable(
-          gamepad,
-        ) !=
-        0;
+      gamepad,
+    );
   }
 
   late final _IsGamepadAvailablePtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Int)>>(
           'IsGamepadAvailable');
   late final _IsGamepadAvailable =
-      _IsGamepadAvailablePtr.asFunction<int Function(int)>();
+      _IsGamepadAvailablePtr.asFunction<bool Function(int)>();
 
-  ffi.Pointer<ffi.Int8> GetGamepadName(
+  ffi.Pointer<ffi.Char> GetGamepadName(
     int gamepad,
   ) {
     return _GetGamepadName(
@@ -2258,85 +2236,81 @@ class Raylib {
   }
 
   late final _GetGamepadNamePtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function(ffi.Int)>>(
           'GetGamepadName');
   late final _GetGamepadName =
-      _GetGamepadNamePtr.asFunction<ffi.Pointer<ffi.Int8> Function(int)>();
+      _GetGamepadNamePtr.asFunction<ffi.Pointer<ffi.Char> Function(int)>();
 
   bool IsGamepadButtonPressed(
     int gamepad,
     int button,
   ) {
     return _IsGamepadButtonPressed(
-          gamepad,
-          button,
-        ) !=
-        0;
+      gamepad,
+      button,
+    );
   }
 
   late final _IsGamepadButtonPressedPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Int32, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Int, ffi.Int)>>(
           'IsGamepadButtonPressed');
   late final _IsGamepadButtonPressed =
-      _IsGamepadButtonPressedPtr.asFunction<int Function(int, int)>();
+      _IsGamepadButtonPressedPtr.asFunction<bool Function(int, int)>();
 
   bool IsGamepadButtonDown(
     int gamepad,
     int button,
   ) {
     return _IsGamepadButtonDown(
-          gamepad,
-          button,
-        ) !=
-        0;
+      gamepad,
+      button,
+    );
   }
 
   late final _IsGamepadButtonDownPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Int32, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Int, ffi.Int)>>(
           'IsGamepadButtonDown');
   late final _IsGamepadButtonDown =
-      _IsGamepadButtonDownPtr.asFunction<int Function(int, int)>();
+      _IsGamepadButtonDownPtr.asFunction<bool Function(int, int)>();
 
   bool IsGamepadButtonReleased(
     int gamepad,
     int button,
   ) {
     return _IsGamepadButtonReleased(
-          gamepad,
-          button,
-        ) !=
-        0;
+      gamepad,
+      button,
+    );
   }
 
   late final _IsGamepadButtonReleasedPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Int32, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Int, ffi.Int)>>(
           'IsGamepadButtonReleased');
   late final _IsGamepadButtonReleased =
-      _IsGamepadButtonReleasedPtr.asFunction<int Function(int, int)>();
+      _IsGamepadButtonReleasedPtr.asFunction<bool Function(int, int)>();
 
   bool IsGamepadButtonUp(
     int gamepad,
     int button,
   ) {
     return _IsGamepadButtonUp(
-          gamepad,
-          button,
-        ) !=
-        0;
+      gamepad,
+      button,
+    );
   }
 
   late final _IsGamepadButtonUpPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Int32, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Int, ffi.Int)>>(
           'IsGamepadButtonUp');
   late final _IsGamepadButtonUp =
-      _IsGamepadButtonUpPtr.asFunction<int Function(int, int)>();
+      _IsGamepadButtonUpPtr.asFunction<bool Function(int, int)>();
 
   int GetGamepadButtonPressed() {
     return _GetGamepadButtonPressed();
   }
 
   late final _GetGamepadButtonPressedPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>(
           'GetGamepadButtonPressed');
   late final _GetGamepadButtonPressed =
       _GetGamepadButtonPressedPtr.asFunction<int Function()>();
@@ -2350,7 +2324,7 @@ class Raylib {
   }
 
   late final _GetGamepadAxisCountPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>(
           'GetGamepadAxisCount');
   late final _GetGamepadAxisCount =
       _GetGamepadAxisCountPtr.asFunction<int Function(int)>();
@@ -2366,13 +2340,13 @@ class Raylib {
   }
 
   late final _GetGamepadAxisMovementPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Int32, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Int, ffi.Int)>>(
           'GetGamepadAxisMovement');
   late final _GetGamepadAxisMovement =
       _GetGamepadAxisMovementPtr.asFunction<double Function(int, int)>();
 
   int SetGamepadMappings(
-    ffi.Pointer<ffi.Int8> mappings,
+    ffi.Pointer<ffi.Char> mappings,
   ) {
     return _SetGamepadMappings(
       mappings,
@@ -2380,10 +2354,10 @@ class Raylib {
   }
 
   late final _SetGamepadMappingsPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
           'SetGamepadMappings');
   late final _SetGamepadMappings =
-      _SetGamepadMappingsPtr.asFunction<int Function(ffi.Pointer<ffi.Int8>)>();
+      _SetGamepadMappingsPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
 
   void SetGamepadVibration(
     int gamepad,
@@ -2398,8 +2372,7 @@ class Raylib {
   }
 
   late final _SetGamepadVibrationPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(ffi.Int32, ffi.Float, ffi.Float)>>(
+          ffi.NativeFunction<ffi.Void Function(ffi.Int, ffi.Float, ffi.Float)>>(
       'SetGamepadVibration');
   late final _SetGamepadVibration =
       _SetGamepadVibrationPtr.asFunction<void Function(int, double, double)>();
@@ -2409,68 +2382,64 @@ class Raylib {
     int button,
   ) {
     return _IsMouseButtonPressed(
-          button,
-        ) !=
-        0;
+      button,
+    );
   }
 
   late final _IsMouseButtonPressedPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Int)>>(
           'IsMouseButtonPressed');
   late final _IsMouseButtonPressed =
-      _IsMouseButtonPressedPtr.asFunction<int Function(int)>();
+      _IsMouseButtonPressedPtr.asFunction<bool Function(int)>();
 
   bool IsMouseButtonDown(
     int button,
   ) {
     return _IsMouseButtonDown(
-          button,
-        ) !=
-        0;
+      button,
+    );
   }
 
   late final _IsMouseButtonDownPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Int)>>(
           'IsMouseButtonDown');
   late final _IsMouseButtonDown =
-      _IsMouseButtonDownPtr.asFunction<int Function(int)>();
+      _IsMouseButtonDownPtr.asFunction<bool Function(int)>();
 
   bool IsMouseButtonReleased(
     int button,
   ) {
     return _IsMouseButtonReleased(
-          button,
-        ) !=
-        0;
+      button,
+    );
   }
 
   late final _IsMouseButtonReleasedPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Int)>>(
           'IsMouseButtonReleased');
   late final _IsMouseButtonReleased =
-      _IsMouseButtonReleasedPtr.asFunction<int Function(int)>();
+      _IsMouseButtonReleasedPtr.asFunction<bool Function(int)>();
 
   bool IsMouseButtonUp(
     int button,
   ) {
     return _IsMouseButtonUp(
-          button,
-        ) !=
-        0;
+      button,
+    );
   }
 
   late final _IsMouseButtonUpPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.Int)>>(
           'IsMouseButtonUp');
   late final _IsMouseButtonUp =
-      _IsMouseButtonUpPtr.asFunction<int Function(int)>();
+      _IsMouseButtonUpPtr.asFunction<bool Function(int)>();
 
   int GetMouseX() {
     return _GetMouseX();
   }
 
   late final _GetMouseXPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('GetMouseX');
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('GetMouseX');
   late final _GetMouseX = _GetMouseXPtr.asFunction<int Function()>();
 
   int GetMouseY() {
@@ -2478,7 +2447,7 @@ class Raylib {
   }
 
   late final _GetMouseYPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('GetMouseY');
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('GetMouseY');
   late final _GetMouseY = _GetMouseYPtr.asFunction<int Function()>();
 
   Vector2 GetMousePosition() {
@@ -2510,7 +2479,7 @@ class Raylib {
   }
 
   late final _SetMousePositionPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int, ffi.Int)>>(
           'SetMousePosition');
   late final _SetMousePosition =
       _SetMousePositionPtr.asFunction<void Function(int, int)>();
@@ -2526,7 +2495,7 @@ class Raylib {
   }
 
   late final _SetMouseOffsetPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int, ffi.Int)>>(
           'SetMouseOffset');
   late final _SetMouseOffset =
       _SetMouseOffsetPtr.asFunction<void Function(int, int)>();
@@ -2574,8 +2543,7 @@ class Raylib {
   }
 
   late final _SetMouseCursorPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32)>>(
-          'SetMouseCursor');
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int)>>('SetMouseCursor');
   late final _SetMouseCursor =
       _SetMouseCursorPtr.asFunction<void Function(int)>();
 
@@ -2585,7 +2553,7 @@ class Raylib {
   }
 
   late final _GetTouchXPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('GetTouchX');
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('GetTouchX');
   late final _GetTouchX = _GetTouchXPtr.asFunction<int Function()>();
 
   int GetTouchY() {
@@ -2593,7 +2561,7 @@ class Raylib {
   }
 
   late final _GetTouchYPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('GetTouchY');
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('GetTouchY');
   late final _GetTouchY = _GetTouchYPtr.asFunction<int Function()>();
 
   Vector2 GetTouchPosition(
@@ -2605,7 +2573,7 @@ class Raylib {
   }
 
   late final _GetTouchPositionPtr =
-      _lookup<ffi.NativeFunction<Vector2 Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<Vector2 Function(ffi.Int)>>(
           'GetTouchPosition');
   late final _GetTouchPosition =
       _GetTouchPositionPtr.asFunction<Vector2 Function(int)>();
@@ -2619,8 +2587,7 @@ class Raylib {
   }
 
   late final _GetTouchPointIdPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Int32)>>(
-          'GetTouchPointId');
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('GetTouchPointId');
   late final _GetTouchPointId =
       _GetTouchPointIdPtr.asFunction<int Function(int)>();
 
@@ -2629,7 +2596,7 @@ class Raylib {
   }
 
   late final _GetTouchPointCountPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('GetTouchPointCount');
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('GetTouchPointCount');
   late final _GetTouchPointCount =
       _GetTouchPointCountPtr.asFunction<int Function()>();
 
@@ -2645,7 +2612,7 @@ class Raylib {
   }
 
   late final _SetGesturesEnabledPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Uint32)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.UnsignedInt)>>(
           'SetGesturesEnabled');
   late final _SetGesturesEnabled =
       _SetGesturesEnabledPtr.asFunction<void Function(int)>();
@@ -2654,23 +2621,22 @@ class Raylib {
     int gesture,
   ) {
     return _IsGestureDetected(
-          gesture,
-        ) !=
-        0;
+      gesture,
+    );
   }
 
   late final _IsGestureDetectedPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(ffi.Uint32)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(ffi.UnsignedInt)>>(
           'IsGestureDetected');
   late final _IsGestureDetected =
-      _IsGestureDetectedPtr.asFunction<int Function(int)>();
+      _IsGestureDetectedPtr.asFunction<bool Function(int)>();
 
   int GetGestureDetected() {
     return _GetGestureDetected();
   }
 
   late final _GetGestureDetectedPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function()>>('GetGestureDetected');
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('GetGestureDetected');
   late final _GetGestureDetected =
       _GetGestureDetectedPtr.asFunction<int Function()>();
 
@@ -2734,8 +2700,8 @@ class Raylib {
   }
 
   late final _UpdateCameraPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<Camera>, ffi.Int32)>>('UpdateCamera');
+          ffi.NativeFunction<ffi.Void Function(ffi.Pointer<Camera>, ffi.Int)>>(
+      'UpdateCamera');
   late final _UpdateCamera =
       _UpdateCameraPtr.asFunction<void Function(ffi.Pointer<Camera>, int)>();
 
@@ -2814,9 +2780,9 @@ class Raylib {
     );
   }
 
-  late final _DrawPixelPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int32, ffi.Int32, Color)>>(
-      'DrawPixel');
+  late final _DrawPixelPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int, ffi.Int, Color)>>(
+          'DrawPixel');
   late final _DrawPixel =
       _DrawPixelPtr.asFunction<void Function(int, int, Color)>();
 
@@ -2855,7 +2821,7 @@ class Raylib {
   late final _DrawLinePtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              ffi.Int32, ffi.Int32, ffi.Int32, ffi.Int32, Color)>>('DrawLine');
+              ffi.Int, ffi.Int, ffi.Int, ffi.Int, Color)>>('DrawLine');
   late final _DrawLine =
       _DrawLinePtr.asFunction<void Function(int, int, int, int, Color)>();
 
@@ -2912,7 +2878,7 @@ class Raylib {
   late final _DrawLineStripPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              ffi.Pointer<Vector2>, ffi.Int32, Color)>>('DrawLineStrip');
+              ffi.Pointer<Vector2>, ffi.Int, Color)>>('DrawLineStrip');
   late final _DrawLineStrip = _DrawLineStripPtr.asFunction<
       void Function(ffi.Pointer<Vector2>, int, Color)>();
 
@@ -2953,8 +2919,7 @@ class Raylib {
 
   late final _DrawCirclePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Int32, ffi.Int32, ffi.Float, Color)>>('DrawCircle');
+          ffi.Void Function(ffi.Int, ffi.Int, ffi.Float, Color)>>('DrawCircle');
   late final _DrawCircle =
       _DrawCirclePtr.asFunction<void Function(int, int, double, Color)>();
 
@@ -2978,7 +2943,7 @@ class Raylib {
 
   late final _DrawCircleSectorPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(Vector2, ffi.Float, ffi.Float, ffi.Float, ffi.Int32,
+          ffi.Void Function(Vector2, ffi.Float, ffi.Float, ffi.Float, ffi.Int,
               Color)>>('DrawCircleSector');
   late final _DrawCircleSector = _DrawCircleSectorPtr.asFunction<
       void Function(Vector2, double, double, double, int, Color)>();
@@ -3003,7 +2968,7 @@ class Raylib {
 
   late final _DrawCircleSectorLinesPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(Vector2, ffi.Float, ffi.Float, ffi.Float, ffi.Int32,
+          ffi.Void Function(Vector2, ffi.Float, ffi.Float, ffi.Float, ffi.Int,
               Color)>>('DrawCircleSectorLines');
   late final _DrawCircleSectorLines = _DrawCircleSectorLinesPtr.asFunction<
       void Function(Vector2, double, double, double, int, Color)>();
@@ -3026,7 +2991,7 @@ class Raylib {
 
   late final _DrawCircleGradientPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int32, ffi.Int32, ffi.Float, Color,
+          ffi.Void Function(ffi.Int, ffi.Int, ffi.Float, Color,
               Color)>>('DrawCircleGradient');
   late final _DrawCircleGradient = _DrawCircleGradientPtr.asFunction<
       void Function(int, int, double, Color, Color)>();
@@ -3066,7 +3031,7 @@ class Raylib {
   late final _DrawCircleLinesPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              ffi.Int32, ffi.Int32, ffi.Float, Color)>>('DrawCircleLines');
+              ffi.Int, ffi.Int, ffi.Float, Color)>>('DrawCircleLines');
   late final _DrawCircleLines =
       _DrawCircleLinesPtr.asFunction<void Function(int, int, double, Color)>();
 
@@ -3106,8 +3071,8 @@ class Raylib {
 
   late final _DrawEllipsePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int32, ffi.Int32, ffi.Float, ffi.Float,
-              Color)>>('DrawEllipse');
+          ffi.Void Function(
+              ffi.Int, ffi.Int, ffi.Float, ffi.Float, Color)>>('DrawEllipse');
   late final _DrawEllipse = _DrawEllipsePtr.asFunction<
       void Function(int, int, double, double, Color)>();
 
@@ -3129,7 +3094,7 @@ class Raylib {
 
   late final _DrawEllipseLinesPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int32, ffi.Int32, ffi.Float, ffi.Float,
+          ffi.Void Function(ffi.Int, ffi.Int, ffi.Float, ffi.Float,
               Color)>>('DrawEllipseLines');
   late final _DrawEllipseLines = _DrawEllipseLinesPtr.asFunction<
       void Function(int, int, double, double, Color)>();
@@ -3157,7 +3122,7 @@ class Raylib {
   late final _DrawRingPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(Vector2, ffi.Float, ffi.Float, ffi.Float, ffi.Float,
-              ffi.Int32, Color)>>('DrawRing');
+              ffi.Int, Color)>>('DrawRing');
   late final _DrawRing = _DrawRingPtr.asFunction<
       void Function(Vector2, double, double, double, double, int, Color)>();
 
@@ -3184,7 +3149,7 @@ class Raylib {
   late final _DrawRingLinesPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(Vector2, ffi.Float, ffi.Float, ffi.Float, ffi.Float,
-              ffi.Int32, Color)>>('DrawRingLines');
+              ffi.Int, Color)>>('DrawRingLines');
   late final _DrawRingLines = _DrawRingLinesPtr.asFunction<
       void Function(Vector2, double, double, double, double, int, Color)>();
 
@@ -3206,8 +3171,8 @@ class Raylib {
 
   late final _DrawRectanglePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int32, ffi.Int32, ffi.Int32, ffi.Int32,
-              Color)>>('DrawRectangle');
+          ffi.Void Function(
+              ffi.Int, ffi.Int, ffi.Int, ffi.Int, Color)>>('DrawRectangle');
   late final _DrawRectangle =
       _DrawRectanglePtr.asFunction<void Function(int, int, int, int, Color)>();
 
@@ -3286,7 +3251,7 @@ class Raylib {
 
   late final _DrawRectangleGradientVPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int32, ffi.Int32, ffi.Int32, ffi.Int32, Color,
+          ffi.Void Function(ffi.Int, ffi.Int, ffi.Int, ffi.Int, Color,
               Color)>>('DrawRectangleGradientV');
   late final _DrawRectangleGradientV = _DrawRectangleGradientVPtr.asFunction<
       void Function(int, int, int, int, Color, Color)>();
@@ -3311,7 +3276,7 @@ class Raylib {
 
   late final _DrawRectangleGradientHPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int32, ffi.Int32, ffi.Int32, ffi.Int32, Color,
+          ffi.Void Function(ffi.Int, ffi.Int, ffi.Int, ffi.Int, Color,
               Color)>>('DrawRectangleGradientH');
   late final _DrawRectangleGradientH = _DrawRectangleGradientHPtr.asFunction<
       void Function(int, int, int, int, Color, Color)>();
@@ -3357,7 +3322,7 @@ class Raylib {
 
   late final _DrawRectangleLinesPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Int32, ffi.Int32, ffi.Int32, ffi.Int32,
+          ffi.Void Function(ffi.Int, ffi.Int, ffi.Int, ffi.Int,
               Color)>>('DrawRectangleLines');
   late final _DrawRectangleLines = _DrawRectangleLinesPtr.asFunction<
       void Function(int, int, int, int, Color)>();
@@ -3397,7 +3362,7 @@ class Raylib {
   late final _DrawRectangleRoundedPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              Rectangle, ffi.Float, ffi.Int32, Color)>>('DrawRectangleRounded');
+              Rectangle, ffi.Float, ffi.Int, Color)>>('DrawRectangleRounded');
   late final _DrawRectangleRounded = _DrawRectangleRoundedPtr.asFunction<
       void Function(Rectangle, double, int, Color)>();
 
@@ -3417,7 +3382,7 @@ class Raylib {
 
   late final _DrawRectangleRoundedLinesPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(Rectangle, ffi.Float, ffi.Int32,
+          ffi.Void Function(Rectangle, ffi.Float, ffi.Int,
               Color)>>('DrawRectangleRoundedLines');
   late final _DrawRectangleRoundedLines = _DrawRectangleRoundedLinesPtr
       .asFunction<void Function(Rectangle, double, int, Color)>();
@@ -3440,7 +3405,7 @@ class Raylib {
 
   late final _DrawRectangleRoundedLinesExPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(Rectangle, ffi.Float, ffi.Int32, ffi.Float,
+          ffi.Void Function(Rectangle, ffi.Float, ffi.Int, ffi.Float,
               Color)>>('DrawRectangleRoundedLinesEx');
   late final _DrawRectangleRoundedLinesEx = _DrawRectangleRoundedLinesExPtr
       .asFunction<void Function(Rectangle, double, int, double, Color)>();
@@ -3501,7 +3466,7 @@ class Raylib {
   late final _DrawTriangleFanPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              ffi.Pointer<Vector2>, ffi.Int32, Color)>>('DrawTriangleFan');
+              ffi.Pointer<Vector2>, ffi.Int, Color)>>('DrawTriangleFan');
   late final _DrawTriangleFan = _DrawTriangleFanPtr.asFunction<
       void Function(ffi.Pointer<Vector2>, int, Color)>();
 
@@ -3520,7 +3485,7 @@ class Raylib {
   late final _DrawTriangleStripPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              ffi.Pointer<Vector2>, ffi.Int32, Color)>>('DrawTriangleStrip');
+              ffi.Pointer<Vector2>, ffi.Int, Color)>>('DrawTriangleStrip');
   late final _DrawTriangleStrip = _DrawTriangleStripPtr.asFunction<
       void Function(ffi.Pointer<Vector2>, int, Color)>();
 
@@ -3543,7 +3508,7 @@ class Raylib {
   late final _DrawPolyPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              Vector2, ffi.Int32, ffi.Float, ffi.Float, Color)>>('DrawPoly');
+              Vector2, ffi.Int, ffi.Float, ffi.Float, Color)>>('DrawPoly');
   late final _DrawPoly = _DrawPolyPtr.asFunction<
       void Function(Vector2, int, double, double, Color)>();
 
@@ -3565,8 +3530,8 @@ class Raylib {
 
   late final _DrawPolyLinesPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(Vector2, ffi.Int32, ffi.Float, ffi.Float,
-              Color)>>('DrawPolyLines');
+          ffi.Void Function(
+              Vector2, ffi.Int, ffi.Float, ffi.Float, Color)>>('DrawPolyLines');
   late final _DrawPolyLines = _DrawPolyLinesPtr.asFunction<
       void Function(Vector2, int, double, double, Color)>();
 
@@ -3590,7 +3555,7 @@ class Raylib {
 
   late final _DrawPolyLinesExPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(Vector2, ffi.Int32, ffi.Float, ffi.Float, ffi.Float,
+          ffi.Void Function(Vector2, ffi.Int, ffi.Float, ffi.Float, ffi.Float,
               Color)>>('DrawPolyLinesEx');
   late final _DrawPolyLinesEx = _DrawPolyLinesExPtr.asFunction<
       void Function(Vector2, int, double, double, double, Color)>();
@@ -3612,7 +3577,7 @@ class Raylib {
 
   late final _DrawSplineLinearPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<Vector2>, ffi.Int32, ffi.Float,
+          ffi.Void Function(ffi.Pointer<Vector2>, ffi.Int, ffi.Float,
               Color)>>('DrawSplineLinear');
   late final _DrawSplineLinear = _DrawSplineLinearPtr.asFunction<
       void Function(ffi.Pointer<Vector2>, int, double, Color)>();
@@ -3633,7 +3598,7 @@ class Raylib {
 
   late final _DrawSplineBasisPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<Vector2>, ffi.Int32, ffi.Float,
+          ffi.Void Function(ffi.Pointer<Vector2>, ffi.Int, ffi.Float,
               Color)>>('DrawSplineBasis');
   late final _DrawSplineBasis = _DrawSplineBasisPtr.asFunction<
       void Function(ffi.Pointer<Vector2>, int, double, Color)>();
@@ -3654,7 +3619,7 @@ class Raylib {
 
   late final _DrawSplineCatmullRomPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<Vector2>, ffi.Int32, ffi.Float,
+          ffi.Void Function(ffi.Pointer<Vector2>, ffi.Int, ffi.Float,
               Color)>>('DrawSplineCatmullRom');
   late final _DrawSplineCatmullRom = _DrawSplineCatmullRomPtr.asFunction<
       void Function(ffi.Pointer<Vector2>, int, double, Color)>();
@@ -3675,7 +3640,7 @@ class Raylib {
 
   late final _DrawSplineBezierQuadraticPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<Vector2>, ffi.Int32, ffi.Float,
+          ffi.Void Function(ffi.Pointer<Vector2>, ffi.Int, ffi.Float,
               Color)>>('DrawSplineBezierQuadratic');
   late final _DrawSplineBezierQuadratic = _DrawSplineBezierQuadraticPtr
       .asFunction<void Function(ffi.Pointer<Vector2>, int, double, Color)>();
@@ -3696,7 +3661,7 @@ class Raylib {
 
   late final _DrawSplineBezierCubicPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<Vector2>, ffi.Int32, ffi.Float,
+          ffi.Void Function(ffi.Pointer<Vector2>, ffi.Int, ffi.Float,
               Color)>>('DrawSplineBezierCubic');
   late final _DrawSplineBezierCubic = _DrawSplineBezierCubicPtr.asFunction<
       void Function(ffi.Pointer<Vector2>, int, double, Color)>();
@@ -3940,17 +3905,16 @@ class Raylib {
     Rectangle rec2,
   ) {
     return _CheckCollisionRecs(
-          rec1,
-          rec2,
-        ) !=
-        0;
+      rec1,
+      rec2,
+    );
   }
 
   late final _CheckCollisionRecsPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(Rectangle, Rectangle)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(Rectangle, Rectangle)>>(
           'CheckCollisionRecs');
   late final _CheckCollisionRecs =
-      _CheckCollisionRecsPtr.asFunction<int Function(Rectangle, Rectangle)>();
+      _CheckCollisionRecsPtr.asFunction<bool Function(Rectangle, Rectangle)>();
 
   bool CheckCollisionCircles(
     Vector2 center1,
@@ -3959,20 +3923,19 @@ class Raylib {
     double radius2,
   ) {
     return _CheckCollisionCircles(
-          center1,
-          radius1,
-          center2,
-          radius2,
-        ) !=
-        0;
+      center1,
+      radius1,
+      center2,
+      radius2,
+    );
   }
 
   late final _CheckCollisionCirclesPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(Vector2, ffi.Float, Vector2,
+          ffi.Bool Function(Vector2, ffi.Float, Vector2,
               ffi.Float)>>('CheckCollisionCircles');
   late final _CheckCollisionCircles = _CheckCollisionCirclesPtr.asFunction<
-      int Function(Vector2, double, Vector2, double)>();
+      bool Function(Vector2, double, Vector2, double)>();
 
   bool CheckCollisionCircleRec(
     Vector2 center,
@@ -3980,36 +3943,33 @@ class Raylib {
     Rectangle rec,
   ) {
     return _CheckCollisionCircleRec(
-          center,
-          radius,
-          rec,
-        ) !=
-        0;
+      center,
+      radius,
+      rec,
+    );
   }
 
   late final _CheckCollisionCircleRecPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Uint8 Function(Vector2, ffi.Float, Rectangle)>>(
+          ffi.NativeFunction<ffi.Bool Function(Vector2, ffi.Float, Rectangle)>>(
       'CheckCollisionCircleRec');
   late final _CheckCollisionCircleRec = _CheckCollisionCircleRecPtr.asFunction<
-      int Function(Vector2, double, Rectangle)>();
+      bool Function(Vector2, double, Rectangle)>();
 
   bool CheckCollisionPointRec(
     Vector2 point,
     Rectangle rec,
   ) {
     return _CheckCollisionPointRec(
-          point,
-          rec,
-        ) !=
-        0;
+      point,
+      rec,
+    );
   }
 
   late final _CheckCollisionPointRecPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(Vector2, Rectangle)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(Vector2, Rectangle)>>(
           'CheckCollisionPointRec');
-  late final _CheckCollisionPointRec =
-      _CheckCollisionPointRecPtr.asFunction<int Function(Vector2, Rectangle)>();
+  late final _CheckCollisionPointRec = _CheckCollisionPointRecPtr.asFunction<
+      bool Function(Vector2, Rectangle)>();
 
   bool CheckCollisionPointCircle(
     Vector2 point,
@@ -4017,18 +3977,17 @@ class Raylib {
     double radius,
   ) {
     return _CheckCollisionPointCircle(
-          point,
-          center,
-          radius,
-        ) !=
-        0;
+      point,
+      center,
+      radius,
+    );
   }
 
   late final _CheckCollisionPointCirclePtr = _lookup<
-          ffi.NativeFunction<ffi.Uint8 Function(Vector2, Vector2, ffi.Float)>>(
+          ffi.NativeFunction<ffi.Bool Function(Vector2, Vector2, ffi.Float)>>(
       'CheckCollisionPointCircle');
   late final _CheckCollisionPointCircle = _CheckCollisionPointCirclePtr
-      .asFunction<int Function(Vector2, Vector2, double)>();
+      .asFunction<bool Function(Vector2, Vector2, double)>();
 
   bool CheckCollisionPointTriangle(
     Vector2 point,
@@ -4037,20 +3996,19 @@ class Raylib {
     Vector2 p3,
   ) {
     return _CheckCollisionPointTriangle(
-          point,
-          p1,
-          p2,
-          p3,
-        ) !=
-        0;
+      point,
+      p1,
+      p2,
+      p3,
+    );
   }
 
   late final _CheckCollisionPointTrianglePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(Vector2, Vector2, Vector2,
+          ffi.Bool Function(Vector2, Vector2, Vector2,
               Vector2)>>('CheckCollisionPointTriangle');
   late final _CheckCollisionPointTriangle = _CheckCollisionPointTrianglePtr
-      .asFunction<int Function(Vector2, Vector2, Vector2, Vector2)>();
+      .asFunction<bool Function(Vector2, Vector2, Vector2, Vector2)>();
 
   bool CheckCollisionPointPoly(
     Vector2 point,
@@ -4058,19 +4016,18 @@ class Raylib {
     int pointCount,
   ) {
     return _CheckCollisionPointPoly(
-          point,
-          points,
-          pointCount,
-        ) !=
-        0;
+      point,
+      points,
+      pointCount,
+    );
   }
 
   late final _CheckCollisionPointPolyPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(Vector2, ffi.Pointer<Vector2>,
-              ffi.Int32)>>('CheckCollisionPointPoly');
+          ffi.Bool Function(Vector2, ffi.Pointer<Vector2>,
+              ffi.Int)>>('CheckCollisionPointPoly');
   late final _CheckCollisionPointPoly = _CheckCollisionPointPolyPtr.asFunction<
-      int Function(Vector2, ffi.Pointer<Vector2>, int)>();
+      bool Function(Vector2, ffi.Pointer<Vector2>, int)>();
 
   bool CheckCollisionLines(
     Vector2 startPos1,
@@ -4080,21 +4037,21 @@ class Raylib {
     ffi.Pointer<Vector2> collisionPoint,
   ) {
     return _CheckCollisionLines(
-          startPos1,
-          endPos1,
-          startPos2,
-          endPos2,
-          collisionPoint,
-        ) !=
-        0;
+      startPos1,
+      endPos1,
+      startPos2,
+      endPos2,
+      collisionPoint,
+    );
   }
 
   late final _CheckCollisionLinesPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(Vector2, Vector2, Vector2, Vector2,
+          ffi.Bool Function(Vector2, Vector2, Vector2, Vector2,
               ffi.Pointer<Vector2>)>>('CheckCollisionLines');
   late final _CheckCollisionLines = _CheckCollisionLinesPtr.asFunction<
-      int Function(Vector2, Vector2, Vector2, Vector2, ffi.Pointer<Vector2>)>();
+      bool Function(
+          Vector2, Vector2, Vector2, Vector2, ffi.Pointer<Vector2>)>();
 
   bool CheckCollisionPointLine(
     Vector2 point,
@@ -4103,20 +4060,19 @@ class Raylib {
     int threshold,
   ) {
     return _CheckCollisionPointLine(
-          point,
-          p1,
-          p2,
-          threshold,
-        ) !=
-        0;
+      point,
+      p1,
+      p2,
+      threshold,
+    );
   }
 
   late final _CheckCollisionPointLinePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(Vector2, Vector2, Vector2,
-              ffi.Int32)>>('CheckCollisionPointLine');
+          ffi.Bool Function(
+              Vector2, Vector2, Vector2, ffi.Int)>>('CheckCollisionPointLine');
   late final _CheckCollisionPointLine = _CheckCollisionPointLinePtr.asFunction<
-      int Function(Vector2, Vector2, Vector2, int)>();
+      bool Function(Vector2, Vector2, Vector2, int)>();
 
   bool CheckCollisionCircleLine(
     Vector2 center,
@@ -4125,20 +4081,19 @@ class Raylib {
     Vector2 p2,
   ) {
     return _CheckCollisionCircleLine(
-          center,
-          radius,
-          p1,
-          p2,
-        ) !=
-        0;
+      center,
+      radius,
+      p1,
+      p2,
+    );
   }
 
   late final _CheckCollisionCircleLinePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(Vector2, ffi.Float, Vector2,
+          ffi.Bool Function(Vector2, ffi.Float, Vector2,
               Vector2)>>('CheckCollisionCircleLine');
   late final _CheckCollisionCircleLine = _CheckCollisionCircleLinePtr
-      .asFunction<int Function(Vector2, double, Vector2, Vector2)>();
+      .asFunction<bool Function(Vector2, double, Vector2, Vector2)>();
 
   Rectangle GetCollisionRec(
     Rectangle rec1,
@@ -4159,7 +4114,7 @@ class Raylib {
   /// Image loading functions
   /// NOTE: These functions do not require GPU access
   Image LoadImage(
-    ffi.Pointer<ffi.Int8> fileName,
+    ffi.Pointer<ffi.Char> fileName,
   ) {
     return _LoadImage(
       fileName,
@@ -4167,13 +4122,13 @@ class Raylib {
   }
 
   late final _LoadImagePtr =
-      _lookup<ffi.NativeFunction<Image Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<Image Function(ffi.Pointer<ffi.Char>)>>(
           'LoadImage');
   late final _LoadImage =
-      _LoadImagePtr.asFunction<Image Function(ffi.Pointer<ffi.Int8>)>();
+      _LoadImagePtr.asFunction<Image Function(ffi.Pointer<ffi.Char>)>();
 
   Image LoadImageRaw(
-    ffi.Pointer<ffi.Int8> fileName,
+    ffi.Pointer<ffi.Char> fileName,
     int width,
     int height,
     int format,
@@ -4190,13 +4145,13 @@ class Raylib {
 
   late final _LoadImageRawPtr = _lookup<
       ffi.NativeFunction<
-          Image Function(ffi.Pointer<ffi.Int8>, ffi.Int32, ffi.Int32, ffi.Int32,
-              ffi.Int32)>>('LoadImageRaw');
+          Image Function(ffi.Pointer<ffi.Char>, ffi.Int, ffi.Int, ffi.Int,
+              ffi.Int)>>('LoadImageRaw');
   late final _LoadImageRaw = _LoadImageRawPtr.asFunction<
-      Image Function(ffi.Pointer<ffi.Int8>, int, int, int, int)>();
+      Image Function(ffi.Pointer<ffi.Char>, int, int, int, int)>();
 
   Image LoadImageSvg(
-    ffi.Pointer<ffi.Int8> fileNameOrString,
+    ffi.Pointer<ffi.Char> fileNameOrString,
     int width,
     int height,
   ) {
@@ -4210,13 +4165,13 @@ class Raylib {
   late final _LoadImageSvgPtr = _lookup<
       ffi.NativeFunction<
           Image Function(
-              ffi.Pointer<ffi.Int8>, ffi.Int32, ffi.Int32)>>('LoadImageSvg');
+              ffi.Pointer<ffi.Char>, ffi.Int, ffi.Int)>>('LoadImageSvg');
   late final _LoadImageSvg = _LoadImageSvgPtr.asFunction<
-      Image Function(ffi.Pointer<ffi.Int8>, int, int)>();
+      Image Function(ffi.Pointer<ffi.Char>, int, int)>();
 
   Image LoadImageAnim(
-    ffi.Pointer<ffi.Int8> fileName,
-    ffi.Pointer<ffi.Int32> frames,
+    ffi.Pointer<ffi.Char> fileName,
+    ffi.Pointer<ffi.Int> frames,
   ) {
     return _LoadImageAnim(
       fileName,
@@ -4227,15 +4182,15 @@ class Raylib {
   late final _LoadImageAnimPtr = _lookup<
       ffi.NativeFunction<
           Image Function(
-              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int32>)>>('LoadImageAnim');
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Int>)>>('LoadImageAnim');
   late final _LoadImageAnim = _LoadImageAnimPtr.asFunction<
-      Image Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int32>)>();
+      Image Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Int>)>();
 
   Image LoadImageAnimFromMemory(
-    ffi.Pointer<ffi.Int8> fileType,
-    ffi.Pointer<ffi.Uint8> fileData,
+    ffi.Pointer<ffi.Char> fileType,
+    ffi.Pointer<ffi.UnsignedChar> fileData,
     int dataSize,
-    ffi.Pointer<ffi.Int32> frames,
+    ffi.Pointer<ffi.Int> frames,
   ) {
     return _LoadImageAnimFromMemory(
       fileType,
@@ -4247,15 +4202,15 @@ class Raylib {
 
   late final _LoadImageAnimFromMemoryPtr = _lookup<
       ffi.NativeFunction<
-          Image Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Uint8>,
-              ffi.Int32, ffi.Pointer<ffi.Int32>)>>('LoadImageAnimFromMemory');
+          Image Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.UnsignedChar>,
+              ffi.Int, ffi.Pointer<ffi.Int>)>>('LoadImageAnimFromMemory');
   late final _LoadImageAnimFromMemory = _LoadImageAnimFromMemoryPtr.asFunction<
-      Image Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Uint8>, int,
-          ffi.Pointer<ffi.Int32>)>();
+      Image Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.UnsignedChar>, int,
+          ffi.Pointer<ffi.Int>)>();
 
   Image LoadImageFromMemory(
-    ffi.Pointer<ffi.Int8> fileType,
-    ffi.Pointer<ffi.Uint8> fileData,
+    ffi.Pointer<ffi.Char> fileType,
+    ffi.Pointer<ffi.UnsignedChar> fileData,
     int dataSize,
   ) {
     return _LoadImageFromMemory(
@@ -4267,10 +4222,11 @@ class Raylib {
 
   late final _LoadImageFromMemoryPtr = _lookup<
       ffi.NativeFunction<
-          Image Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Uint8>,
-              ffi.Int32)>>('LoadImageFromMemory');
+          Image Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.UnsignedChar>,
+              ffi.Int)>>('LoadImageFromMemory');
   late final _LoadImageFromMemory = _LoadImageFromMemoryPtr.asFunction<
-      Image Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Uint8>, int)>();
+      Image Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.UnsignedChar>, int)>();
 
   Image LoadImageFromTexture(
     Texture2D texture,
@@ -4299,14 +4255,14 @@ class Raylib {
     Image image,
   ) {
     return _IsImageReady(
-          image,
-        ) !=
-        0;
+      image,
+    );
   }
 
   late final _IsImageReadyPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(Image)>>('IsImageReady');
-  late final _IsImageReady = _IsImageReadyPtr.asFunction<int Function(Image)>();
+      _lookup<ffi.NativeFunction<ffi.Bool Function(Image)>>('IsImageReady');
+  late final _IsImageReady =
+      _IsImageReadyPtr.asFunction<bool Function(Image)>();
 
   void UnloadImage(
     Image image,
@@ -4322,25 +4278,24 @@ class Raylib {
 
   bool ExportImage(
     Image image,
-    ffi.Pointer<ffi.Int8> fileName,
+    ffi.Pointer<ffi.Char> fileName,
   ) {
     return _ExportImage(
-          image,
-          fileName,
-        ) !=
-        0;
+      image,
+      fileName,
+    );
   }
 
   late final _ExportImagePtr = _lookup<
-          ffi.NativeFunction<ffi.Uint8 Function(Image, ffi.Pointer<ffi.Int8>)>>(
+          ffi.NativeFunction<ffi.Bool Function(Image, ffi.Pointer<ffi.Char>)>>(
       'ExportImage');
   late final _ExportImage =
-      _ExportImagePtr.asFunction<int Function(Image, ffi.Pointer<ffi.Int8>)>();
+      _ExportImagePtr.asFunction<bool Function(Image, ffi.Pointer<ffi.Char>)>();
 
-  ffi.Pointer<ffi.Uint8> ExportImageToMemory(
+  ffi.Pointer<ffi.UnsignedChar> ExportImageToMemory(
     Image image,
-    ffi.Pointer<ffi.Int8> fileType,
-    ffi.Pointer<ffi.Int32> fileSize,
+    ffi.Pointer<ffi.Char> fileType,
+    ffi.Pointer<ffi.Int> fileSize,
   ) {
     return _ExportImageToMemory(
       image,
@@ -4351,28 +4306,27 @@ class Raylib {
 
   late final _ExportImageToMemoryPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Uint8> Function(Image, ffi.Pointer<ffi.Int8>,
-              ffi.Pointer<ffi.Int32>)>>('ExportImageToMemory');
+          ffi.Pointer<ffi.UnsignedChar> Function(Image, ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Int>)>>('ExportImageToMemory');
   late final _ExportImageToMemory = _ExportImageToMemoryPtr.asFunction<
-      ffi.Pointer<ffi.Uint8> Function(
-          Image, ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int32>)>();
+      ffi.Pointer<ffi.UnsignedChar> Function(
+          Image, ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Int>)>();
 
   bool ExportImageAsCode(
     Image image,
-    ffi.Pointer<ffi.Int8> fileName,
+    ffi.Pointer<ffi.Char> fileName,
   ) {
     return _ExportImageAsCode(
-          image,
-          fileName,
-        ) !=
-        0;
+      image,
+      fileName,
+    );
   }
 
   late final _ExportImageAsCodePtr = _lookup<
-          ffi.NativeFunction<ffi.Uint8 Function(Image, ffi.Pointer<ffi.Int8>)>>(
+          ffi.NativeFunction<ffi.Bool Function(Image, ffi.Pointer<ffi.Char>)>>(
       'ExportImageAsCode');
   late final _ExportImageAsCode = _ExportImageAsCodePtr.asFunction<
-      int Function(Image, ffi.Pointer<ffi.Int8>)>();
+      bool Function(Image, ffi.Pointer<ffi.Char>)>();
 
   /// Image generation functions
   Image GenImageColor(
@@ -4388,7 +4342,7 @@ class Raylib {
   }
 
   late final _GenImageColorPtr =
-      _lookup<ffi.NativeFunction<Image Function(ffi.Int32, ffi.Int32, Color)>>(
+      _lookup<ffi.NativeFunction<Image Function(ffi.Int, ffi.Int, Color)>>(
           'GenImageColor');
   late final _GenImageColor =
       _GenImageColorPtr.asFunction<Image Function(int, int, Color)>();
@@ -4411,7 +4365,7 @@ class Raylib {
 
   late final _GenImageGradientLinearPtr = _lookup<
       ffi.NativeFunction<
-          Image Function(ffi.Int32, ffi.Int32, ffi.Int32, Color,
+          Image Function(ffi.Int, ffi.Int, ffi.Int, Color,
               Color)>>('GenImageGradientLinear');
   late final _GenImageGradientLinear = _GenImageGradientLinearPtr.asFunction<
       Image Function(int, int, int, Color, Color)>();
@@ -4434,7 +4388,7 @@ class Raylib {
 
   late final _GenImageGradientRadialPtr = _lookup<
       ffi.NativeFunction<
-          Image Function(ffi.Int32, ffi.Int32, ffi.Float, Color,
+          Image Function(ffi.Int, ffi.Int, ffi.Float, Color,
               Color)>>('GenImageGradientRadial');
   late final _GenImageGradientRadial = _GenImageGradientRadialPtr.asFunction<
       Image Function(int, int, double, Color, Color)>();
@@ -4457,7 +4411,7 @@ class Raylib {
 
   late final _GenImageGradientSquarePtr = _lookup<
       ffi.NativeFunction<
-          Image Function(ffi.Int32, ffi.Int32, ffi.Float, Color,
+          Image Function(ffi.Int, ffi.Int, ffi.Float, Color,
               Color)>>('GenImageGradientSquare');
   late final _GenImageGradientSquare = _GenImageGradientSquarePtr.asFunction<
       Image Function(int, int, double, Color, Color)>();
@@ -4482,7 +4436,7 @@ class Raylib {
 
   late final _GenImageCheckedPtr = _lookup<
       ffi.NativeFunction<
-          Image Function(ffi.Int32, ffi.Int32, ffi.Int32, ffi.Int32, Color,
+          Image Function(ffi.Int, ffi.Int, ffi.Int, ffi.Int, Color,
               Color)>>('GenImageChecked');
   late final _GenImageChecked = _GenImageCheckedPtr.asFunction<
       Image Function(int, int, int, int, Color, Color)>();
@@ -4499,9 +4453,9 @@ class Raylib {
     );
   }
 
-  late final _GenImageWhiteNoisePtr = _lookup<
-          ffi.NativeFunction<Image Function(ffi.Int32, ffi.Int32, ffi.Float)>>(
-      'GenImageWhiteNoise');
+  late final _GenImageWhiteNoisePtr =
+      _lookup<ffi.NativeFunction<Image Function(ffi.Int, ffi.Int, ffi.Float)>>(
+          'GenImageWhiteNoise');
   late final _GenImageWhiteNoise =
       _GenImageWhiteNoisePtr.asFunction<Image Function(int, int, double)>();
 
@@ -4523,7 +4477,7 @@ class Raylib {
 
   late final _GenImagePerlinNoisePtr = _lookup<
       ffi.NativeFunction<
-          Image Function(ffi.Int32, ffi.Int32, ffi.Int32, ffi.Int32,
+          Image Function(ffi.Int, ffi.Int, ffi.Int, ffi.Int,
               ffi.Float)>>('GenImagePerlinNoise');
   late final _GenImagePerlinNoise = _GenImagePerlinNoisePtr.asFunction<
       Image Function(int, int, int, int, double)>();
@@ -4540,16 +4494,16 @@ class Raylib {
     );
   }
 
-  late final _GenImageCellularPtr = _lookup<
-          ffi.NativeFunction<Image Function(ffi.Int32, ffi.Int32, ffi.Int32)>>(
-      'GenImageCellular');
+  late final _GenImageCellularPtr =
+      _lookup<ffi.NativeFunction<Image Function(ffi.Int, ffi.Int, ffi.Int)>>(
+          'GenImageCellular');
   late final _GenImageCellular =
       _GenImageCellularPtr.asFunction<Image Function(int, int, int)>();
 
   Image GenImageText(
     int width,
     int height,
-    ffi.Pointer<ffi.Int8> text,
+    ffi.Pointer<ffi.Char> text,
   ) {
     return _GenImageText(
       width,
@@ -4561,9 +4515,9 @@ class Raylib {
   late final _GenImageTextPtr = _lookup<
       ffi.NativeFunction<
           Image Function(
-              ffi.Int32, ffi.Int32, ffi.Pointer<ffi.Int8>)>>('GenImageText');
+              ffi.Int, ffi.Int, ffi.Pointer<ffi.Char>)>>('GenImageText');
   late final _GenImageText = _GenImageTextPtr.asFunction<
-      Image Function(int, int, ffi.Pointer<ffi.Int8>)>();
+      Image Function(int, int, ffi.Pointer<ffi.Char>)>();
 
   /// Image manipulation functions
   Image ImageCopy(
@@ -4605,13 +4559,13 @@ class Raylib {
   }
 
   late final _ImageFromChannelPtr =
-      _lookup<ffi.NativeFunction<Image Function(Image, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<Image Function(Image, ffi.Int)>>(
           'ImageFromChannel');
   late final _ImageFromChannel =
       _ImageFromChannelPtr.asFunction<Image Function(Image, int)>();
 
   Image ImageText(
-    ffi.Pointer<ffi.Int8> text,
+    ffi.Pointer<ffi.Char> text,
     int fontSize,
     Color color,
   ) {
@@ -4624,14 +4578,13 @@ class Raylib {
 
   late final _ImageTextPtr = _lookup<
       ffi.NativeFunction<
-          Image Function(
-              ffi.Pointer<ffi.Int8>, ffi.Int32, Color)>>('ImageText');
+          Image Function(ffi.Pointer<ffi.Char>, ffi.Int, Color)>>('ImageText');
   late final _ImageText = _ImageTextPtr.asFunction<
-      Image Function(ffi.Pointer<ffi.Int8>, int, Color)>();
+      Image Function(ffi.Pointer<ffi.Char>, int, Color)>();
 
   Image ImageTextEx(
     Font font,
-    ffi.Pointer<ffi.Int8> text,
+    ffi.Pointer<ffi.Char> text,
     double fontSize,
     double spacing,
     Color tint,
@@ -4647,10 +4600,10 @@ class Raylib {
 
   late final _ImageTextExPtr = _lookup<
       ffi.NativeFunction<
-          Image Function(Font, ffi.Pointer<ffi.Int8>, ffi.Float, ffi.Float,
+          Image Function(Font, ffi.Pointer<ffi.Char>, ffi.Float, ffi.Float,
               Color)>>('ImageTextEx');
   late final _ImageTextEx = _ImageTextExPtr.asFunction<
-      Image Function(Font, ffi.Pointer<ffi.Int8>, double, double, Color)>();
+      Image Function(Font, ffi.Pointer<ffi.Char>, double, double, Color)>();
 
   void ImageFormat(
     ffi.Pointer<Image> image,
@@ -4663,7 +4616,7 @@ class Raylib {
   }
 
   late final _ImageFormatPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Pointer<Image>, ffi.Int32)>>(
+          ffi.NativeFunction<ffi.Void Function(ffi.Pointer<Image>, ffi.Int)>>(
       'ImageFormat');
   late final _ImageFormat =
       _ImageFormatPtr.asFunction<void Function(ffi.Pointer<Image>, int)>();
@@ -4776,7 +4729,7 @@ class Raylib {
   }
 
   late final _ImageBlurGaussianPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Pointer<Image>, ffi.Int32)>>(
+          ffi.NativeFunction<ffi.Void Function(ffi.Pointer<Image>, ffi.Int)>>(
       'ImageBlurGaussian');
   late final _ImageBlurGaussian = _ImageBlurGaussianPtr.asFunction<
       void Function(ffi.Pointer<Image>, int)>();
@@ -4796,7 +4749,7 @@ class Raylib {
   late final _ImageKernelConvolutionPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(ffi.Pointer<Image>, ffi.Pointer<ffi.Float>,
-              ffi.Int32)>>('ImageKernelConvolution');
+              ffi.Int)>>('ImageKernelConvolution');
   late final _ImageKernelConvolution = _ImageKernelConvolutionPtr.asFunction<
       void Function(ffi.Pointer<Image>, ffi.Pointer<ffi.Float>, int)>();
 
@@ -4815,7 +4768,7 @@ class Raylib {
   late final _ImageResizePtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              ffi.Pointer<Image>, ffi.Int32, ffi.Int32)>>('ImageResize');
+              ffi.Pointer<Image>, ffi.Int, ffi.Int)>>('ImageResize');
   late final _ImageResize =
       _ImageResizePtr.asFunction<void Function(ffi.Pointer<Image>, int, int)>();
 
@@ -4834,7 +4787,7 @@ class Raylib {
   late final _ImageResizeNNPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              ffi.Pointer<Image>, ffi.Int32, ffi.Int32)>>('ImageResizeNN');
+              ffi.Pointer<Image>, ffi.Int, ffi.Int)>>('ImageResizeNN');
   late final _ImageResizeNN = _ImageResizeNNPtr.asFunction<
       void Function(ffi.Pointer<Image>, int, int)>();
 
@@ -4858,8 +4811,8 @@ class Raylib {
 
   late final _ImageResizeCanvasPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<Image>, ffi.Int32, ffi.Int32, ffi.Int32,
-              ffi.Int32, Color)>>('ImageResizeCanvas');
+          ffi.Void Function(ffi.Pointer<Image>, ffi.Int, ffi.Int, ffi.Int,
+              ffi.Int, Color)>>('ImageResizeCanvas');
   late final _ImageResizeCanvas = _ImageResizeCanvasPtr.asFunction<
       void Function(ffi.Pointer<Image>, int, int, int, int, Color)>();
 
@@ -4895,8 +4848,8 @@ class Raylib {
 
   late final _ImageDitherPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<Image>, ffi.Int32, ffi.Int32, ffi.Int32,
-              ffi.Int32)>>('ImageDither');
+          ffi.Void Function(ffi.Pointer<Image>, ffi.Int, ffi.Int, ffi.Int,
+              ffi.Int)>>('ImageDither');
   late final _ImageDither = _ImageDitherPtr.asFunction<
       void Function(ffi.Pointer<Image>, int, int, int, int)>();
 
@@ -4939,7 +4892,7 @@ class Raylib {
   }
 
   late final _ImageRotatePtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Pointer<Image>, ffi.Int32)>>(
+          ffi.NativeFunction<ffi.Void Function(ffi.Pointer<Image>, ffi.Int)>>(
       'ImageRotate');
   late final _ImageRotate =
       _ImageRotatePtr.asFunction<void Function(ffi.Pointer<Image>, int)>();
@@ -5043,7 +4996,7 @@ class Raylib {
   }
 
   late final _ImageColorBrightnessPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Pointer<Image>, ffi.Int32)>>(
+          ffi.NativeFunction<ffi.Void Function(ffi.Pointer<Image>, ffi.Int)>>(
       'ImageColorBrightness');
   late final _ImageColorBrightness = _ImageColorBrightnessPtr.asFunction<
       void Function(ffi.Pointer<Image>, int)>();
@@ -5084,7 +5037,7 @@ class Raylib {
   ffi.Pointer<Color> LoadImagePalette(
     Image image,
     int maxPaletteSize,
-    ffi.Pointer<ffi.Int32> colorCount,
+    ffi.Pointer<ffi.Int> colorCount,
   ) {
     return _LoadImagePalette(
       image,
@@ -5096,9 +5049,9 @@ class Raylib {
   late final _LoadImagePalettePtr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<Color> Function(
-              Image, ffi.Int32, ffi.Pointer<ffi.Int32>)>>('LoadImagePalette');
+              Image, ffi.Int, ffi.Pointer<ffi.Int>)>>('LoadImagePalette');
   late final _LoadImagePalette = _LoadImagePalettePtr.asFunction<
-      ffi.Pointer<Color> Function(Image, int, ffi.Pointer<ffi.Int32>)>();
+      ffi.Pointer<Color> Function(Image, int, ffi.Pointer<ffi.Int>)>();
 
   void UnloadImageColors(
     ffi.Pointer<Color> colors,
@@ -5157,7 +5110,7 @@ class Raylib {
   }
 
   late final _GetImageColorPtr =
-      _lookup<ffi.NativeFunction<Color Function(Image, ffi.Int32, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<Color Function(Image, ffi.Int, ffi.Int)>>(
           'GetImageColor');
   late final _GetImageColor =
       _GetImageColorPtr.asFunction<Color Function(Image, int, int)>();
@@ -5196,8 +5149,8 @@ class Raylib {
 
   late final _ImageDrawPixelPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<Image>, ffi.Int32, ffi.Int32,
-              Color)>>('ImageDrawPixel');
+          ffi.Void Function(
+              ffi.Pointer<Image>, ffi.Int, ffi.Int, Color)>>('ImageDrawPixel');
   late final _ImageDrawPixel = _ImageDrawPixelPtr.asFunction<
       void Function(ffi.Pointer<Image>, int, int, Color)>();
 
@@ -5240,8 +5193,8 @@ class Raylib {
 
   late final _ImageDrawLinePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<Image>, ffi.Int32, ffi.Int32, ffi.Int32,
-              ffi.Int32, Color)>>('ImageDrawLine');
+          ffi.Void Function(ffi.Pointer<Image>, ffi.Int, ffi.Int, ffi.Int,
+              ffi.Int, Color)>>('ImageDrawLine');
   late final _ImageDrawLine = _ImageDrawLinePtr.asFunction<
       void Function(ffi.Pointer<Image>, int, int, int, int, Color)>();
 
@@ -5284,7 +5237,7 @@ class Raylib {
 
   late final _ImageDrawLineExPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<Image>, Vector2, Vector2, ffi.Int32,
+          ffi.Void Function(ffi.Pointer<Image>, Vector2, Vector2, ffi.Int,
               Color)>>('ImageDrawLineEx');
   late final _ImageDrawLineEx = _ImageDrawLineExPtr.asFunction<
       void Function(ffi.Pointer<Image>, Vector2, Vector2, int, Color)>();
@@ -5307,7 +5260,7 @@ class Raylib {
 
   late final _ImageDrawCirclePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<Image>, ffi.Int32, ffi.Int32, ffi.Int32,
+          ffi.Void Function(ffi.Pointer<Image>, ffi.Int, ffi.Int, ffi.Int,
               Color)>>('ImageDrawCircle');
   late final _ImageDrawCircle = _ImageDrawCirclePtr.asFunction<
       void Function(ffi.Pointer<Image>, int, int, int, Color)>();
@@ -5328,7 +5281,7 @@ class Raylib {
 
   late final _ImageDrawCircleVPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<Image>, Vector2, ffi.Int32,
+          ffi.Void Function(ffi.Pointer<Image>, Vector2, ffi.Int,
               Color)>>('ImageDrawCircleV');
   late final _ImageDrawCircleV = _ImageDrawCircleVPtr.asFunction<
       void Function(ffi.Pointer<Image>, Vector2, int, Color)>();
@@ -5351,7 +5304,7 @@ class Raylib {
 
   late final _ImageDrawCircleLinesPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<Image>, ffi.Int32, ffi.Int32, ffi.Int32,
+          ffi.Void Function(ffi.Pointer<Image>, ffi.Int, ffi.Int, ffi.Int,
               Color)>>('ImageDrawCircleLines');
   late final _ImageDrawCircleLines = _ImageDrawCircleLinesPtr.asFunction<
       void Function(ffi.Pointer<Image>, int, int, int, Color)>();
@@ -5372,7 +5325,7 @@ class Raylib {
 
   late final _ImageDrawCircleLinesVPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<Image>, Vector2, ffi.Int32,
+          ffi.Void Function(ffi.Pointer<Image>, Vector2, ffi.Int,
               Color)>>('ImageDrawCircleLinesV');
   late final _ImageDrawCircleLinesV = _ImageDrawCircleLinesVPtr.asFunction<
       void Function(ffi.Pointer<Image>, Vector2, int, Color)>();
@@ -5397,8 +5350,8 @@ class Raylib {
 
   late final _ImageDrawRectanglePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<Image>, ffi.Int32, ffi.Int32, ffi.Int32,
-              ffi.Int32, Color)>>('ImageDrawRectangle');
+          ffi.Void Function(ffi.Pointer<Image>, ffi.Int, ffi.Int, ffi.Int,
+              ffi.Int, Color)>>('ImageDrawRectangle');
   late final _ImageDrawRectangle = _ImageDrawRectanglePtr.asFunction<
       void Function(ffi.Pointer<Image>, int, int, int, int, Color)>();
 
@@ -5458,7 +5411,7 @@ class Raylib {
 
   late final _ImageDrawRectangleLinesPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<Image>, Rectangle, ffi.Int32,
+          ffi.Void Function(ffi.Pointer<Image>, Rectangle, ffi.Int,
               Color)>>('ImageDrawRectangleLines');
   late final _ImageDrawRectangleLines = _ImageDrawRectangleLinesPtr.asFunction<
       void Function(ffi.Pointer<Image>, Rectangle, int, Color)>();
@@ -5553,7 +5506,7 @@ class Raylib {
 
   late final _ImageDrawTriangleFanPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<Image>, ffi.Pointer<Vector2>, ffi.Int32,
+          ffi.Void Function(ffi.Pointer<Image>, ffi.Pointer<Vector2>, ffi.Int,
               Color)>>('ImageDrawTriangleFan');
   late final _ImageDrawTriangleFan = _ImageDrawTriangleFanPtr.asFunction<
       void Function(ffi.Pointer<Image>, ffi.Pointer<Vector2>, int, Color)>();
@@ -5574,7 +5527,7 @@ class Raylib {
 
   late final _ImageDrawTriangleStripPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<Image>, ffi.Pointer<Vector2>, ffi.Int32,
+          ffi.Void Function(ffi.Pointer<Image>, ffi.Pointer<Vector2>, ffi.Int,
               Color)>>('ImageDrawTriangleStrip');
   late final _ImageDrawTriangleStrip = _ImageDrawTriangleStripPtr.asFunction<
       void Function(ffi.Pointer<Image>, ffi.Pointer<Vector2>, int, Color)>();
@@ -5604,7 +5557,7 @@ class Raylib {
 
   void ImageDrawText(
     ffi.Pointer<Image> dst,
-    ffi.Pointer<ffi.Int8> text,
+    ffi.Pointer<ffi.Char> text,
     int posX,
     int posY,
     int fontSize,
@@ -5622,16 +5575,16 @@ class Raylib {
 
   late final _ImageDrawTextPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<Image>, ffi.Pointer<ffi.Int8>,
-              ffi.Int32, ffi.Int32, ffi.Int32, Color)>>('ImageDrawText');
+          ffi.Void Function(ffi.Pointer<Image>, ffi.Pointer<ffi.Char>, ffi.Int,
+              ffi.Int, ffi.Int, Color)>>('ImageDrawText');
   late final _ImageDrawText = _ImageDrawTextPtr.asFunction<
       void Function(
-          ffi.Pointer<Image>, ffi.Pointer<ffi.Int8>, int, int, int, Color)>();
+          ffi.Pointer<Image>, ffi.Pointer<ffi.Char>, int, int, int, Color)>();
 
   void ImageDrawTextEx(
     ffi.Pointer<Image> dst,
     Font font,
-    ffi.Pointer<ffi.Int8> text,
+    ffi.Pointer<ffi.Char> text,
     Vector2 position,
     double fontSize,
     double spacing,
@@ -5650,16 +5603,16 @@ class Raylib {
 
   late final _ImageDrawTextExPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<Image>, Font, ffi.Pointer<ffi.Int8>,
+          ffi.Void Function(ffi.Pointer<Image>, Font, ffi.Pointer<ffi.Char>,
               Vector2, ffi.Float, ffi.Float, Color)>>('ImageDrawTextEx');
   late final _ImageDrawTextEx = _ImageDrawTextExPtr.asFunction<
-      void Function(ffi.Pointer<Image>, Font, ffi.Pointer<ffi.Int8>, Vector2,
+      void Function(ffi.Pointer<Image>, Font, ffi.Pointer<ffi.Char>, Vector2,
           double, double, Color)>();
 
   /// Texture loading functions
   /// NOTE: These functions require GPU access
   Texture2D LoadTexture(
-    ffi.Pointer<ffi.Int8> fileName,
+    ffi.Pointer<ffi.Char> fileName,
   ) {
     return _LoadTexture(
       fileName,
@@ -5667,10 +5620,10 @@ class Raylib {
   }
 
   late final _LoadTexturePtr =
-      _lookup<ffi.NativeFunction<Texture2D Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<Texture2D Function(ffi.Pointer<ffi.Char>)>>(
           'LoadTexture');
   late final _LoadTexture =
-      _LoadTexturePtr.asFunction<Texture2D Function(ffi.Pointer<ffi.Int8>)>();
+      _LoadTexturePtr.asFunction<Texture2D Function(ffi.Pointer<ffi.Char>)>();
 
   Texture2D LoadTextureFromImage(
     Image image,
@@ -5697,7 +5650,7 @@ class Raylib {
   }
 
   late final _LoadTextureCubemapPtr =
-      _lookup<ffi.NativeFunction<TextureCubemap Function(Image, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<TextureCubemap Function(Image, ffi.Int)>>(
           'LoadTextureCubemap');
   late final _LoadTextureCubemap =
       _LoadTextureCubemapPtr.asFunction<TextureCubemap Function(Image, int)>();
@@ -5712,9 +5665,9 @@ class Raylib {
     );
   }
 
-  late final _LoadRenderTexturePtr = _lookup<
-          ffi.NativeFunction<RenderTexture2D Function(ffi.Int32, ffi.Int32)>>(
-      'LoadRenderTexture');
+  late final _LoadRenderTexturePtr =
+      _lookup<ffi.NativeFunction<RenderTexture2D Function(ffi.Int, ffi.Int)>>(
+          'LoadRenderTexture');
   late final _LoadRenderTexture =
       _LoadRenderTexturePtr.asFunction<RenderTexture2D Function(int, int)>();
 
@@ -5722,16 +5675,15 @@ class Raylib {
     Texture2D texture,
   ) {
     return _IsTextureReady(
-          texture,
-        ) !=
-        0;
+      texture,
+    );
   }
 
   late final _IsTextureReadyPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(Texture2D)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(Texture2D)>>(
           'IsTextureReady');
   late final _IsTextureReady =
-      _IsTextureReadyPtr.asFunction<int Function(Texture2D)>();
+      _IsTextureReadyPtr.asFunction<bool Function(Texture2D)>();
 
   void UnloadTexture(
     Texture2D texture,
@@ -5751,16 +5703,15 @@ class Raylib {
     RenderTexture2D target,
   ) {
     return _IsRenderTextureReady(
-          target,
-        ) !=
-        0;
+      target,
+    );
   }
 
   late final _IsRenderTextureReadyPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(RenderTexture2D)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(RenderTexture2D)>>(
           'IsRenderTextureReady');
   late final _IsRenderTextureReady =
-      _IsRenderTextureReadyPtr.asFunction<int Function(RenderTexture2D)>();
+      _IsRenderTextureReadyPtr.asFunction<bool Function(RenderTexture2D)>();
 
   void UnloadRenderTexture(
     RenderTexture2D target,
@@ -5838,7 +5789,7 @@ class Raylib {
   }
 
   late final _SetTextureFilterPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(Texture2D, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(Texture2D, ffi.Int)>>(
           'SetTextureFilter');
   late final _SetTextureFilter =
       _SetTextureFilterPtr.asFunction<void Function(Texture2D, int)>();
@@ -5854,7 +5805,7 @@ class Raylib {
   }
 
   late final _SetTextureWrapPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(Texture2D, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(Texture2D, ffi.Int)>>(
           'SetTextureWrap');
   late final _SetTextureWrap =
       _SetTextureWrapPtr.asFunction<void Function(Texture2D, int)>();
@@ -5877,7 +5828,7 @@ class Raylib {
   late final _DrawTexturePtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              Texture2D, ffi.Int32, ffi.Int32, Color)>>('DrawTexture');
+              Texture2D, ffi.Int, ffi.Int, Color)>>('DrawTexture');
   late final _DrawTexture =
       _DrawTexturePtr.asFunction<void Function(Texture2D, int, int, Color)>();
 
@@ -6000,17 +5951,16 @@ class Raylib {
     Color col2,
   ) {
     return _ColorIsEqual(
-          col1,
-          col2,
-        ) !=
-        0;
+      col1,
+      col2,
+    );
   }
 
   late final _ColorIsEqualPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(Color, Color)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(Color, Color)>>(
           'ColorIsEqual');
   late final _ColorIsEqual =
-      _ColorIsEqualPtr.asFunction<int Function(Color, Color)>();
+      _ColorIsEqualPtr.asFunction<bool Function(Color, Color)>();
 
   Color Fade(
     Color color,
@@ -6035,7 +5985,7 @@ class Raylib {
   }
 
   late final _ColorToIntPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(Color)>>('ColorToInt');
+      _lookup<ffi.NativeFunction<ffi.Int Function(Color)>>('ColorToInt');
   late final _ColorToInt = _ColorToIntPtr.asFunction<int Function(Color)>();
 
   Vector4 ColorNormalize(
@@ -6185,7 +6135,7 @@ class Raylib {
   }
 
   late final _GetColorPtr =
-      _lookup<ffi.NativeFunction<Color Function(ffi.Uint32)>>('GetColor');
+      _lookup<ffi.NativeFunction<Color Function(ffi.UnsignedInt)>>('GetColor');
   late final _GetColor = _GetColorPtr.asFunction<Color Function(int)>();
 
   Color GetPixelColor(
@@ -6199,7 +6149,7 @@ class Raylib {
   }
 
   late final _GetPixelColorPtr = _lookup<
-          ffi.NativeFunction<Color Function(ffi.Pointer<ffi.Void>, ffi.Int32)>>(
+          ffi.NativeFunction<Color Function(ffi.Pointer<ffi.Void>, ffi.Int)>>(
       'GetPixelColor');
   late final _GetPixelColor = _GetPixelColorPtr.asFunction<
       Color Function(ffi.Pointer<ffi.Void>, int)>();
@@ -6219,7 +6169,7 @@ class Raylib {
   late final _SetPixelColorPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              ffi.Pointer<ffi.Void>, Color, ffi.Int32)>>('SetPixelColor');
+              ffi.Pointer<ffi.Void>, Color, ffi.Int)>>('SetPixelColor');
   late final _SetPixelColor = _SetPixelColorPtr.asFunction<
       void Function(ffi.Pointer<ffi.Void>, Color, int)>();
 
@@ -6235,10 +6185,9 @@ class Raylib {
     );
   }
 
-  late final _GetPixelDataSizePtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Int32 Function(ffi.Int32, ffi.Int32, ffi.Int32)>>(
-      'GetPixelDataSize');
+  late final _GetPixelDataSizePtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int, ffi.Int, ffi.Int)>>(
+          'GetPixelDataSize');
   late final _GetPixelDataSize =
       _GetPixelDataSizePtr.asFunction<int Function(int, int, int)>();
 
@@ -6252,7 +6201,7 @@ class Raylib {
   late final _GetFontDefault = _GetFontDefaultPtr.asFunction<Font Function()>();
 
   Font LoadFont(
-    ffi.Pointer<ffi.Int8> fileName,
+    ffi.Pointer<ffi.Char> fileName,
   ) {
     return _LoadFont(
       fileName,
@@ -6260,15 +6209,15 @@ class Raylib {
   }
 
   late final _LoadFontPtr =
-      _lookup<ffi.NativeFunction<Font Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<Font Function(ffi.Pointer<ffi.Char>)>>(
           'LoadFont');
   late final _LoadFont =
-      _LoadFontPtr.asFunction<Font Function(ffi.Pointer<ffi.Int8>)>();
+      _LoadFontPtr.asFunction<Font Function(ffi.Pointer<ffi.Char>)>();
 
   Font LoadFontEx(
-    ffi.Pointer<ffi.Int8> fileName,
+    ffi.Pointer<ffi.Char> fileName,
     int fontSize,
-    ffi.Pointer<ffi.Int32> codepoints,
+    ffi.Pointer<ffi.Int> codepoints,
     int codepointCount,
   ) {
     return _LoadFontEx(
@@ -6281,10 +6230,10 @@ class Raylib {
 
   late final _LoadFontExPtr = _lookup<
       ffi.NativeFunction<
-          Font Function(ffi.Pointer<ffi.Int8>, ffi.Int32,
-              ffi.Pointer<ffi.Int32>, ffi.Int32)>>('LoadFontEx');
+          Font Function(ffi.Pointer<ffi.Char>, ffi.Int, ffi.Pointer<ffi.Int>,
+              ffi.Int)>>('LoadFontEx');
   late final _LoadFontEx = _LoadFontExPtr.asFunction<
-      Font Function(ffi.Pointer<ffi.Int8>, int, ffi.Pointer<ffi.Int32>, int)>();
+      Font Function(ffi.Pointer<ffi.Char>, int, ffi.Pointer<ffi.Int>, int)>();
 
   Font LoadFontFromImage(
     Image image,
@@ -6299,17 +6248,17 @@ class Raylib {
   }
 
   late final _LoadFontFromImagePtr =
-      _lookup<ffi.NativeFunction<Font Function(Image, Color, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<Font Function(Image, Color, ffi.Int)>>(
           'LoadFontFromImage');
   late final _LoadFontFromImage =
       _LoadFontFromImagePtr.asFunction<Font Function(Image, Color, int)>();
 
   Font LoadFontFromMemory(
-    ffi.Pointer<ffi.Int8> fileType,
-    ffi.Pointer<ffi.Uint8> fileData,
+    ffi.Pointer<ffi.Char> fileType,
+    ffi.Pointer<ffi.UnsignedChar> fileData,
     int dataSize,
     int fontSize,
-    ffi.Pointer<ffi.Int32> codepoints,
+    ffi.Pointer<ffi.Int> codepoints,
     int codepointCount,
   ) {
     return _LoadFontFromMemory(
@@ -6325,34 +6274,33 @@ class Raylib {
   late final _LoadFontFromMemoryPtr = _lookup<
       ffi.NativeFunction<
           Font Function(
-              ffi.Pointer<ffi.Int8>,
-              ffi.Pointer<ffi.Uint8>,
-              ffi.Int32,
-              ffi.Int32,
-              ffi.Pointer<ffi.Int32>,
-              ffi.Int32)>>('LoadFontFromMemory');
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.UnsignedChar>,
+              ffi.Int,
+              ffi.Int,
+              ffi.Pointer<ffi.Int>,
+              ffi.Int)>>('LoadFontFromMemory');
   late final _LoadFontFromMemory = _LoadFontFromMemoryPtr.asFunction<
-      Font Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Uint8>, int, int,
-          ffi.Pointer<ffi.Int32>, int)>();
+      Font Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.UnsignedChar>, int,
+          int, ffi.Pointer<ffi.Int>, int)>();
 
   bool IsFontReady(
     Font font,
   ) {
     return _IsFontReady(
-          font,
-        ) !=
-        0;
+      font,
+    );
   }
 
   late final _IsFontReadyPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(Font)>>('IsFontReady');
-  late final _IsFontReady = _IsFontReadyPtr.asFunction<int Function(Font)>();
+      _lookup<ffi.NativeFunction<ffi.Bool Function(Font)>>('IsFontReady');
+  late final _IsFontReady = _IsFontReadyPtr.asFunction<bool Function(Font)>();
 
   ffi.Pointer<GlyphInfo> LoadFontData(
-    ffi.Pointer<ffi.Uint8> fileData,
+    ffi.Pointer<ffi.UnsignedChar> fileData,
     int dataSize,
     int fontSize,
-    ffi.Pointer<ffi.Int32> codepoints,
+    ffi.Pointer<ffi.Int> codepoints,
     int codepointCount,
     int type,
   ) {
@@ -6369,15 +6317,15 @@ class Raylib {
   late final _LoadFontDataPtr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<GlyphInfo> Function(
-              ffi.Pointer<ffi.Uint8>,
-              ffi.Int32,
-              ffi.Int32,
-              ffi.Pointer<ffi.Int32>,
-              ffi.Int32,
-              ffi.Int32)>>('LoadFontData');
+              ffi.Pointer<ffi.UnsignedChar>,
+              ffi.Int,
+              ffi.Int,
+              ffi.Pointer<ffi.Int>,
+              ffi.Int,
+              ffi.Int)>>('LoadFontData');
   late final _LoadFontData = _LoadFontDataPtr.asFunction<
-      ffi.Pointer<GlyphInfo> Function(ffi.Pointer<ffi.Uint8>, int, int,
-          ffi.Pointer<ffi.Int32>, int, int)>();
+      ffi.Pointer<GlyphInfo> Function(ffi.Pointer<ffi.UnsignedChar>, int, int,
+          ffi.Pointer<ffi.Int>, int, int)>();
 
   Image GenImageFontAtlas(
     ffi.Pointer<GlyphInfo> glyphs,
@@ -6402,10 +6350,10 @@ class Raylib {
           Image Function(
               ffi.Pointer<GlyphInfo>,
               ffi.Pointer<ffi.Pointer<Rectangle>>,
-              ffi.Int32,
-              ffi.Int32,
-              ffi.Int32,
-              ffi.Int32)>>('GenImageFontAtlas');
+              ffi.Int,
+              ffi.Int,
+              ffi.Int,
+              ffi.Int)>>('GenImageFontAtlas');
   late final _GenImageFontAtlas = _GenImageFontAtlasPtr.asFunction<
       Image Function(ffi.Pointer<GlyphInfo>,
           ffi.Pointer<ffi.Pointer<Rectangle>>, int, int, int, int)>();
@@ -6421,9 +6369,9 @@ class Raylib {
   }
 
   late final _UnloadFontDataPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Pointer<GlyphInfo>, ffi.Int32)>>('UnloadFontData');
+          ffi
+          .NativeFunction<ffi.Void Function(ffi.Pointer<GlyphInfo>, ffi.Int)>>(
+      'UnloadFontData');
   late final _UnloadFontData = _UnloadFontDataPtr.asFunction<
       void Function(ffi.Pointer<GlyphInfo>, int)>();
 
@@ -6441,20 +6389,19 @@ class Raylib {
 
   bool ExportFontAsCode(
     Font font,
-    ffi.Pointer<ffi.Int8> fileName,
+    ffi.Pointer<ffi.Char> fileName,
   ) {
     return _ExportFontAsCode(
-          font,
-          fileName,
-        ) !=
-        0;
+      font,
+      fileName,
+    );
   }
 
   late final _ExportFontAsCodePtr = _lookup<
-          ffi.NativeFunction<ffi.Uint8 Function(Font, ffi.Pointer<ffi.Int8>)>>(
+          ffi.NativeFunction<ffi.Bool Function(Font, ffi.Pointer<ffi.Char>)>>(
       'ExportFontAsCode');
   late final _ExportFontAsCode = _ExportFontAsCodePtr.asFunction<
-      int Function(Font, ffi.Pointer<ffi.Int8>)>();
+      bool Function(Font, ffi.Pointer<ffi.Char>)>();
 
   /// Text drawing functions
   void DrawFPS(
@@ -6468,12 +6415,12 @@ class Raylib {
   }
 
   late final _DrawFPSPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int, ffi.Int)>>(
           'DrawFPS');
   late final _DrawFPS = _DrawFPSPtr.asFunction<void Function(int, int)>();
 
   void DrawText(
-    ffi.Pointer<ffi.Int8> text,
+    ffi.Pointer<ffi.Char> text,
     int posX,
     int posY,
     int fontSize,
@@ -6490,14 +6437,14 @@ class Raylib {
 
   late final _DrawTextPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<ffi.Int8>, ffi.Int32, ffi.Int32,
-              ffi.Int32, Color)>>('DrawText');
+          ffi.Void Function(ffi.Pointer<ffi.Char>, ffi.Int, ffi.Int, ffi.Int,
+              Color)>>('DrawText');
   late final _DrawText = _DrawTextPtr.asFunction<
-      void Function(ffi.Pointer<ffi.Int8>, int, int, int, Color)>();
+      void Function(ffi.Pointer<ffi.Char>, int, int, int, Color)>();
 
   void DrawTextEx(
     Font font,
-    ffi.Pointer<ffi.Int8> text,
+    ffi.Pointer<ffi.Char> text,
     Vector2 position,
     double fontSize,
     double spacing,
@@ -6515,15 +6462,15 @@ class Raylib {
 
   late final _DrawTextExPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(Font, ffi.Pointer<ffi.Int8>, Vector2, ffi.Float,
+          ffi.Void Function(Font, ffi.Pointer<ffi.Char>, Vector2, ffi.Float,
               ffi.Float, Color)>>('DrawTextEx');
   late final _DrawTextEx = _DrawTextExPtr.asFunction<
       void Function(
-          Font, ffi.Pointer<ffi.Int8>, Vector2, double, double, Color)>();
+          Font, ffi.Pointer<ffi.Char>, Vector2, double, double, Color)>();
 
   void DrawTextPro(
     Font font,
-    ffi.Pointer<ffi.Int8> text,
+    ffi.Pointer<ffi.Char> text,
     Vector2 position,
     Vector2 origin,
     double rotation,
@@ -6545,10 +6492,10 @@ class Raylib {
 
   late final _DrawTextProPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(Font, ffi.Pointer<ffi.Int8>, Vector2, Vector2,
+          ffi.Void Function(Font, ffi.Pointer<ffi.Char>, Vector2, Vector2,
               ffi.Float, ffi.Float, ffi.Float, Color)>>('DrawTextPro');
   late final _DrawTextPro = _DrawTextProPtr.asFunction<
-      void Function(Font, ffi.Pointer<ffi.Int8>, Vector2, Vector2, double,
+      void Function(Font, ffi.Pointer<ffi.Char>, Vector2, Vector2, double,
           double, double, Color)>();
 
   void DrawTextCodepoint(
@@ -6569,14 +6516,14 @@ class Raylib {
 
   late final _DrawTextCodepointPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(Font, ffi.Int32, Vector2, ffi.Float,
-              Color)>>('DrawTextCodepoint');
+          ffi.Void Function(
+              Font, ffi.Int, Vector2, ffi.Float, Color)>>('DrawTextCodepoint');
   late final _DrawTextCodepoint = _DrawTextCodepointPtr.asFunction<
       void Function(Font, int, Vector2, double, Color)>();
 
   void DrawTextCodepoints(
     Font font,
-    ffi.Pointer<ffi.Int32> codepoints,
+    ffi.Pointer<ffi.Int> codepoints,
     int codepointCount,
     Vector2 position,
     double fontSize,
@@ -6596,11 +6543,11 @@ class Raylib {
 
   late final _DrawTextCodepointsPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(Font, ffi.Pointer<ffi.Int32>, ffi.Int32, Vector2,
+          ffi.Void Function(Font, ffi.Pointer<ffi.Int>, ffi.Int, Vector2,
               ffi.Float, ffi.Float, Color)>>('DrawTextCodepoints');
   late final _DrawTextCodepoints = _DrawTextCodepointsPtr.asFunction<
       void Function(
-          Font, ffi.Pointer<ffi.Int32>, int, Vector2, double, double, Color)>();
+          Font, ffi.Pointer<ffi.Int>, int, Vector2, double, double, Color)>();
 
   /// Text font info functions
   void SetTextLineSpacing(
@@ -6612,13 +6559,13 @@ class Raylib {
   }
 
   late final _SetTextLineSpacingPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int)>>(
           'SetTextLineSpacing');
   late final _SetTextLineSpacing =
       _SetTextLineSpacingPtr.asFunction<void Function(int)>();
 
   int MeasureText(
-    ffi.Pointer<ffi.Int8> text,
+    ffi.Pointer<ffi.Char> text,
     int fontSize,
   ) {
     return _MeasureText(
@@ -6628,14 +6575,14 @@ class Raylib {
   }
 
   late final _MeasureTextPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int32 Function(ffi.Pointer<ffi.Int8>, ffi.Int32)>>('MeasureText');
+          ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Int)>>(
+      'MeasureText');
   late final _MeasureText =
-      _MeasureTextPtr.asFunction<int Function(ffi.Pointer<ffi.Int8>, int)>();
+      _MeasureTextPtr.asFunction<int Function(ffi.Pointer<ffi.Char>, int)>();
 
   Vector2 MeasureTextEx(
     Font font,
-    ffi.Pointer<ffi.Int8> text,
+    ffi.Pointer<ffi.Char> text,
     double fontSize,
     double spacing,
   ) {
@@ -6649,10 +6596,10 @@ class Raylib {
 
   late final _MeasureTextExPtr = _lookup<
       ffi.NativeFunction<
-          Vector2 Function(Font, ffi.Pointer<ffi.Int8>, ffi.Float,
+          Vector2 Function(Font, ffi.Pointer<ffi.Char>, ffi.Float,
               ffi.Float)>>('MeasureTextEx');
   late final _MeasureTextEx = _MeasureTextExPtr.asFunction<
-      Vector2 Function(Font, ffi.Pointer<ffi.Int8>, double, double)>();
+      Vector2 Function(Font, ffi.Pointer<ffi.Char>, double, double)>();
 
   int GetGlyphIndex(
     Font font,
@@ -6665,7 +6612,7 @@ class Raylib {
   }
 
   late final _GetGlyphIndexPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(Font, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(Font, ffi.Int)>>(
           'GetGlyphIndex');
   late final _GetGlyphIndex =
       _GetGlyphIndexPtr.asFunction<int Function(Font, int)>();
@@ -6681,7 +6628,7 @@ class Raylib {
   }
 
   late final _GetGlyphInfoPtr =
-      _lookup<ffi.NativeFunction<GlyphInfo Function(Font, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<GlyphInfo Function(Font, ffi.Int)>>(
           'GetGlyphInfo');
   late final _GetGlyphInfo =
       _GetGlyphInfoPtr.asFunction<GlyphInfo Function(Font, int)>();
@@ -6697,14 +6644,14 @@ class Raylib {
   }
 
   late final _GetGlyphAtlasRecPtr =
-      _lookup<ffi.NativeFunction<Rectangle Function(Font, ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<Rectangle Function(Font, ffi.Int)>>(
           'GetGlyphAtlasRec');
   late final _GetGlyphAtlasRec =
       _GetGlyphAtlasRecPtr.asFunction<Rectangle Function(Font, int)>();
 
   /// Text codepoints management functions (unicode characters)
-  ffi.Pointer<ffi.Int8> LoadUTF8(
-    ffi.Pointer<ffi.Int32> codepoints,
+  ffi.Pointer<ffi.Char> LoadUTF8(
+    ffi.Pointer<ffi.Int> codepoints,
     int length,
   ) {
     return _LoadUTF8(
@@ -6715,13 +6662,13 @@ class Raylib {
 
   late final _LoadUTF8Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Int8> Function(
-              ffi.Pointer<ffi.Int32>, ffi.Int32)>>('LoadUTF8');
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Int>, ffi.Int)>>('LoadUTF8');
   late final _LoadUTF8 = _LoadUTF8Ptr.asFunction<
-      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int32>, int)>();
+      ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Int>, int)>();
 
   void UnloadUTF8(
-    ffi.Pointer<ffi.Int8> text,
+    ffi.Pointer<ffi.Char> text,
   ) {
     return _UnloadUTF8(
       text,
@@ -6729,14 +6676,14 @@ class Raylib {
   }
 
   late final _UnloadUTF8Ptr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Char>)>>(
           'UnloadUTF8');
   late final _UnloadUTF8 =
-      _UnloadUTF8Ptr.asFunction<void Function(ffi.Pointer<ffi.Int8>)>();
+      _UnloadUTF8Ptr.asFunction<void Function(ffi.Pointer<ffi.Char>)>();
 
-  ffi.Pointer<ffi.Int32> LoadCodepoints(
-    ffi.Pointer<ffi.Int8> text,
-    ffi.Pointer<ffi.Int32> count,
+  ffi.Pointer<ffi.Int> LoadCodepoints(
+    ffi.Pointer<ffi.Char> text,
+    ffi.Pointer<ffi.Int> count,
   ) {
     return _LoadCodepoints(
       text,
@@ -6746,14 +6693,14 @@ class Raylib {
 
   late final _LoadCodepointsPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Int32> Function(ffi.Pointer<ffi.Int8>,
-              ffi.Pointer<ffi.Int32>)>>('LoadCodepoints');
+          ffi.Pointer<ffi.Int> Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Int>)>>('LoadCodepoints');
   late final _LoadCodepoints = _LoadCodepointsPtr.asFunction<
-      ffi.Pointer<ffi.Int32> Function(
-          ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int32>)>();
+      ffi.Pointer<ffi.Int> Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Int>)>();
 
   void UnloadCodepoints(
-    ffi.Pointer<ffi.Int32> codepoints,
+    ffi.Pointer<ffi.Int> codepoints,
   ) {
     return _UnloadCodepoints(
       codepoints,
@@ -6761,13 +6708,13 @@ class Raylib {
   }
 
   late final _UnloadCodepointsPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Int32>)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Int>)>>(
           'UnloadCodepoints');
   late final _UnloadCodepoints =
-      _UnloadCodepointsPtr.asFunction<void Function(ffi.Pointer<ffi.Int32>)>();
+      _UnloadCodepointsPtr.asFunction<void Function(ffi.Pointer<ffi.Int>)>();
 
   int GetCodepointCount(
-    ffi.Pointer<ffi.Int8> text,
+    ffi.Pointer<ffi.Char> text,
   ) {
     return _GetCodepointCount(
       text,
@@ -6775,14 +6722,14 @@ class Raylib {
   }
 
   late final _GetCodepointCountPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
           'GetCodepointCount');
   late final _GetCodepointCount =
-      _GetCodepointCountPtr.asFunction<int Function(ffi.Pointer<ffi.Int8>)>();
+      _GetCodepointCountPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
 
   int GetCodepoint(
-    ffi.Pointer<ffi.Int8> text,
-    ffi.Pointer<ffi.Int32> codepointSize,
+    ffi.Pointer<ffi.Char> text,
+    ffi.Pointer<ffi.Int> codepointSize,
   ) {
     return _GetCodepoint(
       text,
@@ -6792,14 +6739,14 @@ class Raylib {
 
   late final _GetCodepointPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(
-              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int32>)>>('GetCodepoint');
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Int>)>>('GetCodepoint');
   late final _GetCodepoint = _GetCodepointPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int32>)>();
+      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Int>)>();
 
   int GetCodepointNext(
-    ffi.Pointer<ffi.Int8> text,
-    ffi.Pointer<ffi.Int32> codepointSize,
+    ffi.Pointer<ffi.Char> text,
+    ffi.Pointer<ffi.Int> codepointSize,
   ) {
     return _GetCodepointNext(
       text,
@@ -6809,14 +6756,14 @@ class Raylib {
 
   late final _GetCodepointNextPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(ffi.Pointer<ffi.Int8>,
-              ffi.Pointer<ffi.Int32>)>>('GetCodepointNext');
+          ffi.Int Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Int>)>>('GetCodepointNext');
   late final _GetCodepointNext = _GetCodepointNextPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int32>)>();
+      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Int>)>();
 
   int GetCodepointPrevious(
-    ffi.Pointer<ffi.Int8> text,
-    ffi.Pointer<ffi.Int32> codepointSize,
+    ffi.Pointer<ffi.Char> text,
+    ffi.Pointer<ffi.Int> codepointSize,
   ) {
     return _GetCodepointPrevious(
       text,
@@ -6826,14 +6773,14 @@ class Raylib {
 
   late final _GetCodepointPreviousPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(ffi.Pointer<ffi.Int8>,
-              ffi.Pointer<ffi.Int32>)>>('GetCodepointPrevious');
+          ffi.Int Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Int>)>>('GetCodepointPrevious');
   late final _GetCodepointPrevious = _GetCodepointPreviousPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int32>)>();
+      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Int>)>();
 
-  ffi.Pointer<ffi.Int8> CodepointToUTF8(
+  ffi.Pointer<ffi.Char> CodepointToUTF8(
     int codepoint,
-    ffi.Pointer<ffi.Int32> utf8Size,
+    ffi.Pointer<ffi.Int> utf8Size,
   ) {
     return _CodepointToUTF8(
       codepoint,
@@ -6843,16 +6790,16 @@ class Raylib {
 
   late final _CodepointToUTF8Ptr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Int8> Function(
-              ffi.Int32, ffi.Pointer<ffi.Int32>)>>('CodepointToUTF8');
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Int, ffi.Pointer<ffi.Int>)>>('CodepointToUTF8');
   late final _CodepointToUTF8 = _CodepointToUTF8Ptr.asFunction<
-      ffi.Pointer<ffi.Int8> Function(int, ffi.Pointer<ffi.Int32>)>();
+      ffi.Pointer<ffi.Char> Function(int, ffi.Pointer<ffi.Int>)>();
 
   /// Text strings management functions (no UTF-8 strings, only byte chars)
   /// NOTE: Some strings allocate memory internally for returned strings, just be careful!
   int TextCopy(
-    ffi.Pointer<ffi.Int8> dst,
-    ffi.Pointer<ffi.Int8> src,
+    ffi.Pointer<ffi.Char> dst,
+    ffi.Pointer<ffi.Char> src,
   ) {
     return _TextCopy(
       dst,
@@ -6862,45 +6809,44 @@ class Raylib {
 
   late final _TextCopyPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(
-              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>>('TextCopy');
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('TextCopy');
   late final _TextCopy = _TextCopyPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
+      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
 
   bool TextIsEqual(
-    ffi.Pointer<ffi.Int8> text1,
-    ffi.Pointer<ffi.Int8> text2,
+    ffi.Pointer<ffi.Char> text1,
+    ffi.Pointer<ffi.Char> text2,
   ) {
     return _TextIsEqual(
-          text1,
-          text2,
-        ) !=
-        0;
+      text1,
+      text2,
+    );
   }
 
   late final _TextIsEqualPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(
-              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>>('TextIsEqual');
+          ffi.Bool Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('TextIsEqual');
   late final _TextIsEqual = _TextIsEqualPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
+      bool Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
 
   int TextLength(
-    ffi.Pointer<ffi.Int8> text,
+    ffi.Pointer<ffi.Char> text,
   ) {
     return _TextLength(
       text,
     );
   }
 
-  late final _TextLengthPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint32 Function(ffi.Pointer<ffi.Int8>)>>(
-          'TextLength');
+  late final _TextLengthPtr = _lookup<
+          ffi.NativeFunction<ffi.UnsignedInt Function(ffi.Pointer<ffi.Char>)>>(
+      'TextLength');
   late final _TextLength =
-      _TextLengthPtr.asFunction<int Function(ffi.Pointer<ffi.Int8>)>();
+      _TextLengthPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
 
-  ffi.Pointer<ffi.Int8> TextFormat(
-    ffi.Pointer<ffi.Int8> text,
+  ffi.Pointer<ffi.Char> TextFormat(
+    ffi.Pointer<ffi.Char> text,
   ) {
     return _TextFormat(
       text,
@@ -6909,12 +6855,12 @@ class Raylib {
 
   late final _TextFormatPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>>('TextFormat');
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>>('TextFormat');
   late final _TextFormat = _TextFormatPtr.asFunction<
-      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>();
+      ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
 
-  ffi.Pointer<ffi.Int8> TextSubtext(
-    ffi.Pointer<ffi.Int8> text,
+  ffi.Pointer<ffi.Char> TextSubtext(
+    ffi.Pointer<ffi.Char> text,
     int position,
     int length,
   ) {
@@ -6927,15 +6873,15 @@ class Raylib {
 
   late final _TextSubtextPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Int8> Function(
-              ffi.Pointer<ffi.Int8>, ffi.Int32, ffi.Int32)>>('TextSubtext');
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>, ffi.Int, ffi.Int)>>('TextSubtext');
   late final _TextSubtext = _TextSubtextPtr.asFunction<
-      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>, int, int)>();
+      ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>, int, int)>();
 
-  ffi.Pointer<ffi.Int8> TextReplace(
-    ffi.Pointer<ffi.Int8> text,
-    ffi.Pointer<ffi.Int8> replace,
-    ffi.Pointer<ffi.Int8> by,
+  ffi.Pointer<ffi.Char> TextReplace(
+    ffi.Pointer<ffi.Char> text,
+    ffi.Pointer<ffi.Char> replace,
+    ffi.Pointer<ffi.Char> by,
   ) {
     return _TextReplace(
       text,
@@ -6946,15 +6892,15 @@ class Raylib {
 
   late final _TextReplacePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>,
-              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>>('TextReplace');
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('TextReplace');
   late final _TextReplace = _TextReplacePtr.asFunction<
-      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>,
-          ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
+      ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>,
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
 
-  ffi.Pointer<ffi.Int8> TextInsert(
-    ffi.Pointer<ffi.Int8> text,
-    ffi.Pointer<ffi.Int8> insert,
+  ffi.Pointer<ffi.Char> TextInsert(
+    ffi.Pointer<ffi.Char> text,
+    ffi.Pointer<ffi.Char> insert,
     int position,
   ) {
     return _TextInsert(
@@ -6966,16 +6912,16 @@ class Raylib {
 
   late final _TextInsertPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>,
-              ffi.Pointer<ffi.Int8>, ffi.Int32)>>('TextInsert');
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>, ffi.Int)>>('TextInsert');
   late final _TextInsert = _TextInsertPtr.asFunction<
-      ffi.Pointer<ffi.Int8> Function(
-          ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>, int)>();
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int)>();
 
-  ffi.Pointer<ffi.Int8> TextJoin(
-    ffi.Pointer<ffi.Pointer<ffi.Int8>> textList,
+  ffi.Pointer<ffi.Char> TextJoin(
+    ffi.Pointer<ffi.Pointer<ffi.Char>> textList,
     int count,
-    ffi.Pointer<ffi.Int8> delimiter,
+    ffi.Pointer<ffi.Char> delimiter,
   ) {
     return _TextJoin(
       textList,
@@ -6986,16 +6932,16 @@ class Raylib {
 
   late final _TextJoinPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Pointer<ffi.Int8>>,
-              ffi.Int32, ffi.Pointer<ffi.Int8>)>>('TextJoin');
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              ffi.Int, ffi.Pointer<ffi.Char>)>>('TextJoin');
   late final _TextJoin = _TextJoinPtr.asFunction<
-      ffi.Pointer<ffi.Int8> Function(
-          ffi.Pointer<ffi.Pointer<ffi.Int8>>, int, ffi.Pointer<ffi.Int8>)>();
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<ffi.Pointer<ffi.Char>>, int, ffi.Pointer<ffi.Char>)>();
 
-  ffi.Pointer<ffi.Pointer<ffi.Int8>> TextSplit(
-    ffi.Pointer<ffi.Int8> text,
+  ffi.Pointer<ffi.Pointer<ffi.Char>> TextSplit(
+    ffi.Pointer<ffi.Char> text,
     int delimiter,
-    ffi.Pointer<ffi.Int32> count,
+    ffi.Pointer<ffi.Int> count,
   ) {
     return _TextSplit(
       text,
@@ -7006,16 +6952,16 @@ class Raylib {
 
   late final _TextSplitPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Pointer<ffi.Int8>> Function(ffi.Pointer<ffi.Int8>,
-              ffi.Int8, ffi.Pointer<ffi.Int32>)>>('TextSplit');
+          ffi.Pointer<ffi.Pointer<ffi.Char>> Function(ffi.Pointer<ffi.Char>,
+              ffi.Char, ffi.Pointer<ffi.Int>)>>('TextSplit');
   late final _TextSplit = _TextSplitPtr.asFunction<
-      ffi.Pointer<ffi.Pointer<ffi.Int8>> Function(
-          ffi.Pointer<ffi.Int8>, int, ffi.Pointer<ffi.Int32>)>();
+      ffi.Pointer<ffi.Pointer<ffi.Char>> Function(
+          ffi.Pointer<ffi.Char>, int, ffi.Pointer<ffi.Int>)>();
 
   void TextAppend(
-    ffi.Pointer<ffi.Int8> text,
-    ffi.Pointer<ffi.Int8> append,
-    ffi.Pointer<ffi.Int32> position,
+    ffi.Pointer<ffi.Char> text,
+    ffi.Pointer<ffi.Char> append,
+    ffi.Pointer<ffi.Int> position,
   ) {
     return _TextAppend(
       text,
@@ -7026,15 +6972,15 @@ class Raylib {
 
   late final _TextAppendPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>,
-              ffi.Pointer<ffi.Int32>)>>('TextAppend');
+          ffi.Void Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Int>)>>('TextAppend');
   late final _TextAppend = _TextAppendPtr.asFunction<
-      void Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>,
-          ffi.Pointer<ffi.Int32>)>();
+      void Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
+          ffi.Pointer<ffi.Int>)>();
 
   int TextFindIndex(
-    ffi.Pointer<ffi.Int8> text,
-    ffi.Pointer<ffi.Int8> find,
+    ffi.Pointer<ffi.Char> text,
+    ffi.Pointer<ffi.Char> find,
   ) {
     return _TextFindIndex(
       text,
@@ -7044,13 +6990,13 @@ class Raylib {
 
   late final _TextFindIndexPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int32 Function(
-              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>>('TextFindIndex');
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('TextFindIndex');
   late final _TextFindIndex = _TextFindIndexPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>();
+      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
 
-  ffi.Pointer<ffi.Int8> TextToUpper(
-    ffi.Pointer<ffi.Int8> text,
+  ffi.Pointer<ffi.Char> TextToUpper(
+    ffi.Pointer<ffi.Char> text,
   ) {
     return _TextToUpper(
       text,
@@ -7059,13 +7005,13 @@ class Raylib {
 
   late final _TextToUpperPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Int8> Function(
-              ffi.Pointer<ffi.Int8>)>>('TextToUpper');
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>)>>('TextToUpper');
   late final _TextToUpper = _TextToUpperPtr.asFunction<
-      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>();
+      ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
 
-  ffi.Pointer<ffi.Int8> TextToLower(
-    ffi.Pointer<ffi.Int8> text,
+  ffi.Pointer<ffi.Char> TextToLower(
+    ffi.Pointer<ffi.Char> text,
   ) {
     return _TextToLower(
       text,
@@ -7074,13 +7020,13 @@ class Raylib {
 
   late final _TextToLowerPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Int8> Function(
-              ffi.Pointer<ffi.Int8>)>>('TextToLower');
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>)>>('TextToLower');
   late final _TextToLower = _TextToLowerPtr.asFunction<
-      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>();
+      ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
 
-  ffi.Pointer<ffi.Int8> TextToPascal(
-    ffi.Pointer<ffi.Int8> text,
+  ffi.Pointer<ffi.Char> TextToPascal(
+    ffi.Pointer<ffi.Char> text,
   ) {
     return _TextToPascal(
       text,
@@ -7089,13 +7035,13 @@ class Raylib {
 
   late final _TextToPascalPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Int8> Function(
-              ffi.Pointer<ffi.Int8>)>>('TextToPascal');
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>)>>('TextToPascal');
   late final _TextToPascal = _TextToPascalPtr.asFunction<
-      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>();
+      ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
 
-  ffi.Pointer<ffi.Int8> TextToSnake(
-    ffi.Pointer<ffi.Int8> text,
+  ffi.Pointer<ffi.Char> TextToSnake(
+    ffi.Pointer<ffi.Char> text,
   ) {
     return _TextToSnake(
       text,
@@ -7104,13 +7050,13 @@ class Raylib {
 
   late final _TextToSnakePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Int8> Function(
-              ffi.Pointer<ffi.Int8>)>>('TextToSnake');
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>)>>('TextToSnake');
   late final _TextToSnake = _TextToSnakePtr.asFunction<
-      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>();
+      ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
 
-  ffi.Pointer<ffi.Int8> TextToCamel(
-    ffi.Pointer<ffi.Int8> text,
+  ffi.Pointer<ffi.Char> TextToCamel(
+    ffi.Pointer<ffi.Char> text,
   ) {
     return _TextToCamel(
       text,
@@ -7119,13 +7065,13 @@ class Raylib {
 
   late final _TextToCamelPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Int8> Function(
-              ffi.Pointer<ffi.Int8>)>>('TextToCamel');
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>)>>('TextToCamel');
   late final _TextToCamel = _TextToCamelPtr.asFunction<
-      ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>();
+      ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
 
   int TextToInteger(
-    ffi.Pointer<ffi.Int8> text,
+    ffi.Pointer<ffi.Char> text,
   ) {
     return _TextToInteger(
       text,
@@ -7133,13 +7079,13 @@ class Raylib {
   }
 
   late final _TextToIntegerPtr =
-      _lookup<ffi.NativeFunction<ffi.Int32 Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
           'TextToInteger');
   late final _TextToInteger =
-      _TextToIntegerPtr.asFunction<int Function(ffi.Pointer<ffi.Int8>)>();
+      _TextToIntegerPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
 
   double TextToFloat(
-    ffi.Pointer<ffi.Int8> text,
+    ffi.Pointer<ffi.Char> text,
   ) {
     return _TextToFloat(
       text,
@@ -7147,10 +7093,10 @@ class Raylib {
   }
 
   late final _TextToFloatPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Pointer<ffi.Char>)>>(
           'TextToFloat');
   late final _TextToFloat =
-      _TextToFloatPtr.asFunction<double Function(ffi.Pointer<ffi.Int8>)>();
+      _TextToFloatPtr.asFunction<double Function(ffi.Pointer<ffi.Char>)>();
 
   /// Basic geometric 3D shapes drawing functions
   void DrawLine3D(
@@ -7246,7 +7192,7 @@ class Raylib {
   late final _DrawTriangleStrip3DPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              ffi.Pointer<Vector3>, ffi.Int32, Color)>>('DrawTriangleStrip3D');
+              ffi.Pointer<Vector3>, ffi.Int, Color)>>('DrawTriangleStrip3D');
   late final _DrawTriangleStrip3D = _DrawTriangleStrip3DPtr.asFunction<
       void Function(ffi.Pointer<Vector3>, int, Color)>();
 
@@ -7368,8 +7314,8 @@ class Raylib {
 
   late final _DrawSphereExPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(Vector3, ffi.Float, ffi.Int32, ffi.Int32,
-              Color)>>('DrawSphereEx');
+          ffi.Void Function(
+              Vector3, ffi.Float, ffi.Int, ffi.Int, Color)>>('DrawSphereEx');
   late final _DrawSphereEx = _DrawSphereExPtr.asFunction<
       void Function(Vector3, double, int, int, Color)>();
 
@@ -7391,8 +7337,8 @@ class Raylib {
 
   late final _DrawSphereWiresPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(Vector3, ffi.Float, ffi.Int32, ffi.Int32,
-              Color)>>('DrawSphereWires');
+          ffi.Void Function(
+              Vector3, ffi.Float, ffi.Int, ffi.Int, Color)>>('DrawSphereWires');
   late final _DrawSphereWires = _DrawSphereWiresPtr.asFunction<
       void Function(Vector3, double, int, int, Color)>();
 
@@ -7416,7 +7362,7 @@ class Raylib {
 
   late final _DrawCylinderPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(Vector3, ffi.Float, ffi.Float, ffi.Float, ffi.Int32,
+          ffi.Void Function(Vector3, ffi.Float, ffi.Float, ffi.Float, ffi.Int,
               Color)>>('DrawCylinder');
   late final _DrawCylinder = _DrawCylinderPtr.asFunction<
       void Function(Vector3, double, double, double, int, Color)>();
@@ -7441,7 +7387,7 @@ class Raylib {
 
   late final _DrawCylinderExPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(Vector3, Vector3, ffi.Float, ffi.Float, ffi.Int32,
+          ffi.Void Function(Vector3, Vector3, ffi.Float, ffi.Float, ffi.Int,
               Color)>>('DrawCylinderEx');
   late final _DrawCylinderEx = _DrawCylinderExPtr.asFunction<
       void Function(Vector3, Vector3, double, double, int, Color)>();
@@ -7466,7 +7412,7 @@ class Raylib {
 
   late final _DrawCylinderWiresPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(Vector3, ffi.Float, ffi.Float, ffi.Float, ffi.Int32,
+          ffi.Void Function(Vector3, ffi.Float, ffi.Float, ffi.Float, ffi.Int,
               Color)>>('DrawCylinderWires');
   late final _DrawCylinderWires = _DrawCylinderWiresPtr.asFunction<
       void Function(Vector3, double, double, double, int, Color)>();
@@ -7491,7 +7437,7 @@ class Raylib {
 
   late final _DrawCylinderWiresExPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(Vector3, Vector3, ffi.Float, ffi.Float, ffi.Int32,
+          ffi.Void Function(Vector3, Vector3, ffi.Float, ffi.Float, ffi.Int,
               Color)>>('DrawCylinderWiresEx');
   late final _DrawCylinderWiresEx = _DrawCylinderWiresExPtr.asFunction<
       void Function(Vector3, Vector3, double, double, int, Color)>();
@@ -7516,7 +7462,7 @@ class Raylib {
 
   late final _DrawCapsulePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(Vector3, Vector3, ffi.Float, ffi.Int32, ffi.Int32,
+          ffi.Void Function(Vector3, Vector3, ffi.Float, ffi.Int, ffi.Int,
               Color)>>('DrawCapsule');
   late final _DrawCapsule = _DrawCapsulePtr.asFunction<
       void Function(Vector3, Vector3, double, int, int, Color)>();
@@ -7541,7 +7487,7 @@ class Raylib {
 
   late final _DrawCapsuleWiresPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(Vector3, Vector3, ffi.Float, ffi.Int32, ffi.Int32,
+          ffi.Void Function(Vector3, Vector3, ffi.Float, ffi.Int, ffi.Int,
               Color)>>('DrawCapsuleWires');
   late final _DrawCapsuleWires = _DrawCapsuleWiresPtr.asFunction<
       void Function(Vector3, Vector3, double, int, int, Color)>();
@@ -7589,13 +7535,13 @@ class Raylib {
   }
 
   late final _DrawGridPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32, ffi.Float)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int, ffi.Float)>>(
           'DrawGrid');
   late final _DrawGrid = _DrawGridPtr.asFunction<void Function(int, double)>();
 
   /// Model management functions
   Model LoadModel(
-    ffi.Pointer<ffi.Int8> fileName,
+    ffi.Pointer<ffi.Char> fileName,
   ) {
     return _LoadModel(
       fileName,
@@ -7603,10 +7549,10 @@ class Raylib {
   }
 
   late final _LoadModelPtr =
-      _lookup<ffi.NativeFunction<Model Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<Model Function(ffi.Pointer<ffi.Char>)>>(
           'LoadModel');
   late final _LoadModel =
-      _LoadModelPtr.asFunction<Model Function(ffi.Pointer<ffi.Int8>)>();
+      _LoadModelPtr.asFunction<Model Function(ffi.Pointer<ffi.Char>)>();
 
   Model LoadModelFromMesh(
     Mesh mesh,
@@ -7625,14 +7571,14 @@ class Raylib {
     Model model,
   ) {
     return _IsModelReady(
-          model,
-        ) !=
-        0;
+      model,
+    );
   }
 
   late final _IsModelReadyPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(Model)>>('IsModelReady');
-  late final _IsModelReady = _IsModelReadyPtr.asFunction<int Function(Model)>();
+      _lookup<ffi.NativeFunction<ffi.Bool Function(Model)>>('IsModelReady');
+  late final _IsModelReady =
+      _IsModelReadyPtr.asFunction<bool Function(Model)>();
 
   void UnloadModel(
     Model model,
@@ -7855,15 +7801,15 @@ class Raylib {
   ) {
     return _UploadMesh(
       mesh,
-      dynamic1 ? 1 : 0,
+      dynamic1,
     );
   }
 
   late final _UploadMeshPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Pointer<Mesh>, ffi.Uint8)>>(
+          ffi.NativeFunction<ffi.Void Function(ffi.Pointer<Mesh>, ffi.Bool)>>(
       'UploadMesh');
   late final _UploadMesh =
-      _UploadMeshPtr.asFunction<void Function(ffi.Pointer<Mesh>, int)>();
+      _UploadMeshPtr.asFunction<void Function(ffi.Pointer<Mesh>, bool)>();
 
   void UpdateMeshBuffer(
     Mesh mesh,
@@ -7883,8 +7829,8 @@ class Raylib {
 
   late final _UpdateMeshBufferPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(Mesh, ffi.Int32, ffi.Pointer<ffi.Void>, ffi.Int32,
-              ffi.Int32)>>('UpdateMeshBuffer');
+          ffi.Void Function(Mesh, ffi.Int, ffi.Pointer<ffi.Void>, ffi.Int,
+              ffi.Int)>>('UpdateMeshBuffer');
   late final _UpdateMeshBuffer = _UpdateMeshBufferPtr.asFunction<
       void Function(Mesh, int, ffi.Pointer<ffi.Void>, int, int)>();
 
@@ -7935,7 +7881,7 @@ class Raylib {
   late final _DrawMeshInstancedPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(Mesh, Material, ffi.Pointer<Matrix>,
-              ffi.Int32)>>('DrawMeshInstanced');
+              ffi.Int)>>('DrawMeshInstanced');
   late final _DrawMeshInstanced = _DrawMeshInstancedPtr.asFunction<
       void Function(Mesh, Material, ffi.Pointer<Matrix>, int)>();
 
@@ -7969,37 +7915,35 @@ class Raylib {
 
   bool ExportMesh(
     Mesh mesh,
-    ffi.Pointer<ffi.Int8> fileName,
+    ffi.Pointer<ffi.Char> fileName,
   ) {
     return _ExportMesh(
-          mesh,
-          fileName,
-        ) !=
-        0;
+      mesh,
+      fileName,
+    );
   }
 
   late final _ExportMeshPtr = _lookup<
-          ffi.NativeFunction<ffi.Uint8 Function(Mesh, ffi.Pointer<ffi.Int8>)>>(
+          ffi.NativeFunction<ffi.Bool Function(Mesh, ffi.Pointer<ffi.Char>)>>(
       'ExportMesh');
   late final _ExportMesh =
-      _ExportMeshPtr.asFunction<int Function(Mesh, ffi.Pointer<ffi.Int8>)>();
+      _ExportMeshPtr.asFunction<bool Function(Mesh, ffi.Pointer<ffi.Char>)>();
 
   bool ExportMeshAsCode(
     Mesh mesh,
-    ffi.Pointer<ffi.Int8> fileName,
+    ffi.Pointer<ffi.Char> fileName,
   ) {
     return _ExportMeshAsCode(
-          mesh,
-          fileName,
-        ) !=
-        0;
+      mesh,
+      fileName,
+    );
   }
 
   late final _ExportMeshAsCodePtr = _lookup<
-          ffi.NativeFunction<ffi.Uint8 Function(Mesh, ffi.Pointer<ffi.Int8>)>>(
+          ffi.NativeFunction<ffi.Bool Function(Mesh, ffi.Pointer<ffi.Char>)>>(
       'ExportMeshAsCode');
   late final _ExportMeshAsCode = _ExportMeshAsCodePtr.asFunction<
-      int Function(Mesh, ffi.Pointer<ffi.Int8>)>();
+      bool Function(Mesh, ffi.Pointer<ffi.Char>)>();
 
   /// Mesh generation functions
   Mesh GenMeshPoly(
@@ -8013,7 +7957,7 @@ class Raylib {
   }
 
   late final _GenMeshPolyPtr =
-      _lookup<ffi.NativeFunction<Mesh Function(ffi.Int32, ffi.Float)>>(
+      _lookup<ffi.NativeFunction<Mesh Function(ffi.Int, ffi.Float)>>(
           'GenMeshPoly');
   late final _GenMeshPoly =
       _GenMeshPolyPtr.asFunction<Mesh Function(int, double)>();
@@ -8035,7 +7979,7 @@ class Raylib {
   late final _GenMeshPlanePtr = _lookup<
       ffi.NativeFunction<
           Mesh Function(
-              ffi.Float, ffi.Float, ffi.Int32, ffi.Int32)>>('GenMeshPlane');
+              ffi.Float, ffi.Float, ffi.Int, ffi.Int)>>('GenMeshPlane');
   late final _GenMeshPlane =
       _GenMeshPlanePtr.asFunction<Mesh Function(double, double, int, int)>();
 
@@ -8069,9 +8013,9 @@ class Raylib {
     );
   }
 
-  late final _GenMeshSpherePtr = _lookup<
-          ffi.NativeFunction<Mesh Function(ffi.Float, ffi.Int32, ffi.Int32)>>(
-      'GenMeshSphere');
+  late final _GenMeshSpherePtr =
+      _lookup<ffi.NativeFunction<Mesh Function(ffi.Float, ffi.Int, ffi.Int)>>(
+          'GenMeshSphere');
   late final _GenMeshSphere =
       _GenMeshSpherePtr.asFunction<Mesh Function(double, int, int)>();
 
@@ -8087,9 +8031,9 @@ class Raylib {
     );
   }
 
-  late final _GenMeshHemiSpherePtr = _lookup<
-          ffi.NativeFunction<Mesh Function(ffi.Float, ffi.Int32, ffi.Int32)>>(
-      'GenMeshHemiSphere');
+  late final _GenMeshHemiSpherePtr =
+      _lookup<ffi.NativeFunction<Mesh Function(ffi.Float, ffi.Int, ffi.Int)>>(
+          'GenMeshHemiSphere');
   late final _GenMeshHemiSphere =
       _GenMeshHemiSpherePtr.asFunction<Mesh Function(double, int, int)>();
 
@@ -8105,9 +8049,9 @@ class Raylib {
     );
   }
 
-  late final _GenMeshCylinderPtr = _lookup<
-          ffi.NativeFunction<Mesh Function(ffi.Float, ffi.Float, ffi.Int32)>>(
-      'GenMeshCylinder');
+  late final _GenMeshCylinderPtr =
+      _lookup<ffi.NativeFunction<Mesh Function(ffi.Float, ffi.Float, ffi.Int)>>(
+          'GenMeshCylinder');
   late final _GenMeshCylinder =
       _GenMeshCylinderPtr.asFunction<Mesh Function(double, double, int)>();
 
@@ -8123,9 +8067,9 @@ class Raylib {
     );
   }
 
-  late final _GenMeshConePtr = _lookup<
-          ffi.NativeFunction<Mesh Function(ffi.Float, ffi.Float, ffi.Int32)>>(
-      'GenMeshCone');
+  late final _GenMeshConePtr =
+      _lookup<ffi.NativeFunction<Mesh Function(ffi.Float, ffi.Float, ffi.Int)>>(
+          'GenMeshCone');
   late final _GenMeshCone =
       _GenMeshConePtr.asFunction<Mesh Function(double, double, int)>();
 
@@ -8146,7 +8090,7 @@ class Raylib {
   late final _GenMeshTorusPtr = _lookup<
       ffi.NativeFunction<
           Mesh Function(
-              ffi.Float, ffi.Float, ffi.Int32, ffi.Int32)>>('GenMeshTorus');
+              ffi.Float, ffi.Float, ffi.Int, ffi.Int)>>('GenMeshTorus');
   late final _GenMeshTorus =
       _GenMeshTorusPtr.asFunction<Mesh Function(double, double, int, int)>();
 
@@ -8167,7 +8111,7 @@ class Raylib {
   late final _GenMeshKnotPtr = _lookup<
       ffi.NativeFunction<
           Mesh Function(
-              ffi.Float, ffi.Float, ffi.Int32, ffi.Int32)>>('GenMeshKnot');
+              ffi.Float, ffi.Float, ffi.Int, ffi.Int)>>('GenMeshKnot');
   late final _GenMeshKnot =
       _GenMeshKnotPtr.asFunction<Mesh Function(double, double, int, int)>();
 
@@ -8205,8 +8149,8 @@ class Raylib {
 
   /// Material loading/unloading functions
   ffi.Pointer<Material> LoadMaterials(
-    ffi.Pointer<ffi.Int8> fileName,
-    ffi.Pointer<ffi.Int32> materialCount,
+    ffi.Pointer<ffi.Char> fileName,
+    ffi.Pointer<ffi.Int> materialCount,
   ) {
     return _LoadMaterials(
       fileName,
@@ -8217,10 +8161,10 @@ class Raylib {
   late final _LoadMaterialsPtr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<Material> Function(
-              ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int32>)>>('LoadMaterials');
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Int>)>>('LoadMaterials');
   late final _LoadMaterials = _LoadMaterialsPtr.asFunction<
       ffi.Pointer<Material> Function(
-          ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int32>)>();
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Int>)>();
 
   Material LoadMaterialDefault() {
     return _LoadMaterialDefault();
@@ -8235,16 +8179,15 @@ class Raylib {
     Material material,
   ) {
     return _IsMaterialReady(
-          material,
-        ) !=
-        0;
+      material,
+    );
   }
 
   late final _IsMaterialReadyPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(Material)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(Material)>>(
           'IsMaterialReady');
   late final _IsMaterialReady =
-      _IsMaterialReadyPtr.asFunction<int Function(Material)>();
+      _IsMaterialReadyPtr.asFunction<bool Function(Material)>();
 
   void UnloadMaterial(
     Material material,
@@ -8274,7 +8217,7 @@ class Raylib {
 
   late final _SetMaterialTexturePtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<Material>, ffi.Int32,
+          ffi.Void Function(ffi.Pointer<Material>, ffi.Int,
               Texture2D)>>('SetMaterialTexture');
   late final _SetMaterialTexture = _SetMaterialTexturePtr.asFunction<
       void Function(ffi.Pointer<Material>, int, Texture2D)>();
@@ -8293,15 +8236,15 @@ class Raylib {
 
   late final _SetModelMeshMaterialPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<Model>, ffi.Int32,
-              ffi.Int32)>>('SetModelMeshMaterial');
+          ffi.Void Function(
+              ffi.Pointer<Model>, ffi.Int, ffi.Int)>>('SetModelMeshMaterial');
   late final _SetModelMeshMaterial = _SetModelMeshMaterialPtr.asFunction<
       void Function(ffi.Pointer<Model>, int, int)>();
 
   /// Model animations loading/unloading functions
   ffi.Pointer<ModelAnimation> LoadModelAnimations(
-    ffi.Pointer<ffi.Int8> fileName,
-    ffi.Pointer<ffi.Int32> animCount,
+    ffi.Pointer<ffi.Char> fileName,
+    ffi.Pointer<ffi.Int> animCount,
   ) {
     return _LoadModelAnimations(
       fileName,
@@ -8311,11 +8254,11 @@ class Raylib {
 
   late final _LoadModelAnimationsPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ModelAnimation> Function(ffi.Pointer<ffi.Int8>,
-              ffi.Pointer<ffi.Int32>)>>('LoadModelAnimations');
+          ffi.Pointer<ModelAnimation> Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Int>)>>('LoadModelAnimations');
   late final _LoadModelAnimations = _LoadModelAnimationsPtr.asFunction<
       ffi.Pointer<ModelAnimation> Function(
-          ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int32>)>();
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Int>)>();
 
   void UpdateModelAnimation(
     Model model,
@@ -8331,7 +8274,7 @@ class Raylib {
 
   late final _UpdateModelAnimationPtr = _lookup<
           ffi
-          .NativeFunction<ffi.Void Function(Model, ModelAnimation, ffi.Int32)>>(
+          .NativeFunction<ffi.Void Function(Model, ModelAnimation, ffi.Int)>>(
       'UpdateModelAnimation');
   late final _UpdateModelAnimation = _UpdateModelAnimationPtr.asFunction<
       void Function(Model, ModelAnimation, int)>();
@@ -8362,8 +8305,8 @@ class Raylib {
 
   late final _UnloadModelAnimationsPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<ModelAnimation>,
-              ffi.Int32)>>('UnloadModelAnimations');
+          ffi.Void Function(
+              ffi.Pointer<ModelAnimation>, ffi.Int)>>('UnloadModelAnimations');
   late final _UnloadModelAnimations = _UnloadModelAnimationsPtr.asFunction<
       void Function(ffi.Pointer<ModelAnimation>, int)>();
 
@@ -8372,17 +8315,16 @@ class Raylib {
     ModelAnimation anim,
   ) {
     return _IsModelAnimationValid(
-          model,
-          anim,
-        ) !=
-        0;
+      model,
+      anim,
+    );
   }
 
   late final _IsModelAnimationValidPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(Model, ModelAnimation)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(Model, ModelAnimation)>>(
           'IsModelAnimationValid');
   late final _IsModelAnimationValid = _IsModelAnimationValidPtr.asFunction<
-      int Function(Model, ModelAnimation)>();
+      bool Function(Model, ModelAnimation)>();
 
   /// Collision detection functions
   bool CheckCollisionSpheres(
@@ -8392,37 +8334,35 @@ class Raylib {
     double radius2,
   ) {
     return _CheckCollisionSpheres(
-          center1,
-          radius1,
-          center2,
-          radius2,
-        ) !=
-        0;
+      center1,
+      radius1,
+      center2,
+      radius2,
+    );
   }
 
   late final _CheckCollisionSpheresPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Uint8 Function(Vector3, ffi.Float, Vector3,
+          ffi.Bool Function(Vector3, ffi.Float, Vector3,
               ffi.Float)>>('CheckCollisionSpheres');
   late final _CheckCollisionSpheres = _CheckCollisionSpheresPtr.asFunction<
-      int Function(Vector3, double, Vector3, double)>();
+      bool Function(Vector3, double, Vector3, double)>();
 
   bool CheckCollisionBoxes(
     BoundingBox box1,
     BoundingBox box2,
   ) {
     return _CheckCollisionBoxes(
-          box1,
-          box2,
-        ) !=
-        0;
+      box1,
+      box2,
+    );
   }
 
   late final _CheckCollisionBoxesPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(BoundingBox, BoundingBox)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(BoundingBox, BoundingBox)>>(
           'CheckCollisionBoxes');
   late final _CheckCollisionBoxes = _CheckCollisionBoxesPtr.asFunction<
-      int Function(BoundingBox, BoundingBox)>();
+      bool Function(BoundingBox, BoundingBox)>();
 
   bool CheckCollisionBoxSphere(
     BoundingBox box,
@@ -8430,19 +8370,18 @@ class Raylib {
     double radius,
   ) {
     return _CheckCollisionBoxSphere(
-          box,
-          center,
-          radius,
-        ) !=
-        0;
+      box,
+      center,
+      radius,
+    );
   }
 
   late final _CheckCollisionBoxSpherePtr = _lookup<
           ffi
-          .NativeFunction<ffi.Uint8 Function(BoundingBox, Vector3, ffi.Float)>>(
+          .NativeFunction<ffi.Bool Function(BoundingBox, Vector3, ffi.Float)>>(
       'CheckCollisionBoxSphere');
   late final _CheckCollisionBoxSphere = _CheckCollisionBoxSpherePtr.asFunction<
-      int Function(BoundingBox, Vector3, double)>();
+      bool Function(BoundingBox, Vector3, double)>();
 
   RayCollision GetRayCollisionSphere(
     Ray ray,
@@ -8560,13 +8499,13 @@ class Raylib {
       _CloseAudioDevicePtr.asFunction<void Function()>();
 
   bool IsAudioDeviceReady() {
-    return _IsAudioDeviceReady() != 0;
+    return _IsAudioDeviceReady();
   }
 
   late final _IsAudioDeviceReadyPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function()>>('IsAudioDeviceReady');
+      _lookup<ffi.NativeFunction<ffi.Bool Function()>>('IsAudioDeviceReady');
   late final _IsAudioDeviceReady =
-      _IsAudioDeviceReadyPtr.asFunction<int Function()>();
+      _IsAudioDeviceReadyPtr.asFunction<bool Function()>();
 
   void SetMasterVolume(
     double volume,
@@ -8593,7 +8532,7 @@ class Raylib {
 
   /// Wave/Sound loading/unloading functions
   Wave LoadWave(
-    ffi.Pointer<ffi.Int8> fileName,
+    ffi.Pointer<ffi.Char> fileName,
   ) {
     return _LoadWave(
       fileName,
@@ -8601,14 +8540,14 @@ class Raylib {
   }
 
   late final _LoadWavePtr =
-      _lookup<ffi.NativeFunction<Wave Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<Wave Function(ffi.Pointer<ffi.Char>)>>(
           'LoadWave');
   late final _LoadWave =
-      _LoadWavePtr.asFunction<Wave Function(ffi.Pointer<ffi.Int8>)>();
+      _LoadWavePtr.asFunction<Wave Function(ffi.Pointer<ffi.Char>)>();
 
   Wave LoadWaveFromMemory(
-    ffi.Pointer<ffi.Int8> fileType,
-    ffi.Pointer<ffi.Uint8> fileData,
+    ffi.Pointer<ffi.Char> fileType,
+    ffi.Pointer<ffi.UnsignedChar> fileData,
     int dataSize,
   ) {
     return _LoadWaveFromMemory(
@@ -8620,26 +8559,26 @@ class Raylib {
 
   late final _LoadWaveFromMemoryPtr = _lookup<
       ffi.NativeFunction<
-          Wave Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Uint8>,
-              ffi.Int32)>>('LoadWaveFromMemory');
+          Wave Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.UnsignedChar>,
+              ffi.Int)>>('LoadWaveFromMemory');
   late final _LoadWaveFromMemory = _LoadWaveFromMemoryPtr.asFunction<
-      Wave Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Uint8>, int)>();
+      Wave Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.UnsignedChar>, int)>();
 
   bool IsWaveReady(
     Wave wave,
   ) {
     return _IsWaveReady(
-          wave,
-        ) !=
-        0;
+      wave,
+    );
   }
 
   late final _IsWaveReadyPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(Wave)>>('IsWaveReady');
-  late final _IsWaveReady = _IsWaveReadyPtr.asFunction<int Function(Wave)>();
+      _lookup<ffi.NativeFunction<ffi.Bool Function(Wave)>>('IsWaveReady');
+  late final _IsWaveReady = _IsWaveReadyPtr.asFunction<bool Function(Wave)>();
 
   Sound LoadSound(
-    ffi.Pointer<ffi.Int8> fileName,
+    ffi.Pointer<ffi.Char> fileName,
   ) {
     return _LoadSound(
       fileName,
@@ -8647,10 +8586,10 @@ class Raylib {
   }
 
   late final _LoadSoundPtr =
-      _lookup<ffi.NativeFunction<Sound Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<Sound Function(ffi.Pointer<ffi.Char>)>>(
           'LoadSound');
   late final _LoadSound =
-      _LoadSoundPtr.asFunction<Sound Function(ffi.Pointer<ffi.Int8>)>();
+      _LoadSoundPtr.asFunction<Sound Function(ffi.Pointer<ffi.Char>)>();
 
   Sound LoadSoundFromWave(
     Wave wave,
@@ -8682,14 +8621,14 @@ class Raylib {
     Sound sound,
   ) {
     return _IsSoundReady(
-          sound,
-        ) !=
-        0;
+      sound,
+    );
   }
 
   late final _IsSoundReadyPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(Sound)>>('IsSoundReady');
-  late final _IsSoundReady = _IsSoundReadyPtr.asFunction<int Function(Sound)>();
+      _lookup<ffi.NativeFunction<ffi.Bool Function(Sound)>>('IsSoundReady');
+  late final _IsSoundReady =
+      _IsSoundReadyPtr.asFunction<bool Function(Sound)>();
 
   void UpdateSound(
     Sound sound,
@@ -8706,7 +8645,7 @@ class Raylib {
   late final _UpdateSoundPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(
-              Sound, ffi.Pointer<ffi.Void>, ffi.Int32)>>('UpdateSound');
+              Sound, ffi.Pointer<ffi.Void>, ffi.Int)>>('UpdateSound');
   late final _UpdateSound = _UpdateSoundPtr.asFunction<
       void Function(Sound, ffi.Pointer<ffi.Void>, int)>();
 
@@ -8749,37 +8688,35 @@ class Raylib {
 
   bool ExportWave(
     Wave wave,
-    ffi.Pointer<ffi.Int8> fileName,
+    ffi.Pointer<ffi.Char> fileName,
   ) {
     return _ExportWave(
-          wave,
-          fileName,
-        ) !=
-        0;
+      wave,
+      fileName,
+    );
   }
 
   late final _ExportWavePtr = _lookup<
-          ffi.NativeFunction<ffi.Uint8 Function(Wave, ffi.Pointer<ffi.Int8>)>>(
+          ffi.NativeFunction<ffi.Bool Function(Wave, ffi.Pointer<ffi.Char>)>>(
       'ExportWave');
   late final _ExportWave =
-      _ExportWavePtr.asFunction<int Function(Wave, ffi.Pointer<ffi.Int8>)>();
+      _ExportWavePtr.asFunction<bool Function(Wave, ffi.Pointer<ffi.Char>)>();
 
   bool ExportWaveAsCode(
     Wave wave,
-    ffi.Pointer<ffi.Int8> fileName,
+    ffi.Pointer<ffi.Char> fileName,
   ) {
     return _ExportWaveAsCode(
-          wave,
-          fileName,
-        ) !=
-        0;
+      wave,
+      fileName,
+    );
   }
 
   late final _ExportWaveAsCodePtr = _lookup<
-          ffi.NativeFunction<ffi.Uint8 Function(Wave, ffi.Pointer<ffi.Int8>)>>(
+          ffi.NativeFunction<ffi.Bool Function(Wave, ffi.Pointer<ffi.Char>)>>(
       'ExportWaveAsCode');
   late final _ExportWaveAsCode = _ExportWaveAsCodePtr.asFunction<
-      int Function(Wave, ffi.Pointer<ffi.Int8>)>();
+      bool Function(Wave, ffi.Pointer<ffi.Char>)>();
 
   /// Wave/Sound management functions
   void PlaySound(
@@ -8834,15 +8771,14 @@ class Raylib {
     Sound sound,
   ) {
     return _IsSoundPlaying(
-          sound,
-        ) !=
-        0;
+      sound,
+    );
   }
 
   late final _IsSoundPlayingPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(Sound)>>('IsSoundPlaying');
+      _lookup<ffi.NativeFunction<ffi.Bool Function(Sound)>>('IsSoundPlaying');
   late final _IsSoundPlaying =
-      _IsSoundPlayingPtr.asFunction<int Function(Sound)>();
+      _IsSoundPlayingPtr.asFunction<bool Function(Sound)>();
 
   void SetSoundVolume(
     Sound sound,
@@ -8918,8 +8854,7 @@ class Raylib {
 
   late final _WaveCropPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Pointer<Wave>, ffi.Int32, ffi.Int32)>>('WaveCrop');
+          ffi.Void Function(ffi.Pointer<Wave>, ffi.Int, ffi.Int)>>('WaveCrop');
   late final _WaveCrop =
       _WaveCropPtr.asFunction<void Function(ffi.Pointer<Wave>, int, int)>();
 
@@ -8939,8 +8874,8 @@ class Raylib {
 
   late final _WaveFormatPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Void Function(ffi.Pointer<Wave>, ffi.Int32, ffi.Int32,
-              ffi.Int32)>>('WaveFormat');
+          ffi.Void Function(
+              ffi.Pointer<Wave>, ffi.Int, ffi.Int, ffi.Int)>>('WaveFormat');
   late final _WaveFormat = _WaveFormatPtr.asFunction<
       void Function(ffi.Pointer<Wave>, int, int, int)>();
 
@@ -8974,7 +8909,7 @@ class Raylib {
 
   /// Music management functions
   Music LoadMusicStream(
-    ffi.Pointer<ffi.Int8> fileName,
+    ffi.Pointer<ffi.Char> fileName,
   ) {
     return _LoadMusicStream(
       fileName,
@@ -8982,14 +8917,14 @@ class Raylib {
   }
 
   late final _LoadMusicStreamPtr =
-      _lookup<ffi.NativeFunction<Music Function(ffi.Pointer<ffi.Int8>)>>(
+      _lookup<ffi.NativeFunction<Music Function(ffi.Pointer<ffi.Char>)>>(
           'LoadMusicStream');
   late final _LoadMusicStream =
-      _LoadMusicStreamPtr.asFunction<Music Function(ffi.Pointer<ffi.Int8>)>();
+      _LoadMusicStreamPtr.asFunction<Music Function(ffi.Pointer<ffi.Char>)>();
 
   Music LoadMusicStreamFromMemory(
-    ffi.Pointer<ffi.Int8> fileType,
-    ffi.Pointer<ffi.Uint8> data,
+    ffi.Pointer<ffi.Char> fileType,
+    ffi.Pointer<ffi.UnsignedChar> data,
     int dataSize,
   ) {
     return _LoadMusicStreamFromMemory(
@@ -9001,24 +8936,25 @@ class Raylib {
 
   late final _LoadMusicStreamFromMemoryPtr = _lookup<
       ffi.NativeFunction<
-          Music Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Uint8>,
-              ffi.Int32)>>('LoadMusicStreamFromMemory');
+          Music Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.UnsignedChar>,
+              ffi.Int)>>('LoadMusicStreamFromMemory');
   late final _LoadMusicStreamFromMemory =
       _LoadMusicStreamFromMemoryPtr.asFunction<
-          Music Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Uint8>, int)>();
+          Music Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.UnsignedChar>, int)>();
 
   bool IsMusicReady(
     Music music,
   ) {
     return _IsMusicReady(
-          music,
-        ) !=
-        0;
+      music,
+    );
   }
 
   late final _IsMusicReadyPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(Music)>>('IsMusicReady');
-  late final _IsMusicReady = _IsMusicReadyPtr.asFunction<int Function(Music)>();
+      _lookup<ffi.NativeFunction<ffi.Bool Function(Music)>>('IsMusicReady');
+  late final _IsMusicReady =
+      _IsMusicReadyPtr.asFunction<bool Function(Music)>();
 
   void UnloadMusicStream(
     Music music,
@@ -9051,16 +8987,15 @@ class Raylib {
     Music music,
   ) {
     return _IsMusicStreamPlaying(
-          music,
-        ) !=
-        0;
+      music,
+    );
   }
 
   late final _IsMusicStreamPlayingPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(Music)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(Music)>>(
           'IsMusicStreamPlaying');
   late final _IsMusicStreamPlaying =
-      _IsMusicStreamPlayingPtr.asFunction<int Function(Music)>();
+      _IsMusicStreamPlayingPtr.asFunction<bool Function(Music)>();
 
   void UpdateMusicStream(
     Music music,
@@ -9223,8 +9158,8 @@ class Raylib {
 
   late final _LoadAudioStreamPtr = _lookup<
       ffi.NativeFunction<
-          AudioStream Function(
-              ffi.Uint32, ffi.Uint32, ffi.Uint32)>>('LoadAudioStream');
+          AudioStream Function(ffi.UnsignedInt, ffi.UnsignedInt,
+              ffi.UnsignedInt)>>('LoadAudioStream');
   late final _LoadAudioStream =
       _LoadAudioStreamPtr.asFunction<AudioStream Function(int, int, int)>();
 
@@ -9232,16 +9167,15 @@ class Raylib {
     AudioStream stream,
   ) {
     return _IsAudioStreamReady(
-          stream,
-        ) !=
-        0;
+      stream,
+    );
   }
 
   late final _IsAudioStreamReadyPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(AudioStream)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(AudioStream)>>(
           'IsAudioStreamReady');
   late final _IsAudioStreamReady =
-      _IsAudioStreamReadyPtr.asFunction<int Function(AudioStream)>();
+      _IsAudioStreamReadyPtr.asFunction<bool Function(AudioStream)>();
 
   void UnloadAudioStream(
     AudioStream stream,
@@ -9272,7 +9206,7 @@ class Raylib {
   late final _UpdateAudioStreamPtr = _lookup<
       ffi.NativeFunction<
           ffi.Void Function(AudioStream, ffi.Pointer<ffi.Void>,
-              ffi.Int32)>>('UpdateAudioStream');
+              ffi.Int)>>('UpdateAudioStream');
   late final _UpdateAudioStream = _UpdateAudioStreamPtr.asFunction<
       void Function(AudioStream, ffi.Pointer<ffi.Void>, int)>();
 
@@ -9280,16 +9214,15 @@ class Raylib {
     AudioStream stream,
   ) {
     return _IsAudioStreamProcessed(
-          stream,
-        ) !=
-        0;
+      stream,
+    );
   }
 
   late final _IsAudioStreamProcessedPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(AudioStream)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(AudioStream)>>(
           'IsAudioStreamProcessed');
   late final _IsAudioStreamProcessed =
-      _IsAudioStreamProcessedPtr.asFunction<int Function(AudioStream)>();
+      _IsAudioStreamProcessedPtr.asFunction<bool Function(AudioStream)>();
 
   void PlayAudioStream(
     AudioStream stream,
@@ -9337,16 +9270,15 @@ class Raylib {
     AudioStream stream,
   ) {
     return _IsAudioStreamPlaying(
-          stream,
-        ) !=
-        0;
+      stream,
+    );
   }
 
   late final _IsAudioStreamPlayingPtr =
-      _lookup<ffi.NativeFunction<ffi.Uint8 Function(AudioStream)>>(
+      _lookup<ffi.NativeFunction<ffi.Bool Function(AudioStream)>>(
           'IsAudioStreamPlaying');
   late final _IsAudioStreamPlaying =
-      _IsAudioStreamPlayingPtr.asFunction<int Function(AudioStream)>();
+      _IsAudioStreamPlayingPtr.asFunction<bool Function(AudioStream)>();
 
   void StopAudioStream(
     AudioStream stream,
@@ -9419,7 +9351,7 @@ class Raylib {
   }
 
   late final _SetAudioStreamBufferSizeDefaultPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int32)>>(
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int)>>(
           'SetAudioStreamBufferSizeDefault');
   late final _SetAudioStreamBufferSizeDefault =
       _SetAudioStreamBufferSizeDefaultPtr.asFunction<void Function(int)>();
@@ -9501,8 +9433,8 @@ class Raylib {
       _DetachAudioMixedProcessorPtr.asFunction<void Function(AudioCallback)>();
 }
 
-typedef va_list = ffi.Pointer<ffi.Int8>;
-typedef uintptr_t = ffi.Uint64;
+typedef va_list = ffi.Pointer<ffi.Char>;
+typedef uintptr_t = ffi.UnsignedLongLong;
 
 /// Vector2, 2 components
 class Vector2 extends ffi.Struct {
@@ -9607,19 +9539,19 @@ class Matrix extends ffi.Struct {
 /// Color, 4 components, R8G8B8A8 (32bit)
 class Color extends ffi.Struct {
   /// Color red value
-  @ffi.Uint8()
+  @ffi.UnsignedChar()
   external int r;
 
   /// Color green value
-  @ffi.Uint8()
+  @ffi.UnsignedChar()
   external int g;
 
   /// Color blue value
-  @ffi.Uint8()
+  @ffi.UnsignedChar()
   external int b;
 
   /// Color alpha value
-  @ffi.Uint8()
+  @ffi.UnsignedChar()
   external int a;
 }
 
@@ -9648,49 +9580,49 @@ class Image extends ffi.Struct {
   external ffi.Pointer<ffi.Void> data;
 
   /// Image base width
-  @ffi.Int32()
+  @ffi.Int()
   external int width;
 
   /// Image base height
-  @ffi.Int32()
+  @ffi.Int()
   external int height;
 
   /// Mipmap levels, 1 by default
-  @ffi.Int32()
+  @ffi.Int()
   external int mipmaps;
 
   /// Data format (PixelFormat type)
-  @ffi.Int32()
+  @ffi.Int()
   external int format;
 }
 
 /// Texture, tex data stored in GPU memory (VRAM)
 class Texture extends ffi.Struct {
   /// OpenGL texture id
-  @ffi.Uint32()
+  @ffi.UnsignedInt()
   external int id;
 
   /// Texture base width
-  @ffi.Int32()
+  @ffi.Int()
   external int width;
 
   /// Texture base height
-  @ffi.Int32()
+  @ffi.Int()
   external int height;
 
   /// Mipmap levels, 1 by default
-  @ffi.Int32()
+  @ffi.Int()
   external int mipmaps;
 
   /// Data format (PixelFormat type)
-  @ffi.Int32()
+  @ffi.Int()
   external int format;
 }
 
 /// RenderTexture, fbo for texture rendering
 class RenderTexture extends ffi.Struct {
   /// OpenGL framebuffer object id
-  @ffi.Uint32()
+  @ffi.UnsignedInt()
   external int id;
 
   /// Color buffer attachment texture
@@ -9706,42 +9638,42 @@ class NPatchInfo extends ffi.Struct {
   external Rectangle source;
 
   /// Left border offset
-  @ffi.Int32()
+  @ffi.Int()
   external int left;
 
   /// Top border offset
-  @ffi.Int32()
+  @ffi.Int()
   external int top;
 
   /// Right border offset
-  @ffi.Int32()
+  @ffi.Int()
   external int right;
 
   /// Bottom border offset
-  @ffi.Int32()
+  @ffi.Int()
   external int bottom;
 
   /// Layout of the n-patch: 3x3, 1x3 or 3x1
-  @ffi.Int32()
+  @ffi.Int()
   external int layout;
 }
 
 /// GlyphInfo, font characters glyphs info
 class GlyphInfo extends ffi.Struct {
   /// Character value (Unicode)
-  @ffi.Int32()
+  @ffi.Int()
   external int value;
 
   /// Character offset X when drawing
-  @ffi.Int32()
+  @ffi.Int()
   external int offsetX;
 
   /// Character offset Y when drawing
-  @ffi.Int32()
+  @ffi.Int()
   external int offsetY;
 
   /// Character advance position X
-  @ffi.Int32()
+  @ffi.Int()
   external int advanceX;
 
   /// Character image data
@@ -9751,15 +9683,15 @@ class GlyphInfo extends ffi.Struct {
 /// Font, font texture and GlyphInfo array data
 class Font extends ffi.Struct {
   /// Base size (default chars height)
-  @ffi.Int32()
+  @ffi.Int()
   external int baseSize;
 
   /// Number of glyph characters
-  @ffi.Int32()
+  @ffi.Int()
   external int glyphCount;
 
   /// Padding around the glyph characters
-  @ffi.Int32()
+  @ffi.Int()
   external int glyphPadding;
 
   /// Texture atlas containing the glyphs
@@ -9791,7 +9723,7 @@ class Camera3D extends ffi.Struct {
   external double fovy;
 
   /// Camera projection: CAMERA_PERSPECTIVE or CAMERA_ORTHOGRAPHIC
-  @ffi.Int32()
+  @ffi.Int()
   external int projection;
 }
 
@@ -9815,11 +9747,11 @@ class Camera2D extends ffi.Struct {
 /// Mesh, vertex data and vao/vbo
 class Mesh extends ffi.Struct {
   /// Number of vertices stored in arrays
-  @ffi.Int32()
+  @ffi.Int()
   external int vertexCount;
 
   /// Number of triangles stored (indexed or not)
-  @ffi.Int32()
+  @ffi.Int()
   external int triangleCount;
 
   /// Vertex position (XYZ - 3 components per vertex) (shader-location = 0)
@@ -9838,10 +9770,10 @@ class Mesh extends ffi.Struct {
   external ffi.Pointer<ffi.Float> tangents;
 
   /// Vertex colors (RGBA - 4 components per vertex) (shader-location = 3)
-  external ffi.Pointer<ffi.Uint8> colors;
+  external ffi.Pointer<ffi.UnsignedChar> colors;
 
   /// Vertex indices (in case vertex data comes indexed)
-  external ffi.Pointer<ffi.Uint16> indices;
+  external ffi.Pointer<ffi.UnsignedShort> indices;
 
   /// Animated vertex positions (after bones transformations)
   external ffi.Pointer<ffi.Float> animVertices;
@@ -9850,27 +9782,27 @@ class Mesh extends ffi.Struct {
   external ffi.Pointer<ffi.Float> animNormals;
 
   /// Vertex bone ids, max 255 bone ids, up to 4 bones influence by vertex (skinning)
-  external ffi.Pointer<ffi.Uint8> boneIds;
+  external ffi.Pointer<ffi.UnsignedChar> boneIds;
 
   /// Vertex bone weight, up to 4 bones influence by vertex (skinning)
   external ffi.Pointer<ffi.Float> boneWeights;
 
   /// OpenGL Vertex Array Object id
-  @ffi.Uint32()
+  @ffi.UnsignedInt()
   external int vaoId;
 
   /// OpenGL Vertex Buffer Objects id (default vertex data)
-  external ffi.Pointer<ffi.Uint32> vboId;
+  external ffi.Pointer<ffi.UnsignedInt> vboId;
 }
 
 /// Shader
 class Shader extends ffi.Struct {
   /// Shader program id
-  @ffi.Uint32()
+  @ffi.UnsignedInt()
   external int id;
 
   /// Shader locations array (RL_MAX_SHADER_LOCATIONS)
-  external ffi.Pointer<ffi.Int32> locs;
+  external ffi.Pointer<ffi.Int> locs;
 }
 
 /// MaterialMap
@@ -9916,10 +9848,10 @@ typedef Quaternion = Vector4;
 /// Bone, skeletal animation bone
 class BoneInfo extends ffi.Struct {
   @ffi.Array.multi([32])
-  external ffi.Array<ffi.Int8> name;
+  external ffi.Array<ffi.Char> name;
 
   /// Bone parent
-  @ffi.Int32()
+  @ffi.Int()
   external int parent;
 }
 
@@ -9929,11 +9861,11 @@ class Model extends ffi.Struct {
   external Matrix transform;
 
   /// Number of meshes
-  @ffi.Int32()
+  @ffi.Int()
   external int meshCount;
 
   /// Number of materials
-  @ffi.Int32()
+  @ffi.Int()
   external int materialCount;
 
   /// Meshes array
@@ -9943,10 +9875,10 @@ class Model extends ffi.Struct {
   external ffi.Pointer<Material> materials;
 
   /// Mesh material number
-  external ffi.Pointer<ffi.Int32> meshMaterial;
+  external ffi.Pointer<ffi.Int> meshMaterial;
 
   /// Number of bones
-  @ffi.Int32()
+  @ffi.Int()
   external int boneCount;
 
   /// Bones information (skeleton)
@@ -9959,11 +9891,11 @@ class Model extends ffi.Struct {
 /// ModelAnimation
 class ModelAnimation extends ffi.Struct {
   /// Number of bones
-  @ffi.Int32()
+  @ffi.Int()
   external int boneCount;
 
   /// Number of animation frames
-  @ffi.Int32()
+  @ffi.Int()
   external int frameCount;
 
   /// Bones information (skeleton)
@@ -9973,7 +9905,7 @@ class ModelAnimation extends ffi.Struct {
   external ffi.Pointer<ffi.Pointer<Transform>> framePoses;
 
   @ffi.Array.multi([32])
-  external ffi.Array<ffi.Int8> name;
+  external ffi.Array<ffi.Char> name;
 }
 
 /// Ray, ray for raycasting
@@ -9988,8 +9920,8 @@ class Ray extends ffi.Struct {
 /// RayCollision, ray hit information
 class RayCollision extends ffi.Struct {
   /// Did the ray hit something?
-  @ffi.Uint8()
-  external int hit;
+  @ffi.Bool()
+  external bool hit;
 
   /// Distance to the nearest hit
   @ffi.Float()
@@ -10014,19 +9946,19 @@ class BoundingBox extends ffi.Struct {
 /// Wave, audio wave data
 class Wave extends ffi.Struct {
   /// Total number of frames (considering channels)
-  @ffi.Uint32()
+  @ffi.UnsignedInt()
   external int frameCount;
 
   /// Frequency (samples per second)
-  @ffi.Uint32()
+  @ffi.UnsignedInt()
   external int sampleRate;
 
   /// Bit depth (bits per sample): 8, 16, 32 (24 not supported)
-  @ffi.Uint32()
+  @ffi.UnsignedInt()
   external int sampleSize;
 
   /// Number of channels (1-mono, 2-stereo, ...)
-  @ffi.Uint32()
+  @ffi.UnsignedInt()
   external int channels;
 
   /// Buffer data pointer
@@ -10046,15 +9978,15 @@ class AudioStream extends ffi.Struct {
   external ffi.Pointer<rAudioProcessor> processor;
 
   /// Frequency (samples per second)
-  @ffi.Uint32()
+  @ffi.UnsignedInt()
   external int sampleRate;
 
   /// Bit depth (bits per sample): 8, 16, 32 (24 not supported)
-  @ffi.Uint32()
+  @ffi.UnsignedInt()
   external int sampleSize;
 
   /// Number of channels (1-mono, 2-stereo, ...)
-  @ffi.Uint32()
+  @ffi.UnsignedInt()
   external int channels;
 }
 
@@ -10064,7 +9996,7 @@ class Sound extends ffi.Struct {
   external AudioStream stream;
 
   /// Total number of frames (considering channels)
-  @ffi.Uint32()
+  @ffi.UnsignedInt()
   external int frameCount;
 }
 
@@ -10074,15 +10006,15 @@ class Music extends ffi.Struct {
   external AudioStream stream;
 
   /// Total number of frames (considering channels)
-  @ffi.Uint32()
+  @ffi.UnsignedInt()
   external int frameCount;
 
   /// Music looping enable
-  @ffi.Uint8()
-  external int looping;
+  @ffi.Bool()
+  external bool looping;
 
   /// Type of music context (audio filetype)
-  @ffi.Int32()
+  @ffi.Int()
   external int ctxType;
 
   /// Audio context data, depends on type
@@ -10092,11 +10024,11 @@ class Music extends ffi.Struct {
 /// VrDeviceInfo, Head-Mounted-Display device parameters
 class VrDeviceInfo extends ffi.Struct {
   /// Horizontal resolution in pixels
-  @ffi.Int32()
+  @ffi.Int()
   external int hResolution;
 
   /// Vertical resolution in pixels
-  @ffi.Int32()
+  @ffi.Int()
   external int vResolution;
 
   /// Horizontal size in meters
@@ -10156,39 +10088,39 @@ class VrStereoConfig extends ffi.Struct {
 /// File path list
 class FilePathList extends ffi.Struct {
   /// Filepaths max entries
-  @ffi.Uint32()
+  @ffi.UnsignedInt()
   external int capacity;
 
   /// Filepaths entries count
-  @ffi.Uint32()
+  @ffi.UnsignedInt()
   external int count;
 
   /// Filepaths entries
-  external ffi.Pointer<ffi.Pointer<ffi.Int8>> paths;
+  external ffi.Pointer<ffi.Pointer<ffi.Char>> paths;
 }
 
 /// Automation event
 class AutomationEvent extends ffi.Struct {
   /// Event frame
-  @ffi.Uint32()
+  @ffi.UnsignedInt()
   external int frame;
 
   /// Event type (AutomationEventType)
-  @ffi.Uint32()
+  @ffi.UnsignedInt()
   external int type;
 
   @ffi.Array.multi([4])
-  external ffi.Array<ffi.Int32> params;
+  external ffi.Array<ffi.Int> params;
 }
 
 /// Automation event list
 class AutomationEventList extends ffi.Struct {
   /// Events max entries (MAX_AUTOMATION_EVENTS)
-  @ffi.Uint32()
+  @ffi.UnsignedInt()
   external int capacity;
 
   /// Events entries count
-  @ffi.Uint32()
+  @ffi.UnsignedInt()
   external int count;
 
   /// Events entries
@@ -11172,20 +11104,20 @@ typedef Camera = Camera3D;
 /// WARNING: These callbacks are intended for advanced users
 typedef TraceLogCallback = ffi.Pointer<
     ffi.NativeFunction<
-        ffi.Void Function(ffi.Int32, ffi.Pointer<ffi.Int8>, va_list)>>;
+        ffi.Void Function(ffi.Int, ffi.Pointer<ffi.Char>, va_list)>>;
 typedef LoadFileDataCallback = ffi.Pointer<
     ffi.NativeFunction<
-        ffi.Pointer<ffi.Uint8> Function(
-            ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int32>)>>;
+        ffi.Pointer<ffi.UnsignedChar> Function(
+            ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Int>)>>;
 typedef SaveFileDataCallback = ffi.Pointer<
     ffi.NativeFunction<
-        ffi.Uint8 Function(
-            ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Void>, ffi.Int32)>>;
+        ffi.Bool Function(
+            ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Void>, ffi.Int)>>;
 typedef LoadFileTextCallback = ffi.Pointer<
-    ffi.NativeFunction<ffi.Pointer<ffi.Int8> Function(ffi.Pointer<ffi.Int8>)>>;
+    ffi.NativeFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>>;
 typedef SaveFileTextCallback = ffi.Pointer<
     ffi.NativeFunction<
-        ffi.Uint8 Function(ffi.Pointer<ffi.Int8>, ffi.Pointer<ffi.Int8>)>>;
+        ffi.Bool Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>;
 
 /// TextureCubemap, same as Texture
 typedef TextureCubemap = Texture;
@@ -11194,7 +11126,8 @@ typedef TextureCubemap = Texture;
 /// Audio Loading and Playing Functions (Module: audio)
 /// ------------------------------------------------------------------------------------
 typedef AudioCallback = ffi.Pointer<
-    ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Uint32)>>;
+    ffi
+    .NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.UnsignedInt)>>;
 
 const int _VCRT_COMPILER_PREPROCESSOR = 1;
 
