@@ -2,8 +2,6 @@ import 'package:raylib/raylib.dart';
 import 'package:raylib/src/enums/camera_mode.dart';
 import 'package:raylib/src/library.dart';
 
-//TODO - Update camera
-
 /// Set camera mode (multiple camera modes available).
 ///
 /// View [CameraMode] for more information.
@@ -14,6 +12,21 @@ import 'package:raylib/src/library.dart';
 /// Update camera position for selected mode.
 void updateCamera(Camera3D camera, CameraMode mode) {
   return library.UpdateCamera(camera.pointer, cameraModeToNative(mode));
+}
+
+/// Update camera movement/rotation
+void updateCameraPro(
+  Camera3D camera,
+  Vector3 movement,
+  Vector3 rotation,
+  double zoom,
+) {
+  return library.UpdateCameraPro(
+    camera.pointer,
+    movement.ref,
+    rotation.ref,
+    zoom,
+  );
 }
 
 /// Set camera pan key to combine with mouse movement (free camera).
