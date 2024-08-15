@@ -33,7 +33,7 @@ void setExitKey(KeyboardKey key) {
 KeyboardKey getKeyPressed() {
   final key = library.GetKeyPressed();
 
-  switch (key) {
+  switch (raylib.KeyboardKey.values[key]) {
     case raylib.KeyboardKey.NULL:
       return KeyboardKey.none;
     case raylib.KeyboardKey.APOSTROPHE:

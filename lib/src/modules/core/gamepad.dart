@@ -42,7 +42,7 @@ bool isGamepadButtonUp(int gamepad, GamepadButton button) {
 GamepadButton getGamepadButtonPressed() {
   final button = library.GetGamepadButtonPressed();
 
-  switch (button) {
+  switch (raylib.GamepadButton.values[button]) {
     case raylib.GamepadButton.UNKNOWN:
       return GamepadButton.unknown;
     case raylib.GamepadButton.LEFT_FACE_UP:

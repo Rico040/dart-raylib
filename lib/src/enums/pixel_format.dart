@@ -118,7 +118,7 @@ int pixelFormatToNative(PixelFormat format) {
 
 /// Convert given native value to dart enum.
 PixelFormat pixelFormatToDart(int format) {
-  switch (format) {
+  switch (raylib.PixelFormat.values[format]) {
     case raylib.PixelFormat.UNCOMPRESSED_GRAYSCALE:
       return PixelFormat.uncompressedGrayscale;
     case raylib.PixelFormat.UNCOMPRESSED_GRAY_ALPHA:
