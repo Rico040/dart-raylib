@@ -33,7 +33,7 @@ You need to tell the package where it can find your raylib library:
 ```dart
 initLibrary(
   linux: '../include/libraylib.so',
-  windows: '../somewhere/else',
+  windows: '../include/raylib.dll',
 );
 ```
 

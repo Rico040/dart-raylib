@@ -42,8 +42,3 @@ BoundingBox getMeshBoundingBox(Mesh mesh) {
 void genMeshTangents(Mesh mesh) {
   return library.GenMeshTangents(mesh.pointer);
 }
-
-/// Compute mesh binormals.
-void genMeshBinormals(Mesh mesh) {
-  return library.GenMeshBinormals(mesh.pointer);
-}

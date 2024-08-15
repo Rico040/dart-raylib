@@ -21,11 +21,6 @@ void unloadModel(Model model) {
   return library.UnloadModel(model.ref);
 }
 
-/// Unload model (but not meshes) from memory (RAM and/or VRAM).
-void unloadModelKeepMeshes(Model model) {
-  return library.UnloadModelKeepMeshes(model.ref);
-}
-
 /// Compute model bounding box limits (considers all meshes).
 BoundingBox getModelBoundingBox(Model model) {
   return BoundingBox.fromRef(library.GetModelBoundingBox(model.ref));
@@ -57,7 +52,7 @@ void unloadMaterial(Material material) {
 
 /// Load materials from model file.
 List<ModelAnimation> loadModelAnimations(String fileName) {
-  final animCount = malloc<Uint32>(sizeOf<Uint32>());
+  final animCount = malloc<Int32>(sizeOf<Int32>());
   final result =
       library.LoadModelAnimations(string.toNative(fileName), animCount);
 

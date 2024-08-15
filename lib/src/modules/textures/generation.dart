@@ -10,36 +10,21 @@ Image genImageColor(
   return Image.fromRef(library.GenImageColor(width, height, color.ref));
 }
 
-/// Generate image: vertical gradient.
-Image genImageGradientV(
+/// Generate image: linear gradient.
+Image genImageGradientLinear(
   int width,
   int height,
-  Color top,
-  Color bottom,
+  int direction,
+  Color start,
+  Color end,
 ) {
   return Image.fromRef(
-    library.GenImageGradientV(
+    library.GenImageGradientLinear(
       width,
       height,
-      top.ref,
-      bottom.ref,
-    ),
-  );
-}
-
-/// Generate image: horizontal gradient.
-Image genImageGradientH(
-  int width,
-  int height,
-  Color left,
-  Color right,
-) {
-  return Image.fromRef(
-    library.GenImageGradientH(
-      width,
-      height,
-      left.ref,
-      right.ref,
+      direction,
+      start.ref,
+      end.ref,
     ),
   );
 }

@@ -63,42 +63,6 @@ void drawLineBezier(
   );
 }
 
-///Draw line using quadratic bezier curves with a control point.
-void drawLineBezierQuad(
-  Vector2 startPos,
-  Vector2 endPos,
-  Vector2 controlPos,
-  double thick,
-  Color color,
-) {
-  return library.DrawLineBezierQuad(
-    startPos.ref,
-    endPos.ref,
-    controlPos.ref,
-    thick,
-    color.ref,
-  );
-}
-
-/// Draw line using cubic bezier curves with 2 control points.
-void drawLineBezierCubic(
-  Vector2 startPos,
-  Vector2 endPos,
-  Vector2 startControlPos,
-  Vector2 endControlPos,
-  double thick,
-  Color color,
-) {
-  return library.DrawLineBezierCubic(
-    startPos.ref,
-    endPos.ref,
-    startControlPos.ref,
-    endControlPos.ref,
-    thick,
-    color.ref,
-  );
-}
-
 /// Draw lines sequence.
 void drawLineStrip(List<Vector2> points, Color color) {
   return library.DrawLineStrip(
@@ -376,15 +340,30 @@ void drawRectangleRounded(
   );
 }
 
-/// Draw rectangle with rounded edges outline.
+/// Draw rectangle with rounded edges.
 void drawRectangleRoundedLines(
+  Rectangle rec,
+  double roundness,
+  int segments,
+  Color color,
+) {
+  return library.DrawRectangleRoundedLines(
+    rec.ref,
+    roundness,
+    segments,
+    color.ref,
+  );
+}
+
+/// Draw rectangle with rounded edges outline.
+void drawRectangleRoundedLinesEx(
   Rectangle rec,
   double roundness,
   int segments,
   double lineThick,
   Color color,
 ) {
-  return library.DrawRectangleRoundedLines(
+  return library.DrawRectangleRoundedLinesEx(
     rec.ref,
     roundness,
     segments,

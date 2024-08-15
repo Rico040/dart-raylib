@@ -212,45 +212,6 @@ void drawTextureRec(
   );
 }
 
-/// Draw texture quad with tiling and offset parameters.
-void drawTextureQuad(
-  Texture2D texture,
-  Vector2 tiling,
-  Vector2 offset,
-  Rectangle quad,
-  Color tint,
-) {
-  return library.DrawTextureQuad(
-    texture.ref,
-    tiling.ref,
-    offset.ref,
-    quad.ref,
-    tint.ref,
-  );
-}
-
-/// Draw part of a texture (defined by a rectangle) with rotation and scale
-/// tiled into dest..
-void drawTextureTiled(
-  Texture2D texture,
-  Rectangle source,
-  Rectangle dest,
-  Vector2 origin,
-  double rotation,
-  double scale,
-  Color tint,
-) {
-  return library.DrawTextureTiled(
-    texture.ref,
-    source.ref,
-    dest.ref,
-    origin.ref,
-    rotation,
-    scale,
-    tint.ref,
-  );
-}
-
 /// Draw a part of a texture defined by a rectangle with 'pro' parameters.
 void drawTexturePro(
   Texture2D texture,
@@ -285,25 +246,6 @@ void drawTextureNPatch(
     dest.ref,
     origin.ref,
     rotation,
-    tint.ref,
-  );
-}
-
-/// Draw a textured polygon.
-void drawTexturePoly(
-  Texture2D texture,
-  Vector2 center,
-  List<Vector2> points,
-  List<Vector2> texcoords,
-  int pointsCount,
-  Color tint,
-) {
-  return library.DrawTexturePoly(
-    texture.ref,
-    center.ref,
-    vector2.toPointer(points),
-    vector2.toPointer(texcoords),
-    pointsCount,
     tint.ref,
   );
 }

@@ -4,7 +4,7 @@ version: 0.3.0
 homepage: https://gitlab.com/wolfenrain/dart-raylib
 
 environment:
-  sdk: '>=2.14.0 <3.0.0'
+  sdk: '>=3.0.0 <3.6.0'
 
 dependencies:
   collection: ^1.15.0
@@ -19,8 +19,8 @@ ffigen:
   name: Raylib
   description: Bindings to Raylib
   output: lib/src/generated_bindings.dart
-  llvm-path:
-    - /usr/lib/llvm-12
+  # llvm-path:
+    # - /usr/lib/llvm-12
   comments:
     style: any
     length: full

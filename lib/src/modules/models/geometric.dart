@@ -87,46 +87,6 @@ void drawCubeWiresV(Vector3 position, Vector3 size, Color color) {
   return library.DrawCubeWiresV(position.ref, size.ref, color.ref);
 }
 
-/// Draw cube textured.
-void drawCubeTexture(
-  Texture2D texture,
-  Vector3 position,
-  double width,
-  double height,
-  double length,
-  Color color,
-) {
-  return library.DrawCubeTexture(
-    texture.ref,
-    position.ref,
-    width,
-    height,
-    length,
-    color.ref,
-  );
-}
-
-/// Draw cube with a region of a texture.
-void drawCubeTextureRec(
-  Texture2D texture,
-  Rectangle source,
-  Vector3 position,
-  double width,
-  double height,
-  double length,
-  Color color,
-) {
-  return library.DrawCubeTextureRec(
-    texture.ref,
-    source.ref,
-    position.ref,
-    width,
-    height,
-    length,
-    color.ref,
-  );
-}
-
 /// Draw sphere.
 void drawSphere(Vector3 centerPos, double radius, Color color) {
   return library.DrawSphere(centerPos.ref, radius, color.ref);

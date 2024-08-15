@@ -50,16 +50,6 @@ RayCollision getRayCollisionBox(Ray ray, BoundingBox box) {
   );
 }
 
-/// Get collision info between ray and model.
-RayCollision getRayCollisionModel(Ray ray, Model model) {
-  return RayCollision.fromRef(
-    library.GetRayCollisionModel(
-      ray.ref,
-      model.ref,
-    ),
-  );
-}
-
 /// Get collision info between ray and mesh.
 RayCollision getRayCollisionMesh(Ray ray, Mesh mesh, Matrix transform) {
   return RayCollision.fromRef(

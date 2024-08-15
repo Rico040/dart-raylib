@@ -3,7 +3,10 @@ import 'package:raylib/src/library.dart';
 
 /// Get a ray trace from mouse position.
 Ray getMouseRay(Vector2 mousePosition, Camera3D camera) {
-  return Ray.fromRef(library.GetMouseRay(mousePosition.ref, camera.ref));
+  // Compatibility hack for previous raylib versions
+  return Ray.fromRef(
+    library.GetScreenToWorldRay(mousePosition.ref, camera.ref),
+  );
 }
 
 /// Get camera transform matrix (view matrix).
