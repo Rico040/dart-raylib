@@ -18,6 +18,7 @@ enum GameScreen {
 void main() {
   initLibrary(
     linux: './include/libraylib.so',
+    windows: './include/raylib.dll',
   );
   const screenWidth = 800;
   const screenHeight = 450;
