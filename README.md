@@ -10,7 +10,7 @@
 
 Dart bindings for [raylib](https://raylib.com), a simple and easy-to-use library to enjoy videogames programming.
 
-**Note**: This package was written for `raylib` version 4.x and higher, older versions are not supported.
+**Note**: This package was written for `raylib` version 5.x and higher, older versions are not supported.
 
 Currently this library does not support the following platforms:
 - iOS, `raylib` is built on top of OpenGL and that isn't supported on iOS.
