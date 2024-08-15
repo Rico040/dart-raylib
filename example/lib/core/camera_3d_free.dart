@@ -23,12 +23,12 @@ void main() {
 
   final cubePosition = Vector3.zero();
 
-  setCameraMode(camera, CameraMode.free); // Set a free camera mode
+  disableCursor(); // Set a free camera mode
 
   setTargetFPS(60);
 
   while (!windowShouldClose()) {
-    updateCamera(camera);
+    updateCamera(camera, CameraMode.free);
 
     if (isKeyDown(KeyboardKey.z)) camera.target = Vector3.zero();
 

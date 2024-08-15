@@ -12,9 +12,9 @@ import 'package:raylib/src/library.dart';
 // }
 
 /// Update camera position for selected mode.
-// void updateCamera(Camera3D camera) {
-//   return library.UpdateCamera(camera.pointer, camera.mode);
-// }
+void updateCamera(Camera3D camera, CameraMode mode) {
+  return library.UpdateCamera(camera.pointer, cameraModeToNative(mode));
+}
 
 /// Set camera pan key to combine with mouse movement (free camera).
 // void setCameraPanControl(int keyPan) {

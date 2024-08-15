@@ -88,12 +88,10 @@ void main() {
 
   var currentModel = 0;
 
-  setCameraMode(camera, CameraMode.orbital);
-
   setTargetFPS(60);
 
   while (!windowShouldClose()) {
-    updateCamera(camera);
+    updateCamera(camera, CameraMode.orbital);
 
     if (isMouseButtonPressed(MouseButton.left)) {
       // Cycle between the textures

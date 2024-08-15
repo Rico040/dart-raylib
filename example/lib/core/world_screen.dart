@@ -24,12 +24,12 @@ void main() {
   final cubePosition = Vector3.zero();
   var cubeScreenPosition = Vector2.zero();
 
-  setCameraMode(camera, CameraMode.free); // Set a free camera mode
+  disableCursor();
 
   setTargetFPS(60);
 
   while (!windowShouldClose()) {
-    updateCamera(camera);
+    updateCamera(camera, CameraMode.thirdPerson);
 
     // Calculate cube screen space position (with a little offset to be in top)
     cubeScreenPosition = getWorldToScreen(

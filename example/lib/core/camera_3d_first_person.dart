@@ -28,6 +28,8 @@ void main() {
     fovy: 60,
   );
 
+  final cameraMode = CameraMode.firstPerson;
+
   // Generates some random columns
   final heights = <double>[];
   final positions = <Vector3>[];
@@ -55,15 +57,12 @@ void main() {
     );
   }
 
-  setCameraMode(
-    camera,
-    CameraMode.firstPerson,
-  ); // Set a first person camera mode
+  disableCursor();
 
   setTargetFPS(60);
 
   while (!windowShouldClose()) {
-    updateCamera(camera);
+    updateCamera(camera, cameraMode);
 
     beginDrawing();
 
