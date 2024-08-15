@@ -11,7 +11,8 @@ class BoneInfo extends NativeClass<raylib.BoneInfo> {
   /// Bone, skeletal animation bone.
   BoneInfo.fromRef(raylib.BoneInfo ref) : super.fromRef(ref);
 
-  Int8Array get _name => Int8Array(ref.name, 32);
+  // TODO(Rico040): Use something other than typecast.
+  Int8Array get _name => Int8Array(ref.name as Array<Int8>, 32);
 
   /// Bone name.
   String get name => utf8.decode(_name);

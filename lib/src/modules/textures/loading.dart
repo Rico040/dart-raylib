@@ -35,7 +35,7 @@ Image loadImageRaw(
 
 /// Load image sequence from file (frames appended to image.data).
 Image loadImageAnim(String fileName) {
-  final frames = malloc<Int32>(sizeOf<Int32>());
+  final frames = malloc<Int>(sizeOf<Int>());
   // TODO(wolfen): how to handle out params?
 
   return Image.fromRef(

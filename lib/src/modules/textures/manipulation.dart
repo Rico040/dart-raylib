@@ -181,7 +181,7 @@ List<Color> loadImageColors(Image image) {
 
 /// Load colors palette from image as a Color array (RGBA - 32bit).
 List<Color> loadImagePalette(Image image, int maxPaletteSize) {
-  final colorsCounter = malloc<Int32>(sizeOf<Int32>());
+  final colorsCounter = malloc<Int>(sizeOf<Int>());
 
   final result = library.LoadImagePalette(
     image.ref,

@@ -13,5 +13,5 @@ class Shader extends NativeClass<raylib.Shader> {
   int get id => ref.id;
 
   /// Shader locations array (RL_MAX_SHADER_LOCATIONS).
-  PointerList<Int32> get locs => PointerList(ref.locs);
+  PointerList<Int> get locs => PointerList(ref.locs);
 }

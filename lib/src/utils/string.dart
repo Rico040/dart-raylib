@@ -12,25 +12,25 @@ void _ensureNotNullptr(Pointer pointer, String operation) {
 }
 
 /// Convert given string to native pointer.
-Pointer<Int8> toNative(String value) {
+Pointer<Char> toNative(String value) {
   final units = utf8.encode(value);
   final result = malloc<Uint8>(units.length + 1);
   final nativeString = result.asTypedList(units.length + 1)..setAll(0, units);
   nativeString[units.length] = 0;
-  return result.cast<Int8>();
+  return result.cast<Char>();
 }
 
 /// Convert given string to native pointer.
-Pointer<Uint8> toNativeUnsigned(String value) {
+Pointer<UnsignedChar> toNativeUnsigned(String value) {
   final units = utf8.encode(value);
   final result = malloc<Uint8>(units.length + 1);
   final nativeString = result.asTypedList(units.length + 1)..setAll(0, units);
   nativeString[units.length] = 0;
-  return result.cast<Uint8>();
+  return result.cast<UnsignedChar>();
 }
 
 /// Convert given native pointer to string.
-String toDart(Pointer<Int8> pointer) {
+String toDart(Pointer<Char> pointer) {
   _ensureNotNullptr(pointer, 'toDart');
   final codeUnits = pointer.cast<Int8>();
   var length = 0;

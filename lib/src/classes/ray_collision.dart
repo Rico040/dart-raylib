@@ -8,7 +8,7 @@ class RayCollision extends NativeClass<raylib.RayCollision> {
   RayCollision.fromRef(raylib.RayCollision ref) : super.fromRef(ref);
 
   /// Did the ray hit something?
-  int get hit => ref.hit;
+  bool get hit => ref.hit;
 
   /// Distance to nearest hit.
   double get distance => ref.distance;

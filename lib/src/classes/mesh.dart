@@ -20,7 +20,8 @@ class Mesh extends NativeClass<raylib.Mesh> {
     pointer.ref.texcoords2 = malloc<Float>(vertexCount * 2 * sizeOf<Float>());
     pointer.ref.normals = malloc<Float>(vertexCount * 3 * sizeOf<Float>());
     pointer.ref.tangents = malloc<Float>(vertexCount * 4 * sizeOf<Float>());
-    pointer.ref.colors = malloc<Uint8>(vertexCount * 4 * sizeOf<Uint8>());
+    pointer.ref.colors =
+        malloc<UnsignedChar>(vertexCount * 4 * sizeOf<UnsignedChar>());
   }
 
   /// Mesh, vertex data and vao/vbo.
@@ -88,10 +89,11 @@ class Mesh extends NativeClass<raylib.Mesh> {
   /// Vertex colors (RGBA - 4 components per vertex).
   ///
   /// Shader-location = 3.
-  PointerList<Uint8> get colors => PointerList<Uint8>(ref.colors);
+  PointerList<UnsignedChar> get colors => PointerList<UnsignedChar>(ref.colors);
 
   /// Vertex indices (in case vertex data comes indexed).
-  PointerList<Uint16> get indices => PointerList<Uint16>(ref.indices);
+  PointerList<UnsignedShort> get indices =>
+      PointerList<UnsignedShort>(ref.indices);
 
   /// Animated vertex positions (after bones transformations).
   PointerList<Float> get animVertices => PointerList<Float>(ref.animVertices);
@@ -101,7 +103,8 @@ class Mesh extends NativeClass<raylib.Mesh> {
 
   /// Vertex bone ids, max 255 bone ids, up to 4 bones influence by
   /// vertex (skinning).
-  PointerList<Uint8> get boneIds => PointerList<Uint8>(ref.boneIds);
+  PointerList<UnsignedChar> get boneIds =>
+      PointerList<UnsignedChar>(ref.boneIds);
 
   /// Vertex bone weight, up to 4 bones influence by vertex (skinning).
   PointerList<Float> get boneWeights => PointerList<Float>(ref.boneWeights);
@@ -110,7 +113,7 @@ class Mesh extends NativeClass<raylib.Mesh> {
   int get vaoId => ref.vaoId;
 
   /// OpenGL Vertex Buffer Objects id (default vertex data).
-  PointerList<Uint32> get vboId => PointerList<Uint32>(ref.vboId);
+  PointerList<UnsignedInt> get vboId => PointerList<UnsignedInt>(ref.vboId);
 }
 
 /// Adds extension for lists of GlyphInfo.

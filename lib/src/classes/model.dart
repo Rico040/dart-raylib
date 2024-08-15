@@ -26,7 +26,7 @@ class Model extends NativeClass<raylib.Model> {
   PointerList<raylib.Material> get materials => PointerList(ref.materials);
 
   /// Mesh material number.
-  PointerList<Int32> get meshMaterial => PointerList(ref.meshMaterial);
+  PointerList<Int> get meshMaterial => PointerList(ref.meshMaterial);
 
   /// Number of bones.
   int get boneCount => ref.boneCount;

@@ -33,7 +33,7 @@ Material loadMaterialDefault() {
 
 /// Load materials from model file.
 List<Material> loadMaterials(String fileName) {
-  final materialCount = malloc<Int32>(sizeOf<Int32>());
+  final materialCount = malloc<Int>(sizeOf<Int>());
   final result = library.LoadMaterials(
     string.toNative(fileName),
     materialCount,
@@ -52,7 +52,7 @@ void unloadMaterial(Material material) {
 
 /// Load materials from model file.
 List<ModelAnimation> loadModelAnimations(String fileName) {
-  final animCount = malloc<Int32>(sizeOf<Int32>());
+  final animCount = malloc<Int>(sizeOf<Int>());
   final result =
       library.LoadModelAnimations(string.toNative(fileName), animCount);
 
