@@ -6,6 +6,7 @@ export 'core/gamepad.dart';
 export 'core/gesture.dart';
 export 'core/keyboard.dart';
 export 'core/management.dart';
+export 'core/misc.dart';
 export 'core/mouse.dart';
 export 'core/screen_space.dart';
 export 'core/time.dart';
