@@ -25,16 +25,16 @@ enum GamepadAxis {
 int gamepadAxisToNative(GamepadAxis axis) {
   switch (axis) {
     case GamepadAxis.leftX:
-      return raylib.GamepadAxis.LEFT_X;
+      return raylib.GamepadAxis.LEFT_X.value;
     case GamepadAxis.leftY:
-      return raylib.GamepadAxis.LEFT_Y;
+      return raylib.GamepadAxis.LEFT_Y.value;
     case GamepadAxis.rightX:
-      return raylib.GamepadAxis.RIGHT_X;
+      return raylib.GamepadAxis.RIGHT_X.value;
     case GamepadAxis.rightY:
-      return raylib.GamepadAxis.RIGHT_Y;
+      return raylib.GamepadAxis.RIGHT_Y.value;
     case GamepadAxis.leftTrigger:
-      return raylib.GamepadAxis.LEFT_TRIGGER;
+      return raylib.GamepadAxis.LEFT_TRIGGER.value;
     case GamepadAxis.rightTrigger:
-      return raylib.GamepadAxis.RIGHT_TRIGGER;
+      return raylib.GamepadAxis.RIGHT_TRIGGER.value;
   }
 }

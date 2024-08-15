@@ -22,14 +22,14 @@ enum CameraMode {
 int cameraModeToNative(CameraMode mode) {
   switch (mode) {
     case CameraMode.custom:
-      return raylib.CameraMode.CUSTOM;
+      return raylib.CameraMode.CUSTOM.value;
     case CameraMode.free:
-      return raylib.CameraMode.FREE;
+      return raylib.CameraMode.FREE.value;
     case CameraMode.orbital:
-      return raylib.CameraMode.ORBITAL;
+      return raylib.CameraMode.ORBITAL.value;
     case CameraMode.firstPerson:
-      return raylib.CameraMode.FIRST_PERSON;
+      return raylib.CameraMode.FIRST_PERSON.value;
     case CameraMode.thirdPerson:
-      return raylib.CameraMode.THIRD_PERSON;
+      return raylib.CameraMode.THIRD_PERSON.value;
   }
 }

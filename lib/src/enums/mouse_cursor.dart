@@ -40,26 +40,26 @@ enum MouseCursor {
 int mouseCursorToNative(MouseCursor cursor) {
   switch (cursor) {
     case MouseCursor.defaultCursor:
-      return raylib.MouseCursor.DEFAULT;
+      return raylib.MouseCursor.DEFAULT.value;
     case MouseCursor.arrow:
-      return raylib.MouseCursor.ARROW;
+      return raylib.MouseCursor.ARROW.value;
     case MouseCursor.ibeam:
-      return raylib.MouseCursor.IBEAM;
+      return raylib.MouseCursor.IBEAM.value;
     case MouseCursor.crosshair:
-      return raylib.MouseCursor.CROSSHAIR;
+      return raylib.MouseCursor.CROSSHAIR.value;
     case MouseCursor.pointingHand:
-      return raylib.MouseCursor.POINTING_HAND;
+      return raylib.MouseCursor.POINTING_HAND.value;
     case MouseCursor.resizeEW:
-      return raylib.MouseCursor.RESIZE_EW;
+      return raylib.MouseCursor.RESIZE_EW.value;
     case MouseCursor.resizeNS:
-      return raylib.MouseCursor.RESIZE_NS;
+      return raylib.MouseCursor.RESIZE_NS.value;
     case MouseCursor.resizeNWSE:
-      return raylib.MouseCursor.RESIZE_NWSE;
+      return raylib.MouseCursor.RESIZE_NWSE.value;
     case MouseCursor.resizeNESW:
-      return raylib.MouseCursor.RESIZE_NESW;
+      return raylib.MouseCursor.RESIZE_NESW.value;
     case MouseCursor.resizeAll:
-      return raylib.MouseCursor.RESIZE_ALL;
+      return raylib.MouseCursor.RESIZE_ALL.value;
     case MouseCursor.notAllowed:
-      return raylib.MouseCursor.NOT_ALLOWED;
+      return raylib.MouseCursor.NOT_ALLOWED.value;
   }
 }

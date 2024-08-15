@@ -72,47 +72,47 @@ enum PixelFormat {
 int pixelFormatToNative(PixelFormat format) {
   switch (format) {
     case PixelFormat.uncompressedGrayscale:
-      return raylib.PixelFormat.UNCOMPRESSED_GRAYSCALE;
+      return raylib.PixelFormat.UNCOMPRESSED_GRAYSCALE.value;
     case PixelFormat.uncompressedGrayAlpha:
-      return raylib.PixelFormat.UNCOMPRESSED_GRAY_ALPHA;
+      return raylib.PixelFormat.UNCOMPRESSED_GRAY_ALPHA.value;
     case PixelFormat.uncompressedR5G6B5:
-      return raylib.PixelFormat.UNCOMPRESSED_R5G6B5;
+      return raylib.PixelFormat.UNCOMPRESSED_R5G6B5.value;
     case PixelFormat.uncompressedR8G8B8:
-      return raylib.PixelFormat.UNCOMPRESSED_R8G8B8;
+      return raylib.PixelFormat.UNCOMPRESSED_R8G8B8.value;
     case PixelFormat.uncompressedR5G5B5A1:
-      return raylib.PixelFormat.UNCOMPRESSED_R5G5B5A1;
+      return raylib.PixelFormat.UNCOMPRESSED_R5G5B5A1.value;
     case PixelFormat.uncompressedR4G4B4A4:
-      return raylib.PixelFormat.UNCOMPRESSED_R4G4B4A4;
+      return raylib.PixelFormat.UNCOMPRESSED_R4G4B4A4.value;
     case PixelFormat.uncompressedR8G8B8A8:
-      return raylib.PixelFormat.UNCOMPRESSED_R8G8B8A8;
+      return raylib.PixelFormat.UNCOMPRESSED_R8G8B8A8.value;
     case PixelFormat.uncompressedR32:
-      return raylib.PixelFormat.UNCOMPRESSED_R32;
+      return raylib.PixelFormat.UNCOMPRESSED_R32.value;
     case PixelFormat.uncompressedR32G32B32:
-      return raylib.PixelFormat.UNCOMPRESSED_R32G32B32;
+      return raylib.PixelFormat.UNCOMPRESSED_R32G32B32.value;
     case PixelFormat.uncompressedR32G32B32A32:
-      return raylib.PixelFormat.UNCOMPRESSED_R32G32B32A32;
+      return raylib.PixelFormat.UNCOMPRESSED_R32G32B32A32.value;
     case PixelFormat.compressedDXT1rgb:
-      return raylib.PixelFormat.COMPRESSED_DXT1_RGB;
+      return raylib.PixelFormat.COMPRESSED_DXT1_RGB.value;
     case PixelFormat.compressedDXT1rgba:
-      return raylib.PixelFormat.COMPRESSED_DXT1_RGBA;
+      return raylib.PixelFormat.COMPRESSED_DXT1_RGBA.value;
     case PixelFormat.compressedDXT3rgba:
-      return raylib.PixelFormat.COMPRESSED_DXT3_RGBA;
+      return raylib.PixelFormat.COMPRESSED_DXT3_RGBA.value;
     case PixelFormat.compressedDXT5rgba:
-      return raylib.PixelFormat.COMPRESSED_DXT5_RGBA;
+      return raylib.PixelFormat.COMPRESSED_DXT5_RGBA.value;
     case PixelFormat.compressedETC1rgb:
-      return raylib.PixelFormat.COMPRESSED_ETC1_RGB;
+      return raylib.PixelFormat.COMPRESSED_ETC1_RGB.value;
     case PixelFormat.compressedETC2rgb:
-      return raylib.PixelFormat.COMPRESSED_ETC2_RGB;
+      return raylib.PixelFormat.COMPRESSED_ETC2_RGB.value;
     case PixelFormat.compressedETC2eacRGBA:
-      return raylib.PixelFormat.COMPRESSED_ETC2_EAC_RGBA;
+      return raylib.PixelFormat.COMPRESSED_ETC2_EAC_RGBA.value;
     case PixelFormat.compressedPVRTrgb:
-      return raylib.PixelFormat.COMPRESSED_PVRT_RGB;
+      return raylib.PixelFormat.COMPRESSED_PVRT_RGB.value;
     case PixelFormat.compressedPVRTrgba:
-      return raylib.PixelFormat.COMPRESSED_PVRT_RGBA;
+      return raylib.PixelFormat.COMPRESSED_PVRT_RGBA.value;
     case PixelFormat.compressedASTC4x4rgba:
-      return raylib.PixelFormat.COMPRESSED_ASTC_4x4_RGBA;
+      return raylib.PixelFormat.COMPRESSED_ASTC_4x4_RGBA.value;
     case PixelFormat.compressedASTC8x8rgba:
-      return raylib.PixelFormat.COMPRESSED_ASTC_8x8_RGBA;
+      return raylib.PixelFormat.COMPRESSED_ASTC_8x8_RGBA.value;
   }
 }
 

@@ -16,10 +16,10 @@ enum NPatchLayout {
 int nPatchLayoutToNative(NPatchLayout layout) {
   switch (layout) {
     case NPatchLayout.ninePatch:
-      return raylib.NPatchLayout.NINE_PATCH;
+      return raylib.NPatchLayout.NINE_PATCH.value;
     case NPatchLayout.threePatchVertical:
-      return raylib.NPatchLayout.THREE_PATCH_VERTICAL;
+      return raylib.NPatchLayout.THREE_PATCH_VERTICAL.value;
     case NPatchLayout.threePatchHorizontal:
-      return raylib.NPatchLayout.THREE_PATCH_HORIZONTAL;
+      return raylib.NPatchLayout.THREE_PATCH_HORIZONTAL.value;
   }
 }

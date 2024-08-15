@@ -16,10 +16,10 @@ enum FontType {
 int fontTypeToNative(FontType type) {
   switch (type) {
     case FontType.defaultType:
-      return raylib.FontType.DEFAULT;
+      return raylib.FontType.DEFAULT.value;
     case FontType.bitmap:
-      return raylib.FontType.BITMAP;
+      return raylib.FontType.BITMAP.value;
     case FontType.sdf:
-      return raylib.FontType.SDF;
+      return raylib.FontType.SDF.value;
   }
 }

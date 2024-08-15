@@ -19,12 +19,12 @@ enum TextureWrap {
 int textureWrapToNative(TextureWrap wrap) {
   switch (wrap) {
     case TextureWrap.repeat:
-      return raylib.TextureWrap.REPEAT;
+      return raylib.TextureWrap.REPEAT.value;
     case TextureWrap.clamp:
-      return raylib.TextureWrap.CLAMP;
+      return raylib.TextureWrap.CLAMP.value;
     case TextureWrap.mirrorRepeat:
-      return raylib.TextureWrap.MIRROR_REPEAT;
+      return raylib.TextureWrap.MIRROR_REPEAT.value;
     case TextureWrap.mirrorClamp:
-      return raylib.TextureWrap.MIRROR_CLAMP;
+      return raylib.TextureWrap.MIRROR_CLAMP.value;
   }
 }

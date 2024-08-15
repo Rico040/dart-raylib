@@ -25,16 +25,16 @@ enum BlendMode {
 int blendModeToNative(BlendMode mode) {
   switch (mode) {
     case BlendMode.alpha:
-      return raylib.BlendMode.ALPHA;
+      return raylib.BlendMode.ALPHA.value;
     case BlendMode.additive:
-      return raylib.BlendMode.ADDITIVE;
+      return raylib.BlendMode.ADDITIVE.value;
     case BlendMode.multiplied:
-      return raylib.BlendMode.MULTIPLIED;
+      return raylib.BlendMode.MULTIPLIED.value;
     case BlendMode.addColors:
-      return raylib.BlendMode.ADD_COLORS;
+      return raylib.BlendMode.ADD_COLORS.value;
     case BlendMode.subtractColors:
-      return raylib.BlendMode.SUBTRACT_COLORS;
+      return raylib.BlendMode.SUBTRACT_COLORS.value;
     case BlendMode.custom:
-      return raylib.BlendMode.CUSTOM;
+      return raylib.BlendMode.CUSTOM.value;
   }
 }

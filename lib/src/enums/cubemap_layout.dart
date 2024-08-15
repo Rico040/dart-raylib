@@ -25,16 +25,16 @@ enum CubemapLayout {
 int cubemapLayoutToNative(CubemapLayout layout) {
   switch (layout) {
     case CubemapLayout.autoDetect:
-      return raylib.CubemapLayout.AUTO_DETECT;
+      return raylib.CubemapLayout.AUTO_DETECT.value;
     case CubemapLayout.lineVertical:
-      return raylib.CubemapLayout.LINE_VERTICAL;
+      return raylib.CubemapLayout.LINE_VERTICAL.value;
     case CubemapLayout.lineHorizontal:
-      return raylib.CubemapLayout.LINE_HORIZONTAL;
+      return raylib.CubemapLayout.LINE_HORIZONTAL.value;
     case CubemapLayout.crossThreeByFour:
-      return raylib.CubemapLayout.CROSS_THREE_BY_FOUR;
+      return raylib.CubemapLayout.CROSS_THREE_BY_FOUR.value;
     case CubemapLayout.crossFourByThree:
-      return raylib.CubemapLayout.CROSS_FOUR_BY_THREE;
+      return raylib.CubemapLayout.CROSS_FOUR_BY_THREE.value;
     case CubemapLayout.panorama:
-      return raylib.CubemapLayout.PANORAMA;
+      return raylib.CubemapLayout.PANORAMA.value;
   }
 }

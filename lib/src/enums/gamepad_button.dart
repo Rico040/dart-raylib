@@ -61,40 +61,40 @@ enum GamepadButton {
 int gamepadButtonToNative(GamepadButton button) {
   switch (button) {
     case GamepadButton.unknown:
-      return raylib.GamepadButton.UNKNOWN;
+      return raylib.GamepadButton.UNKNOWN.value;
     case GamepadButton.leftFaceUp:
-      return raylib.GamepadButton.LEFT_FACE_UP;
+      return raylib.GamepadButton.LEFT_FACE_UP.value;
     case GamepadButton.leftFaceRight:
-      return raylib.GamepadButton.LEFT_FACE_RIGHT;
+      return raylib.GamepadButton.LEFT_FACE_RIGHT.value;
     case GamepadButton.leftFaceDown:
-      return raylib.GamepadButton.LEFT_FACE_DOWN;
+      return raylib.GamepadButton.LEFT_FACE_DOWN.value;
     case GamepadButton.leftFaceLeft:
-      return raylib.GamepadButton.LEFT_FACE_LEFT;
+      return raylib.GamepadButton.LEFT_FACE_LEFT.value;
     case GamepadButton.rightFaceUp:
-      return raylib.GamepadButton.RIGHT_FACE_UP;
+      return raylib.GamepadButton.RIGHT_FACE_UP.value;
     case GamepadButton.rightFaceright:
-      return raylib.GamepadButton.RIGHT_FACE_RIGHT;
+      return raylib.GamepadButton.RIGHT_FACE_RIGHT.value;
     case GamepadButton.rightFaceDown:
-      return raylib.GamepadButton.RIGHT_FACE_DOWN;
+      return raylib.GamepadButton.RIGHT_FACE_DOWN.value;
     case GamepadButton.rightFaceLeft:
-      return raylib.GamepadButton.RIGHT_FACE_LEFT;
+      return raylib.GamepadButton.RIGHT_FACE_LEFT.value;
     case GamepadButton.leftTrigger1:
-      return raylib.GamepadButton.LEFT_TRIGGER_1;
+      return raylib.GamepadButton.LEFT_TRIGGER_1.value;
     case GamepadButton.leftTrigger2:
-      return raylib.GamepadButton.LEFT_TRIGGER_2;
+      return raylib.GamepadButton.LEFT_TRIGGER_2.value;
     case GamepadButton.rightTrigger1:
-      return raylib.GamepadButton.RIGHT_TRIGGER_1;
+      return raylib.GamepadButton.RIGHT_TRIGGER_1.value;
     case GamepadButton.rightTrigger2:
-      return raylib.GamepadButton.RIGHT_TRIGGER_2;
+      return raylib.GamepadButton.RIGHT_TRIGGER_2.value;
     case GamepadButton.middleLeft:
-      return raylib.GamepadButton.MIDDLE_LEFT;
+      return raylib.GamepadButton.MIDDLE_LEFT.value;
     case GamepadButton.middle:
-      return raylib.GamepadButton.MIDDLE;
+      return raylib.GamepadButton.MIDDLE.value;
     case GamepadButton.middleRight:
-      return raylib.GamepadButton.MIDDLE_RIGHT;
+      return raylib.GamepadButton.MIDDLE_RIGHT.value;
     case GamepadButton.leftThumb:
-      return raylib.GamepadButton.LEFT_THUMB;
+      return raylib.GamepadButton.LEFT_THUMB.value;
     case GamepadButton.rightThumb:
-      return raylib.GamepadButton.RIGHT_THUMB;
+      return raylib.GamepadButton.RIGHT_THUMB.value;
   }
 }

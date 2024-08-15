@@ -6,44 +6,46 @@ import 'package:raylib/src/generated_bindings.dart' as raylib;
 /// By default all flags are set to 0.
 abstract class ConfigFlags {
   /// Set to try enabling V-Sync on GPU.
-  static const int vsyncHint = raylib.ConfigFlags.VSYNC_HINT;
+  static final int vsyncHint = raylib.ConfigFlags.VSYNC_HINT.value;
 
   /// Set to run program in fullscreen.
-  static const int fullscreenMode = raylib.ConfigFlags.FULLSCREEN_MODE;
+  static final int fullscreenMode = raylib.ConfigFlags.FULLSCREEN_MODE.value;
 
   /// Set to allow resizable window.
-  static const int windowResizable = raylib.ConfigFlags.WINDOW_RESIZABLE;
+  static final int windowResizable = raylib.ConfigFlags.WINDOW_RESIZABLE.value;
 
   /// Set to disable window decoration (frame and buttons).
-  static const int windowUndecorated = raylib.ConfigFlags.WINDOW_UNDECORATED;
+  static final int windowUndecorated =
+      raylib.ConfigFlags.WINDOW_UNDECORATED.value;
 
   /// Set to hide window.
-  static const int windowHidden = raylib.ConfigFlags.WINDOW_HIDDEN;
+  static final int windowHidden = raylib.ConfigFlags.WINDOW_HIDDEN.value;
 
   /// Set to minimize window (iconify).
-  static const int windowMinimized = raylib.ConfigFlags.WINDOW_MINIMIZED;
+  static final int windowMinimized = raylib.ConfigFlags.WINDOW_MINIMIZED.value;
 
   /// Set to maximize window (expanded to monitor).
-  static const int windowMaximized = raylib.ConfigFlags.WINDOW_MAXIMIZED;
+  static final int windowMaximized = raylib.ConfigFlags.WINDOW_MAXIMIZED.value;
 
   /// Set to window non focused.
-  static const int windowUnfocused = raylib.ConfigFlags.WINDOW_UNFOCUSED;
+  static final int windowUnfocused = raylib.ConfigFlags.WINDOW_UNFOCUSED.value;
 
   /// Set to window always on top.
-  static const int windowTopmost = raylib.ConfigFlags.WINDOW_TOPMOST;
+  static final int windowTopmost = raylib.ConfigFlags.WINDOW_TOPMOST.value;
 
   /// Set to allow windows running while minimized.
-  static const int windowAlwaysRun = raylib.ConfigFlags.WINDOW_ALWAYS_RUN;
+  static final int windowAlwaysRun = raylib.ConfigFlags.WINDOW_ALWAYS_RUN.value;
 
   /// Set to allow transparent framebuffer.
-  static const int windowTransparent = raylib.ConfigFlags.WINDOW_TRANSPARENT;
+  static final int windowTransparent =
+      raylib.ConfigFlags.WINDOW_TRANSPARENT.value;
 
   /// Set to support HighDPI.
-  static const int windowHighDPI = raylib.ConfigFlags.WINDOW_HIGHDPI;
+  static final int windowHighDPI = raylib.ConfigFlags.WINDOW_HIGHDPI.value;
 
   /// Set to try enabling MSAA 4X.
-  static const int msaa4xHint = raylib.ConfigFlags.MSAA_4X_HINT;
+  static final int msaa4xHint = raylib.ConfigFlags.MSAA_4X_HINT.value;
 
   /// Set to try enabling interlaced video format (for V3D).
-  static const int interlacedHint = raylib.ConfigFlags.INTERLACED_HINT;
+  static final int interlacedHint = raylib.ConfigFlags.INTERLACED_HINT.value;
 }

@@ -28,16 +28,16 @@ enum TextureFilter {
 int textureFilterToNative(TextureFilter filter) {
   switch (filter) {
     case TextureFilter.point:
-      return raylib.TextureFilter.POINT;
+      return raylib.TextureFilter.POINT.value;
     case TextureFilter.bilinear:
-      return raylib.TextureFilter.BILINEAR;
+      return raylib.TextureFilter.BILINEAR.value;
     case TextureFilter.trilinear:
-      return raylib.TextureFilter.TRILINEAR;
+      return raylib.TextureFilter.TRILINEAR.value;
     case TextureFilter.anisotropic4x:
-      return raylib.TextureFilter.ANISOTROPIC_4X;
+      return raylib.TextureFilter.ANISOTROPIC_4X.value;
     case TextureFilter.anisotropic8x:
-      return raylib.TextureFilter.ANISOTROPIC_8X;
+      return raylib.TextureFilter.ANISOTROPIC_8X.value;
     case TextureFilter.anisotropic16x:
-      return raylib.TextureFilter.ANISOTROPIC_16X;
+      return raylib.TextureFilter.ANISOTROPIC_16X.value;
   }
 }

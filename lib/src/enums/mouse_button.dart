@@ -28,18 +28,18 @@ enum MouseButton {
 int mouseButtonToNative(MouseButton button) {
   switch (button) {
     case MouseButton.left:
-      return raylib.MouseButton.LEFT;
+      return raylib.MouseButton.LEFT.value;
     case MouseButton.right:
-      return raylib.MouseButton.RIGHT;
+      return raylib.MouseButton.RIGHT.value;
     case MouseButton.middle:
-      return raylib.MouseButton.MIDDLE;
+      return raylib.MouseButton.MIDDLE.value;
     case MouseButton.side:
-      return raylib.MouseButton.SIDE;
+      return raylib.MouseButton.SIDE.value;
     case MouseButton.extra:
-      return raylib.MouseButton.EXTRA;
+      return raylib.MouseButton.EXTRA.value;
     case MouseButton.forward:
-      return raylib.MouseButton.FORWARD;
+      return raylib.MouseButton.FORWARD.value;
     case MouseButton.back:
-      return raylib.MouseButton.BACK;
+      return raylib.MouseButton.BACK.value;
   }
 }
