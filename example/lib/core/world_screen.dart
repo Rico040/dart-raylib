@@ -54,7 +54,7 @@ void main() {
     drawText(
       'Enemy: 100 / 100',
       (cubeScreenPosition.x - measureText('Enemy: 100/100', 20) / 2).toInt(),
-      (cubeScreenPosition.y).toInt(),
+      cubeScreenPosition.y.toInt(),
       20,
       Color.black,
     );

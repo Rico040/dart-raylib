@@ -1,4 +1,3 @@
-import 'package:raylib/raylib.dart';
 import 'package:raylib/src/enums/pixel_format.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
 import 'package:raylib/src/utils/native_type.dart';
@@ -6,7 +5,7 @@ import 'package:raylib/src/utils/native_type.dart';
 /// Texture, tex data stored in GPU memory (VRAM).
 class Texture extends NativeClass<raylib.Texture> {
   /// Construct Texture from native reference.
-  Texture.fromRef(raylib.Texture ref) : super.fromRef(ref);
+  Texture.fromRef(super.ref) : super.fromRef();
 
   /// OpenGL texture id.
   int get id => ref.id;

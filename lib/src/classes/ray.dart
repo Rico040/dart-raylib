@@ -21,9 +21,9 @@ class Ray extends NativeClass<raylib.Ray> {
   }
 
   /// Construct Ray from native reference.
-  Ray.fromRef(raylib.Ray ref)
+  Ray.fromRef(super.ref)
       : pointer = null,
-        super.fromRef(ref);
+        super.fromRef();
 
   /// Native pointer, used internally.
   final Pointer<raylib.Ray>? pointer;

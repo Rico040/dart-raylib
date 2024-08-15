@@ -29,7 +29,7 @@ void main() {
     fovy: 60,
   );
 
-  final cameraMode = CameraMode.firstPerson;
+  const cameraMode = CameraMode.firstPerson;
 
   // Generates some random columns
   final heights = <double>[];

@@ -22,9 +22,9 @@ class Rectangle extends NativeClass<raylib.Rectangle> {
   }
 
   /// Construct Rectangel from native reference.
-  Rectangle.fromRef(raylib.Rectangle ref)
+  Rectangle.fromRef(super.ref)
       : pointer = null,
-        super.fromRef(ref);
+        super.fromRef();
 
   /// Native pointer, used internally.
   final Pointer<raylib.Rectangle>? pointer;

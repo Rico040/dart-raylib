@@ -9,7 +9,7 @@ import 'package:raylib/src/utils/pointer_list.dart';
 /// Material, includes shader and maps.
 class Material extends NativeClass<raylib.Material> {
   /// Material, includes shader and maps.
-  Material.fromRef(raylib.Material ref) : super.fromRef(ref);
+  Material.fromRef(super.ref) : super.fromRef();
 
   /// Material shader.
   Shader get shader => Shader.fromRef(ref.shader);

@@ -5,7 +5,7 @@ import 'package:raylib/src/utils/native_type.dart';
 /// RayCollision, ray hit information.
 class RayCollision extends NativeClass<raylib.RayCollision> {
   /// RayCollision, ray hit information.
-  RayCollision.fromRef(raylib.RayCollision ref) : super.fromRef(ref);
+  RayCollision.fromRef(super.ref) : super.fromRef();
 
   /// Did the ray hit something?
   bool get hit => ref.hit;

@@ -8,7 +8,7 @@ import 'package:raylib/src/utils/pointer_list.dart';
 /// Bone, skeletal animation bone.
 class Transform extends NativeClass<raylib.Transform> {
   /// Bone, skeletal animation bone.
-  Transform.fromRef(raylib.Transform ref) : super.fromRef(ref);
+  Transform.fromRef(super.ref) : super.fromRef();
 
   /// Translation.
   Vector3 get translation => Vector3.fromRef(ref.translation);

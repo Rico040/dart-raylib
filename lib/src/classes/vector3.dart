@@ -19,9 +19,9 @@ class Vector3 extends NativeClass<raylib.Vector3> {
   }
 
   /// Construct Vector3 from native reference.
-  Vector3.fromRef(raylib.Vector3 ref)
+  Vector3.fromRef(super.ref)
       : pointer = null,
-        super.fromRef(ref);
+        super.fromRef();
 
   /// Construct empty Vector3.
   Vector3.zero() : this.all(0);

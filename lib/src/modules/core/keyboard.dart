@@ -1,4 +1,3 @@
-import 'package:raylib/raylib.dart';
 import 'package:raylib/src/enums/keyboard_key.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
 import 'package:raylib/src/library.dart';

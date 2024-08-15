@@ -6,10 +6,10 @@ import 'package:raylib/src/utils/pointer_list.dart';
 /// Font, font texture and GlyphInfo array data.
 class Font extends NativeClass<raylib.Font> {
   /// Font, font texture and GlyphInfo array data.
-  Font.fromRef(raylib.Font ref)
+  Font.fromRef(super.ref)
       : recs = PointerList(ref.recs),
         glyphs = PointerList(ref.glyphs),
-        super.fromRef(ref);
+        super.fromRef();
 
   /// Base size (default chars height).
   int get baseSize => ref.baseSize;

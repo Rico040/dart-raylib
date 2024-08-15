@@ -5,7 +5,7 @@ import 'package:raylib/src/utils/native_type.dart';
 /// BoundingBox.
 class BoundingBox extends NativeClass<raylib.BoundingBox> {
   /// BoundingBox.
-  BoundingBox.fromRef(raylib.BoundingBox ref) : super.fromRef(ref);
+  BoundingBox.fromRef(super.ref) : super.fromRef();
 
   /// Minimum vertex box-corner.
   Vector3 get min => Vector3.fromRef(ref.min);

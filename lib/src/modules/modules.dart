@@ -1,4 +1,5 @@
 /// Core
+library;
 export 'core/camera.dart';
 export 'core/cursor.dart';
 export 'core/drawing.dart';

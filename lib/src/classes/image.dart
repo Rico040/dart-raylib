@@ -1,7 +1,6 @@
 import 'dart:ffi';
 
 import 'package:ffi/ffi.dart';
-import 'package:raylib/raylib.dart';
 import 'package:raylib/src/enums/pixel_format.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
 import 'package:raylib/src/utils/native_type.dart';

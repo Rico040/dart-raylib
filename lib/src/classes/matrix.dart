@@ -4,7 +4,7 @@ import 'package:raylib/src/utils/native_type.dart';
 /// Matrix, 4x4 components, column major, OpenGL style, right handed.
 class Matrix extends NativeClass<raylib.Matrix> {
   /// Construct Matrix from native reference.
-  Matrix.fromRef(raylib.Matrix ref) : super.fromRef(ref);
+  Matrix.fromRef(super.ref) : super.fromRef();
 
   /// Matrix first row (4 components) first.
   double get m0 => ref.m0;

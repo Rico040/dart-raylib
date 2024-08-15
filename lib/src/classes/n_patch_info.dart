@@ -5,7 +5,7 @@ import 'package:raylib/src/utils/native_type.dart';
 /// NPatchInfo, n-patch layout info.
 class NPatchInfo extends NativeClass<raylib.NPatchInfo> {
   /// Construct NPatchInfo from native reference.
-  NPatchInfo.fromRef(raylib.NPatchInfo ref) : super.fromRef(ref);
+  NPatchInfo.fromRef(super.ref) : super.fromRef();
 
   /// Texture source rectangle.
   Rectangle get source => Rectangle.fromRef(ref.source);

@@ -8,7 +8,7 @@ import 'package:raylib/src/utils/pointer_list.dart';
 /// MaterialMap.
 class MaterialMap extends NativeClass<raylib.MaterialMap> {
   /// MaterialMap.
-  MaterialMap.fromRef(raylib.MaterialMap ref) : super.fromRef(ref);
+  MaterialMap.fromRef(super.ref) : super.fromRef();
 
   /// Material map texture.
   Texture2D get texture => Texture2D.fromRef(ref.texture);

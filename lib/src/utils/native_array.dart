@@ -47,7 +47,7 @@ abstract class NativeArray<T, N extends NativeType> extends ListBase<T>
 /// Native float array.
 class FloatArray extends NativeArray<double, Float> {
   /// Native float array.
-  FloatArray(Array<Float> array, int length) : super(array, length);
+  FloatArray(super.array, super.length);
 
   @override
   double get(int index) => array[index];
@@ -59,7 +59,7 @@ class FloatArray extends NativeArray<double, Float> {
 /// Native int8 array.
 class Int8Array extends NativeArray<int, Int8> {
   /// Native int8 array.
-  Int8Array(Array<Int8> array, int length) : super(array, length);
+  Int8Array(super.array, super.length);
 
   @override
   int get(int index) => array[index];
@@ -71,7 +71,7 @@ class Int8Array extends NativeArray<int, Int8> {
 /// Native char array.
 class CharArray extends NativeArray<int, Char> {
   /// Native char array.
-  CharArray(Array<Char> array, int length) : super(array, length);
+  CharArray(super.array, super.length);
 
   @override
   int get(int index) => array[index];

@@ -7,7 +7,7 @@ import 'package:raylib/src/utils/pointer_list.dart';
 /// ModelAnimation.
 class ModelAnimation extends NativeClass<raylib.ModelAnimation> {
   /// ModelAnimation
-  ModelAnimation.fromRef(raylib.ModelAnimation ref) : super.fromRef(ref);
+  ModelAnimation.fromRef(super.ref) : super.fromRef();
 
   /// Number of bones.
   external int boneCount;

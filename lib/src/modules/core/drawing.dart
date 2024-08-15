@@ -1,5 +1,4 @@
 import 'package:raylib/raylib.dart';
-import 'package:raylib/src/classes/camera_2d.dart';
 import 'package:raylib/src/enums/blend_mode.dart';
 import 'package:raylib/src/library.dart';
 

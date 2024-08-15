@@ -21,9 +21,9 @@ class Vector4 extends NativeClass<raylib.Vector4> {
   }
 
   /// Construct Vector4 from native reference.
-  Vector4.fromRef(raylib.Vector4 ref)
+  Vector4.fromRef(super.ref)
       : pointer = null,
-        super.fromRef(ref);
+        super.fromRef();
 
   /// Construct empty Vector4.
   Vector4.zero() : this.all(0);

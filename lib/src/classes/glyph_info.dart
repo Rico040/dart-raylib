@@ -8,7 +8,7 @@ import 'package:raylib/src/utils/pointer_list.dart';
 /// GlyphInfo, font characters glyphs info.
 class GlyphInfo extends NativeClass<raylib.GlyphInfo> {
   /// GlyphInfo, font characters glyphs info.
-  GlyphInfo.fromRef(raylib.GlyphInfo ref) : super.fromRef(ref);
+  GlyphInfo.fromRef(super.ref) : super.fromRef();
 
   /// GlyphInfo, font characters glyphs info.
   GlyphInfo.fromPointer(Pointer<raylib.GlyphInfo> pointer)

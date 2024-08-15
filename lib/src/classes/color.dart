@@ -21,9 +21,9 @@ class Color extends NativeClass<raylib.Color> {
   }
 
   /// Construct Color from native reference.
-  Color.fromRef(raylib.Color ref)
+  Color.fromRef(super.ref)
       : pointer = null,
-        super.fromRef(ref);
+        super.fromRef();
 
   /// Native pointer, used internally.
   final Pointer<raylib.Color>? pointer;

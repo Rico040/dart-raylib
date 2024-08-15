@@ -8,7 +8,7 @@ import 'package:raylib/src/utils/pointer_list.dart';
 /// Model, meshes, materials and animation data.
 class Model extends NativeClass<raylib.Model> {
   /// Model, meshes, materials and animation data.
-  Model.fromRef(raylib.Model ref) : super.fromRef(ref);
+  Model.fromRef(super.ref) : super.fromRef();
 
   /// Local transform matrix.
   Matrix get transform => Matrix.fromRef(ref.transform);

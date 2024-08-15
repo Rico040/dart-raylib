@@ -9,7 +9,7 @@ import 'package:raylib/src/utils/pointer_list.dart';
 /// Bone, skeletal animation bone.
 class BoneInfo extends NativeClass<raylib.BoneInfo> {
   /// Bone, skeletal animation bone.
-  BoneInfo.fromRef(raylib.BoneInfo ref) : super.fromRef(ref);
+  BoneInfo.fromRef(super.ref) : super.fromRef();
 
   CharArray get _name => CharArray(ref.name, 32);
 

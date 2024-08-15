@@ -84,10 +84,8 @@ class Camera3D extends NativeClass<raylib.Camera3D> {
     switch (projection) {
       case CameraProjection.perspective:
         ref.projection = 0;
-        break;
       case CameraProjection.orthographic:
         ref.projection = 1;
-        break;
     }
   }
 
