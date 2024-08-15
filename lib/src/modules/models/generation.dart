@@ -13,7 +13,7 @@ Mesh genMeshPlane(double width, double length, int resX, int resZ) {
 
 /// Generate cuboid mesh.
 Mesh genMeshCube(double width, double height, double length) {
-  return Mesh.fromRef(library.GenMeshCube(width, length, length));
+  return Mesh.fromRef(library.GenMeshCube(width, height, length));
 }
 
 /// Generate sphere mesh (standard sphere).

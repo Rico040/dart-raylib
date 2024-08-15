@@ -24,14 +24,13 @@ class Image extends NativeClass<raylib.Image> {
 
   /// Image, pixel data stored in CPU memory (RAM).
   Image.fromRef(raylib.Image ref)
-      : pointer = malloc<raylib.Image>(sizeOf<raylib.Image>()) {
+      : pointer = malloc<raylib.Image>(sizeOf<raylib.Image>()),
+        super.fromRef(ref) {
     pointer.ref.width = ref.width;
-    pointer.ref.width = ref.height;
+    pointer.ref.height = ref.height;
     pointer.ref.mipmaps = ref.mipmaps;
     pointer.ref.format = ref.format;
     pointer.ref.data = ref.data;
-
-    ref = pointer.ref;
   }
 
   /// Native pointer, used internally.

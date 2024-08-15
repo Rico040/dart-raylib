@@ -1,8 +1,70 @@
+import 'dart:ffi';
+
+import 'package:ffi/ffi.dart';
 import 'package:raylib/src/generated_bindings.dart' as raylib;
 import 'package:raylib/src/utils/native_type.dart';
 
 /// Matrix, 4x4 components, column major, OpenGL style, right handed.
 class Matrix extends NativeClass<raylib.Matrix> {
+  /// Construct zero matrix
+  Matrix() : super.fromRef(malloc<raylib.Matrix>(sizeOf<raylib.Matrix>()).ref) {
+    ref
+      ..m0 = 0
+      ..m1 = 0
+      ..m2 = 0
+      ..m3 = 0
+      ..m4 = 0
+      ..m5 = 0
+      ..m6 = 0
+      ..m7 = 0
+      ..m8 = 0
+      ..m9 = 0
+      ..m10 = 0
+      ..m11 = 0
+      ..m12 = 0
+      ..m13 = 0
+      ..m14 = 0
+      ..m15 = 0;
+  }
+
+  /// Construct matrix with provided values
+  Matrix.withValues(
+      double m0,
+      double m4,
+      double m8,
+      double m12,
+      double m1,
+      double m5,
+      double m9,
+      double m13,
+      double m2,
+      double m6,
+      double m10,
+      double m14,
+      double m3,
+      double m7,
+      double m11,
+      double m15)
+      : super.fromRef(malloc<raylib.Matrix>(sizeOf<raylib.Matrix>()).ref) {
+    ref
+      ..m0 = m0
+      ..m1 = m1
+      ..m2 = m2
+      ..m3 = m3
+      ..m4 = m4
+      ..m5 = m5
+      ..m6 = m6
+      ..m7 = m7
+      ..m8 = m8
+      ..m9 = m9
+      ..m10 = m10
+      ..m11 = m11
+      ..m12 = m12
+      ..m13 = m13
+      ..m14 = m14
+      ..m15 = m15;
+  }
+
   /// Construct Matrix from native reference.
   Matrix.fromRef(super.ref) : super.fromRef();
 

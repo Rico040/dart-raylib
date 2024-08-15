@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:raylib/raylib.dart';
 import 'package:raylib/src/library.dart';
 import 'package:raylib/src/utils/string.dart' as string;
@@ -35,14 +37,15 @@ int getShaderLocationAttrib(Shader shader, String attribName) {
   );
 }
 
-// TODO(wolfen): this
-// /// Set shader uniform value.
-// void SetShaderValue(
-//   Shader shader,
-//   int locIndex,
-//   const void *value,
-//   int uniformType,
-// ) {}
+/// Set shader uniform value.
+void setShaderValue(
+  Shader shader,
+  int locIndex,
+  Pointer<Void> data,
+  int uniformType,
+) {
+  library.SetShaderValue(shader.ref, locIndex, data, uniformType);
+}
 
 // TODO(wolfen): this
 // /// Set shader uniform value vector.

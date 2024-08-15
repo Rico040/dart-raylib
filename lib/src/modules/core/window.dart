@@ -93,8 +93,8 @@ void restoreWindow() {
 }
 
 /// Set icon for window (only PLATFORM_DESKTOP).
-void setWindowIcon(raylib.Image image) {
-  return library.SetWindowIcon(image);
+void setWindowIcon(Image image) {
+  return library.SetWindowIcon(image.ref);
 }
 
 /// Set title for window (only PLATFORM_DESKTOP).

@@ -1,8 +1,8 @@
 module: core
 
 - [x] void InitWindow(int width, int height, const char *title);
-- [x] bool WindowShouldClose(void);
 - [x] void CloseWindow(void);
+- [x] bool WindowShouldClose(void);
 - [x] bool IsWindowReady(void);
 - [x] bool IsWindowFullscreen(void);
 - [x] bool IsWindowHidden(void);
@@ -14,6 +14,7 @@ module: core
 - [x] void SetWindowState(unsigned int flags);
 - [x] void ClearWindowState(unsigned int flags);
 - [x] void ToggleFullscreen(void);
+- [ ] void ToggleBorderlessWindowed(void);
 - [x] void MaximizeWindow(void);
 - [x] void MinimizeWindow(void);
 - [x] void RestoreWindow(void);
@@ -22,10 +23,13 @@ module: core
 - [x] void SetWindowPosition(int x, int y);
 - [x] void SetWindowMonitor(int monitor);
 - [x] void SetWindowMinSize(int width, int height);
+- [ ] void SetWindowMaxSize(int width, int height);
 - [x] void SetWindowSize(int width, int height);
 - [ ] void *GetWindowHandle(void);
 - [x] int GetScreenWidth(void);
 - [x] int GetScreenHeight(void);
+- [ ] int GetRenderWidth(void);
+- [ ] int GetRenderHeight(void);
 - [x] int GetMonitorCount(void);
 - [x] int GetCurrentMonitor(void);
 - [x] Vector2 GetMonitorPosition(int monitor);
@@ -39,6 +43,8 @@ module: core
 - [x] const char *GetMonitorName(int monitor);
 - [x] void SetClipboardText(const char *text);
 - [x] const char *GetClipboardText(void);
+- [ ] void EnableEventWaiting(void);
+- [ ] void DisableEventWaiting(void);
 
 - [x] void ShowCursor(void);
 - [x] void HideCursor(void);
@@ -70,6 +76,7 @@ module: core
 
 - [x] Shader LoadShader(const char *vsFileName, const char *fsFileName);
 - [x] Shader LoadShaderFromMemory(const char *vsCode, const char *fsCode);
+- [ ] bool IsShaderReady(Shader shader);
 - [x] int GetShaderLocation(Shader shader, const char *uniformName);
 - [x] int GetShaderLocationAttrib(Shader shader, const char *attribName);
 - [ ] void SetShaderValue(Shader shader, int locIndex, const void *value, int uniformType);
@@ -79,17 +86,19 @@ module: core
 - [x] void UnloadShader(Shader shader);
 
 - [x] Ray GetMouseRay(Vector2 mousePosition, Camera camera);
-- [x] Matrix GetCameraMatrix(Camera camera);
-- [x] Matrix GetCameraMatrix2D(Camera2D camera);
+- [ ] Ray GetScreenToWorldRay(Vector2 position, Camera camera);
+- [ ] Ray GetScreenToWorldRayEx(Vector2 position, Camera camera, int width, int height);
 - [x] Vector2 GetWorldToScreen(Vector3 position, Camera camera);
 - [x] Vector2 GetWorldToScreenEx(Vector3 position, Camera camera, int width, int height); 
 - [x] Vector2 GetWorldToScreen2D(Vector2 position, Camera2D camera);
 - [x] Vector2 GetScreenToWorld2D(Vector2 position, Camera2D camera);
+- [x] Matrix GetCameraMatrix(Camera camera);
+- [x] Matrix GetCameraMatrix2D(Camera2D camera);
 
 - [x] void SetTargetFPS(int fps);
-- [x] int GetFPS(void);
 - [x] float GetFrameTime(void);
 - [x] double GetTime(void);
+- [x] int GetFPS(void);
 
 - [x] void TakeScreenshot(const char *fileName);
 - [x] void SetConfigFlags(unsigned int flags);
@@ -109,9 +118,8 @@ module: core
 - [ ] char *EncodeDataBase64(const unsigned char *data, int dataLength, int *outputLength);
 - [ ] unsigned char *DecodeDataBase64(unsigned char *data, int *outputLength);
 
-- [ ] bool SaveStorageValue(unsigned int position, int value);
-- [ ] int LoadStorageValue(unsigned int position);
-
+- [ ] void TakeScreenshot(const char *fileName);   
+- [ ] void SetConfigFlags(unsigned int flags);
 - [ ] void OpenURL(const char *url);
 
 - [x] bool IsKeyPressed(int key);
@@ -513,24 +521,28 @@ structs
 - [x] struct GlyphInfo;
 - [x] struct Font;
 
-- [x] struct Camera;
+- [x] struct Camera3D;
 - [x] struct Camera2D;
 - [x] struct Mesh;
 - [x] struct Shader;
 - [x] struct MaterialMap;
 - [x] struct Material;
-- [x] struct Model;
 - [x] struct Transform;
 - [x] struct BoneInfo;
+- [x] struct Model;
 - [x] struct ModelAnimation;
 - [x] struct Ray;
 - [x] struct RayCollision;
 - [x] struct BoundingBox;
 
 - [ ] struct Wave;
+- [ ] struct AudioStream;
 - [ ] struct Sound;
 - [ ] struct Music;
-- [ ] struct AudioStream;
 
 - [ ] struct VrDeviceInfo;
 - [ ] struct VrStereoConfig;
+
+- [ ] struct FilePathList;
+- [ ] struct AutomationEvent;
+- [ ] struct AutomationEventList;
