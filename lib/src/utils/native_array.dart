@@ -67,3 +67,15 @@ class Int8Array extends NativeArray<int, Int8> {
   @override
   void set(int index, int value) => array[index] = value;
 }
+
+/// Native char array.
+class CharArray extends NativeArray<int, Char> {
+  /// Native char array.
+  CharArray(Array<Char> array, int length) : super(array, length);
+
+  @override
+  int get(int index) => array[index];
+
+  @override
+  void set(int index, int value) => array[index] = value;
+}
