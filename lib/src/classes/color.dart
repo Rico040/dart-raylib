@@ -59,7 +59,7 @@ class Color extends NativeClass<raylib.Color> {
   /// Gold.
   static final gold = Color(255, 203, 0, 255);
 
-  /// Gray.
+  /// Orange.
   static final orange = Color(255, 161, 0, 255);
 
   /// Pink.
@@ -92,8 +92,8 @@ class Color extends NativeClass<raylib.Color> {
   /// Purple.
   static final purple = Color(200, 122, 255, 255);
 
-  /// Voilet.
-  static final voilet = Color(135, 60, 190, 255);
+  /// Violet.
+  static final violet = Color(135, 60, 190, 255);
 
   /// Dark purple.
   static final darkPurple = Color(112, 31, 126, 255);

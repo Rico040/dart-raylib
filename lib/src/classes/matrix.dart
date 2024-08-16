@@ -29,23 +29,23 @@ class Matrix extends NativeClass<raylib.Matrix> {
 
   /// Construct matrix with provided values
   Matrix.withValues(
-      double m0,
-      double m4,
-      double m8,
-      double m12,
-      double m1,
-      double m5,
-      double m9,
-      double m13,
-      double m2,
-      double m6,
-      double m10,
-      double m14,
-      double m3,
-      double m7,
-      double m11,
-      double m15)
-      : super.fromRef(malloc<raylib.Matrix>(sizeOf<raylib.Matrix>()).ref) {
+    double m0,
+    double m4,
+    double m8,
+    double m12,
+    double m1,
+    double m5,
+    double m9,
+    double m13,
+    double m2,
+    double m6,
+    double m10,
+    double m14,
+    double m3,
+    double m7,
+    double m11,
+    double m15,
+  ) : super.fromRef(malloc<raylib.Matrix>(sizeOf<raylib.Matrix>()).ref) {
     ref
       ..m0 = m0
       ..m1 = m1
