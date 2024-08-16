@@ -27,6 +27,8 @@ ffigen:
   headers:
     entry-points:
       - vendor/raylib/src/raylib.h
+      - vendor/raylib/src/rlgl.h
+      - vendor/raylib/src/raymath.h
   enums:
     member-rename:
       '(.*)': 
