@@ -55,12 +55,12 @@ void main() {
   final camera = Camera2D(
     target: Vector2(player.x + 20, player.y + 20),
     offset: Vector2(screenWidth / 2, screenHeight / 2),
-    zoom: 0,
   );
 
   setTargetFPS(60);
 
   while (!windowShouldClose()) {
+    // Player movement
     if (isKeyDown(KeyboardKey.right)) {
       player.x += 2;
     } else if (isKeyDown(KeyboardKey.left)) {

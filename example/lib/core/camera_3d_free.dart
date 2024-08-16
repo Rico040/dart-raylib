@@ -46,27 +46,13 @@ void main() {
 
     endMode3D();
 
-    drawRectangle(10, 10, 320, 133, fade(Color.skyBlue, .5));
-    drawRectangleLines(10, 10, 320, 133, Color.blue);
+    drawRectangle(10, 10, 320, 93, fade(Color.skyBlue, .5));
+    drawRectangleLines(10, 10, 320, 93, Color.blue);
 
     drawText('Free camera default controls:', 20, 20, 10, Color.black);
     drawText('- Mouse Wheel to Zoom in-out', 40, 40, 10, Color.darkGray);
     drawText('- Mouse Wheel Pressed to Pan', 40, 60, 10, Color.darkGray);
-    drawText(
-      '- Alt + Mouse Wheel Pressed to Rotate',
-      40,
-      80,
-      10,
-      Color.darkGray,
-    );
-    drawText(
-      '- Alt + Ctrl + Mouse Wheel Pressed for Smooth Zoom',
-      40,
-      100,
-      10,
-      Color.darkGray,
-    );
-    drawText('- Z to zoom to (0, 0, 0)', 40, 120, 10, Color.darkGray);
+    drawText('- Z to zoom to (0, 0, 0)', 40, 80, 10, Color.darkGray);
 
     endDrawing();
   }
