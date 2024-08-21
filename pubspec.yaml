@@ -1,10 +1,10 @@
 name: raylib
 description: raylib is a simple and easy-to-use library to enjoy videogames programming.
 version: 0.3.0
-homepage: https://gitlab.com/wolfenrain/dart-raylib
+homepage: https://github.com/Rico040/dart-raylib
 
 environment:
-  sdk: '>=3.0.0 <3.6.0'
+  sdk: '>=3.5.0 <4.0.0'
 
 dependencies:
   collection: ^1.15.0
@@ -19,16 +19,16 @@ ffigen:
   name: Raylib
   description: Bindings to Raylib
   output: lib/src/generated_bindings.dart
-  # llvm-path:
-    # - /usr/lib/llvm-12
+  llvm-path:
+    - /usr/lib/llvm-12
   comments:
     style: any
     length: full
   headers:
     entry-points:
-      - vendor/raylib/src/raylib.h
-      - vendor/raylib/src/rlgl.h
-      - vendor/raylib/src/raymath.h
+      - 'vendor/raylib/src/raylib.h'
+      - 'vendor/raylib/src/raymath.h'
+      - 'vendor/raylib/src/rlgl.h'
   enums:
     member-rename:
       '(.*)': 

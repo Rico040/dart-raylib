@@ -2,7 +2,12 @@ import 'package:raylib/raylib.dart';
 
 /// generate a simple triangle mesh from code
 Mesh makeMesh() {
-  final mesh = Mesh(1);
+  final mesh = Mesh(3, 1);
+  // print('mesh.triangleCount: ${mesh.triangleCount}');
+  // print('mesh.vertexCount: ${mesh.vertexCount}');
+  // print('mesh.vertices: ${mesh.vertices}');
+  // print('mesh.texcoords: ${mesh.texcoords}');
+  // print('mesh.normals: ${mesh.normals}');
 
   // vertex at the origin
   mesh.vertices[0] = 0;
@@ -34,6 +39,33 @@ Mesh makeMesh() {
   mesh.texcoords[4] = 1;
   mesh.texcoords[5] = 0;
 
+  // print('mesh.vertices[0]: ${mesh.vertices[0]}');
+  // print('mesh.vertices[1]: ${mesh.vertices[1]}');
+  // print('mesh.vertices[2]: ${mesh.vertices[2]}');
+  // print('mesh.normals[0]: ${mesh.normals[0]}');
+  // print('mesh.normals[1]: ${mesh.normals[1]}');
+  // print('mesh.normals[2]: ${mesh.normals[2]}');
+  // print('mesh.texcoords[0]: ${mesh.texcoords[0]}');
+  // print('mesh.texcoords[1]: ${mesh.texcoords[1]}');
+
+  // print('mesh.vertices[3]: ${mesh.vertices[3]}');
+  // print('mesh.vertices[4]: ${mesh.vertices[4]}');
+  // print('mesh.vertices[5]: ${mesh.vertices[5]}');
+  // print('mesh.normals[3]: ${mesh.normals[3]}');
+  // print('mesh.normals[4]: ${mesh.normals[4]}');
+  // print('mesh.normals[5]: ${mesh.normals[5]}');
+  // print('mesh.texcoords[2]: ${mesh.texcoords[2]}');
+  // print('mesh.texcoords[3]: ${mesh.texcoords[3]}');
+
+  // print('mesh.vertices[6]: ${mesh.vertices[6]}');
+  // print('mesh.vertices[7]: ${mesh.vertices[7]}');
+  // print('mesh.vertices[8]: ${mesh.vertices[8]}');
+  // print('mesh.normals[6]: ${mesh.normals[6]}');
+  // print('mesh.normals[7]: ${mesh.normals[7]}');
+  // print('mesh.normals[8]: ${mesh.normals[8]}');
+  // print('mesh.texcoords[4]: ${mesh.texcoords[4]}');
+  // print('mesh.texcoords[5]: ${mesh.texcoords[5]}');
+
   uploadMesh(mesh);
 
   return mesh;
@@ -60,7 +92,7 @@ void main() {
   unloadImage(checked);
 
   final models = <Model>[
-    loadModelFromMesh(genMeshPlane(2, 2, 5, 5)),
+    loadModelFromMesh(genMeshPlane(2, 2, 4, 3)),
     loadModelFromMesh(genMeshCube(2, 1, 2)),
     loadModelFromMesh(genMeshSphere(2, 32, 32)),
     loadModelFromMesh(genMeshHemiSphere(2, 16, 16)),

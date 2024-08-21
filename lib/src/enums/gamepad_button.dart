@@ -21,7 +21,7 @@ enum GamepadButton {
   rightFaceUp,
 
   /// Gamepad right button right (i.e. PS3: Square, Xbox: X).
-  rightFaceright,
+  rightFaceRight,
 
   /// Gamepad right button down (i.e. PS3: Cross, Xbox: A).
   rightFaceDown,
@@ -72,7 +72,7 @@ int gamepadButtonToNative(GamepadButton button) {
       return raylib.GamepadButton.LEFT_FACE_LEFT.value;
     case GamepadButton.rightFaceUp:
       return raylib.GamepadButton.RIGHT_FACE_UP.value;
-    case GamepadButton.rightFaceright:
+    case GamepadButton.rightFaceRight:
       return raylib.GamepadButton.RIGHT_FACE_RIGHT.value;
     case GamepadButton.rightFaceDown:
       return raylib.GamepadButton.RIGHT_FACE_DOWN.value;

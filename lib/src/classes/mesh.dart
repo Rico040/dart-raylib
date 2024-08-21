@@ -8,11 +8,11 @@ import 'package:raylib/src/utils/pointer_list.dart';
 /// Mesh, vertex data and vao/vbo.
 class Mesh extends NativeClass<raylib.Mesh> {
   /// Mesh, vertex data and vao/vbo.
-  Mesh(int triangleCount)
+  Mesh(int vertexCount, int triangleCount)
       : pointer = malloc<raylib.Mesh>(sizeOf<raylib.Mesh>()) {
     ref = pointer.ref;
     ref
-      ..vertexCount = triangleCount * 3
+      ..vertexCount = vertexCount
       ..triangleCount = triangleCount;
 
     pointer.ref.vertices = malloc<Float>(vertexCount * 3 * sizeOf<Float>());

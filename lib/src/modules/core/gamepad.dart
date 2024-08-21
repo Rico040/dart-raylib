@@ -56,7 +56,7 @@ GamepadButton getGamepadButtonPressed() {
     case raylib.GamepadButton.RIGHT_FACE_UP:
       return GamepadButton.rightFaceUp;
     case raylib.GamepadButton.RIGHT_FACE_RIGHT:
-      return GamepadButton.rightFaceright;
+      return GamepadButton.rightFaceRight;
     case raylib.GamepadButton.RIGHT_FACE_DOWN:
       return GamepadButton.rightFaceDown;
     case raylib.GamepadButton.RIGHT_FACE_LEFT:
