@@ -1,10 +1,11 @@
 import 'dart:math';
 
+import 'package:intl/intl.dart';
 import 'package:raylib/raylib.dart';
 
 final _random = Random();
 double _getRandomValue(double min, double max) {
-  return min + _random.nextDouble() * max;
+  return _random.nextDouble() * (max - min) + min;
 }
 
 void main() {
@@ -57,6 +58,8 @@ void main() {
       ),
     );
   }
+
+  final fmt = NumberFormat('.000');
 
   disableCursor();
 
@@ -162,7 +165,7 @@ void main() {
 
     drawText('Camera status:', 610, 15, 10, Color.black);
     drawText(
-      '- Mode ${(cameraMode == CameraMode.free) ? 'FREE' : (cameraMode == CameraMode.firstPerson) ? 'FIRES_PERSON' : (cameraMode == CameraMode.thirdPerson) ? 'THIRD_PERSON' : (cameraMode == CameraMode.orbital ? 'ORBITAL' : 'CUSTOM')}',
+      '- Mode ${(cameraMode == CameraMode.free) ? 'FREE' : (cameraMode == CameraMode.firstPerson) ? 'FIRST_PERSON' : (cameraMode == CameraMode.thirdPerson) ? 'THIRD_PERSON' : (cameraMode == CameraMode.orbital ? 'ORBITAL' : 'CUSTOM')}',
       610,
       30,
       10,
@@ -176,21 +179,21 @@ void main() {
       Color.black,
     );
     drawText(
-      '- Position (${camera.position.x}, ${camera.position.y}, ${camera.position.z})',
+      '- Position (${fmt.format(camera.position.x)}, ${fmt.format(camera.position.y)}, ${fmt.format(camera.position.z)})',
       610,
       60,
       10,
       Color.black,
     );
     drawText(
-      '- Target (${camera.target.x}, ${camera.target.y}, ${camera.target.z})',
+      '- Target (${fmt.format(camera.target.x)}, ${fmt.format(camera.target.y)}, ${fmt.format(camera.target.z)})',
       610,
       75,
       10,
       Color.black,
     );
     drawText(
-      '- Up (${camera.up.x}, ${camera.up.y}, ${camera.up.z})',
+      '- Up (${fmt.format(camera.up.x)}, ${fmt.format(camera.up.y)}, ${fmt.format(camera.up.z)})',
       610,
       90,
       10,
