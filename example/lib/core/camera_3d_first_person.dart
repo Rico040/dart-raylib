@@ -98,6 +98,8 @@ void main() {
           ..projection = CameraProjection.orthographic
           ..fovy = 20;
         // TODO(Rico040): Bindings for rcamera.h
+        // CameraYaw(&camera, -135 * DEG2RAD, true);
+        // CameraPitch(&camera, -45 * DEG2RAD, true, true, false);
       } else if (camera.projection == CameraProjection.orthographic) {
         // Reset to default view
         cameraMode = CameraMode.thirdPerson;

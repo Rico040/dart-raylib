@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:raylib/raylib.dart';
+import 'package:raylib/src/constants/raymath.dart';
 
 /// Vector with components value 0
 Vector2 vector2Zero() {
@@ -157,4 +158,87 @@ Vector2 vector2Rotate(Vector2 v, double angle) {
     v.x * cosres - v.y * sinres,
     v.x * sinres + v.y * cosres,
   );
+}
+
+/// Move Vector towards target
+Vector2 vector2MoveTowards(Vector2 v, Vector2 target, double maxDistance) {
+  final dx = target.x - v.x;
+  final dy = target.y - v.y;
+  final value = (dx * dx) + (dy * dy);
+
+  if ((value == 0) ||
+      (maxDistance >= 0) && (value <= maxDistance * maxDistance)) {
+    return target;
+  }
+
+  final dist = sqrt(value);
+
+  return Vector2(v.x + dx / dist * maxDistance, v.y + dy / dist * maxDistance);
+}
+
+/// Invert the given vector
+Vector2 vector2Invert(Vector2 v) {
+  return Vector2(1.0 / v.x, 1.0 / v.y);
+}
+
+/// Clamp the components of the vector between
+/// min and max values specified by the given vectors
+Vector2 vector2Clamp(Vector2 v, Vector2 minv, Vector2 maxv) {
+  return Vector2(
+    min(maxv.x, max(minv.x, v.x)),
+    min(maxv.y, max(minv.y, v.y)),
+  );
+}
+
+/// Clamp the magnitude of the vector between two min and max values
+Vector2 vector2ClampValue(Vector2 v, double min, double max) {
+  var result = Vector2(0, 0);
+
+  var length = (v.x * v.x) + (v.y * v.y);
+  if (length > 0) {
+    length = sqrt(length);
+
+    var scale = 1.0;
+    if (length < min) {
+      scale = min / length;
+    } else if (length > max) {
+      scale = max / length;
+    }
+
+    result
+      ..x = v.x * scale
+      ..y = v.y * scale;
+  }
+
+  return result;
+}
+
+/// Check whether two given vectors are almost equal
+bool vector2Equals(Vector2 p, Vector2 q) {
+  return ((p.x - q.x).abs() <=
+          (epsilon * max(1.0, max(p.x.abs(), q.x.abs())))) &&
+      ((p.y - q.y).abs() <= (epsilon * max(1.0, max(p.y.abs(), q.y.abs()))));
+}
+
+/// Compute the direction of a refracted ray
+/// v: normalized direction of the incoming ray
+/// n: normalized normal vector of the interface of two optical media
+/// r: ratio of the refractive index of the medium from where the ray comes
+///    to the refractive index of the medium on the other side of the surface
+Vector2 vector2Refract(Vector2 v, Vector2 n, double r) {
+  var result = Vector2(0, 0);
+
+  final dot = v.x * n.x + v.y * n.y;
+  var d = 1.0 - r * r * (1.0 - dot * dot);
+
+  if (d >= 0.0) {
+    d = sqrt(d);
+    v
+      ..x = r * v.x - (r * dot + d) * n.x
+      ..y = r * v.y - (r * dot + d) * n.y;
+
+    result = v;
+  }
+
+  return result;
 }

@@ -42,5 +42,5 @@ double wrap(double value, double min, double max) {
 
 /// Check whether two given floats are almost equal
 bool floatEquals(double x, double y) {
-  return (x - y).abs() <= (epsilon * max(x.abs(), max(x.abs(), y.abs())));
+  return (x - y).abs() <= (epsilon * max(1.0, max(x.abs(), y.abs())));
 }
