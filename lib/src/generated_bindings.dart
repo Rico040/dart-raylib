@@ -1797,6 +1797,20 @@ class Raylib {
   late final _GetApplicationDirectory = _GetApplicationDirectoryPtr.asFunction<
       ffi.Pointer<ffi.Char> Function()>();
 
+  int MakeDirectory(
+    ffi.Pointer<ffi.Char> dirPath,
+  ) {
+    return _MakeDirectory(
+      dirPath,
+    );
+  }
+
+  late final _MakeDirectoryPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<ffi.Char>)>>(
+          'MakeDirectory');
+  late final _MakeDirectory =
+      _MakeDirectoryPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
+
   bool ChangeDirectory(
     ffi.Pointer<ffi.Char> dir,
   ) {
@@ -2978,15 +2992,15 @@ class Raylib {
     int centerX,
     int centerY,
     double radius,
-    Color color1,
-    Color color2,
+    Color inner,
+    Color outer,
   ) {
     return _DrawCircleGradient(
       centerX,
       centerY,
       radius,
-      color1,
-      color2,
+      inner,
+      outer,
     );
   }
 
@@ -3237,16 +3251,16 @@ class Raylib {
     int posY,
     int width,
     int height,
-    Color color1,
-    Color color2,
+    Color top,
+    Color bottom,
   ) {
     return _DrawRectangleGradientV(
       posX,
       posY,
       width,
       height,
-      color1,
-      color2,
+      top,
+      bottom,
     );
   }
 
@@ -3262,16 +3276,16 @@ class Raylib {
     int posY,
     int width,
     int height,
-    Color color1,
-    Color color2,
+    Color left,
+    Color right,
   ) {
     return _DrawRectangleGradientH(
       posX,
       posY,
       width,
       height,
-      color1,
-      color2,
+      left,
+      right,
     );
   }
 
@@ -3284,17 +3298,17 @@ class Raylib {
 
   void DrawRectangleGradientEx(
     Rectangle rec,
-    Color col1,
-    Color col2,
-    Color col3,
-    Color col4,
+    Color topLeft,
+    Color bottomLeft,
+    Color topRight,
+    Color bottomRight,
   ) {
     return _DrawRectangleGradientEx(
       rec,
-      col1,
-      col2,
-      col3,
-      col4,
+      topLeft,
+      bottomLeft,
+      topRight,
+      bottomRight,
     );
   }
 
@@ -6127,6 +6141,24 @@ class Raylib {
   late final _ColorAlphaBlend =
       _ColorAlphaBlendPtr.asFunction<Color Function(Color, Color, Color)>();
 
+  Color ColorLerp(
+    Color color1,
+    Color color2,
+    double factor,
+  ) {
+    return _ColorLerp(
+      color1,
+      color2,
+      factor,
+    );
+  }
+
+  late final _ColorLerpPtr =
+      _lookup<ffi.NativeFunction<Color Function(Color, Color, ffi.Float)>>(
+          'ColorLerp');
+  late final _ColorLerp =
+      _ColorLerpPtr.asFunction<Color Function(Color, Color, double)>();
+
   Color GetColor(
     int hexValue,
   ) {
@@ -7699,6 +7731,52 @@ class Raylib {
   late final _DrawModelWiresEx = _DrawModelWiresExPtr.asFunction<
       void Function(Model, Vector3, Vector3, double, Vector3, Color)>();
 
+  void DrawModelPoints(
+    Model model,
+    Vector3 position,
+    double scale,
+    Color tint,
+  ) {
+    return _DrawModelPoints(
+      model,
+      position,
+      scale,
+      tint,
+    );
+  }
+
+  late final _DrawModelPointsPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(Model, Vector3, ffi.Float, Color)>>(
+      'DrawModelPoints');
+  late final _DrawModelPoints = _DrawModelPointsPtr.asFunction<
+      void Function(Model, Vector3, double, Color)>();
+
+  void DrawModelPointsEx(
+    Model model,
+    Vector3 position,
+    Vector3 rotationAxis,
+    double rotationAngle,
+    Vector3 scale,
+    Color tint,
+  ) {
+    return _DrawModelPointsEx(
+      model,
+      position,
+      rotationAxis,
+      rotationAngle,
+      scale,
+      tint,
+    );
+  }
+
+  late final _DrawModelPointsExPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(Model, Vector3, Vector3, ffi.Float, Vector3,
+              Color)>>('DrawModelPointsEx');
+  late final _DrawModelPointsEx = _DrawModelPointsExPtr.asFunction<
+      void Function(Model, Vector3, Vector3, double, Vector3, Color)>();
+
   void DrawBoundingBox(
     BoundingBox box,
     Color color,
@@ -8326,6 +8404,26 @@ class Raylib {
           'IsModelAnimationValid');
   late final _IsModelAnimationValid = _IsModelAnimationValidPtr.asFunction<
       bool Function(Model, ModelAnimation)>();
+
+  void UpdateModelAnimationBoneMatrices(
+    Model model,
+    ModelAnimation anim,
+    int frame,
+  ) {
+    return _UpdateModelAnimationBoneMatrices(
+      model,
+      anim,
+      frame,
+    );
+  }
+
+  late final _UpdateModelAnimationBoneMatricesPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(Model, ModelAnimation, ffi.Int)>>(
+      'UpdateModelAnimationBoneMatrices');
+  late final _UpdateModelAnimationBoneMatrices =
+      _UpdateModelAnimationBoneMatricesPtr.asFunction<
+          void Function(Model, ModelAnimation, int)>();
 
   /// Collision detection functions
   bool CheckCollisionSpheres(
@@ -13738,6 +13836,25 @@ class Raylib {
   late final _rlSetUniformMatrix =
       _rlSetUniformMatrixPtr.asFunction<void Function(int, Matrix)>();
 
+  void rlSetUniformMatrices(
+    int locIndex,
+    ffi.Pointer<Matrix> mat,
+    int count,
+  ) {
+    return _rlSetUniformMatrices(
+      locIndex,
+      mat,
+      count,
+    );
+  }
+
+  late final _rlSetUniformMatricesPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Int, ffi.Pointer<Matrix>, ffi.Int)>>('rlSetUniformMatrices');
+  late final _rlSetUniformMatrices = _rlSetUniformMatricesPtr
+      .asFunction<void Function(int, ffi.Pointer<Matrix>, int)>();
+
   void rlSetUniformSampler(
     int locIndex,
     int textureId,
@@ -14438,11 +14555,18 @@ final class Mesh extends ffi.Struct {
   /// Animated normals (after bones transformations)
   external ffi.Pointer<ffi.Float> animNormals;
 
-  /// Vertex bone ids, max 255 bone ids, up to 4 bones influence by vertex (skinning)
+  /// Vertex bone ids, max 255 bone ids, up to 4 bones influence by vertex (skinning) (shader-location = 6)
   external ffi.Pointer<ffi.UnsignedChar> boneIds;
 
-  /// Vertex bone weight, up to 4 bones influence by vertex (skinning)
+  /// Vertex bone weight, up to 4 bones influence by vertex (skinning) (shader-location = 7)
   external ffi.Pointer<ffi.Float> boneWeights;
+
+  /// Bones animated transformation matrices
+  external ffi.Pointer<Matrix> boneMatrices;
+
+  /// Number of bones
+  @ffi.Int()
+  external int boneCount;
 
   /// OpenGL Vertex Array Object id
   @ffi.UnsignedInt()
@@ -15712,7 +15836,16 @@ enum ShaderLocationIndex {
   MAP_PREFILTER(24),
 
   /// Shader location: sampler2d texture: brdf
-  MAP_BRDF(25);
+  MAP_BRDF(25),
+
+  /// Shader location: vertex attribute: boneIds
+  VERTEX_BONEIDS(26),
+
+  /// Shader location: vertex attribute: boneWeights
+  VERTEX_BONEWEIGHTS(27),
+
+  /// Shader location: array of matrices uniform: boneMatrices
+  BONE_MATRICES(28);
 
   final int value;
   const ShaderLocationIndex(this.value);
@@ -15744,6 +15877,9 @@ enum ShaderLocationIndex {
         23 => MAP_IRRADIANCE,
         24 => MAP_PREFILTER,
         25 => MAP_BRDF,
+        26 => VERTEX_BONEIDS,
+        27 => VERTEX_BONEWEIGHTS,
+        28 => BONE_MATRICES,
         _ =>
           throw ArgumentError("Unknown value for ShaderLocationIndex: $value"),
       };
@@ -16830,8 +16966,20 @@ enum rlShaderUniformDataType {
   /// Shader uniform type: ivec4 (4 int)
   RL_SHADER_UNIFORM_IVEC4(7),
 
+  /// Shader uniform type: unsigned int
+  RL_SHADER_UNIFORM_UINT(8),
+
+  /// Shader uniform type: uivec2 (2 unsigned int)
+  RL_SHADER_UNIFORM_UIVEC2(9),
+
+  /// Shader uniform type: uivec3 (3 unsigned int)
+  RL_SHADER_UNIFORM_UIVEC3(10),
+
+  /// Shader uniform type: uivec4 (4 unsigned int)
+  RL_SHADER_UNIFORM_UIVEC4(11),
+
   /// Shader uniform type: sampler2d
-  RL_SHADER_UNIFORM_SAMPLER2D(8);
+  RL_SHADER_UNIFORM_SAMPLER2D(12);
 
   final int value;
   const rlShaderUniformDataType(this.value);
@@ -16845,7 +16993,11 @@ enum rlShaderUniformDataType {
         5 => RL_SHADER_UNIFORM_IVEC2,
         6 => RL_SHADER_UNIFORM_IVEC3,
         7 => RL_SHADER_UNIFORM_IVEC4,
-        8 => RL_SHADER_UNIFORM_SAMPLER2D,
+        8 => RL_SHADER_UNIFORM_UINT,
+        9 => RL_SHADER_UNIFORM_UIVEC2,
+        10 => RL_SHADER_UNIFORM_UIVEC3,
+        11 => RL_SHADER_UNIFORM_UIVEC4,
+        12 => RL_SHADER_UNIFORM_SAMPLER2D,
         _ => throw ArgumentError(
             "Unknown value for rlShaderUniformDataType: $value"),
       };
@@ -17401,6 +17553,8 @@ const int RL_DEFAULT_SHADER_ATTRIB_LOCATION_COLOR = 3;
 const int RL_DEFAULT_SHADER_ATTRIB_LOCATION_TANGENT = 4;
 
 const int RL_DEFAULT_SHADER_ATTRIB_LOCATION_TEXCOORD2 = 5;
+
+const int RL_DEFAULT_SHADER_ATTRIB_LOCATION_INDICES = 6;
 
 const int RL_SHADER_LOC_MAP_DIFFUSE = 15;
 
