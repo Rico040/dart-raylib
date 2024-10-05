@@ -192,7 +192,7 @@ Vector2 vector2Clamp(Vector2 v, Vector2 minv, Vector2 maxv) {
 
 /// Clamp the magnitude of the vector between two min and max values
 Vector2 vector2ClampValue(Vector2 v, double min, double max) {
-  var result = Vector2(0, 0);
+  final result = Vector2(0, 0);
 
   var length = (v.x * v.x) + (v.y * v.y);
   if (length > 0) {
