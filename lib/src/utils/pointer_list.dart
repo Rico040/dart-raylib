@@ -13,12 +13,12 @@ class PointerList<V extends NativeType> {
 extension FloatList on PointerList<Float> {
   /// The object at the given [index] in the list.
   double operator [](int index) {
-    return pointer.elementAt(index).value;
+    return (pointer + index).value;
   }
 
   /// Sets the value at the given [index] in the list to [value].
   void operator []=(int index, double value) {
-    pointer.elementAt(index).value = value;
+    (pointer + index).value = value;
   }
 }
 
@@ -26,12 +26,12 @@ extension FloatList on PointerList<Float> {
 extension Uint8List on PointerList<Uint8> {
   /// The object at the given [index] in the list.
   int operator [](int index) {
-    return pointer.elementAt(index).value;
+    return (pointer + index).value;
   }
 
   /// Sets the value at the given [index] in the list to [value].
   void operator []=(int index, int value) {
-    pointer.elementAt(index).value = value;
+    (pointer + index).value = value;
   }
 }
 
@@ -39,12 +39,12 @@ extension Uint8List on PointerList<Uint8> {
 extension Uint16List on PointerList<Uint16> {
   /// The object at the given [index] in the list.
   int operator [](int index) {
-    return pointer.elementAt(index).value;
+    return (pointer + index).value;
   }
 
   /// Sets the value at the given [index] in the list to [value].
   void operator []=(int index, int value) {
-    pointer.elementAt(index).value = value;
+    (pointer + index).value = value;
   }
 }
 
@@ -52,11 +52,11 @@ extension Uint16List on PointerList<Uint16> {
 extension Uint32List on PointerList<Uint32> {
   /// The object at the given [index] in the list.
   int operator [](int index) {
-    return pointer.elementAt(index).value;
+    return (pointer + index).value;
   }
 
   /// Sets the value at the given [index] in the list to [value].
   void operator []=(int index, int value) {
-    pointer.elementAt(index).value = value;
+    (pointer + index).value = value;
   }
 }

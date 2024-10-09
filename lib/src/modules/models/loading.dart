@@ -41,7 +41,7 @@ List<Material> loadMaterials(String fileName) {
 
   return [
     for (var i = 0; i < materialCount.value; i++)
-      Material.fromRef(result.elementAt(i).ref),
+      Material.fromRef((result + i).ref),
   ];
 }
 
@@ -58,7 +58,7 @@ List<ModelAnimation> loadModelAnimations(String fileName) {
 
   return [
     for (var i = 0; i < animCount.value; i++)
-      ModelAnimation.fromRef(result.elementAt(i).ref),
+      ModelAnimation.fromRef((result + i).ref),
   ];
 }
 

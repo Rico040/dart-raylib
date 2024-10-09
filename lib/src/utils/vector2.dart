@@ -10,8 +10,8 @@ Pointer<raylib.Vector2> toPointer(List<Vector2> points) {
     sizeOf<raylib.Vector2>() * points.length,
   );
   for (var i = 0; i < points.length; i++) {
-    pointer.elementAt(i).ref.x = points[i].x;
-    pointer.elementAt(i).ref.y = points[i].y;
+    (pointer + i).ref.x = points[i].x;
+    (pointer + i).ref.y = points[i].y;
   }
   return pointer;
 }

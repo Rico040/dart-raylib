@@ -140,11 +140,11 @@ extension MeshList on PointerList<raylib.Mesh> {
 
   /// The object at the given [index] in the list.
   Mesh operator [](int index) {
-    return Mesh.fromRef(pointer.elementAt(index).ref);
+    return Mesh.fromRef((pointer + index).ref);
   }
 
   /// Sets the value at the given [index] in the list to [value].
   void operator []=(int index, Mesh value) {
-    _setRef(pointer.elementAt(index).ref, value);
+    _setRef((pointer + index).ref, value);
   }
 }

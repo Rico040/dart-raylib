@@ -28,11 +28,11 @@ class ModelAnimation extends NativeClass<raylib.ModelAnimation> {
 extension ListOfTransformPointers on PointerList<Pointer<raylib.Transform>> {
   /// The object at the given [index] in the list.
   PointerList<raylib.Transform> operator [](int index) {
-    return PointerList(pointer.elementAt(index).value);
+    return PointerList((pointer + index).value);
   }
 
   /// Sets the value at the given [index] in the list to [value].
   void operator []=(int index, Pointer<raylib.Transform> value) {
-    pointer.elementAt(index).value = value;
+    (pointer + index).value = value;
   }
 }

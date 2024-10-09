@@ -31,11 +31,11 @@ extension BoneInfoList on PointerList<raylib.BoneInfo> {
 
   /// The object at the given [index] in the list.
   BoneInfo operator [](int index) {
-    return BoneInfo.fromRef(pointer.elementAt(index).ref);
+    return BoneInfo.fromRef((pointer + index).ref);
   }
 
   /// Sets the value at the given [index] in the list to [value].
   void operator []=(int index, BoneInfo value) {
-    _setRef(pointer.elementAt(index).ref, value);
+    _setRef((pointer + index).ref, value);
   }
 }

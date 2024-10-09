@@ -175,7 +175,7 @@ List<Color> loadImageColors(Image image) {
   final result = library.LoadImageColors(image.ref);
   return [
     for (var i = 0; i < image.width * image.height; i++)
-      Color.fromRef(result.elementAt(i).ref),
+      Color.fromRef((result + i).ref),
   ];
 }
 
@@ -190,7 +190,7 @@ List<Color> loadImagePalette(Image image, int maxPaletteSize) {
   );
   return [
     for (var i = 0; i < colorsCounter.value; i++)
-      Color.fromRef(result.elementAt(i).ref),
+      Color.fromRef((result + i).ref),
   ];
 }
 

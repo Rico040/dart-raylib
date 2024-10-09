@@ -59,11 +59,11 @@ extension RectangleList on PointerList<raylib.Rectangle> {
 
   /// The object at the given [index] in the list.
   Rectangle operator [](int index) {
-    return Rectangle.fromRef(pointer.elementAt(index).ref);
+    return Rectangle.fromRef((pointer + index).ref);
   }
 
   /// Sets the value at the given [index] in the list to [value].
   void operator []=(int index, Rectangle value) {
-    _setRef(pointer.elementAt(index).ref, value);
+    _setRef((pointer + index).ref, value);
   }
 }

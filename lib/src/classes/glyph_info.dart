@@ -44,11 +44,11 @@ extension GlyphInfoList on PointerList<raylib.GlyphInfo> {
 
   /// The object at the given [index] in the list.
   GlyphInfo operator [](int index) {
-    return GlyphInfo.fromRef(pointer.elementAt(index).ref);
+    return GlyphInfo.fromRef((pointer + index).ref);
   }
 
   /// Sets the value at the given [index] in the list to [value].
   void operator []=(int index, GlyphInfo value) {
-    _setRef(pointer.elementAt(index).ref, value);
+    _setRef((pointer + index).ref, value);
   }
 }

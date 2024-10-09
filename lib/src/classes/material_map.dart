@@ -34,11 +34,11 @@ extension MaterialMapList on PointerList<raylib.MaterialMap> {
 
   /// The object at the given [index] in the list.
   MaterialMap operator [](int index) {
-    return MaterialMap.fromRef(pointer.elementAt(index).ref);
+    return MaterialMap.fromRef((pointer + index).ref);
   }
 
   /// Sets the value at the given [index] in the list to [value].
   void operator []=(int index, MaterialMap value) {
-    _setRef(pointer.elementAt(index).ref, value);
+    _setRef((pointer + index).ref, value);
   }
 }

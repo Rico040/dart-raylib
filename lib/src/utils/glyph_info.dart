@@ -10,11 +10,11 @@ Pointer<raylib.GlyphInfo> toPointer(List<GlyphInfo> glyphs) {
     sizeOf<raylib.GlyphInfo>() * glyphs.length,
   );
   for (var i = 0; i < glyphs.length; i++) {
-    pointer.elementAt(i).ref.value = glyphs[i].value;
-    pointer.elementAt(i).ref.offsetX = glyphs[i].offsetX;
-    pointer.elementAt(i).ref.offsetY = glyphs[i].offsetY;
-    pointer.elementAt(i).ref.advanceX = glyphs[i].advanceX;
-    pointer.elementAt(i).ref.image = glyphs[i].image.ref;
+    (pointer + i).ref.value = glyphs[i].value;
+    (pointer + i).ref.offsetX = glyphs[i].offsetX;
+    (pointer + i).ref.offsetY = glyphs[i].offsetY;
+    (pointer + i).ref.advanceX = glyphs[i].advanceX;
+    (pointer + i).ref.image = glyphs[i].image.ref;
   }
   return pointer;
 }

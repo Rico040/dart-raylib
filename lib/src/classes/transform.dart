@@ -32,11 +32,11 @@ extension TransformList on PointerList<raylib.Transform> {
 
   /// The object at the given [index] in the list.
   Transform operator [](int index) {
-    return Transform.fromRef(pointer.elementAt(index).ref);
+    return Transform.fromRef((pointer + index).ref);
   }
 
   /// Sets the value at the given [index] in the list to [value].
   void operator []=(int index, Transform value) {
-    _setRef(pointer.elementAt(index).ref, value);
+    _setRef((pointer + index).ref, value);
   }
 }

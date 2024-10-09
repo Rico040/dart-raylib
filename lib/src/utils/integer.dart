@@ -8,7 +8,7 @@ Pointer<Int> toPointer(List<int> points) {
     sizeOf<Int>() * points.length,
   );
   for (var i = 0; i < points.length; i++) {
-    pointer.elementAt(i).value = points[i];
+    (pointer + i).value = points[i];
   }
   return pointer;
 }

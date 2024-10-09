@@ -10,9 +10,9 @@ Pointer<raylib.Vector3> toPointer(List<Vector3> points) {
     sizeOf<raylib.Vector3>() * points.length,
   );
   for (var i = 0; i < points.length; i++) {
-    pointer.elementAt(i).ref.x = points[i].x;
-    pointer.elementAt(i).ref.y = points[i].y;
-    pointer.elementAt(i).ref.z = points[i].z;
+    (pointer + i).ref.x = points[i].x;
+    (pointer + i).ref.y = points[i].y;
+    (pointer + i).ref.z = points[i].z;
   }
   return pointer;
 }
