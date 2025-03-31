@@ -606,6 +606,15 @@ class Raylib {
   late final _GetClipboardText =
       _GetClipboardTextPtr.asFunction<ffi.Pointer<ffi.Char> Function()>();
 
+  Image GetClipboardImage() {
+    return _GetClipboardImage();
+  }
+
+  late final _GetClipboardImagePtr =
+      _lookup<ffi.NativeFunction<Image Function()>>('GetClipboardImage');
+  late final _GetClipboardImage =
+      _GetClipboardImagePtr.asFunction<Image Function()>();
+
   void EnableEventWaiting() {
     return _EnableEventWaiting();
   }
@@ -927,18 +936,18 @@ class Raylib {
   late final _LoadShaderFromMemory = _LoadShaderFromMemoryPtr.asFunction<
       Shader Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
 
-  bool IsShaderReady(
+  bool IsShaderValid(
     Shader shader,
   ) {
-    return _IsShaderReady(
+    return _IsShaderValid(
       shader,
     );
   }
 
-  late final _IsShaderReadyPtr =
-      _lookup<ffi.NativeFunction<ffi.Bool Function(Shader)>>('IsShaderReady');
-  late final _IsShaderReady =
-      _IsShaderReadyPtr.asFunction<bool Function(Shader)>();
+  late final _IsShaderValidPtr =
+      _lookup<ffi.NativeFunction<ffi.Bool Function(Shader)>>('IsShaderValid');
+  late final _IsShaderValid =
+      _IsShaderValidPtr.asFunction<bool Function(Shader)>();
 
   int GetShaderLocation(
     Shader shader,
@@ -2025,6 +2034,59 @@ class Raylib {
       ffi.Pointer<ffi.UnsignedChar> Function(
           ffi.Pointer<ffi.UnsignedChar>, ffi.Pointer<ffi.Int>)>();
 
+  int ComputeCRC32(
+    ffi.Pointer<ffi.UnsignedChar> data,
+    int dataSize,
+  ) {
+    return _ComputeCRC32(
+      data,
+      dataSize,
+    );
+  }
+
+  late final _ComputeCRC32Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.UnsignedInt Function(
+              ffi.Pointer<ffi.UnsignedChar>, ffi.Int)>>('ComputeCRC32');
+  late final _ComputeCRC32 = _ComputeCRC32Ptr.asFunction<
+      int Function(ffi.Pointer<ffi.UnsignedChar>, int)>();
+
+  ffi.Pointer<ffi.UnsignedInt> ComputeMD5(
+    ffi.Pointer<ffi.UnsignedChar> data,
+    int dataSize,
+  ) {
+    return _ComputeMD5(
+      data,
+      dataSize,
+    );
+  }
+
+  late final _ComputeMD5Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.UnsignedInt> Function(
+              ffi.Pointer<ffi.UnsignedChar>, ffi.Int)>>('ComputeMD5');
+  late final _ComputeMD5 = _ComputeMD5Ptr.asFunction<
+      ffi.Pointer<ffi.UnsignedInt> Function(
+          ffi.Pointer<ffi.UnsignedChar>, int)>();
+
+  ffi.Pointer<ffi.UnsignedInt> ComputeSHA1(
+    ffi.Pointer<ffi.UnsignedChar> data,
+    int dataSize,
+  ) {
+    return _ComputeSHA1(
+      data,
+      dataSize,
+    );
+  }
+
+  late final _ComputeSHA1Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.UnsignedInt> Function(
+              ffi.Pointer<ffi.UnsignedChar>, ffi.Int)>>('ComputeSHA1');
+  late final _ComputeSHA1 = _ComputeSHA1Ptr.asFunction<
+      ffi.Pointer<ffi.UnsignedInt> Function(
+          ffi.Pointer<ffi.UnsignedChar>, int)>();
+
   /// Automation events functionality
   AutomationEventList LoadAutomationEventList(
     ffi.Pointer<ffi.Char> fileName,
@@ -2378,19 +2440,22 @@ class Raylib {
     int gamepad,
     double leftMotor,
     double rightMotor,
+    double duration,
   ) {
     return _SetGamepadVibration(
       gamepad,
       leftMotor,
       rightMotor,
+      duration,
     );
   }
 
   late final _SetGamepadVibrationPtr = _lookup<
-          ffi.NativeFunction<ffi.Void Function(ffi.Int, ffi.Float, ffi.Float)>>(
-      'SetGamepadVibration');
-  late final _SetGamepadVibration =
-      _SetGamepadVibrationPtr.asFunction<void Function(int, double, double)>();
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int, ffi.Float, ffi.Float,
+              ffi.Float)>>('SetGamepadVibration');
+  late final _SetGamepadVibration = _SetGamepadVibrationPtr.asFunction<
+      void Function(int, double, double, double)>();
 
   /// Input-related functions: mouse
   bool IsMouseButtonPressed(
@@ -3970,6 +4035,27 @@ class Raylib {
   late final _CheckCollisionCircleRec = _CheckCollisionCircleRecPtr.asFunction<
       bool Function(Vector2, double, Rectangle)>();
 
+  bool CheckCollisionCircleLine(
+    Vector2 center,
+    double radius,
+    Vector2 p1,
+    Vector2 p2,
+  ) {
+    return _CheckCollisionCircleLine(
+      center,
+      radius,
+      p1,
+      p2,
+    );
+  }
+
+  late final _CheckCollisionCircleLinePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Bool Function(Vector2, ffi.Float, Vector2,
+              Vector2)>>('CheckCollisionCircleLine');
+  late final _CheckCollisionCircleLine = _CheckCollisionCircleLinePtr
+      .asFunction<bool Function(Vector2, double, Vector2, Vector2)>();
+
   bool CheckCollisionPointRec(
     Vector2 point,
     Rectangle rec,
@@ -4025,6 +4111,27 @@ class Raylib {
   late final _CheckCollisionPointTriangle = _CheckCollisionPointTrianglePtr
       .asFunction<bool Function(Vector2, Vector2, Vector2, Vector2)>();
 
+  bool CheckCollisionPointLine(
+    Vector2 point,
+    Vector2 p1,
+    Vector2 p2,
+    int threshold,
+  ) {
+    return _CheckCollisionPointLine(
+      point,
+      p1,
+      p2,
+      threshold,
+    );
+  }
+
+  late final _CheckCollisionPointLinePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Bool Function(
+              Vector2, Vector2, Vector2, ffi.Int)>>('CheckCollisionPointLine');
+  late final _CheckCollisionPointLine = _CheckCollisionPointLinePtr.asFunction<
+      bool Function(Vector2, Vector2, Vector2, int)>();
+
   bool CheckCollisionPointPoly(
     Vector2 point,
     ffi.Pointer<Vector2> points,
@@ -4067,48 +4174,6 @@ class Raylib {
   late final _CheckCollisionLines = _CheckCollisionLinesPtr.asFunction<
       bool Function(
           Vector2, Vector2, Vector2, Vector2, ffi.Pointer<Vector2>)>();
-
-  bool CheckCollisionPointLine(
-    Vector2 point,
-    Vector2 p1,
-    Vector2 p2,
-    int threshold,
-  ) {
-    return _CheckCollisionPointLine(
-      point,
-      p1,
-      p2,
-      threshold,
-    );
-  }
-
-  late final _CheckCollisionPointLinePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Bool Function(
-              Vector2, Vector2, Vector2, ffi.Int)>>('CheckCollisionPointLine');
-  late final _CheckCollisionPointLine = _CheckCollisionPointLinePtr.asFunction<
-      bool Function(Vector2, Vector2, Vector2, int)>();
-
-  bool CheckCollisionCircleLine(
-    Vector2 center,
-    double radius,
-    Vector2 p1,
-    Vector2 p2,
-  ) {
-    return _CheckCollisionCircleLine(
-      center,
-      radius,
-      p1,
-      p2,
-    );
-  }
-
-  late final _CheckCollisionCircleLinePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Bool Function(Vector2, ffi.Float, Vector2,
-              Vector2)>>('CheckCollisionCircleLine');
-  late final _CheckCollisionCircleLine = _CheckCollisionCircleLinePtr
-      .asFunction<bool Function(Vector2, double, Vector2, Vector2)>();
 
   Rectangle GetCollisionRec(
     Rectangle rec1,
@@ -4164,25 +4229,6 @@ class Raylib {
               ffi.Int)>>('LoadImageRaw');
   late final _LoadImageRaw = _LoadImageRawPtr.asFunction<
       Image Function(ffi.Pointer<ffi.Char>, int, int, int, int)>();
-
-  Image LoadImageSvg(
-    ffi.Pointer<ffi.Char> fileNameOrString,
-    int width,
-    int height,
-  ) {
-    return _LoadImageSvg(
-      fileNameOrString,
-      width,
-      height,
-    );
-  }
-
-  late final _LoadImageSvgPtr = _lookup<
-      ffi.NativeFunction<
-          Image Function(
-              ffi.Pointer<ffi.Char>, ffi.Int, ffi.Int)>>('LoadImageSvg');
-  late final _LoadImageSvg = _LoadImageSvgPtr.asFunction<
-      Image Function(ffi.Pointer<ffi.Char>, int, int)>();
 
   Image LoadImageAnim(
     ffi.Pointer<ffi.Char> fileName,
@@ -4266,18 +4312,18 @@ class Raylib {
   late final _LoadImageFromScreen =
       _LoadImageFromScreenPtr.asFunction<Image Function()>();
 
-  bool IsImageReady(
+  bool IsImageValid(
     Image image,
   ) {
-    return _IsImageReady(
+    return _IsImageValid(
       image,
     );
   }
 
-  late final _IsImageReadyPtr =
-      _lookup<ffi.NativeFunction<ffi.Bool Function(Image)>>('IsImageReady');
-  late final _IsImageReady =
-      _IsImageReadyPtr.asFunction<bool Function(Image)>();
+  late final _IsImageValidPtr =
+      _lookup<ffi.NativeFunction<ffi.Bool Function(Image)>>('IsImageValid');
+  late final _IsImageValid =
+      _IsImageValidPtr.asFunction<bool Function(Image)>();
 
   void UnloadImage(
     Image image,
@@ -5686,19 +5732,19 @@ class Raylib {
   late final _LoadRenderTexture =
       _LoadRenderTexturePtr.asFunction<RenderTexture2D Function(int, int)>();
 
-  bool IsTextureReady(
+  bool IsTextureValid(
     Texture2D texture,
   ) {
-    return _IsTextureReady(
+    return _IsTextureValid(
       texture,
     );
   }
 
-  late final _IsTextureReadyPtr =
+  late final _IsTextureValidPtr =
       _lookup<ffi.NativeFunction<ffi.Bool Function(Texture2D)>>(
-          'IsTextureReady');
-  late final _IsTextureReady =
-      _IsTextureReadyPtr.asFunction<bool Function(Texture2D)>();
+          'IsTextureValid');
+  late final _IsTextureValid =
+      _IsTextureValidPtr.asFunction<bool Function(Texture2D)>();
 
   void UnloadTexture(
     Texture2D texture,
@@ -5714,19 +5760,19 @@ class Raylib {
   late final _UnloadTexture =
       _UnloadTexturePtr.asFunction<void Function(Texture2D)>();
 
-  bool IsRenderTextureReady(
+  bool IsRenderTextureValid(
     RenderTexture2D target,
   ) {
-    return _IsRenderTextureReady(
+    return _IsRenderTextureValid(
       target,
     );
   }
 
-  late final _IsRenderTextureReadyPtr =
+  late final _IsRenderTextureValidPtr =
       _lookup<ffi.NativeFunction<ffi.Bool Function(RenderTexture2D)>>(
-          'IsRenderTextureReady');
-  late final _IsRenderTextureReady =
-      _IsRenderTextureReadyPtr.asFunction<bool Function(RenderTexture2D)>();
+          'IsRenderTextureValid');
+  late final _IsRenderTextureValid =
+      _IsRenderTextureValidPtr.asFunction<bool Function(RenderTexture2D)>();
 
   void UnloadRenderTexture(
     RenderTexture2D target,
@@ -6317,17 +6363,17 @@ class Raylib {
       Font Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.UnsignedChar>, int,
           int, ffi.Pointer<ffi.Int>, int)>();
 
-  bool IsFontReady(
+  bool IsFontValid(
     Font font,
   ) {
-    return _IsFontReady(
+    return _IsFontValid(
       font,
     );
   }
 
-  late final _IsFontReadyPtr =
-      _lookup<ffi.NativeFunction<ffi.Bool Function(Font)>>('IsFontReady');
-  late final _IsFontReady = _IsFontReadyPtr.asFunction<bool Function(Font)>();
+  late final _IsFontValidPtr =
+      _lookup<ffi.NativeFunction<ffi.Bool Function(Font)>>('IsFontValid');
+  late final _IsFontValid = _IsFontValidPtr.asFunction<bool Function(Font)>();
 
   ffi.Pointer<GlyphInfo> LoadFontData(
     ffi.Pointer<ffi.UnsignedChar> fileData,
@@ -7600,18 +7646,18 @@ class Raylib {
   late final _LoadModelFromMesh =
       _LoadModelFromMeshPtr.asFunction<Model Function(Mesh)>();
 
-  bool IsModelReady(
+  bool IsModelValid(
     Model model,
   ) {
-    return _IsModelReady(
+    return _IsModelValid(
       model,
     );
   }
 
-  late final _IsModelReadyPtr =
-      _lookup<ffi.NativeFunction<ffi.Bool Function(Model)>>('IsModelReady');
-  late final _IsModelReady =
-      _IsModelReadyPtr.asFunction<bool Function(Model)>();
+  late final _IsModelValidPtr =
+      _lookup<ffi.NativeFunction<ffi.Bool Function(Model)>>('IsModelValid');
+  late final _IsModelValid =
+      _IsModelValidPtr.asFunction<bool Function(Model)>();
 
   void UnloadModel(
     Model model,
@@ -7876,11 +7922,11 @@ class Raylib {
   /// Mesh management functions
   void UploadMesh(
     ffi.Pointer<Mesh> mesh,
-    bool dynamic1,
+    bool dynamic$,
   ) {
     return _UploadMesh(
       mesh,
-      dynamic1,
+      dynamic$,
     );
   }
 
@@ -8254,19 +8300,19 @@ class Raylib {
   late final _LoadMaterialDefault =
       _LoadMaterialDefaultPtr.asFunction<Material Function()>();
 
-  bool IsMaterialReady(
+  bool IsMaterialValid(
     Material material,
   ) {
-    return _IsMaterialReady(
+    return _IsMaterialValid(
       material,
     );
   }
 
-  late final _IsMaterialReadyPtr =
+  late final _IsMaterialValidPtr =
       _lookup<ffi.NativeFunction<ffi.Bool Function(Material)>>(
-          'IsMaterialReady');
-  late final _IsMaterialReady =
-      _IsMaterialReadyPtr.asFunction<bool Function(Material)>();
+          'IsMaterialValid');
+  late final _IsMaterialValid =
+      _IsMaterialValidPtr.asFunction<bool Function(Material)>();
 
   void UnloadMaterial(
     Material material,
@@ -8358,6 +8404,25 @@ class Raylib {
   late final _UpdateModelAnimation = _UpdateModelAnimationPtr.asFunction<
       void Function(Model, ModelAnimation, int)>();
 
+  void UpdateModelAnimationBones(
+    Model model,
+    ModelAnimation anim,
+    int frame,
+  ) {
+    return _UpdateModelAnimationBones(
+      model,
+      anim,
+      frame,
+    );
+  }
+
+  late final _UpdateModelAnimationBonesPtr = _lookup<
+          ffi
+          .NativeFunction<ffi.Void Function(Model, ModelAnimation, ffi.Int)>>(
+      'UpdateModelAnimationBones');
+  late final _UpdateModelAnimationBones = _UpdateModelAnimationBonesPtr
+      .asFunction<void Function(Model, ModelAnimation, int)>();
+
   void UnloadModelAnimation(
     ModelAnimation anim,
   ) {
@@ -8404,26 +8469,6 @@ class Raylib {
           'IsModelAnimationValid');
   late final _IsModelAnimationValid = _IsModelAnimationValidPtr.asFunction<
       bool Function(Model, ModelAnimation)>();
-
-  void UpdateModelAnimationBoneMatrices(
-    Model model,
-    ModelAnimation anim,
-    int frame,
-  ) {
-    return _UpdateModelAnimationBoneMatrices(
-      model,
-      anim,
-      frame,
-    );
-  }
-
-  late final _UpdateModelAnimationBoneMatricesPtr = _lookup<
-          ffi
-          .NativeFunction<ffi.Void Function(Model, ModelAnimation, ffi.Int)>>(
-      'UpdateModelAnimationBoneMatrices');
-  late final _UpdateModelAnimationBoneMatrices =
-      _UpdateModelAnimationBoneMatricesPtr.asFunction<
-          void Function(Model, ModelAnimation, int)>();
 
   /// Collision detection functions
   bool CheckCollisionSpheres(
@@ -8664,17 +8709,17 @@ class Raylib {
       Wave Function(
           ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.UnsignedChar>, int)>();
 
-  bool IsWaveReady(
+  bool IsWaveValid(
     Wave wave,
   ) {
-    return _IsWaveReady(
+    return _IsWaveValid(
       wave,
     );
   }
 
-  late final _IsWaveReadyPtr =
-      _lookup<ffi.NativeFunction<ffi.Bool Function(Wave)>>('IsWaveReady');
-  late final _IsWaveReady = _IsWaveReadyPtr.asFunction<bool Function(Wave)>();
+  late final _IsWaveValidPtr =
+      _lookup<ffi.NativeFunction<ffi.Bool Function(Wave)>>('IsWaveValid');
+  late final _IsWaveValid = _IsWaveValidPtr.asFunction<bool Function(Wave)>();
 
   Sound LoadSound(
     ffi.Pointer<ffi.Char> fileName,
@@ -8716,18 +8761,18 @@ class Raylib {
   late final _LoadSoundAlias =
       _LoadSoundAliasPtr.asFunction<Sound Function(Sound)>();
 
-  bool IsSoundReady(
+  bool IsSoundValid(
     Sound sound,
   ) {
-    return _IsSoundReady(
+    return _IsSoundValid(
       sound,
     );
   }
 
-  late final _IsSoundReadyPtr =
-      _lookup<ffi.NativeFunction<ffi.Bool Function(Sound)>>('IsSoundReady');
-  late final _IsSoundReady =
-      _IsSoundReadyPtr.asFunction<bool Function(Sound)>();
+  late final _IsSoundValidPtr =
+      _lookup<ffi.NativeFunction<ffi.Bool Function(Sound)>>('IsSoundValid');
+  late final _IsSoundValid =
+      _IsSoundValidPtr.asFunction<bool Function(Sound)>();
 
   void UpdateSound(
     Sound sound,
@@ -9042,18 +9087,18 @@ class Raylib {
           Music Function(
               ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.UnsignedChar>, int)>();
 
-  bool IsMusicReady(
+  bool IsMusicValid(
     Music music,
   ) {
-    return _IsMusicReady(
+    return _IsMusicValid(
       music,
     );
   }
 
-  late final _IsMusicReadyPtr =
-      _lookup<ffi.NativeFunction<ffi.Bool Function(Music)>>('IsMusicReady');
-  late final _IsMusicReady =
-      _IsMusicReadyPtr.asFunction<bool Function(Music)>();
+  late final _IsMusicValidPtr =
+      _lookup<ffi.NativeFunction<ffi.Bool Function(Music)>>('IsMusicValid');
+  late final _IsMusicValid =
+      _IsMusicValidPtr.asFunction<bool Function(Music)>();
 
   void UnloadMusicStream(
     Music music,
@@ -9262,19 +9307,19 @@ class Raylib {
   late final _LoadAudioStream =
       _LoadAudioStreamPtr.asFunction<AudioStream Function(int, int, int)>();
 
-  bool IsAudioStreamReady(
+  bool IsAudioStreamValid(
     AudioStream stream,
   ) {
-    return _IsAudioStreamReady(
+    return _IsAudioStreamValid(
       stream,
     );
   }
 
-  late final _IsAudioStreamReadyPtr =
+  late final _IsAudioStreamValidPtr =
       _lookup<ffi.NativeFunction<ffi.Bool Function(AudioStream)>>(
-          'IsAudioStreamReady');
-  late final _IsAudioStreamReady =
-      _IsAudioStreamReadyPtr.asFunction<bool Function(AudioStream)>();
+          'IsAudioStreamValid');
+  late final _IsAudioStreamValid =
+      _IsAudioStreamValidPtr.asFunction<bool Function(AudioStream)>();
 
   void UnloadAudioStream(
     AudioStream stream,
@@ -10442,7 +10487,7 @@ class Raylib {
     double _Number,
     double _Sign,
   ) {
-    return _copysign1(
+    return _copysign$1(
       _Number,
       _Sign,
     );
@@ -10451,7 +10496,7 @@ class Raylib {
   late final _copysignPtr =
       _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
           'copysign');
-  late final _copysign1 =
+  late final _copysign$1 =
       _copysignPtr.asFunction<double Function(double, double)>();
 
   double _copysign(
@@ -10613,7 +10658,7 @@ class Raylib {
     double _X,
     double _Y,
   ) {
-    return _hypot1(
+    return _hypot$1(
       _X,
       _Y,
     );
@@ -10622,7 +10667,7 @@ class Raylib {
   late final _hypotPtr =
       _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
           'hypot');
-  late final _hypot1 = _hypotPtr.asFunction<double Function(double, double)>();
+  late final _hypot$1 = _hypotPtr.asFunction<double Function(double, double)>();
 
   double _hypot(
     double _X,
@@ -11089,7 +11134,7 @@ class Raylib {
     double _Number,
     double _Sign,
   ) {
-    return _copysignf1(
+    return _copysignf$1(
       _Number,
       _Sign,
     );
@@ -11098,7 +11143,7 @@ class Raylib {
   late final _copysignfPtr =
       _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
           'copysignf');
-  late final _copysignf1 =
+  late final _copysignf$1 =
       _copysignfPtr.asFunction<double Function(double, double)>();
 
   double _copysignf(
@@ -11319,14 +11364,14 @@ class Raylib {
   double logbf(
     double _X,
   ) {
-    return _logbf1(
+    return _logbf$1(
       _X,
     );
   }
 
   late final _logbfPtr =
       _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('logbf');
-  late final _logbf1 = _logbfPtr.asFunction<double Function(double)>();
+  late final _logbf$1 = _logbfPtr.asFunction<double Function(double)>();
 
   int lrintf(
     double _X,
@@ -11382,7 +11427,7 @@ class Raylib {
     double _X,
     double _Y,
   ) {
-    return _nextafterf1(
+    return _nextafterf$1(
       _X,
       _Y,
     );
@@ -11391,7 +11436,7 @@ class Raylib {
   late final _nextafterfPtr =
       _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
           'nextafterf');
-  late final _nextafterf1 =
+  late final _nextafterf$1 =
       _nextafterfPtr.asFunction<double Function(double, double)>();
 
   double remainderf(
@@ -11836,41 +11881,41 @@ class Raylib {
       _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('tanhf');
   late final _tanhf = _tanhfPtr.asFunction<double Function(double)>();
 
-  late final ffi.Pointer<ffi.Double> _HUGE1 = _lookup<ffi.Double>('HUGE');
+  late final ffi.Pointer<ffi.Double> _HUGE$1 = _lookup<ffi.Double>('HUGE');
 
-  double get HUGE => _HUGE1.value;
+  double get HUGE => _HUGE$1.value;
 
-  set HUGE(double value) => _HUGE1.value = value;
+  set HUGE(double value) => _HUGE$1.value = value;
 
   double j0(
     double _X,
   ) {
-    return _j01(
+    return _j0$1(
       _X,
     );
   }
 
   late final _j0Ptr =
       _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('j0');
-  late final _j01 = _j0Ptr.asFunction<double Function(double)>();
+  late final _j0$1 = _j0Ptr.asFunction<double Function(double)>();
 
   double j1(
     double _X,
   ) {
-    return _j11(
+    return _j1$1(
       _X,
     );
   }
 
   late final _j1Ptr =
       _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('j1');
-  late final _j11 = _j1Ptr.asFunction<double Function(double)>();
+  late final _j1$1 = _j1Ptr.asFunction<double Function(double)>();
 
   double jn(
     int _X,
     double _Y,
   ) {
-    return _jn1(
+    return _jn$1(
       _X,
       _Y,
     );
@@ -11879,37 +11924,37 @@ class Raylib {
   late final _jnPtr =
       _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Int, ffi.Double)>>(
           'jn');
-  late final _jn1 = _jnPtr.asFunction<double Function(int, double)>();
+  late final _jn$1 = _jnPtr.asFunction<double Function(int, double)>();
 
   double y0(
     double _X,
   ) {
-    return _y01(
+    return _y0$1(
       _X,
     );
   }
 
   late final _y0Ptr =
       _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('y0');
-  late final _y01 = _y0Ptr.asFunction<double Function(double)>();
+  late final _y0$1 = _y0Ptr.asFunction<double Function(double)>();
 
   double y1(
     double _X,
   ) {
-    return _y11(
+    return _y1$1(
       _X,
     );
   }
 
   late final _y1Ptr =
       _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('y1');
-  late final _y11 = _y1Ptr.asFunction<double Function(double)>();
+  late final _y1$1 = _y1Ptr.asFunction<double Function(double)>();
 
   double yn(
     int _X,
     double _Y,
   ) {
-    return _yn1(
+    return _yn$1(
       _X,
       _Y,
     );
@@ -11918,7 +11963,7 @@ class Raylib {
   late final _ynPtr =
       _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Int, ffi.Double)>>(
           'yn');
-  late final _yn1 = _ynPtr.asFunction<double Function(int, double)>();
+  late final _yn$1 = _ynPtr.asFunction<double Function(int, double)>();
 
   void rlMatrixMode(
     int mode,
@@ -13192,12 +13237,12 @@ class Raylib {
   int rlLoadVertexBuffer(
     ffi.Pointer<ffi.Void> buffer,
     int size,
-    bool dynamic1,
+    bool dynamic$,
   ) {
     return _rlLoadVertexBuffer(
       buffer,
       size,
-      dynamic1,
+      dynamic$,
     );
   }
 
@@ -13211,12 +13256,12 @@ class Raylib {
   int rlLoadVertexBufferElement(
     ffi.Pointer<ffi.Void> buffer,
     int size,
-    bool dynamic1,
+    bool dynamic$,
   ) {
     return _rlLoadVertexBufferElement(
       buffer,
       size,
-      dynamic1,
+      dynamic$,
     );
   }
 
@@ -13481,20 +13526,22 @@ class Raylib {
     ffi.Pointer<ffi.Void> data,
     int size,
     int format,
+    int mipmapCount,
   ) {
     return _rlLoadTextureCubemap(
       data,
       size,
       format,
+      mipmapCount,
     );
   }
 
   late final _rlLoadTextureCubemapPtr = _lookup<
       ffi.NativeFunction<
-          ffi.UnsignedInt Function(ffi.Pointer<ffi.Void>, ffi.Int,
+          ffi.UnsignedInt Function(ffi.Pointer<ffi.Void>, ffi.Int, ffi.Int,
               ffi.Int)>>('rlLoadTextureCubemap');
   late final _rlLoadTextureCubemap = _rlLoadTextureCubemapPtr
-      .asFunction<int Function(ffi.Pointer<ffi.Void>, int, int)>();
+      .asFunction<int Function(ffi.Pointer<ffi.Void>, int, int, int)>();
 
   void rlUpdateTexture(
     int id,
@@ -14209,6 +14256,8 @@ class Raylib {
 }
 
 typedef va_list = ffi.Pointer<ffi.Char>;
+typedef ptrdiff_t = ffi.LongLong;
+typedef Dartptrdiff_t = int;
 
 /// Vector2, 2 components
 final class Vector2 extends ffi.Struct {
@@ -14254,6 +14303,9 @@ final class Vector4 extends ffi.Struct {
   @ffi.Float()
   external double w;
 }
+
+/// Quaternion, 4 components (Vector4 alias)
+typedef Quaternion = Vector4;
 
 /// Matrix, 4x4 components, column major, OpenGL style, right-handed
 final class Matrix extends ffi.Struct {
@@ -14393,6 +14445,12 @@ final class Texture extends ffi.Struct {
   external int format;
 }
 
+/// Texture2D, same as Texture
+typedef Texture2D = Texture;
+
+/// TextureCubemap, same as Texture
+typedef TextureCubemap = Texture;
+
 /// RenderTexture, fbo for texture rendering
 final class RenderTexture extends ffi.Struct {
   /// OpenGL framebuffer object id
@@ -14405,6 +14463,9 @@ final class RenderTexture extends ffi.Struct {
   /// Depth buffer attachment texture
   external Texture depth;
 }
+
+/// RenderTexture2D, same as RenderTexture
+typedef RenderTexture2D = RenderTexture;
 
 /// NPatchInfo, n-patch layout info
 final class NPatchInfo extends ffi.Struct {
@@ -14478,9 +14539,6 @@ final class Font extends ffi.Struct {
   external ffi.Pointer<GlyphInfo> glyphs;
 }
 
-/// Texture2D, same as Texture
-typedef Texture2D = Texture;
-
 /// Camera, defines position/orientation in 3d space
 final class Camera3D extends ffi.Struct {
   /// Camera position
@@ -14500,6 +14558,8 @@ final class Camera3D extends ffi.Struct {
   @ffi.Int()
   external int projection;
 }
+
+typedef Camera = Camera3D;
 
 /// Camera2D, defines position/orientation in 2d space
 final class Camera2D extends ffi.Struct {
@@ -14623,9 +14683,6 @@ final class Transform extends ffi.Struct {
   /// Scale
   external Vector3 scale;
 }
-
-/// Quaternion, 4 components (Vector4 alias)
-typedef Quaternion = Vector4;
 
 /// Bone, skeletal animation bone
 final class BoneInfo extends ffi.Struct {
@@ -14997,7 +15054,7 @@ enum ConfigFlags {
         32768 => BORDERLESS_WINDOWED_MODE,
         32 => MSAA_4X_HINT,
         65536 => INTERLACED_HINT,
-        _ => throw ArgumentError("Unknown value for ConfigFlags: $value"),
+        _ => throw ArgumentError('Unknown value for ConfigFlags: $value'),
       };
 }
 
@@ -15040,7 +15097,7 @@ enum TraceLogLevel {
         5 => ERROR,
         6 => FATAL,
         7 => NONE,
-        _ => throw ArgumentError("Unknown value for TraceLogLevel: $value"),
+        _ => throw ArgumentError('Unknown value for TraceLogLevel: $value'),
       };
 }
 
@@ -15492,7 +15549,7 @@ enum KeyboardKey {
         5 => MENU,
         24 => VOLUME_UP,
         25 => VOLUME_DOWN,
-        _ => throw ArgumentError("Unknown value for KeyboardKey: $value"),
+        _ => throw ArgumentError('Unknown value for KeyboardKey: $value'),
       };
 }
 
@@ -15530,7 +15587,7 @@ enum MouseButton {
         4 => EXTRA,
         5 => FORWARD,
         6 => BACK,
-        _ => throw ArgumentError("Unknown value for MouseButton: $value"),
+        _ => throw ArgumentError('Unknown value for MouseButton: $value'),
       };
 }
 
@@ -15584,7 +15641,7 @@ enum MouseCursor {
         8 => RESIZE_NESW,
         9 => RESIZE_ALL,
         10 => NOT_ALLOWED,
-        _ => throw ArgumentError("Unknown value for MouseCursor: $value"),
+        _ => throw ArgumentError('Unknown value for MouseCursor: $value'),
       };
 }
 
@@ -15666,7 +15723,7 @@ enum GamepadButton {
         15 => MIDDLE_RIGHT,
         16 => LEFT_THUMB,
         17 => RIGHT_THUMB,
-        _ => throw ArgumentError("Unknown value for GamepadButton: $value"),
+        _ => throw ArgumentError('Unknown value for GamepadButton: $value'),
       };
 }
 
@@ -15700,7 +15757,7 @@ enum GamepadAxis {
         3 => RIGHT_Y,
         4 => LEFT_TRIGGER,
         5 => RIGHT_TRIGGER,
-        _ => throw ArgumentError("Unknown value for GamepadAxis: $value"),
+        _ => throw ArgumentError('Unknown value for GamepadAxis: $value'),
       };
 }
 
@@ -15754,7 +15811,7 @@ enum MaterialMapIndex {
         8 => IRRADIANCE,
         9 => PREFILTER,
         10 => BRDF,
-        _ => throw ArgumentError("Unknown value for MaterialMapIndex: $value"),
+        _ => throw ArgumentError('Unknown value for MaterialMapIndex: $value'),
       };
 }
 
@@ -15881,7 +15938,7 @@ enum ShaderLocationIndex {
         27 => VERTEX_BONEWEIGHTS,
         28 => BONE_MATRICES,
         _ =>
-          throw ArgumentError("Unknown value for ShaderLocationIndex: $value"),
+          throw ArgumentError('Unknown value for ShaderLocationIndex: $value'),
       };
 }
 
@@ -15928,7 +15985,7 @@ enum ShaderUniformDataType {
         7 => IVEC4,
         8 => SAMPLER2D,
         _ => throw ArgumentError(
-            "Unknown value for ShaderUniformDataType: $value"),
+            'Unknown value for ShaderUniformDataType: $value'),
       };
 }
 
@@ -15955,7 +16012,7 @@ enum ShaderAttributeDataType {
         2 => VEC3,
         3 => VEC4,
         _ => throw ArgumentError(
-            "Unknown value for ShaderAttributeDataType: $value"),
+            'Unknown value for ShaderAttributeDataType: $value'),
       };
 }
 
@@ -16062,7 +16119,7 @@ enum PixelFormat {
         22 => COMPRESSED_PVRT_RGBA,
         23 => COMPRESSED_ASTC_4x4_RGBA,
         24 => COMPRESSED_ASTC_8x8_RGBA,
-        _ => throw ArgumentError("Unknown value for PixelFormat: $value"),
+        _ => throw ArgumentError('Unknown value for PixelFormat: $value'),
       };
 }
 
@@ -16098,7 +16155,7 @@ enum TextureFilter {
         3 => ANISOTROPIC_4X,
         4 => ANISOTROPIC_8X,
         5 => ANISOTROPIC_16X,
-        _ => throw ArgumentError("Unknown value for TextureFilter: $value"),
+        _ => throw ArgumentError('Unknown value for TextureFilter: $value'),
       };
 }
 
@@ -16124,7 +16181,7 @@ enum TextureWrap {
         1 => CLAMP,
         2 => MIRROR_REPEAT,
         3 => MIRROR_CLAMP,
-        _ => throw ArgumentError("Unknown value for TextureWrap: $value"),
+        _ => throw ArgumentError('Unknown value for TextureWrap: $value'),
       };
 }
 
@@ -16143,10 +16200,7 @@ enum CubemapLayout {
   CROSS_THREE_BY_FOUR(3),
 
   /// Layout is defined by a 4x3 cross with cubemap faces
-  CROSS_FOUR_BY_THREE(4),
-
-  /// Layout is defined by a panorama image (equirrectangular map)
-  PANORAMA(5);
+  CROSS_FOUR_BY_THREE(4);
 
   final int value;
   const CubemapLayout(this.value);
@@ -16157,8 +16211,7 @@ enum CubemapLayout {
         2 => LINE_HORIZONTAL,
         3 => CROSS_THREE_BY_FOUR,
         4 => CROSS_FOUR_BY_THREE,
-        5 => PANORAMA,
-        _ => throw ArgumentError("Unknown value for CubemapLayout: $value"),
+        _ => throw ArgumentError('Unknown value for CubemapLayout: $value'),
       };
 }
 
@@ -16180,7 +16233,7 @@ enum FontType {
         0 => DEFAULT,
         1 => BITMAP,
         2 => SDF,
-        _ => throw ArgumentError("Unknown value for FontType: $value"),
+        _ => throw ArgumentError('Unknown value for FontType: $value'),
       };
 }
 
@@ -16222,7 +16275,7 @@ enum BlendMode {
         5 => ALPHA_PREMULTIPLY,
         6 => CUSTOM,
         7 => CUSTOM_SEPARATE,
-        _ => throw ArgumentError("Unknown value for BlendMode: $value"),
+        _ => throw ArgumentError('Unknown value for BlendMode: $value'),
       };
 }
 
@@ -16277,7 +16330,7 @@ enum Gesture {
         128 => SWIPE_DOWN,
         256 => PINCH_IN,
         512 => PINCH_OUT,
-        _ => throw ArgumentError("Unknown value for Gesture: $value"),
+        _ => throw ArgumentError('Unknown value for Gesture: $value'),
       };
 }
 
@@ -16307,7 +16360,7 @@ enum CameraMode {
         2 => ORBITAL,
         3 => FIRST_PERSON,
         4 => THIRD_PERSON,
-        _ => throw ArgumentError("Unknown value for CameraMode: $value"),
+        _ => throw ArgumentError('Unknown value for CameraMode: $value'),
       };
 }
 
@@ -16325,7 +16378,7 @@ enum CameraProjection {
   static CameraProjection fromValue(int value) => switch (value) {
         0 => PERSPECTIVE,
         1 => ORTHOGRAPHIC,
-        _ => throw ArgumentError("Unknown value for CameraProjection: $value"),
+        _ => throw ArgumentError('Unknown value for CameraProjection: $value'),
       };
 }
 
@@ -16347,56 +16400,53 @@ enum NPatchLayout {
         0 => NINE_PATCH,
         1 => THREE_PATCH_VERTICAL,
         2 => THREE_PATCH_HORIZONTAL,
-        _ => throw ArgumentError("Unknown value for NPatchLayout: $value"),
+        _ => throw ArgumentError('Unknown value for NPatchLayout: $value'),
       };
 }
 
-/// RenderTexture2D, same as RenderTexture
-typedef RenderTexture2D = RenderTexture;
-typedef Camera = Camera3D;
+typedef TraceLogCallbackFunction = ffi.Void Function(
+    ffi.Int logLevel, ffi.Pointer<ffi.Char> text, va_list args);
+typedef DartTraceLogCallbackFunction = void Function(
+    int logLevel, ffi.Pointer<ffi.Char> text, va_list args);
 
 /// Callbacks to hook some internal functions
 /// WARNING: These callbacks are intended for advanced users
 typedef TraceLogCallback
     = ffi.Pointer<ffi.NativeFunction<TraceLogCallbackFunction>>;
-typedef TraceLogCallbackFunction = ffi.Void Function(
-    ffi.Int logLevel, ffi.Pointer<ffi.Char> text, va_list args);
-typedef DartTraceLogCallbackFunction = void Function(
-    int logLevel, ffi.Pointer<ffi.Char> text, va_list args);
-typedef LoadFileDataCallback
-    = ffi.Pointer<ffi.NativeFunction<LoadFileDataCallbackFunction>>;
 typedef LoadFileDataCallbackFunction = ffi.Pointer<ffi.UnsignedChar> Function(
     ffi.Pointer<ffi.Char> fileName, ffi.Pointer<ffi.Int> dataSize);
-typedef SaveFileDataCallback
-    = ffi.Pointer<ffi.NativeFunction<SaveFileDataCallbackFunction>>;
+typedef LoadFileDataCallback
+    = ffi.Pointer<ffi.NativeFunction<LoadFileDataCallbackFunction>>;
 typedef SaveFileDataCallbackFunction = ffi.Bool Function(
     ffi.Pointer<ffi.Char> fileName,
     ffi.Pointer<ffi.Void> data,
     ffi.Int dataSize);
 typedef DartSaveFileDataCallbackFunction = bool Function(
     ffi.Pointer<ffi.Char> fileName, ffi.Pointer<ffi.Void> data, int dataSize);
-typedef LoadFileTextCallback
-    = ffi.Pointer<ffi.NativeFunction<LoadFileTextCallbackFunction>>;
+typedef SaveFileDataCallback
+    = ffi.Pointer<ffi.NativeFunction<SaveFileDataCallbackFunction>>;
 typedef LoadFileTextCallbackFunction = ffi.Pointer<ffi.Char> Function(
     ffi.Pointer<ffi.Char> fileName);
-typedef SaveFileTextCallback
-    = ffi.Pointer<ffi.NativeFunction<SaveFileTextCallbackFunction>>;
+typedef LoadFileTextCallback
+    = ffi.Pointer<ffi.NativeFunction<LoadFileTextCallbackFunction>>;
 typedef SaveFileTextCallbackFunction = ffi.Bool Function(
     ffi.Pointer<ffi.Char> fileName, ffi.Pointer<ffi.Char> text);
 typedef DartSaveFileTextCallbackFunction = bool Function(
     ffi.Pointer<ffi.Char> fileName, ffi.Pointer<ffi.Char> text);
-
-/// TextureCubemap, same as Texture
-typedef TextureCubemap = Texture;
+typedef SaveFileTextCallback
+    = ffi.Pointer<ffi.NativeFunction<SaveFileTextCallbackFunction>>;
+typedef AudioCallbackFunction = ffi.Void Function(
+    ffi.Pointer<ffi.Void> bufferData, ffi.UnsignedInt frames);
+typedef DartAudioCallbackFunction = void Function(
+    ffi.Pointer<ffi.Void> bufferData, int frames);
 
 /// ------------------------------------------------------------------------------------
 /// Audio Loading and Playing Functions (Module: audio)
 /// ------------------------------------------------------------------------------------
 typedef AudioCallback = ffi.Pointer<ffi.NativeFunction<AudioCallbackFunction>>;
-typedef AudioCallbackFunction = ffi.Void Function(
-    ffi.Pointer<ffi.Void> bufferData, ffi.UnsignedInt frames);
-typedef DartAudioCallbackFunction = void Function(
-    ffi.Pointer<ffi.Void> bufferData, int frames);
+
+/// Quaternion type
+typedef Quaternion$1 = Vector4;
 
 /// NOTE: Helper types to be used instead of array return types for *ToFloat functions
 final class float3 extends ffi.Struct {
@@ -16409,6 +16459,17 @@ final class float16 extends ffi.Struct {
   external ffi.Array<ffi.Float> v;
 }
 
+typedef errno_t = ffi.Int;
+typedef Darterrno_t = int;
+typedef wint_t = ffi.UnsignedShort;
+typedef Dartwint_t = int;
+typedef wctype_t = ffi.UnsignedShort;
+typedef Dartwctype_t = int;
+typedef __time32_t = ffi.Long;
+typedef Dart__time32_t = int;
+typedef __time64_t = ffi.LongLong;
+typedef Dart__time64_t = int;
+
 final class __crt_locale_data_public extends ffi.Struct {
   external ffi.Pointer<ffi.UnsignedShort> _locale_pctype;
 
@@ -16419,15 +16480,17 @@ final class __crt_locale_data_public extends ffi.Struct {
   external int _locale_lc_codepage;
 }
 
+final class __crt_locale_data extends ffi.Opaque {}
+
+final class __crt_multibyte_data extends ffi.Opaque {}
+
 final class __crt_locale_pointers extends ffi.Struct {
   external ffi.Pointer<__crt_locale_data> locinfo;
 
   external ffi.Pointer<__crt_multibyte_data> mbcinfo;
 }
 
-final class __crt_locale_data extends ffi.Opaque {}
-
-final class __crt_multibyte_data extends ffi.Opaque {}
+typedef _locale_t = ffi.Pointer<__crt_locale_pointers>;
 
 final class _Mbstatet extends ffi.Struct {
   @ffi.UnsignedLong()
@@ -16439,6 +16502,11 @@ final class _Mbstatet extends ffi.Struct {
   @ffi.UnsignedShort()
   external int _State;
 }
+
+typedef mbstate_t = _Mbstatet;
+typedef time_t = __time64_t;
+typedef rsize_t = ffi.Size;
+typedef Dartrsize_t = int;
 
 final class _exception extends ffi.Struct {
   @ffi.Int()
@@ -16464,6 +16532,11 @@ final class _complex extends ffi.Struct {
   external double y;
 }
 
+typedef float_t = ffi.Float;
+typedef Dartfloat_t = double;
+typedef double_t = ffi.Double;
+typedef Dartdouble_t = double;
+
 final class _double_val extends ffi.Union {
   @ffi.Array.multi([4])
   external ffi.Array<ffi.UnsignedShort> _Sh;
@@ -16483,8 +16556,6 @@ final class _float_val extends ffi.Union {
 final class _ldouble_val extends ffi.Opaque {}
 
 final class _float_const extends ffi.Opaque {}
-
-typedef _locale_t = ffi.Pointer<__crt_locale_pointers>;
 
 /// Dynamic vertex buffers (position + texcoords + colors + indices arrays)
 final class rlVertexBuffer extends ffi.Struct {
@@ -16593,7 +16664,7 @@ enum rlGlVersion {
         4 => RL_OPENGL_43,
         5 => RL_OPENGL_ES_20,
         6 => RL_OPENGL_ES_30,
-        _ => throw ArgumentError("Unknown value for rlGlVersion: $value"),
+        _ => throw ArgumentError('Unknown value for rlGlVersion: $value'),
       };
 }
 
@@ -16636,7 +16707,7 @@ enum rlTraceLogLevel {
         5 => RL_LOG_ERROR,
         6 => RL_LOG_FATAL,
         7 => RL_LOG_NONE,
-        _ => throw ArgumentError("Unknown value for rlTraceLogLevel: $value"),
+        _ => throw ArgumentError('Unknown value for rlTraceLogLevel: $value'),
       };
 }
 
@@ -16743,7 +16814,7 @@ enum rlPixelFormat {
         22 => RL_PIXELFORMAT_COMPRESSED_PVRT_RGBA,
         23 => RL_PIXELFORMAT_COMPRESSED_ASTC_4x4_RGBA,
         24 => RL_PIXELFORMAT_COMPRESSED_ASTC_8x8_RGBA,
-        _ => throw ArgumentError("Unknown value for rlPixelFormat: $value"),
+        _ => throw ArgumentError('Unknown value for rlPixelFormat: $value'),
       };
 }
 
@@ -16779,7 +16850,7 @@ enum rlTextureFilter {
         3 => RL_TEXTURE_FILTER_ANISOTROPIC_4X,
         4 => RL_TEXTURE_FILTER_ANISOTROPIC_8X,
         5 => RL_TEXTURE_FILTER_ANISOTROPIC_16X,
-        _ => throw ArgumentError("Unknown value for rlTextureFilter: $value"),
+        _ => throw ArgumentError('Unknown value for rlTextureFilter: $value'),
       };
 }
 
@@ -16821,7 +16892,7 @@ enum rlBlendMode {
         5 => RL_BLEND_ALPHA_PREMULTIPLY,
         6 => RL_BLEND_CUSTOM,
         7 => RL_BLEND_CUSTOM_SEPARATE,
-        _ => throw ArgumentError("Unknown value for rlBlendMode: $value"),
+        _ => throw ArgumentError('Unknown value for rlBlendMode: $value'),
       };
 }
 
@@ -16936,7 +17007,7 @@ enum rlShaderLocationIndex {
         24 => RL_SHADER_LOC_MAP_PREFILTER,
         25 => RL_SHADER_LOC_MAP_BRDF,
         _ => throw ArgumentError(
-            "Unknown value for rlShaderLocationIndex: $value"),
+            'Unknown value for rlShaderLocationIndex: $value'),
       };
 }
 
@@ -16999,7 +17070,7 @@ enum rlShaderUniformDataType {
         11 => RL_SHADER_UNIFORM_UIVEC4,
         12 => RL_SHADER_UNIFORM_SAMPLER2D,
         _ => throw ArgumentError(
-            "Unknown value for rlShaderUniformDataType: $value"),
+            'Unknown value for rlShaderUniformDataType: $value'),
       };
 }
 
@@ -17026,7 +17097,7 @@ enum rlShaderAttributeDataType {
         2 => RL_SHADER_ATTRIB_VEC3,
         3 => RL_SHADER_ATTRIB_VEC4,
         _ => throw ArgumentError(
-            "Unknown value for rlShaderAttributeDataType: $value"),
+            'Unknown value for rlShaderAttributeDataType: $value'),
       };
 }
 
@@ -17078,7 +17149,7 @@ enum rlFramebufferAttachType {
         100 => RL_ATTACHMENT_DEPTH,
         200 => RL_ATTACHMENT_STENCIL,
         _ => throw ArgumentError(
-            "Unknown value for rlFramebufferAttachType: $value"),
+            'Unknown value for rlFramebufferAttachType: $value'),
       };
 }
 
@@ -17121,7 +17192,7 @@ enum rlFramebufferAttachTextureType {
         100 => RL_ATTACHMENT_TEXTURE2D,
         200 => RL_ATTACHMENT_RENDERBUFFER,
         _ => throw ArgumentError(
-            "Unknown value for rlFramebufferAttachTextureType: $value"),
+            'Unknown value for rlFramebufferAttachTextureType: $value'),
       };
 }
 
@@ -17136,7 +17207,7 @@ enum rlCullMode {
   static rlCullMode fromValue(int value) => switch (value) {
         0 => RL_CULL_FACE_FRONT,
         1 => RL_CULL_FACE_BACK,
-        _ => throw ArgumentError("Unknown value for rlCullMode: $value"),
+        _ => throw ArgumentError('Unknown value for rlCullMode: $value'),
       };
 }
 
@@ -17166,6 +17237,8 @@ const int _HAS_CXX20 = 0;
 
 const int _HAS_CXX23 = 0;
 
+const int _HAS_CXX26 = 0;
+
 const int _HAS_NODISCARD = 1;
 
 const int RAYLIB_VERSION_MAJOR = 5;
@@ -17174,7 +17247,7 @@ const int RAYLIB_VERSION_MINOR = 5;
 
 const int RAYLIB_VERSION_PATCH = 0;
 
-const String RAYLIB_VERSION = '5.5-dev';
+const String RAYLIB_VERSION = '5.5';
 
 const double PI = 3.1415927410125732;
 
@@ -17184,9 +17257,9 @@ const double RAD2DEG = 57.2957763671875;
 
 const int __bool_true_false_are_defined = 1;
 
-const int false1 = 0;
+const int false$ = 0;
 
-const int true1 = 1;
+const int true$ = 1;
 
 const int MOUSE_LEFT_BUTTON = 0;
 

@@ -18,7 +18,7 @@ enum CubemapLayout {
   crossFourByThree,
 
   /// Layout is defined by a panorama image (equirectangular map).
-  panorama,
+  // panorama,
 }
 
 /// Convert given enum to native value.
@@ -34,7 +34,7 @@ int cubemapLayoutToNative(CubemapLayout layout) {
       return raylib.CubemapLayout.CROSS_THREE_BY_FOUR.value;
     case CubemapLayout.crossFourByThree:
       return raylib.CubemapLayout.CROSS_FOUR_BY_THREE.value;
-    case CubemapLayout.panorama:
-      return raylib.CubemapLayout.PANORAMA.value;
+    // case CubemapLayout.panorama:
+    //   return raylib.CubemapLayout.PANORAMA.value;
   }
 }
